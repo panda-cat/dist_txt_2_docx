@@ -367,29 +367,42 @@ def parse_h3c(content: str) -> dict:
     return data
 
 
-# <-- MODIFIED: 函数签名增加了 ip_address 参数
+# ------------------- 核心解析逻辑 -------------------
+
 def parse_device_info(txt_path: Path, ip_address: str) -> dict:
     """自动检测设备类型并调用相应的解析器"""
     with txt_path.open(encoding="utf-8", errors="ignore") as f:
         content = f.read()
 
-    # <-- MODIFIED: 使用传入的干净IP地址，而不是从文件名推断
-    data = {"_filename": ip_address}  
+    data = {"_filename": ip_address}
 
-    # Vendor detection (此部分逻辑不变)
-    if re.search(r"Cisco IOS Software|show version", content, re.I):
+    # <-- MODIFIED: More robust and flexible vendor detection keywords -->
+    #
+    # 我们为每个厂商提供了更多的“指纹”，提高识别准确率。
+    # 检查顺序很重要，我们把最独特的指纹放在前面。
+    #
+    # 新指纹:
+    # - Cisco:   除了 "Cisco IOS"，还加入了 `#show` 这个极具Cisco特色的命令提示符。
+    # - Huawei:  加入了 "VRP (R) software" (华为系统的标志) 和 `display device` (堆叠常用命令)。
+    # - H3C:     加入了 "Comware Software" (H3C/HPE系统的标志) 和 `display irf` (堆叠常用命令)。
+    
+    if re.search(r"Cisco IOS|\s#show", content, re.I):
         parsed_data = parse_cisco(content)
-    elif re.search(r"<HUAWEI>|display version", content, re.I):
+    elif re.search(r"VRP \(R\) software|HUAWEI|<HUAWEI>|display device", content, re.I):
         parsed_data = parse_huawei(content)
-    elif re.search(r"<H3C>|Comware Software", content, re.I):
+    elif re.search(r"Comware Software|<H3C>|display irf", content, re.I):
         parsed_data = parse_h3c(content)
     else:
-        # fallback to generic key-value parsing
+        #  fallback to generic key-value parsing
         parsed_data = {"vendor": "Unknown", "is_stack": False, "members": [{}]}
+        # 即使是Unknown，我们也尝试从中解析一些基本信息
         for line in content.splitlines():
             m = re.match(r"^\s*(.+?)\s*:\s*(.+?)\s*$", line.strip())
             if m:
                 k, v = m.groups()
+                # 兼容旧格式的hostname
+                if k.lower() == 'hostname':
+                    parsed_data['hostname'] = v.strip()
                 parsed_data[k.lower().replace(" ", "_")] = v.strip()
     
     data.update(parsed_data)
