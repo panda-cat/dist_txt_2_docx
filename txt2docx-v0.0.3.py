@@ -74,15 +74,25 @@ def parse_cisco(content: str) -> dict:
     """解析 Cisco IOS/IOS-XE 设备信息"""
     data = {"vendor": "Cisco", "members": []}
     
-    # --- 公共信息 ---
-    # 主机名: Switch#
-    m = re.search(r"(\S+?)#show", content, re.I)
-    data["hostname"] = m.group(1) if m else "N/A"
+    # <-- MODIFIED: Hostname parsing is now more robust -->
+    # 策略1: 优先从命令提示符中寻找主机名 (例如, Switch#show...)
+    m_prompt = re.search(r"(\S+?)#show", content, re.I)
+    hostname = m_prompt.group(1) if m_prompt else None
     
-    # 运行时间: Switch uptime is 1 year, 2 weeks, 3 days, 4 hours, 5 minutes
+    # 策略2: 如果策略1失败, 则回退到查找 "hostname: value" 的键值对
+    if not hostname:
+        m_kv = re.search(r"^hostname\s*:\s*(.+)", content, re.I | re.M)
+        if m_kv:
+            hostname = m_kv.group(1).strip()
+            
+    data["hostname"] = hostname or "N/A"
+    # <-- End of modification -->
+    
+    # --- 公共信息 (其余部分不变) ---
     m = re.search(r"uptime is (.+)", content, re.I)
     data["uptime"] = m.group(1).strip() if m else "N/A"
     
+    # ... (此函数其余代码保持原样) ...
     # NTP: Clock is synchronized, stratum 3, reference is 10.0.0.1
     m = re.search(r"Clock is (.+)", content, re.I)
     data["ntp_status"] = m.group(1).strip() if m else "N/A"
@@ -159,15 +169,25 @@ def parse_huawei(content: str) -> dict:
     """解析 Huawei VRP 设备信息"""
     data = {"vendor": "Huawei", "members": []}
 
-    # --- 公共信息 ---
-    # 主机名: <Switch>
-    m = re.search(r"<(\S+?)>", content, re.I)
-    data["hostname"] = m.group(1) if m else "N/A"
+    # <-- MODIFIED: Hostname parsing is now more robust -->
+    # 策略1: 优先从命令提示符中寻找主机名 (例如, <Switch>display...)
+    m_prompt = re.search(r"<(\S+?)>", content, re.I)
+    hostname = m_prompt.group(1) if m_prompt else None
+
+    # 策略2: 如果策略1失败, 则回退到查找 "hostname: value" 的键值对
+    if not hostname:
+        m_kv = re.search(r"^hostname\s*:\s*(.+)", content, re.I | re.M)
+        if m_kv:
+            hostname = m_kv.group(1).strip()
+            
+    data["hostname"] = hostname or "N/A"
+    # <-- End of modification -->
     
-    # 运行时间: HUAWEI Uptime is 1 year, 2 weeks, 3 days, 4 hours, 5 minutes
+    # --- 公共信息 (其余部分不变) ---
     m = re.search(r"uptime is (.+)", content, re.I)
     data["uptime"] = m.group(1).strip() if m else "N/A"
     
+    # ... (此函数其余代码保持原样) ...
     # NTP: clock status: synchronized
     m = re.search(r"clock status\s*:\s*(.+)", content, re.I)
     data["ntp_status"] = m.group(1).strip() if m else "N/A"
@@ -225,7 +245,8 @@ def parse_huawei(content: str) -> dict:
     if not data["members"]:
         member = {"id": "1"}
         m = re.search(r"DEVICE_NAME\s+:\s+(\S+)", content, re.I | re.M) # 通常在 esn.dat 中
-        data['hostname'] = m.group(1) if m else data['hostname']
+        # 主机名已在前面处理过，这里不再覆盖
+        # data['hostname'] = m.group(1) if m else data['hostname']
         
         m = re.search(r"BARCODE\s+:\s+(\S+)", content, re.I | re.M)
         member['sn'] = m.group(1) if m else "N/A"
@@ -254,14 +275,26 @@ def parse_huawei(content: str) -> dict:
 def parse_h3c(content: str) -> dict:
     """解析 H3C/HPE Comware 设备信息"""
     data = {"vendor": "H3C", "members": []}
-
-    # --- 公共信息 ---
-    m = re.search(r"<(\S+?)>", content, re.I)
-    data["hostname"] = m.group(1) if m else "N/A"
     
+    # <-- MODIFIED: Hostname parsing is now more robust -->
+    # 策略1: 优先从命令提示符中寻找主机名 (例如, <Switch>display...)
+    m_prompt = re.search(r"<(\S+?)>", content, re.I)
+    hostname = m_prompt.group(1) if m_prompt else None
+
+    # 策略2: 如果策略1失败, 则回退到查找 "hostname: value" 的键值对
+    if not hostname:
+        m_kv = re.search(r"^hostname\s*:\s*(.+)", content, re.I | re.M)
+        if m_kv:
+            hostname = m_kv.group(1).strip()
+            
+    data["hostname"] = hostname or "N/A"
+    # <-- End of modification -->
+    
+    # --- 公共信息 (其余部分不变) ---
     m = re.search(r"uptime is (.+)", content, re.I)
     data["uptime"] = m.group(1).strip() if m else "N/A"
-    
+
+    # ... (此函数其余代码保持原样) ...
     m = re.search(r"Clock status: (.+)", content, re.I)
     data["ntp_status"] = m.group(1).strip() if m else "N/A"
     
