@@ -334,14 +334,16 @@ def parse_h3c(content: str) -> dict:
     return data
 
 
-def parse_device_info(txt_path: Path) -> dict:
+# <-- MODIFIED: 函数签名增加了 ip_address 参数
+def parse_device_info(txt_path: Path, ip_address: str) -> dict:
     """自动检测设备类型并调用相应的解析器"""
     with txt_path.open(encoding="utf-8", errors="ignore") as f:
         content = f.read()
 
-    data = {"_filename": txt_path.stem}  # 记录IP
+    # <-- MODIFIED: 使用传入的干净IP地址，而不是从文件名推断
+    data = {"_filename": ip_address}  
 
-    # Vendor detection
+    # Vendor detection (此部分逻辑不变)
     if re.search(r"Cisco IOS Software|show version", content, re.I):
         parsed_data = parse_cisco(content)
     elif re.search(r"<HUAWEI>|display version", content, re.I):
@@ -349,7 +351,7 @@ def parse_device_info(txt_path: Path) -> dict:
     elif re.search(r"<H3C>|Comware Software", content, re.I):
         parsed_data = parse_h3c(content)
     else:
-        #  fallback to generic key-value parsing
+        # fallback to generic key-value parsing
         parsed_data = {"vendor": "Unknown", "is_stack": False, "members": [{}]}
         for line in content.splitlines():
             m = re.match(r"^\s*(.+?)\s*:\s*(.+?)\s*$", line.strip())
@@ -362,13 +364,20 @@ def parse_device_info(txt_path: Path) -> dict:
 
 # ------------------- 按 IP 排序 -------------------
 
-def sort_by_ip(file_list):
+# <-- MODIFIED: 函数现在接受一个 pattern 参数
+def sort_by_ip(file_list, ip_pattern):
     """返回按 IP 地址自然排序的文件列表"""
     def ip_key(p):
-        try:
-            return ipaddress.ip_address(p.stem)
-        except ValueError:
-            return ipaddress.ip_address("255.255.255.255") # 非法 IP 放最后
+        # <-- MODIFIED: 使用 pattern 从文件名中匹配和提取IP
+        match = ip_pattern.match(p.name)
+        if match:
+            ip_str = match.group(1)  # 提取IP地址字符串
+            try:
+                return ipaddress.ip_address(ip_str)
+            except ValueError:
+                return ipaddress.ip_address("255.255.255.255")
+        return ipaddress.ip_address("255.255.255.255")  # 不匹配的文件放最后
+        
     return sorted(file_list, key=ip_key)
 
 
@@ -545,18 +554,29 @@ def main():
         print(f"输入目录不存在或不是目录：{txt_dir}")
         return
 
-    pattern = re.compile(r"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\.txt$")
+    # <-- MODIFIED: 正则表达式现在包含一个捕获组 () 来提取IP，并用 .* 允许后缀
+    pattern = re.compile(r"^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}).*\.txt$")
+    
     txt_files = [p for p in txt_dir.iterdir() if p.is_file() and pattern.match(p.name)]
     if not txt_files:
-        print(f"未找到任何 *.txt 文件（IP 命名格式）")
+        print(f"未找到任何以IP地址开头的 *.txt 文件")
         return
 
-    txt_files = sort_by_ip(txt_files)
+    # <-- MODIFIED: 将 pattern 传递给排序函数
+    txt_files = sort_by_ip(txt_files, pattern) 
+    
     print(f"找到 {len(txt_files)} 个文件，按 IP 排序：")
     for f in txt_files:
         print(f"  → {f.name}")
-
-    switches = [parse_device_info(txt_file) for txt_file in txt_files]
+    
+    # <-- MODIFIED: 在解析时提取IP并传递给解析函数
+    switches = []
+    for txt_file in txt_files:
+        match = pattern.match(txt_file.name)
+        if match:
+            # group(1) 捕获的就是正则表达式中第一个括号内的内容，即IP地址
+            ip_address = match.group(1)
+            switches.append(parse_device_info(txt_file, ip_address))
 
     out_path = Path(args.output)
     if args.template:
@@ -567,6 +587,7 @@ def main():
         replace_template_multi(switches, tmpl_path, out_path)
     else:
         generate_multi_word(switches, out_path)
+
 
 if __name__ == "__main__":
     main()
