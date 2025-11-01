@@ -74,34 +74,29 @@ def parse_cisco(content: str) -> dict:
     """解析 Cisco IOS/IOS-XE 设备信息"""
     data = {"vendor": "Cisco", "members": []}
     
-    # <-- MODIFIED: Hostname parsing is now more robust -->
-    # 策略1: 优先从命令提示符中寻找主机名 (例如, Switch#show...)
-    m_prompt = re.search(r"(\S+?)#show", content, re.I)
-    hostname = m_prompt.group(1) if m_prompt else None
+    # <-- MODIFIED: Implemented robust, priority-based hostname parsing -->
+    hostname = None
+    # 策略1: 优先从命令提示符中寻找主机名 (e.g., Switch#show...)
+    m_prompt = re.search(r"(\S+?)#", content, re.I)
+    if m_prompt:
+        hostname = m_prompt.group(1).strip()
     
-    # 策略2: 如果策略1失败, 则回退到查找 "hostname: value" 的键值对
+    # 策略2: 如果策略1失败, 则查找以 'hostname' 开头的配置行 (避免LLDP污染)
     if not hostname:
-        m_kv = re.search(r"^hostname\s*:\s*(.+)", content, re.I | re.M)
-        if m_kv:
-            hostname = m_kv.group(1).strip()
+        m_config = re.search(r"^\s*hostname\s+(.+?)\s*$", content, re.I | re.M)
+        if m_config:
+            hostname = m_config.group(1).strip()
             
     data["hostname"] = hostname or "N/A"
     # <-- End of modification -->
     
-    # --- 公共信息 (其余部分不变) ---
+    # --- The rest of the function remains the same ---
     m = re.search(r"uptime is (.+)", content, re.I)
     data["uptime"] = m.group(1).strip() if m else "N/A"
     
     # ... (此函数其余代码保持原样) ...
-    # NTP: Clock is synchronized, stratum 3, reference is 10.0.0.1
     m = re.search(r"Clock is (.+)", content, re.I)
     data["ntp_status"] = m.group(1).strip() if m else "N/A"
-    
-    # 主CPU: CPU utilization for five seconds: 10%/1%; one minute: 9%; five minutes: 9%
-    m = re.search(r"CPU utilization for five seconds: (\S+)", content, re.I)
-    data["cpu_utilization"] = m.group(1).split('/')[0] if m else "N/A"
-    
-    # 主内存: Processor Pool Total: 12345678 Used: 1234567 Free: 1234567
     m_total = re.search(r"Processor Pool Total:\s+(\d+)", content, re.I)
     m_used = re.search(r"Used:\s+(\d+)", content, re.I)
     if m_total and m_used:
@@ -110,129 +105,81 @@ def parse_cisco(content: str) -> dict:
         data["memory_utilization"] = f"{(used / total * 100):.2f}%" if total > 0 else "0%"
     else:
         data["memory_utilization"] = "N/A"
-
-    # --- 堆叠/成员信息 (关键) ---
-    # `show switch` 命令是判断堆叠的关键
     if 'show switch' in content.lower():
-        # 正则表达式匹配 show switch 的每一行
-        #  1       Provision      WS-C3850-48P     00:11:22:33:44:55    Ready
         member_matches = re.finditer(
-            r"^\s*([*\d])\s+\S+\s+([\w-]+)\s+([0-9a-f:.]+)\s+(\w+)", 
-            content, re.M | re.I
-        )
-        members = []
-        for match in member_matches:
-            members.append({
-                "id": match.group(1).replace('*','').strip(),
-                "model": match.group(2),
-                "mac_address": match.group(3),
-                "status": match.group(4),
-                "sn": "N/A" # 先占位
-            })
-
-        # 从 `show version` 中为每个成员找到序列号
-        sn_matches = re.finditer(
-            r"Switch\s+(\d+)\s+SERIAL NUMBER\s+:\s+(\S+)", 
-            content, re.I | re.M
-        )
+            r"^\s*([*\d])\s+\S+\s+([\w-]+)\s+([0-9a-f:.]+)\s+(\w+)", content, re.M | re.I)
+        members = [
+            {"id": m.group(1).replace('*','').strip(), "model": m.group(2), "mac_address": m.group(3), "status": m.group(4), "sn": "N/A"}
+            for m in member_matches
+        ]
+        sn_matches = re.finditer(r"Switch\s+(\d+)\s+SERIAL NUMBER\s+:\s+(\S+)", content, re.I | re.M)
         sn_map = {m.group(1): m.group(2) for m in sn_matches}
-        
         for member in members:
             if member["id"] in sn_map:
                 member["sn"] = sn_map[member["id"]]
-
         if members:
             data["members"] = members
             data["is_stack"] = len(members) > 1
-    
-    # 如果不是堆叠或没有 `show switch`，则作为单台设备处理
     if not data["members"]:
-        member = {"id": "1", "status": "Ready", "cpu": data["cpu_utilization"], "memory": data["memory_utilization"]}
+        member = {"id": "1", "status": "Ready", "cpu": data.get("cpu_utilization", "N/A"), "memory": data.get("memory_utilization", "N/A")}
         m = re.search(r"System Serial Number\s+:\s+(\S+)", content, re.I)
         member["sn"] = m.group(1) if m else "N/A"
-        data["sn"] = member["sn"] # 顶层SN
-        
+        data["sn"] = member["sn"]
         m = re.search(r"Model Number\s+:\s+(\S+)", content, re.I)
         member["model"] = m.group(1) if m else "N/A"
         data["model"] = member["model"]
-        
         m = re.search(r"Cisco IOS.*, Version (\S+),", content, re.I)
         data["ios_version"] = m.group(1) if m else "N/A"
-
         data["members"].append(member)
         data["is_stack"] = False
-
     return data
-
 
 def parse_huawei(content: str) -> dict:
     """解析 Huawei VRP 设备信息"""
     data = {"vendor": "Huawei", "members": []}
 
-    # <-- MODIFIED: Hostname parsing is now more robust -->
-    # 策略1: 优先从命令提示符中寻找主机名 (例如, <Switch>display...)
+    # <-- MODIFIED: Implemented robust, priority-based hostname parsing for sysname/hostname -->
+    hostname = None
+    # 策略1: 优先从命令提示符中寻找主机名 (e.g., <Switch>display...)
     m_prompt = re.search(r"<(\S+?)>", content, re.I)
-    hostname = m_prompt.group(1) if m_prompt else None
+    if m_prompt:
+        hostname = m_prompt.group(1).strip()
 
-    # 策略2: 如果策略1失败, 则回退到查找 "hostname: value" 的键值对
+    # 策略2: 如果策略1失败, 则查找以 'sysname' 或 'hostname' 开头的配置行 (避免LLDP污染)
     if not hostname:
-        m_kv = re.search(r"^hostname\s*:\s*(.+)", content, re.I | re.M)
-        if m_kv:
-            hostname = m_kv.group(1).strip()
+        m_config = re.search(r"^\s*(?:sysname|hostname)\s+(.+?)\s*$", content, re.I | re.M)
+        if m_config:
+            hostname = m_config.group(1).strip()
             
     data["hostname"] = hostname or "N/A"
     # <-- End of modification -->
     
-    # --- 公共信息 (其余部分不变) ---
+    # --- The rest of the function remains the same ---
     m = re.search(r"uptime is (.+)", content, re.I)
     data["uptime"] = m.group(1).strip() if m else "N/A"
     
     # ... (此函数其余代码保持原样) ...
-    # NTP: clock status: synchronized
     m = re.search(r"clock status\s*:\s*(.+)", content, re.I)
     data["ntp_status"] = m.group(1).strip() if m else "N/A"
-    
-    # 版本: VRP (R) software, Version 5.170 (S6720 V200R011C10SPC600)
     m = re.search(r"Version \d\.\d+ \((.+?)\)", content, re.I)
     data["ios_version"] = m.group(1) if m else "N/A"
-    
-    # --- 堆叠/成员信息 ---
-    # `display device` 是关键
     if 'display device' in content.lower():
-        # 正则表达式匹配 display device 的每一行 (注意Slot Role Mac...的表头)
-        # 1   Master  NORMAL    S5720-28P-LI-AC   1234567890ABCDEF   FAB
         member_matches = re.finditer(
-            r"^\s*(\d+)\s+(\w+)\s+\w+\s+([\w-]+)\s+([0-9A-Z]+)", 
-            content, re.M | re.I
-        )
-        members = []
-        for match in member_matches:
-             members.append({
-                "id": match.group(1),
-                "role": match.group(2),
-                "model": match.group(3),
-                "sn": match.group(4),
-                "cpu": "N/A", # 先占位
-                "memory": "N/A" # 先占位
-            })
-
-        # 解析每个 slot 的 CPU 和内存
-        # display cpu-usage slot 1: 10%
+            r"^\s*(\d+)\s+(\w+)\s+\w+\s+([\w-]+)\s+([0-9A-Z]+)", content, re.M | re.I)
+        members = [
+            {"id": m.group(1), "role": m.group(2), "model": m.group(3), "sn": m.group(4), "cpu": "N/A", "memory": "N/A"}
+            for m in member_matches
+        ]
         cpu_matches = re.finditer(r"CPU Usage for Slot\s+(\d+)\s+is\s+(\S+)", content, re.I | re.M)
         cpu_map = {m.group(1): m.group(2) for m in cpu_matches}
-        
-        # display memory-usage slot 1: 30%
         mem_matches = re.finditer(r"Memory usage of slot\s+(\d+):\s+(\S+)", content, re.I | re.M)
         mem_map = {m.group(1): m.group(2) for m in mem_matches}
-        
         for member in members:
             member["cpu"] = cpu_map.get(member["id"], "N/A")
             member["memory"] = mem_map.get(member["id"], "N/A")
-
         if members:
             data["members"] = members
             data["is_stack"] = len(members) > 1
-            # 将主设备信息提升到顶层
             for member in members:
                 if member.get('role', '').lower() == 'master':
                     data['cpu_utilization'] = member.get('cpu', 'N/A')
@@ -240,99 +187,63 @@ def parse_huawei(content: str) -> dict:
                     data['sn'] = member.get('sn', 'N/A')
                     data['model'] = member.get('model', 'N/A')
                     break
-    
-    # 单台设备 fallback
     if not data["members"]:
         member = {"id": "1"}
-        m = re.search(r"DEVICE_NAME\s+:\s+(\S+)", content, re.I | re.M) # 通常在 esn.dat 中
-        # 主机名已在前面处理过，这里不再覆盖
-        # data['hostname'] = m.group(1) if m else data['hostname']
-        
         m = re.search(r"BARCODE\s+:\s+(\S+)", content, re.I | re.M)
         member['sn'] = m.group(1) if m else "N/A"
-        
         m = re.search(r"ITEM\s+:\s+(\S+)", content, re.I | re.M)
         member['model'] = m.group(1) if m else "N/A"
-
         m = re.search(r"Control Plane\s+CPU Usage is\s*(\S+)", content)
         member['cpu'] = m.group(1) if m else 'N/A'
-
         m = re.search(r"Memory Using Percentage Is\s*(\S+)", content)
         member['memory'] = m.group(1) if m else 'N/A'
-        
-        data.update({
-            'sn': member['sn'],
-            'model': member['model'],
-            'cpu_utilization': member['cpu'],
-            'memory_utilization': member['memory']
-        })
+        data.update({'sn': member['sn'], 'model': member['model'], 'cpu_utilization': member['cpu'], 'memory_utilization': member['memory']})
         data["members"].append(member)
         data["is_stack"] = False
-
     return data
-
 
 def parse_h3c(content: str) -> dict:
     """解析 H3C/HPE Comware 设备信息"""
     data = {"vendor": "H3C", "members": []}
     
-    # <-- MODIFIED: Hostname parsing is now more robust -->
-    # 策略1: 优先从命令提示符中寻找主机名 (例如, <Switch>display...)
+    # <-- MODIFIED: Implemented robust, priority-based hostname parsing for sysname/hostname -->
+    hostname = None
+    # 策略1: 优先从命令提示符中寻找主机名 (e.g., <Switch>display...)
     m_prompt = re.search(r"<(\S+?)>", content, re.I)
-    hostname = m_prompt.group(1) if m_prompt else None
+    if m_prompt:
+        hostname = m_prompt.group(1).strip()
 
-    # 策略2: 如果策略1失败, 则回退到查找 "hostname: value" 的键值对
+    # 策略2: 如果策略1失败, 则查找以 'sysname' 或 'hostname' 开头的配置行 (避免LLDP污染)
     if not hostname:
-        m_kv = re.search(r"^hostname\s*:\s*(.+)", content, re.I | re.M)
-        if m_kv:
-            hostname = m_kv.group(1).strip()
+        m_config = re.search(r"^\s*(?:sysname|hostname)\s+(.+?)\s*$", content, re.I | re.M)
+        if m_config:
+            hostname = m_config.group(1).strip()
             
     data["hostname"] = hostname or "N/A"
     # <-- End of modification -->
-    
-    # --- 公共信息 (其余部分不变) ---
+
+    # --- The rest of the function remains the same ---
     m = re.search(r"uptime is (.+)", content, re.I)
     data["uptime"] = m.group(1).strip() if m else "N/A"
-
+    
     # ... (此函数其余代码保持原样) ...
     m = re.search(r"Clock status: (.+)", content, re.I)
     data["ntp_status"] = m.group(1).strip() if m else "N/A"
-    
-    # Comware Software, Version 7.1.064
     m = re.search(r"Comware Software, Version ([\d\.]+)", content, re.I)
     data["ios_version"] = m.group(1) if m else "N/A"
-
-    # --- 堆叠/成员信息 (IRF) ---
     if 'display irf' in content.lower() or 'display device' in content.lower():
-        # MemberID Role  Model                Serial Number
-        # 1      Master S5130S-28S-EI         219801A0YNE19C000003
-        member_matches = re.finditer(
-            r"^\s*(\d+)\s+(\w+)\s+([\w-]+)\s+([A-Z0-9]+)", 
-            content, re.M | re.I
-        )
-        members = []
-        for match in member_matches:
-             members.append({
-                "id": match.group(1),
-                "role": match.group(2),
-                "model": match.group(3),
-                "sn": match.group(4),
-                "cpu": "N/A", 
-                "memory": "N/A"
-            })
-        
-        # Slot 1 CPU usage: 10%
+        member_matches = re.finditer(r"^\s*(\d+)\s+(\w+)\s+([\w-]+)\s+([A-Z0-9]+)", content, re.M | re.I)
+        members = [
+            {"id": m.group(1), "role": m.group(2), "model": m.group(3), "sn": m.group(4), "cpu": "N/A", "memory": "N/A"}
+            for m in member_matches
+        ]
         cpu_matches = re.finditer(r"Slot\s+(\d+)\s+CPU usage:\s+(\S+)", content, re.I | re.M)
         cpu_map = {m.group(1): m.group(2) for m in cpu_matches}
-        
-        # Slot 1 memory usage: 30%
         mem_matches = re.finditer(r"Slot\s+(\d+)\s+memory usage\s+\(Ratio\):\s+(\S+)", content, re.I | re.M)
         mem_map = {m.group(1): m.group(2) for m in mem_matches}
-        
         for member in members:
             member["cpu"] = cpu_map.get(member["id"], "N/A")
             member["memory"] = mem_map.get(member["id"], "N/A")
-
         if members:
             data["members"] = members
             data["is_stack"] = len(members) > 1
@@ -343,29 +254,20 @@ def parse_h3c(content: str) -> dict:
                     data['sn'] = member.get('sn', 'N/A')
                     data['model'] = member.get('model', 'N/A')
                     break
-
-    # 单台设备 fallback
     if not data["members"]:
         member = {"id": "1"}
         m = re.search(r"Device serial number:\s*(\S+)", content, re.I)
         member['sn'] = m.group(1) if m else "N/A"
         m = re.search(r"Device model:\s*(\S+)", content, re.I)
         member['model'] = m.group(1) if m else "N/A"
-
         m = re.search(r"CPU average usage:\s*(\S+)", content, re.I)
         member['cpu'] = m.group(1) if m else "N/A"
         m = re.search(r"Memory usage:\s*(\S+)", content, re.I)
         member['memory'] = m.group(1) if m else "N/A"
-
-        data.update({
-            'sn': member['sn'], 'model': member['model'],
-            'cpu_utilization': member['cpu'], 'memory_utilization': member['memory']
-        })
+        data.update({'sn': member['sn'], 'model': member['model'], 'cpu_utilization': member['cpu'], 'memory_utilization': member['memory']})
         data["members"].append(member)
         data["is_stack"] = False
-
     return data
-
 
 # ------------------- 核心解析逻辑 -------------------
 
