@@ -1,0 +1,43 @@
+name: Build PyInstaller Executables
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false  # 一个 OS 失败不影响其他
+      matrix:
+        os: ['windows-latest', 'ubuntu-latest', 'macos-latest']
+
+    env:
+      MAIN_PY_FILE: 'main.py'  # 替换为你的主脚本文件名，例如 'your_script.py'
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4  # 更新到最新版本
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'  # 选择合适的 Python 版本（ntc-templates 支持 3.6+）
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Build executable with PyInstaller
+      run: |
+        pyinstaller --onefile --collect-data ntc_templates ${{ env.txt2docx-v0.0.5.py }}
+      # --onefile: 生成单个可执行文件
+      # --collect-data ntc_templates: 自动收集 ntc_templates 的数据文件（包括 templates/ 目录）
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ matrix.os }}-executable
+        path: dist/  # PyInstaller 输出目录
