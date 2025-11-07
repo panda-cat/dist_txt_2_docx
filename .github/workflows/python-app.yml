@@ -33,10 +33,21 @@ jobs:
       - name: 查找 ntc_templates 模板路径
         id: find_ntc_templates
         run: |
-          # 动态查找 ntc_templates 模板的路径
-          $templates_path = (Get-Item (pip show ntc-templates | Select-String "Location" | Select-Object -First 1)).Line.Split(' ')[1] + "\ntc_templates\templates"
+          # 1. 运行 pip show ntc-templates
+          # 2. 筛选出包含 "Location:" 的行
+          # 3. 使用 -replace 移除 "Location: " 前缀和所有空白字符
+          # 4. 拼接上 "\ntc_templates\templates"
+          
+          $templates_path_base = (pip show ntc-templates | Select-String "Location" | Select-Object -First 1).Line -replace "Location:\s+"
+          $templates_path = "$templates_path_base\ntc_templates\templates"
+          
+          # 打印路径供调试
+          Write-Host "Found Base Path: $templates_path_base"
+          Write-Host "Full Templates Path: $templates_path"
+
+          # 设置为输出变量
           echo "templates_path=$templates_path" >> $env:GITHUB_OUTPUT
-        shell: pwsh # 使用 PowerShell (pwsh) 运行
+        shell: pwsh # 确保使用 PowerShell (pwsh) 运行
 
       - name: 🔨 Build with PyInstaller
         # 使用上一步找到的路径，并用分号 ';' 分隔，用于 Windows 上的 --add-data
