@@ -7,6 +7,13 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.enum.table import WD_TABLE_ALIGNMENT
 from ntc_templates.parse import parse_output
 import argparse
+import sys
+
+# Set NET_TEXTFSM for frozen applications (PyInstaller)
+if getattr(sys, 'frozen', False):
+    # In PyInstaller, sys._MEIPASS is the temp dir for bundled files
+    template_dir = os.path.join(sys._MEIPASS, 'ntc_templates', 'templates')
+    os.environ['NET_TEXTFSM'] = template_dir
 
 # --- 平台检测函数 (已根据您的反馈修正) ---
 def detect_platform(raw_text):
