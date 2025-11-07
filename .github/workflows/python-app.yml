@@ -1,43 +1,73 @@
-name: Build PyInstaller Executables
+name: Build Network Report EXE
 
 on:
   push:
     branches:
       - main
+      - master
+    paths:
+      - 'txt2docx-v0.0.5.py'
+      - 'requirements.txt'
+  workflow_dispatch: # 允许手动触发
 
 jobs:
-  build:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false  # 一个 OS 失败不影响其他
-      matrix:
-        os: ['windows-latest', 'ubuntu-latest', 'macos-latest']
-
-    env:
-      MAIN_PY_FILE: 'txt2docx-v0.0.5.py'  # 替换为你的主脚本文件名，例如 'your_script.py'
+  build-windows-exe:
+    runs-on: windows-latest # 选择 Windows 平台进行编译，因为目标是 Windows EXE
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4  # 更新到最新版本
+      - name: 🚀 Checkout Repository
+        uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'  # 选择合适的 Python 版本（ntc-templates 支持 3.6+）
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10' # 推荐使用稳定的 Python 版本
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
+      - name: 📦 Install Dependencies
+        run: |
+          # 假设你的依赖都在 requirements.txt 中，如果没有，请自行创建
+          # pip install ntc_templates python-docx argparse
+          pip install pyinstaller
+          pip install ntc_templates python-docx
 
-    - name: Build executable with PyInstaller
-      run: |
-        pyinstaller --onefile --collect-data ntc_templates ${{ env.MAIN_PY_FILE }}
-      # --onefile: 生成单个可执行文件
-      # --collect-data ntc_templates: 自动收集 ntc_templates 的数据文件（包括 templates/ 目录）
+      - name: 查找 ntc_templates 模板路径
+        id: find_ntc_templates
+        run: |
+          # 动态查找 ntc_templates 模板的路径
+          $templates_path = (Get-Item (pip show ntc-templates | Select-String "Location" | Select-Object -First 1)).Line.Split(' ')[1] + "\ntc_templates\templates"
+          echo "templates_path=$templates_path" >> $env:GITHUB_OUTPUT
+        shell: pwsh # 使用 PowerShell (pwsh) 运行
 
-    - name: Upload artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: ${{ matrix.os }}-executable
-        path: dist/  # PyInstaller 输出目录
+      - name: 🔨 Build with PyInstaller
+        # 使用上一步找到的路径，并用分号 ';' 分隔，用于 Windows 上的 --add-data
+        # --collect-all ntc_templates 解决 PackageNotFoundError
+        run: |
+          pyinstaller --onefile `
+            --name "Network_Report_Tool" `
+            --collect-all ntc_templates `
+            --add-data "${{ steps.find_ntc_templates.outputs.templates_path }};ntc_templates/templates" `
+            generate_report.py
+        shell: pwsh
+
+      - name: 📦 Upload Artifact (for checking)
+        uses: actions/upload-artifact@v4
+        with:
+          name: built-exe-debug
+          path: dist/
+
+      # 可选：将 EXE 文件附加到 GitHub Release
+      - name: Get current date and tag
+        id: date
+        run: |
+          echo "RELEASE_TAG=v$(Get-Date -Format yyyyMMdd.HHmm)" >> $env:GITHUB_OUTPUT
+        shell: pwsh
+
+      - name: 🚀 Create Release and Upload EXE
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/heads/main') || startsWith(github.ref, 'refs/heads/master')
+        with:
+          tag_name: ${{ steps.date.outputs.RELEASE_TAG }}
+          name: Network Report Tool Build ${{ steps.date.outputs.RELEASE_TAG }}
+          draft: false
+          prerelease: false
+          files:
