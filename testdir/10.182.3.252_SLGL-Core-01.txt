@@ -1,0 +1,1038 @@
+=== 设备信息 ===
+
+IP地址: 10.182.3.252
+主机名: SLGL-Core-01
+设备类型: cisco_ios
+原始类型: cisco_ios
+厂商: cisco
+执行时间: 2025-10-30 16:12:52
+
+=== 执行结果 ===
+Command: show run
+Building configuration...
+
+Current configuration : 23281 bytes
+!
+! Last configuration change at 18:14:27 UTC Mon Oct 27 2025 by slglsw
+! NVRAM config last updated at 16:25:49 UTC Thu Sep 18 2025 by slglsw
+!
+version 12.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+service compress-config
+service sequence-numbers
+!
+hostname SLGL-Core-01
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret 5 $1$B0EJ$nL1E3VHlewL3hjWg8k.eU0
+!
+username itsupport secret 5 $1$hzxs$Zvk.AUje2tEW/fK33YTh61
+username slglsw secret 5 $1$h8r4$Zjlx0ydK4LTQy5S/Xenlh/
+no aaa new-model
+clock timezone UTC 8
+qos
+ip subnet-zero
+no ip domain-lookup
+ip domain-name SLGL.Shangri-la.com
+ip dhcp excluded-address 10.182.132.1
+ip dhcp excluded-address 10.182.132.254
+ip dhcp excluded-address 10.182.132.2
+ip dhcp excluded-address 10.182.132.3
+ip dhcp excluded-address 10.182.132.10
+!
+ip dhcp pool AP-Management
+   network 10.182.132.0 255.255.252.0
+   option 43 hex 0619.3130.2e31.3832.2e31.3332.2e31.2c31.302e.3138.322e.3133.322e.32
+   default-router 10.182.132.254 
+   lease infinite
+!
+!
+ip vrf mgmtVrf
+!
+vtp domain SLGL
+vtp mode transparent
+!
+!
+crypto pki trustpoint TP-self-signed-1342
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-1342
+ revocation-check none
+ rsakeypair TP-self-signed-1342
+!
+!
+crypto pki certificate chain TP-self-signed-1342
+ certificate self-signed 01
+  3082024D 308201B6 A0030201 02020101 300D0609 2A864886 F70D0101 04050030 
+  2B312930 27060355 04031320 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 31333432 301E170D 31303032 30333033 30323335 5A170D32 
+  30303130 31303030 3030305A 302B3129 30270603 55040313 20494F53 2D53656C 
+  662D5369 676E6564 2D436572 74696669 63617465 2D313334 3230819F 300D0609 
+  2A864886 F70D0101 01050003 818D0030 81890281 8100F2ED 6CBFF26E 294C9ED6 
+  233EB12F A2D29AAC 34C4B224 EBD055BC 51A21804 F0450686 DD47AB14 A1271496 
+  2E2B3A9A 6C723861 86E89159 EC244179 D9EFB471 082A78AF A0127616 64BA00AE 
+  1E79A1FE EE94C819 25AC80E0 ECC8F633 822D348B 30FA1BA8 0EDE183A 64243677 
+  448BC8CE 98A75272 8CFAA4D3 5B3BC067 F1C8784E 2E2F0203 010001A3 8180307E 
+  300F0603 551D1301 01FF0405 30030101 FF302B06 03551D11 04243022 8220534C 
+  474C2D43 6F72652D 30312E53 4C474C2E 5368616E 6772692D 6C612E63 6F6D301F 
+  0603551D 23041830 16801403 3CEE6488 74293F35 AC3AF311 0B6D6ADA 36487430 
+  1D060355 1D0E0416 0414033C EE648874 293F35AC 3AF3110B 6D6ADA36 4874300D 
+  06092A86 4886F70D 01010405 00038181 003A784D 7713B849 73B26C14 CF54C2BE 
+  E0AFA7D6 E0ACB316 6F7DCD69 46E62F9D 2D70FEDC CDCD8235 E35FB2EC 5AB9D6B6 
+  BAFE0DE3 9516F3FB 8383B0EB 3C390285 32099A43 3A73F5C0 986FD7A1 9C138A45 
+  C545CCFB 78640C9A 327608BD 807058A3 3DE614C0 A9CAD60B 537F20F4 B47B62ED 
+  19FAC320 EAA388D2 53E5038B 1347E04B 8E
+  quit
+power redundancy-mode redundant
+!
+!
+!
+!
+!
+!
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+spanning-tree vlan 1-15,100,120,127-128,132,135,199-212,220-240 priority 4096
+spanning-tree vlan 260-280,301-799 priority 4096
+!
+vlan internal allocation policy ascending
+!
+vlan 2
+ name FW&ROUTER
+!
+vlan 3
+ name NET-Manage
+!
+vlan 4
+ name POS
+!
+vlan 5
+ name Wifi-PDA
+!
+vlan 6
+ name Printers1
+!
+vlan 7
+ name Printers2
+!
+vlan 8
+ name Workstation1
+!
+vlan 9
+ name IT
+!
+vlan 10
+ name Workstation2
+!
+vlan 11
+ name VingCard
+!
+vlan 12
+ name IDS
+!
+vlan 13
+ name FCS
+!
+vlan 14
+ name AGS
+!
+vlan 15
+ name PGS
+!
+vlan 16,18-27 
+!
+vlan 28
+ name TEMP-VLAN8
+!
+vlan 29
+ name test
+!
+vlan 31,33,58-67 
+!
+vlan 100
+ name Server
+!
+vlan 120
+ name Wifi-AP-Manage
+!
+vlan 132
+ name AP-Management
+!
+vlan 199
+ name SLGL-Guestroom
+!
+vlan 200
+ name Public-Wifi
+!
+vlan 201
+ name VIP-Lounge
+!
+vlan 202
+ name Bridal-Room
+!
+vlan 203
+ name Nanning-Hall
+!
+vlan 204
+ name Beihai-Hall
+!
+vlan 205
+ name Guilin-Hall
+!
+vlan 206
+ name Yangshuo-Hall
+!
+vlan 207
+ name Lipu-Hall
+!
+vlan 208
+ name Longsheng-Hall
+!
+vlan 209
+ name Grand-Ballroom-1
+!
+vlan 210
+ name Grand-Ballroom-2
+!
+vlan 211
+ name Grand-Ballroom-3
+!
+vlan 212
+ name Banquet-Lounge
+!
+vlan 220-240,260-279 
+!
+vlan 280
+ name Staff-lounge
+!
+vlan 301-799 
+lldp run
+!
+ip ssh version 2
+!
+!
+interface Port-channel1
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface Port-channel10
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1
+ ip vrf forwarding mgmtVrf
+ no ip address
+ speed auto
+ duplex auto
+!
+interface GigabitEthernet1/1
+!
+interface GigabitEthernet1/2
+!
+interface GigabitEthernet2/1
+ description B11-ODF-01/02
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,3-212,220-240,260-280
+ switchport mode trunk
+ storm-control broadcast level 20.00
+!
+interface GigabitEthernet2/2
+ description B12-ODF-01/02
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 3-212,220-240,260-280
+ switchport mode trunk
+ storm-control broadcast level 20.00
+!
+interface GigabitEthernet2/3
+ description B13-ODF-01/02
+ switchport trunk allowed vlan 3-212,220-240,260-280
+ switchport mode trunk
+ storm-control broadcast level 20.00
+!
+interface GigabitEthernet2/4
+ description B14-ODF-01/02
+ switchport trunk allowed vlan 3-212,220-240,260-280
+ switchport mode trunk
+ storm-control broadcast level 20.00
+!
+interface GigabitEthernet2/5
+ description 1F1-ODF-01/02
+ switchport trunk allowed vlan 3-212,220-240,260-280
+ switchport mode trunk
+ storm-control broadcast level 20.00
+!
+interface GigabitEthernet2/6
+ description 1F2-ODF-01/02
+ switchport trunk allowed vlan 3-212,220-240,260-280
+ switchport mode trunk
+ storm-control broadcast level 20.00
+!
+interface GigabitEthernet2/7
+ description 2F1-ODF-01/02
+ switchport trunk allowed vlan 3-212,220-240,260-280
+ switchport mode trunk
+ storm-control broadcast level 20.00
+!
+interface GigabitEthernet2/8
+ description 2F2-ODF-01/02
+ switchport trunk allowed vlan 3-212,220-240,260-280
+ switchport mode trunk
+ storm-control broadcast level 20.00
+!
+interface GigabitEthernet2/9
+ description 2F3-ODF-01/02
+ switchport trunk allowed vlan 3-212,220-240,260-280
+ switchport mode trunk
+!
+interface GigabitEthernet2/10
+ description 3F1-ODF-01/02
+ switchport trunk allowed vlan 3,8,120,127,128,132,199,200,301-399
+ switchport mode trunk
+ storm-control broadcast level 20.00
+!
+interface GigabitEthernet2/11
+ description 3F2-ODF-01/02
+ switchport trunk allowed vlan 3,8,120,127,128,132,199,200,301-399
+ switchport mode trunk
+ storm-control broadcast level 20.00
+!
+interface GigabitEthernet2/12
+ description 4F1-ODF-01/02
+ switchport trunk allowed vlan 3,8,120,127,128,132,199,200,401-499
+ switchport mode trunk
+ storm-control broadcast level 20.00
+!
+interface GigabitEthernet2/13
+ description 4F2-ODF-01/02
+ switchport trunk allowed vlan 3,8,120,127,128,132,199,200,401-499
+ switchport mode trunk
+ storm-control broadcast level 20.00
+!
+interface GigabitEthernet2/14
+ description 4F3-ODF-01/02
+ switchport trunk allowed vlan 3,8,120,199,200,348-350,374-399,448-450,474-499
+ switchport trunk allowed vlan add 548-550,574-599
+ switchport mode trunk
+ storm-control broadcast level 20.00
+!
+interface GigabitEthernet2/15
+ description 5F1-ODF-01/02
+ switchport trunk allowed vlan 3,8,120,127,128,132,199,200,501-599
+ switchport mode trunk
+ storm-control broadcast level 20.00
+!
+interface GigabitEthernet2/16
+ description 5F2-ODF-01/02
+ switchport trunk allowed vlan 3,8,120,127,128,132,199,200,501-599
+ switchport mode trunk
+ storm-control broadcast level 20.00
+!
+interface GigabitEthernet2/17
+ description 6F1-ODF-01/02
+ switchport trunk allowed vlan 3,8,120,132,199,200,650-680
+ switchport mode trunk
+ storm-control broadcast level 20.00
+!
+interface GigabitEthernet2/18
+ description 6F2-ODF-01/02
+ switchport trunk allowed vlan 3,6,8,9,11,28,29,61,120,132,199,200,230,601-649
+ switchport mode trunk
+ storm-control broadcast level 20.00
+!
+interface GigabitEthernet3/1
+ description 6F3-ODF-01/02
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,3,8,120,132,199,200,648-650,674-693,695-699
+ switchport trunk allowed vlan add 748-750,774-793,795-799
+ switchport mode trunk
+ storm-control broadcast level 20.00
+!
+interface GigabitEthernet3/2
+ description 7F1-ODF-01/02
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 3,8,9,120,127,128,132,199,200,701-799
+ switchport mode trunk
+ storm-control broadcast level 20.00
+!
+interface GigabitEthernet3/3
+ description 7F2-ODF-01/02
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 3,8,9,120,132,199,200,701-721,723,724,726-734
+ switchport trunk allowed vlan add 736,738-740,742,744-747
+ switchport mode trunk
+ storm-control broadcast level 20.00
+!
+interface GigabitEthernet3/4
+ storm-control broadcast level 20.00
+!
+interface GigabitEthernet3/5
+ storm-control broadcast level 20.00
+!
+interface GigabitEthernet3/6
+ storm-control broadcast level 20.00
+!
+interface GigabitEthernet4/1
+ description Trunk EChannel
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 1 mode on
+ spanning-tree portfast
+!
+interface GigabitEthernet4/2
+ description Trunk EChannel
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 1 mode on
+ spanning-tree portfast
+!
+interface GigabitEthernet4/3
+!
+interface GigabitEthernet4/4
+ description Esxi03-1
+ switchport access vlan 22
+ switchport trunk encapsulation dot1q
+ switchport mode access
+!
+interface GigabitEthernet4/5
+ switchport access vlan 100
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ spanning-tree portfast
+!
+interface GigabitEthernet4/6
+ description Esxi02-1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ spanning-tree portfast
+!
+interface GigabitEthernet4/7
+ description INF
+ switchport access vlan 100
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet4/8
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet4/9
+!
+interface GigabitEthernet4/10
+!
+interface GigabitEthernet4/11
+ description Backup-2
+ switchport access vlan 100
+ switchport mode access
+ ip access-group backup_acl in
+ ip access-group backup_acl out
+ spanning-tree portfast
+!
+interface GigabitEthernet4/12
+ switchport access vlan 22
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet4/13
+ description DF900-PASSIVE-29
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 10 mode active
+!
+interface GigabitEthernet4/14
+ description DF900-PASSIVE-30
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 10 mode active
+!
+interface GigabitEthernet4/15
+!
+interface GigabitEthernet4/16
+ description Esxi03-2
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet4/17
+ description Esxi01-3
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet4/18
+ description Esxi02-2
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ ip access-group pabx2 in
+ spanning-tree portfast
+!
+interface GigabitEthernet4/19
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet4/20
+!
+interface GigabitEthernet4/21
+ switchport access vlan 3
+ switchport mode access
+ spanning-tree portfast
+!
+interface GigabitEthernet4/22
+!
+interface GigabitEthernet4/23
+ description Ruckus2-1
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 132
+ switchport trunk allowed vlan 1,132,199,200
+ switchport mode trunk
+!
+interface GigabitEthernet4/24
+ description Linkbroad-ETH3
+ switchport access vlan 3
+ switchport trunk encapsulation dot1q
+ switchport mode access
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan3
+ ip address 10.182.3.252 255.255.255.0
+!
+ip default-gateway 10.182.3.254
+ip route 0.0.0.0 0.0.0.0 10.182.3.254
+ip route 10.182.10.0 255.255.255.0 10.182.2.1
+ip route 192.168.0.0 255.255.255.0 10.182.1.52
+ip route 192.168.1.0 255.255.255.0 10.182.8.227
+ip route 192.168.1.32 255.255.255.255 10.182.8.106
+ip route 192.168.1.61 255.255.255.255 10.182.8.106
+no ip http server
+ip http access-class 90
+ip http secure-server
+!
+!
+ip access-list standard ACL_MGMT
+ip access-list standard ACL_MTMT
+ permit 10.201.0.0 0.0.255.255
+ permit 10.202.0.0 0.0.255.255
+ip access-list standard Network-Management
+ permit 10.182.0.0 0.0.127.255
+ip access-list standard snmp-service
+ permit 10.182.3.200
+!
+ip access-list extended VLAN10-ACL
+ deny   ip any 10.182.3.0 0.0.0.255
+ permit ip any any
+ip access-list extended VLAN100-ACL
+ deny   ip any 10.182.120.0 0.0.0.255
+ permit ip any any
+ip access-list extended VLAN11-ACL
+ permit ip 10.182.11.0 0.0.0.255 10.182.8.0 0.0.0.255
+ permit ip 10.182.11.0 0.0.0.255 10.182.9.0 0.0.0.255
+ permit ip 10.182.11.0 0.0.0.255 10.182.28.0 0.0.0.255
+ permit ip 10.182.11.0 0.0.0.255 10.182.1.0 0.0.0.255
+ permit ip 10.182.11.0 0.0.0.255 10.182.10.0 0.0.0.255
+ permit udp any eq 1985 any eq 1985
+ permit ip any host 10.182.11.254
+ permit ip host 10.182.11.3 any
+ permit ip any 10.182.61.0 0.0.0.255
+ permit ip any 10.182.2.0 0.0.0.255
+ permit ip any 10.182.19.0 0.0.0.255
+ip access-list extended VLAN12-ACL
+ permit ip 10.182.12.0 0.0.0.255 10.182.2.0 0.0.0.255
+ permit ip 10.182.12.0 0.0.0.255 10.182.9.0 0.0.0.255
+ permit ip 10.182.12.0 0.0.0.255 10.182.8.0 0.0.0.255
+ permit ip 10.182.12.0 0.0.0.255 10.182.28.0 0.0.0.255
+ permit ip 10.182.12.0 0.0.0.255 10.182.10.0 0.0.0.255
+ permit udp any eq 1985 any eq 1985
+ permit ip any host 10.182.12.254
+ permit ip 10.182.12.0 0.0.0.255 10.182.1.0 0.0.0.255
+ permit tcp host 10.182.12.100 any eq www
+ permit ip host 10.182.12.99 any
+ permit ip any host 10.182.12.99
+ permit ip 10.182.12.0 0.0.0.255 10.182.58.0 0.0.0.255
+ permit ip 10.182.12.0 0.0.0.255 10.182.59.0 0.0.0.255
+ permit ip 10.182.12.0 0.0.0.255 10.182.60.0 0.0.0.255
+ permit ip 10.182.12.0 0.0.0.255 10.182.61.0 0.0.0.255
+ permit ip 10.182.12.0 0.0.0.255 10.182.62.0 0.0.0.255
+ permit ip 10.182.12.0 0.0.0.255 10.182.63.0 0.0.0.255
+ permit ip 10.182.12.0 0.0.0.255 10.182.64.0 0.0.0.255
+ permit ip 10.182.12.0 0.0.0.255 10.182.65.0 0.0.0.255
+ permit ip 10.182.12.0 0.0.0.255 10.182.66.0 0.0.0.255
+ permit ip 10.182.12.0 0.0.0.255 10.182.67.0 0.0.0.255
+ permit ip 10.182.58.0 0.0.0.255 10.182.12.0 0.0.0.255
+ permit ip 10.182.59.0 0.0.0.255 10.182.12.0 0.0.0.255
+ permit ip 10.182.60.0 0.0.0.255 10.182.12.0 0.0.0.255
+ permit ip 10.182.61.0 0.0.0.255 10.182.12.0 0.0.0.255
+ permit ip 10.182.62.0 0.0.0.255 10.182.12.0 0.0.0.255
+ permit ip 10.182.63.0 0.0.0.255 10.182.12.0 0.0.0.255
+ permit ip 10.182.64.0 0.0.0.255 10.182.12.0 0.0.0.255
+ permit ip 10.182.65.0 0.0.0.255 10.182.12.0 0.0.0.255
+ permit ip 10.182.66.0 0.0.0.255 10.182.12.0 0.0.0.255
+ permit ip 10.182.67.0 0.0.0.255 10.182.12.0 0.0.0.255
+ip access-list extended VLAN120-ACL
+ permit ip 10.182.120.0 0.0.0.255 10.182.3.0 0.0.0.255
+ permit ip 10.182.120.0 0.0.0.255 10.182.9.0 0.0.0.255
+ permit udp any eq 1985 any eq 1985
+ip access-list extended VLAN132-ACL
+ permit ip 10.182.132.0 0.0.3.255 host 10.182.132.1
+ permit ip 10.182.132.0 0.0.3.255 host 10.182.132.2
+ permit ip host 10.182.9.102 host 10.182.132.1
+ permit ip host 10.182.9.102 host 10.182.132.2
+ permit ip host 10.182.9.104 host 10.182.132.2
+ permit ip host 10.182.9.104 host 10.182.132.1
+ permit ip host 10.182.9.64 host 10.182.132.1
+ permit ip host 10.182.9.64 host 10.182.132.2
+ permit ip host 10.182.3.200 host 10.182.132.1
+ permit ip host 10.182.3.200 host 10.182.132.2
+ip access-list extended VLAN15
+ permit ip any 10.182.8.0 0.0.0.255
+ permit ip any 10.182.9.0 0.0.0.255
+ permit ip any host 10.182.1.25
+ permit udp any eq 1985 any eq 1985
+ permit ip any host 10.182.1.11
+ permit ip any 10.182.28.0 0.0.0.255
+ permit ip any 10.182.29.0 0.0.0.255
+ permit ip any 10.182.10.0 0.0.0.255
+ip access-list extended VLAN15-ACL
+ permit ip 10.182.15.0 0.0.0.255 10.182.8.0 0.0.0.255
+ permit ip 10.182.15.0 0.0.0.255 10.182.9.0 0.0.0.255
+ permit ip 10.182.15.0 0.0.0.255 10.182.1.0 0.0.0.255
+ permit udp any eq 1985 any eq 1985
+ permit ip any host 10.182.15.254
+ip access-list extended VLAN2-ACL
+ permit ip any 10.182.4.0 0.0.0.255
+ permit ip any 10.182.8.0 0.0.0.255
+ permit ip any 10.182.28.0 0.0.0.255
+ permit ip any 10.182.9.0 0.0.0.255
+ permit ip any 10.182.10.0 0.0.0.255
+ permit ip any 10.182.11.0 0.0.0.255
+ permit ip any 10.182.12.0 0.0.0.255
+ permit ip any 10.182.1.0 0.0.0.255
+ permit udp any eq 1985 any eq 1985
+ permit ip any host 10.182.3.249
+ permit icmp any any
+ permit ip any 10.182.2.0 0.0.0.255
+ permit ip any 10.182.64.0 0.0.0.255
+ permit ip any 10.182.62.0 0.0.0.255
+ permit ip any 10.182.58.0 0.0.0.255
+ permit ip any 10.182.59.0 0.0.0.255
+ permit ip any 10.182.60.0 0.0.0.255
+ permit ip any 10.182.61.0 0.0.0.255
+ permit ip any 10.182.63.0 0.0.0.255
+ permit ip any 10.182.65.0 0.0.0.255
+ permit ip any 10.182.66.0 0.0.0.255
+ permit ip any 10.182.67.0 0.0.0.255
+ permit ip any 10.182.18.0 0.0.0.255
+ permit ip any 10.182.26.0 0.0.0.255
+ permit ip any 10.182.25.0 0.0.0.255
+ permit ip any 10.182.24.0 0.0.0.255
+ permit ip any 10.182.33.0 0.0.0.255
+ permit ip any 10.182.31.0 0.0.0.255
+ permit ip any 10.182.19.0 0.0.0.255
+ip access-list extended VLAN28-ACL
+ permit udp any eq 1985 any eq 1985
+ permit icmp any any
+ permit ip any 128.128.182.0 0.0.0.255
+ permit ip any 10.182.9.0 0.0.0.255
+ permit ip any 10.182.61.0 0.0.0.255
+ permit ip any 10.182.2.0 0.0.0.255
+ permit ip any 10.182.1.0 0.0.0.255
+ip access-list extended VLAN3-ACL
+ permit ip 10.182.3.0 0.0.0.255 10.182.8.0 0.0.0.255
+ permit ip 10.182.8.0 0.0.0.255 10.182.3.0 0.0.0.255
+ permit ip 10.182.3.0 0.0.0.255 10.182.9.0 0.0.0.255
+ permit ip 10.182.3.0 0.0.0.255 10.182.120.0 0.0.0.255
+ permit ip 10.182.3.0 0.0.0.255 10.182.1.0 0.0.0.255
+ permit ip 10.182.3.0 0.0.0.255 10.182.2.0 0.0.0.255
+ permit udp any eq 1985 any eq 1985
+ permit ip any host 10.182.3.249
+ permit ip 10.182.3.0 0.0.0.255 10.182.3.0 0.0.0.255
+ permit ip 10.182.3.0 0.0.0.255 10.182.28.0 0.0.0.255
+ permit ip any host 10.182.3.254
+ permit ip host 10.182.3.77 any
+ permit ip host 10.182.3.200 host 10.182.132.1
+ permit ip host 10.182.3.200 host 10.182.132.2
+ip access-list extended VLAN4-ACL
+ permit ip 10.182.4.0 0.0.0.255 10.182.1.0 0.0.0.255
+ permit ip 10.182.4.0 0.0.0.255 10.182.10.0 0.0.0.255
+ permit ip 10.182.4.0 0.0.0.255 10.182.9.0 0.0.0.255
+ permit ip 10.182.4.0 0.0.0.255 10.182.8.0 0.0.0.255
+ permit ip 10.182.4.0 0.0.0.255 10.182.28.0 0.0.0.255
+ permit udp any eq 1985 any eq 1985
+ permit ip any host 10.182.4.254
+ip access-list extended VLAN6-ACL
+ permit ip 10.182.6.0 0.0.0.255 10.182.1.0 0.0.0.255
+ permit ip 10.182.6.0 0.0.0.255 10.182.9.0 0.0.0.255
+ permit ip 10.182.6.0 0.0.0.255 10.182.8.0 0.0.0.255
+ permit ip 10.182.6.0 0.0.0.255 10.182.28.0 0.0.0.255
+ permit ip 10.182.6.0 0.0.0.255 10.182.10.0 0.0.0.255
+ permit udp any eq 1985 any eq 1985
+ permit ip any host 10.182.6.254
+ permit ip any 10.182.62.0 0.0.0.255
+ permit ip any 10.182.58.0 0.0.0.255
+ permit ip any 10.182.59.0 0.0.0.255
+ permit ip any 10.182.60.0 0.0.0.255
+ permit ip any 10.182.61.0 0.0.0.255
+ permit ip any 10.182.63.0 0.0.0.255
+ permit ip any 10.182.64.0 0.0.0.255
+ permit ip any 10.182.65.0 0.0.0.255
+ permit ip any 10.182.66.0 0.0.0.255
+ip access-list extended VLAN7-ACL
+ permit ip 10.182.7.0 0.0.0.255 10.182.1.0 0.0.0.255
+ permit ip 10.182.7.0 0.0.0.255 10.182.9.0 0.0.0.255
+ permit ip 10.182.7.0 0.0.0.255 10.182.8.0 0.0.0.255
+ permit ip 10.182.7.0 0.0.0.255 10.182.10.0 0.0.0.255
+ permit ip 10.182.7.0 0.0.0.255 10.182.28.0 0.0.0.255
+ permit udp any eq 1985 any eq 1985
+ permit ip any host 10.182.7.254
+ip access-list extended VLAN8-ACL
+ deny   ip any 10.182.3.0 0.0.0.255
+ permit ip any any
+ip access-list extended VLAN9-ACL
+ permit ip any 128.128.182.0 0.0.0.255
+ permit udp any eq 1985 any eq 1985
+ permit icmp any any
+ip access-list extended backup_acl
+ deny   tcp host 10.182.11.3 host 10.182.1.28 eq 3527
+ permit ip any any
+ip access-list extended pabx
+ permit tcp host 10.182.9.217 host 10.182.9.210 eq ftp
+ permit tcp host 10.182.9.217 host 10.182.9.210 eq ftp-data
+ permit tcp host 10.182.9.214 host 10.182.9.210 eq ftp-data
+ permit tcp host 10.182.9.214 host 10.182.9.210 eq ftp
+ permit tcp host 10.182.1.50 host 10.182.9.210 eq ftp-data
+ permit tcp host 10.182.1.50 host 10.182.9.210 eq ftp
+ permit tcp host 10.182.1.51 host 10.182.9.210 eq ftp-data
+ permit tcp host 10.182.1.51 host 10.182.9.210 eq ftp
+ permit tcp host 10.182.1.52 host 10.182.9.210 eq ftp-data
+ permit tcp host 10.182.1.52 host 10.182.9.210 eq ftp
+ permit tcp host 10.182.1.50 host 10.182.9.211 eq ftp-data
+ permit tcp host 10.182.1.50 host 10.182.9.211 eq ftp
+ permit tcp host 10.182.1.51 host 10.182.9.211 eq ftp-data
+ permit tcp host 10.182.1.51 host 10.182.9.211 eq ftp
+ permit tcp host 10.182.1.52 host 10.182.9.211 eq ftp-data
+ permit tcp host 10.182.1.52 host 10.182.9.211 eq ftp
+ permit tcp host 10.182.9.217 host 10.182.9.211 eq ftp
+ permit tcp host 10.182.9.217 host 10.182.9.211 eq ftp-data
+ permit tcp host 10.182.9.214 host 10.182.9.211 eq ftp-data
+ permit tcp host 10.182.9.214 host 10.182.9.211 eq ftp
+ permit ip 10.182.28.0 0.0.0.255 any
+ deny   tcp 10.182.0.0 0.0.255.255 host 10.182.9.210 eq ftp
+ deny   tcp 10.182.0.0 0.0.255.255 host 10.182.9.210 eq ftp-data
+ deny   tcp 10.182.0.0 0.0.255.255 host 10.182.9.211 eq ftp
+ deny   tcp 10.182.0.0 0.0.255.255 host 10.182.9.211 eq ftp-data
+ permit ip any any
+ip access-list extended pabx2
+ permit tcp host 10.182.9.210 eq ftp host 10.182.9.217
+ permit tcp host 10.182.9.210 eq ftp-data host 10.182.9.217
+ permit tcp host 10.182.9.210 eq ftp-data host 10.182.9.214
+ permit tcp host 10.182.9.210 eq ftp host 10.182.9.214
+ permit tcp host 10.182.9.210 eq ftp-data host 10.182.1.50
+ permit tcp host 10.182.9.210 eq ftp host 10.182.1.50
+ permit tcp host 10.182.9.210 eq ftp-data host 10.182.1.51
+ permit tcp host 10.182.9.210 eq ftp host 10.182.1.51
+ permit tcp host 10.182.9.210 eq ftp-data host 10.182.1.52
+ permit tcp host 10.182.9.210 eq ftp host 10.182.1.52
+ permit tcp host 10.182.9.211 eq ftp host 10.182.9.217
+ permit tcp host 10.182.9.211 eq ftp-data host 10.182.9.217
+ permit tcp host 10.182.9.211 eq ftp-data host 10.182.9.214
+ permit tcp host 10.182.9.211 eq ftp host 10.182.9.214
+ permit tcp host 10.182.9.211 eq ftp-data host 10.182.1.50
+ permit tcp host 10.182.9.211 eq ftp host 10.182.1.50
+ permit tcp host 10.182.9.211 eq ftp-data host 10.182.1.51
+ permit tcp host 10.182.9.211 eq ftp host 10.182.1.51
+ permit tcp host 10.182.9.211 eq ftp-data host 10.182.1.52
+ permit tcp host 10.182.9.211 eq ftp host 10.182.1.52
+ deny   tcp host 10.182.9.210 eq ftp 10.182.0.0 0.0.255.255
+ deny   tcp host 10.182.9.210 eq ftp-data 10.182.0.0 0.0.255.255
+ deny   tcp host 10.182.9.211 eq ftp 10.182.0.0 0.0.255.255
+ deny   tcp host 10.182.9.211 eq ftp-data 10.182.0.0 0.0.255.255
+ permit ip any any
+ip access-list extended vlan2-acl
+ permit ip host 10.182.2.1 any
+ip access-list extended vlan62
+ permit ip 10.182.2.0 0.0.0.255 10.182.62.0 0.0.0.255
+ permit ip any any
+!
+logging 10.182.3.249
+logging 10.182.1.27
+access-list 90 remark Hosts allowed to SSH WEB in
+access-list 90 permit 10.182.0.0 0.0.127.255
+!
+!
+snmp-server group MySNMPGroup v3 priv read MyView access snmp-service
+snmp-server view MyView iso included
+!
+control-plane
+!
+!
+line con 0
+ login local
+ stopbits 1
+line vty 0 4
+ exec-timeout 600 0
+ login local
+ transport input ssh
+line vty 5 15
+ exec-timeout 600 0
+ login local
+ transport input ssh
+!
+ntp clock-period 17179403
+ntp source Vlan3
+ntp master
+ntp update-calendar
+ntp server 10.182.18.1 prefer
+end
+
+
+Command: show clock
+16:12:47.008 UTC Thu Oct 30 2025
+
+Command: show version
+Cisco IOS Software, Catalyst 4500 L3 Switch Software (cat4500-ENTSERVICESK9-M), Version 12.2(53)SG1, RELEASE SOFTWARE (fc1)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2009 by Cisco Systems, Inc.
+Compiled Fri 30-Oct-09 13:31 by prod_rel_team
+Image text-base: 0x10000000, data-base: 0x1209D16C
+
+ROM: 12.2(31r)SG3
+Dagobah Revision 226, Swamp Revision 32
+
+SLGL-Core-01 uptime is 4 years, 5 weeks, 3 days, 8 hours, 48 minutes
+System returned to ROM by power-on
+System restarted at 08:42:12 UTC Thu Sep 23 2021
+System image file is "bootflash:cat4500-entservicesk9-mz.122-53.SG1.bin"
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+cisco WS-C4506-E (MPC8245) processor (revision 14) with 524288K bytes of memory.
+Processor board ID FOX1342HAVG
+MPC8245 CPU at 333Mhz, Supervisor IV
+Last reset from PowerUp
+2 Virtual Ethernet interfaces
+50 Gigabit Ethernet interfaces
+403K bytes of non-volatile configuration memory.
+
+Configuration register is 0x2101
+
+
+Command: show cdp nei
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone, 
+                  D - Remote, C - CVTA, M - Two-port Mac Relay 
+
+Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+1F2-2960XR-24P-05.slgl
+                 Gig 2/6           159              S I   WS-C2960X Gig 1/0/25
+2F3-2960XR-24POE-05.slgl
+                 Gig 2/9           143              S I   WS-C2960X Gig 1/0/25
+B1F4--C9200L-24T-01.www.cisco.com
+                 Gig 2/1           127              S I   C9200L-24 Gig 1/1/1
+SLGL-Core-02.SLGL.Shangri-la.com
+                 Gig 4/2           159             R S I  WS-C4506- Gig 4/2
+SLGL-Core-02.SLGL.Shangri-la.com
+                 Gig 4/1           152             R S I  WS-C4506- Gig 4/1
+7F1-2918_48-01.slgl
+                 Gig 3/2           122              S I   WS-C2918- Gig 0/1
+B1F3-2960XR_24P-03.slgl
+                 Gig 2/3           147              S I   WS-C2960X Gig 1/0/25
+B1F4--C9200L-24T-04
+                 Gig 2/4           144              S I   C9200L-24 Gig 1/1/4
+5F1-2918_48P-01.slgl
+                 Gig 2/15          153              S I   WS-C2918- Gig 0/1
+5F2-2918_48P-02.slgl
+                 Gig 2/16          166              S I   WS-C2918- Gig 0/1
+4F3-2918_48P-03.slgl
+                 Gig 2/14          163              S I   WS-C2918- Gig 0/1
+4F1-2918_48P-01.slgl
+                 Gig 2/12          141              S I   WS-C2918- Gig 0/1
+1F1-2960XR_48P-02.slgl
+                 Gig 2/5           179              S I   WS-C2960X Gig 1/0/49
+2F1-2960XR_24POE-01.slgl
+                 Gig 2/7           151              S I   WS-C2960X Gig 1/0/25
+7F2-2918_48P-02.slgl
+                 Gig 3/3           163              S I   WS-C2918- Gig 0/1
+2F2-2960XR_24POE-03.slgl
+                 Gig 2/8           144              S I   WS-C2960X Gig 1/0/25
+3F1-2918_48P-01.slgl
+                 Gig 2/10          132              S I   WS-C2918- Gig 0/1
+6F1-2960XR_24POE-01.slgl
+                 Gig 2/17          142              S I   WS-C2960X Gig 1/0/25
+3F2-2918_48P-02.slgl
+                 Gig 2/11          172              S I   WS-C2918- Gig 0/1
+6F2-2960XR_24POE-03.slgl
+                 Gig 2/18          163              S I   WS-C2960X Gig 1/0/25
+
+Command: show lldp nei
+Capability codes:
+    (R) Router, (B) Bridge, (T) Telephone, (C) DOCSIS Cable Device
+    (W) WLAN Access Point, (P) Repeater, (S) Station, (O) Other
+
+Device ID           Local Intf     Hold-time  Capability      Port ID
+6F2-2960XR_24POE-03 Gi2/18         120        B               Gi1/0/25
+1F2-2960XR-24P-05   Gi2/6          120        B               Gi1/0/25
+SLGL-Core-02        Gi4/2          120        B,R             Gi4/2
+SLGL-Core-02        Gi4/1          120        B,R             Gi4/1
+SLGL_FG900D391780036Gi4/13         120        R               port29
+1F1-2960XR_48P-02   Gi2/5          120        B               Gi1/0/49
+SLGL_FG900D391780036Gi4/14         120        R               port30
+6F3_5735_POE24_65   Gi3/1          120        B,R             XGigabitEthernet0/0/2
+6F1-2960XR_24POE-01 Gi2/17         120        B               Gi1/0/25
+5F1-2918_48P-01     Gi2/15         120        B               Up-link
+2F3-2960XR-24POE-05 Gi2/9          120        B               Gi1/0/25
+2F2-2960XR_24POE-03 Gi2/8          120        B               Gi1/0/25
+B1F3-2960XR_24P-03  Gi2/3          120        B               Gi1/0/25
+2F1-2960XR_24POE-01 Gi2/7          120        B               Gi1/0/25
+
+Total entries displayed: 14
+
+
+Command: show int statu
+
+Port      Name               Status       Vlan       Duplex  Speed Type
+Gi1/1                        notconnect   1            full   1000 No Gbic
+Gi1/2                        notconnect   1            full   1000 No Gbic
+Gi2/1     B11-ODF-01/02      connected    trunk        full   1000 1000BaseSX
+Gi2/2     B12-ODF-01/02      notconnect   1            full   1000 1000BaseSX
+Gi2/3     B13-ODF-01/02      connected    trunk        full   1000 1000BaseSX
+Gi2/4     B14-ODF-01/02      connected    trunk        full   1000 1000BaseSX
+Gi2/5     1F1-ODF-01/02      connected    trunk        full   1000 1000BaseSX
+Gi2/6     1F2-ODF-01/02      connected    trunk        full   1000 1000BaseSX
+Gi2/7     2F1-ODF-01/02      connected    trunk        full   1000 1000BaseSX
+Gi2/8     2F2-ODF-01/02      connected    trunk        full   1000 1000BaseSX
+Gi2/9     2F3-ODF-01/02      connected    trunk        full   1000 1000BaseSX
+Gi2/10    3F1-ODF-01/02      connected    trunk        full   1000 1000BaseSX
+Gi2/11    3F2-ODF-01/02      connected    trunk        full   1000 1000BaseSX
+Gi2/12    4F1-ODF-01/02      connected    trunk        full   1000 1000BaseSX
+Gi2/13    4F2-ODF-01/02      notconnect   1            full   1000 1000BaseSX
+Gi2/14    4F3-ODF-01/02      connected    trunk        full   1000 1000BaseSX
+Gi2/15    5F1-ODF-01/02      connected    trunk        full   1000 1000BaseSX
+Gi2/16    5F2-ODF-01/02      connected    trunk        full   1000 1000BaseSX
+Gi2/17    6F1-ODF-01/02      connected    trunk        full   1000 1000BaseSX
+Gi2/18    6F2-ODF-01/02      connected    trunk        full   1000 1000BaseSX
+Gi3/1     6F3-ODF-01/02      connected    trunk        full   1000 1000BaseSX
+Gi3/2     7F1-ODF-01/02      connected    trunk        full   1000 1000BaseSX
+Gi3/3     7F2-ODF-01/02      connected    trunk        full   1000 1000BaseSX
+Gi3/4                        notconnect   1            full   1000 No Gbic
+Gi3/5                        notconnect   1            full   1000 No Gbic
+Gi3/6                        notconnect   1            full   1000 No Gbic
+Gi4/1     Trunk EChannel     connected    trunk      a-full a-1000 10/100/1000-TX
+Gi4/2     Trunk EChannel     connected    trunk      a-full a-1000 10/100/1000-TX
+Gi4/3                        notconnect   1            auto   auto 10/100/1000-TX
+Gi4/4     Esxi03-1           connected    22         a-full a-1000 10/100/1000-TX
+Gi4/5                        notconnect   100          auto   auto 10/100/1000-TX
+Gi4/6     Esxi02-1           connected    trunk      a-full a-1000 10/100/1000-TX
+Gi4/7     INF                notconnect   100          auto   auto 10/100/1000-TX
+Gi4/8                        notconnect   1            auto   auto 10/100/1000-TX
+Gi4/9                        notconnect   1            auto   auto 10/100/1000-TX
+Gi4/10                       notconnect   1            auto   auto 10/100/1000-TX
+Gi4/11    Backup-2           connected    100        a-full a-1000 10/100/1000-TX
+Gi4/12                       notconnect   22           auto   auto 10/100/1000-TX
+Gi4/13    DF900-PASSIVE-29   connected    trunk      a-full a-1000 10/100/1000-TX
+Gi4/14    DF900-PASSIVE-30   connected    trunk      a-full a-1000 10/100/1000-TX
+Gi4/15                       notconnect   1            auto   auto 10/100/1000-TX
+Gi4/16    Esxi03-2           connected    trunk      a-full a-1000 10/100/1000-TX
+Gi4/17    Esxi01-3           connected    trunk      a-full a-1000 10/100/1000-TX
+Gi4/18    Esxi02-2           connected    trunk      a-full a-1000 10/100/1000-TX
+Gi4/19                       notconnect   1            auto   auto 10/100/1000-TX
+Gi4/20                       notconnect   1            auto   auto 10/100/1000-TX
+Gi4/21                       notconnect   3            auto   auto 10/100/1000-TX
+Gi4/22                       notconnect   1            auto   auto 10/100/1000-TX
+Gi4/23    Ruckus2-1          connected    trunk      a-full a-1000 10/100/1000-TX
+Gi4/24    Linkbroad-ETH3     connected    3          a-full a-1000 10/100/1000-TX
+Po1                          connected    trunk      a-full a-1000 
+Po10                         connected    trunk      a-full a-1000 
+
+Command: show proc cpu | inc CPU utilization
+CPU utilization for five seconds: 80%/1%; one minute: 59%; five minutes: 56%
+
+Command: show proc mem | inc Processor Pool
+Processor Pool Total:  484854164 Used:  150667984 Free:  334186180
+
+Command: show loggi
+Syslog logging: enabled (0 messages dropped, 8 messages rate-limited, 0 flushes, 0 overruns, xml disabled, filtering disabled)
+
+No Active Message Discriminator.
+
+
+
+No Inactive Message Discriminator.
+
+
+    Console logging: level debugging, 976 messages logged, xml disabled,
+                     filtering disabled
+    Monitor logging: level debugging, 0 messages logged, xml disabled,
+                     filtering disabled
+    Buffer logging:  level debugging, 983 messages logged, xml disabled,
+                     filtering disabled
+    Exception Logging: size (8192 bytes)
+    Count and timestamp logging messages: disabled
+    Persistent logging: disabled
+
+No active filter modules.
+
+    Trap logging: level informational, 899 message lines logged
+        Logging to 10.182.3.249  (udp port 514,  audit disabled,
+              authentication disabled, encryption disabled, link up),
+              899 message lines logged, 
+              0 message lines rate-limited, 
+              0 message lines dropped-by-MD, 
+              xml disabled, sequence number disabled
+              filtering disabled
+        Logging to 10.182.1.27  (udp port 514,  audit disabled,
+              authentication disabled, encryption disabled, link up),
+              899 message lines logged, 
+              0 message lines rate-limited, 
+              0 message lines dropped-by-MD, 
+              xml disabled, sequence number disabled
+              filtering disabled
+
+Log Buffer (4096 bytes):
+6 14:21:41.331: %HSRP-5-STATECHANGE: Vlan120 Grp 120 state Standby -> Active
+000956: Sep 16 14:21:41.775: %HSRP-5-STATECHANGE: Vlan120 Grp 120 state Active -> Speak
+000957: Sep 16 14:21:44.103: %HSRP-5-STATECHANGE: Vlan120 Grp 120 state Speak -> Standby
+000958: Sep 16 17:26:01.044: %C4K_L2MAN-6-INVALIDSOURCEADDRESSPACKET: Packet received with invalid source MAC address (00:00:00:00:00:00) on port Gi3/3 in vlan 132
+000959: Sep 17 12:16:54.397: %C4K_L2MAN-6-INVALIDSOURCEADDRESSPACKET: Packet received with invalid source MAC address (00:00:00:00:00:00) on port Po1 in vlan 132
+000960: Sep 18 08:18:43.134: %HSRP-5-STATECHANGE: Vlan120 Grp 120 state Standby -> Active
+000961: Sep 18 08:18:51.198: %HSRP-5-STATECHANGE: Vlan120 Grp 120 state Active -> Init
+000962: Sep 18 08:19:03.075: %SYS-5-CONFIG_I: Configured from console by slglsw on vty0 (10.182.9.64)
+000963: Sep 25 05:36:34.407: %C4K_L2MAN-6-INVALIDSOURCEADDRESSPACKET: Packet received with invalid source MAC address (00:00:00:00:00:00) on port Gi3/2 in vlan 132
+000964: Sep 30 08:44:03.012: %C4K_L2MAN-6-INVALIDSOURCEADDRESSPACKET: Packet received with invalid source MAC address (00:00:00:00:00:00) on port Po1 in vlan 132
+000965: Oct  2 11:00:54.428: %C4K_L2MAN-6-INVALIDSOURCEADDRESSPACKET: Packet received with invalid source MAC address (00:00:00:00:00:00) on port Po1 in vlan 132
+000966: Oct  3 12:29:35.169: %C4K_L2MAN-6-INVALIDSOURCEADDRESSPACKET: Packet received with invalid source MAC address (00:00:00:00:00:00) on port Po1 in vlan 132
+000967: Oct  3 18:54:22.048: %C4K_L2MAN-6-INVALIDSOURCEADDRESSPACKET: Packet received with invalid source MAC address (00:00:00:00:00:00) on port Gi2/15 in vlan 132
+000968: Oct  5 00:36:39.692: %C4K_L2MAN-6-INVALIDSOURCEADDRESSPACKET: Packet received with invalid source MAC address (00:00:00:00:00:00) on port Po1 in vlan 132
+000969: Oct  5 14:06:41.762: %C4K_L2MAN-6-INVALIDSOURCEADDRESSPACKET: Packet received with invalid source MAC address (00:00:00:00:00:00) on port Gi3/3 in vlan 132
+000970: Oct  6 09:34:49.972: %C4K_L2MAN-6-INVALIDSOURCEADDRESSPACKET: Packet received with invalid source MAC address (00:00:00:00:00:00) on port Po1 in vlan 132
+000971: Oct  6 17:34:25.705: %C4K_L2MAN-6-INVALIDSOURCEADDRESSPACKET: Packet received with invalid source MAC address (00:00:00:00:00:00) on port Po1 in vlan 132
+000972: Oct  7 14:11:28.474: %C4K_L2MAN-6-INVALIDSOURCEADDRESSPACKET: Packet received with invalid source MAC address (00:00:00:00:00:00) on port Gi2/11 in vlan 132
+000973: Oct  8 14:06:21.274: %C4K_L2MAN-6-INVALIDSOURCEADDRESSPACKET: Packet received with invalid source MAC address (00:00:00:00:00:00) on port Po1 in vlan 132
+000974: Oct 19 04:00:04.132: %C4K_L2MAN-6-INVALIDSOURCEADDRESSPACKET: Packet received with invalid source MAC address (00:00:00:00:00:00) on port Po1 in vlan 132
+000975: Oct 19 14:12:39.713: %C4K_L2MAN-6-INVALIDSOURCEADDRESSPACKET: Packet received with invalid source MAC address (00:00:00:00:00:00) on port Gi2/18 in vlan 132
+000976: Oct 23 01:16:51.857: %C4K_L2MAN-6-INVALIDSOURCEADDRESSPACKET: Packet received with invalid source MAC address (00:00:00:00:00:00) on port Po1 in vlan 132
+000977: Oct 27 08:34:24.566: SSH2 CLIENT 0: no matching cipher found: client aes128-cbc,3des-cbc,aes192-cbc,aes256-cbc server aes128-ctr,aes192-ctr,aes256-c
+000978: Oct 27 09:20:50.295: %SYS-5-CONFIG_I: Configured from console by slglsw on vty1 (10.182.9.64)
+000979: Oct 27 09:24:20.192: %SYS-5-CONFIG_I: Configured from console by slglsw on vty1 (10.182.9.64)
+000980: Oct 27 10:14:27.108: %SYS-5-CONFIG_I: Configured from console by slglsw on vty1 (10.182.9.64)
+000981: Oct 28 18:06:58.492: %C4K_L2MAN-6-INVALIDSOURCEADDRESSPACKET: Packet received with invalid source MAC address (00:00:00:00:00:00) on port Gi3/1 in vlan 132
+000982: Oct 29 04:57:41.379: %C4K_L2MAN-6-INVALIDSOURCEADDRESSPACKET: Packet received with invalid source MAC address (00:00:00:00:00:00) on port Gi2/11 in vlan 132
+000983: Oct 30 06:31:42.553: %C4K_L2MAN-6-INVALIDSOURCEADDRESSPACKET: Packet received with invalid source MAC address (00:00:00:00:00:00) on port Gi2/17 in vlan 132

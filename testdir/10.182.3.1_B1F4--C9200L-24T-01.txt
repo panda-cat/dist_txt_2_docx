@@ -1,0 +1,556 @@
+=== 设备信息 ===
+
+IP地址: 10.182.3.1
+主机名: B1F4--C9200L-24T-01
+设备类型: cisco_ios
+原始类型: cisco_ios
+厂商: cisco
+执行时间: 2025-10-30 16:12:48
+
+=== 执行结果 ===
+Command: show run
+Building configuration...
+
+Current configuration : 10077 bytes
+!
+! Last configuration change at 16:02:06 UTC Tue Jul 22 2025 by slglsw
+! NVRAM config last updated at 16:02:37 UTC Tue Jul 22 2025 by slglsw
+!
+version 17.12
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+service unsupported-transceiver
+platform punt-keepalive disable-kernel-core
+!
+hostname B1F4--C9200L-24T-01
+!
+!
+vrf definition Mgmt-vrf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+aaa new-model
+!
+!
+!
+!
+aaa session-id common
+!
+!
+!
+clock timezone UTC 8 0
+switch 1 provision c9200l-24t-4g
+!
+!
+!
+!
+!
+ip domain name www.cisco.com
+!
+!
+!
+login on-success log
+vtp mode transparent
+vtp version 1
+!
+!
+!
+!
+!
+!
+crypto pki trustpoint SLA-TrustPoint
+ enrollment pkcs12
+ revocation-check crl
+ hash sha256
+!
+crypto pki trustpoint TP-self-signed-1281224269
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-1281224269
+ revocation-check none
+ rsakeypair TP-self-signed-1281224269
+ hash sha256
+!
+!
+crypto pki certificate chain SLA-TrustPoint
+ certificate ca 01
+  30820321 30820209 A0030201 02020101 300D0609 2A864886 F70D0101 0B050030 
+  32310E30 0C060355 040A1305 43697363 6F312030 1E060355 04031317 43697363 
+  6F204C69 63656E73 696E6720 526F6F74 20434130 1E170D31 33303533 30313934 
+  3834375A 170D3338 30353330 31393438 34375A30 32310E30 0C060355 040A1305 
+  43697363 6F312030 1E060355 04031317 43697363 6F204C69 63656E73 696E6720 
+  526F6F74 20434130 82012230 0D06092A 864886F7 0D010101 05000382 010F0030 
+  82010A02 82010100 A6BCBD96 131E05F7 145EA72C 2CD686E6 17222EA1 F1EFF64D 
+  CBB4C798 212AA147 C655D8D7 9471380D 8711441E 1AAF071A 9CAE6388 8A38E520 
+  1C394D78 462EF239 C659F715 B98C0A59 5BBB5CBD 0CFEBEA3 700A8BF7 D8F256EE 
+  4AA4E80D DB6FD1C9 60B1FD18 FFC69C96 6FA68957 A2617DE7 104FDC5F EA2956AC 
+  7390A3EB 2B5436AD C847A2C5 DAB553EB 69A9A535 58E9F3E3 C0BD23CF 58BD7188 
+  68E69491 20F320E7 948E71D7 AE3BCC84 F10684C7 4BC8E00F 539BA42B 42C68BB7 
+  C7479096 B4CB2D62 EA2F505D C7B062A4 6811D95B E8250FC4 5D5D5FB8 8F27D191 
+  C55F0D76 61F9A4CD 3D992327 A8BB03BD 4E6D7069 7CBADF8B DF5F4368 95135E44 
+  DFC7C6CF 04DD7FD1 02030100 01A34230 40300E06 03551D0F 0101FF04 04030201 
+  06300F06 03551D13 0101FF04 05300301 01FF301D 0603551D 0E041604 1449DC85 
+  4B3D31E5 1B3E6A17 606AF333 3D3B4C73 E8300D06 092A8648 86F70D01 010B0500 
+  03820101 00507F24 D3932A66 86025D9F E838AE5C 6D4DF6B0 49631C78 240DA905 
+  604EDCDE FF4FED2B 77FC460E CD636FDB DD44681E 3A5673AB 9093D3B1 6C9E3D8B 
+  D98987BF E40CBD9E 1AECA0C2 2189BB5C 8FA85686 CD98B646 5575B146 8DFC66A8 
+  467A3DF4 4D565700 6ADF0F0D CF835015 3C04FF7C 21E878AC 11BA9CD2 55A9232C 
+  7CA7B7E6 C1AF74F6 152E99B7 B1FCF9BB E973DE7F 5BDDEB86 C71E3B49 1765308B 
+  5FB0DA06 B92AFE7F 494E8A9E 07B85737 F3A58BE1 1A48A229 C37C1E69 39F08678 
+  80DDCD16 D6BACECA EEBC7CF9 8428787B 35202CDC 60E4616A B623CDBD 230E3AFB 
+  418616A9 4093E049 4D10AB75 27E86F73 932E35B5 8862FDAE 0275156F 719BB2F0 
+  D697DF7F 28
+  	quit
+crypto pki certificate chain TP-self-signed-1281224269
+ certificate self-signed 01
+  30820330 30820218 A0030201 02020101 300D0609 2A864886 F70D0101 0B050030 
+  31312F30 2D060355 04030C26 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 31323831 32323432 3639301E 170D3235 30313134 30333031 
+  31325A17 0D333530 31313430 33303131 325A3031 312F302D 06035504 030C2649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D31 32383132 
+  32343236 39308201 22300D06 092A8648 86F70D01 01010500 0382010F 00308201 
+  0A028201 0100D83E 08175D2C AE001ED0 441FA043 14C6D021 866E1B3D 2163F95C 
+  CC16C4B3 6C944FFC 3025ADB4 11E5816A BB730CD1 7282B5B4 7437A065 66708803 
+  C3FE242D 8C7EC8BF 6D322A3B 83D46E5F B8555268 11F27C6B 4EEBF982 29AFD304 
+  0C648F2F 5653BD55 3B0A44C7 A588CF3C 4B523995 23730206 F08FDF7C 19288A32 
+  E3799BFE D49B2F56 50E3EB84 C6263BAA 2C28C2F9 0FEFBD69 897AF8E2 F1BAF006 
+  F30DD831 57313597 B901A3A1 BEA6CF5F 4EA46397 E92887E0 60255006 0A3AAD5F 
+  208247CC AA765173 E6D8D4F8 BE21BE12 492F69BF 9E7EAA26 EB8DB390 81E15B43 
+  3E4E1C02 172E6D25 A587B3DB 0BD6FB8A 8941AA7B 47379602 355B695C 9D8CF2A0 
+  22415753 C01D0203 010001A3 53305130 1D060355 1D0E0416 041420BE 60212A0F 
+  46343BD2 484DF5B7 37CCEE79 0752301F 0603551D 23041830 16801420 BE60212A 
+  0F46343B D2484DF5 B737CCEE 79075230 0F060355 1D130101 FF040530 030101FF 
+  300D0609 2A864886 F70D0101 0B050003 82010100 67C7AA73 22D8D012 3ECA1D13 
+  1B4787E5 0D26AB49 82D7E7B5 2CB93495 17913CBF EE957F79 7308DFC6 46996BE6 
+  41575398 0E86EE9B B3197E3F E4C25353 EB5ED3C4 1567398C E9641F9E 02F0261F 
+  7FEE0F7D 237F10F6 D7532BC0 497A765D 9D04D6F9 A3965AFB 0A420A4F 24AAF38F 
+  635386E1 80B1C7C7 6633D1AE 7D2AF331 B582D8CE F645A2FB 0415FAE8 F57BB728 
+  4448C51D 85DF9D89 45379C5B B1BED436 9493BB08 DABA5974 6BBEDD3F 2893C149 
+  3A42FF66 876D77E1 D4D47912 182584D5 54767ED5 40D899C2 33832F97 E82FC2FC 
+  BCA69206 E0050729 F450A764 27915798 D6DEB645 0098D56F 0239C2F7 CD79C5D5 
+  BD8987CC 08EDC4EB 1061D5ED 7EE6A335 4A3C165A
+  	quit
+!
+license boot level network-essentials addon dna-essentials
+memory free low-watermark processor 8233
+!
+diagnostic bootup level minimal
+!
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+!
+!
+no errdisable detect cause gbic-invalid
+!
+enable secret 9 $9$2hVl5jlfuTQmvE$dpwlKjMAJCbMzT2tSO97Yx0vbLLaIMUxGXqO5cVQ.V.
+!
+username itsupport secret 9 $9$wPHxSEZvhvwlrU$HZKWog.lcfmYHyDN7/84qYdr7DjNLZzbYNeEEaZGrF.
+username slglsw secret 9 $9$9Ptj9uKxEOt4N.$OdlkjoSjfiovrlk054ceTeFab16juQy8csCXTODShIA
+!
+redundancy
+ mode sso
+crypto engine compliance shield disable
+!
+!
+!
+!
+!
+transceiver type all
+ monitoring
+!
+vlan 3
+ name MGMT
+!
+vlan 6,65,200 
+!
+!
+class-map match-any system-cpp-police-ewlc-control
+  description EWLC Control 
+class-map match-any system-cpp-police-topology-control
+  description Topology control
+class-map match-any system-cpp-police-sw-forward
+  description Sw forwarding, L2 LVX data packets, LOGGING, Transit Traffic
+class-map match-any system-cpp-default
+  description EWLC data, Inter FED Traffic 
+class-map match-any system-cpp-police-sys-data
+  description Openflow, Exception, EGR Exception, NFL Sampled Data, RPF Failed
+class-map match-any system-cpp-police-punt-webauth
+  description Punt Webauth
+class-map match-any system-cpp-police-l2lvx-control
+  description L2 LVX control packets
+class-map match-any system-cpp-police-forus
+  description Forus Address resolution and Forus traffic
+class-map match-any system-cpp-police-multicast-end-station
+  description MCAST END STATION
+class-map match-any system-cpp-police-high-rate-app
+  description High Rate Applications 
+class-map match-any system-cpp-police-multicast
+  description MCAST Data
+class-map match-any system-cpp-police-l2-control
+  description L2 control
+class-map match-any system-cpp-police-dot1x-auth
+  description DOT1X Auth
+class-map match-any system-cpp-police-data
+  description ICMP redirect, ICMP_GEN and BROADCAST
+class-map match-any system-cpp-police-stackwise-virt-control
+  description Stackwise Virtual OOB
+class-map match-any non-client-nrt-class
+class-map match-any system-cpp-police-routing-control
+  description Routing control and Low Latency
+class-map match-any system-cpp-police-protocol-snooping
+  description Protocol snooping
+class-map match-any system-cpp-police-dhcp-snooping
+  description DHCP snooping
+class-map match-any system-cpp-police-ios-routing
+  description L2 control, Topology control, Routing control, Low Latency
+class-map match-any system-cpp-police-system-critical
+  description System Critical and Gold Pkt
+class-map match-any system-cpp-police-ios-feature
+  description ICMPGEN,BROADCAST,ICMP,L2LVXCntrl,ProtoSnoop,PuntWebauth,MCASTData,Transit,DOT1XAuth,Swfwd,LOGGING,L2LVXData,ForusTraffic,ForusARP,McastEndStn,Openflow,Exception,EGRExcption,NflSampled,RpfFailed
+!
+policy-map system-cpp-policy
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ vrf forwarding Mgmt-vrf
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/0/1
+ switchport access vlan 3
+ switchport mode access
+!
+interface GigabitEthernet1/0/2
+ switchport access vlan 200
+ switchport mode access
+!
+interface GigabitEthernet1/0/3
+ switchport access vlan 200
+ switchport mode access
+!
+interface GigabitEthernet1/0/4
+ switchport access vlan 65
+ switchport mode access
+!
+interface GigabitEthernet1/0/5
+ switchport access vlan 6
+ switchport mode access
+!
+interface GigabitEthernet1/0/6
+ switchport access vlan 65
+ switchport mode access
+!
+interface GigabitEthernet1/0/7
+ switchport access vlan 65
+ switchport mode access
+!
+interface GigabitEthernet1/0/8
+ switchport access vlan 65
+ switchport mode access
+!
+interface GigabitEthernet1/0/9
+ switchport access vlan 65
+ switchport mode access
+!
+interface GigabitEthernet1/0/10
+ switchport access vlan 65
+ switchport mode access
+!
+interface GigabitEthernet1/0/11
+ switchport access vlan 65
+ switchport mode access
+!
+interface GigabitEthernet1/0/12
+!
+interface GigabitEthernet1/0/13
+!
+interface GigabitEthernet1/0/14
+!
+interface GigabitEthernet1/0/15
+!
+interface GigabitEthernet1/0/16
+!
+interface GigabitEthernet1/0/17
+!
+interface GigabitEthernet1/0/18
+!
+interface GigabitEthernet1/0/19
+!
+interface GigabitEthernet1/0/20
+!
+interface GigabitEthernet1/0/21
+!
+interface GigabitEthernet1/0/22
+!
+interface GigabitEthernet1/0/23
+!
+interface GigabitEthernet1/0/24
+!
+interface GigabitEthernet1/1/1
+!
+interface GigabitEthernet1/1/2
+!
+interface GigabitEthernet1/1/3
+!
+interface GigabitEthernet1/1/4
+!
+interface Vlan1
+ no ip address
+!
+interface Vlan3
+ ip address 10.182.3.1 255.255.255.0
+!
+ip default-gateway 10.182.3.254
+no ip http server
+ip http authentication local
+ip http secure-server
+ip forward-protocol nd
+ip ssh bulk-mode 131072
+ip ssh server algorithm authentication password
+!
+ip access-list standard snmp-service
+ 10 permit 10.182.3.200
+!
+!
+!
+snmp-server group MySNMPGroup v3 priv read MyView access snmp-service
+snmp-server view MyView iso included
+!
+!
+!
+control-plane
+ service-policy input system-cpp-policy
+!
+!
+line con 0
+ stopbits 1
+line vty 0 4
+ transport input ssh
+line vty 5 15
+ transport input ssh
+!
+ntp server 10.182.18.1 prefer
+!
+!
+!
+!
+!
+!
+end
+
+
+Command: show clock
+16:12:45.096 UTC Thu Oct 30 2025
+
+Command: show version
+Cisco IOS XE Software, Version 17.12.03
+Cisco IOS Software [Dublin], Catalyst L3 Switch Software (CAT9K_LITE_IOSXE), Version 17.12.3, RELEASE SOFTWARE (fc7)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2024 by Cisco Systems, Inc.
+Compiled Wed 20-Mar-24 15:43 by mcpre
+
+
+Cisco IOS-XE software, Copyright (c) 2005-2024 by cisco Systems, Inc.
+All rights reserved.  Certain components of Cisco IOS-XE software are
+licensed under the GNU General Public License ("GPL") Version 2.0.  The
+software code licensed under GPL Version 2.0 is free software that comes
+with ABSOLUTELY NO WARRANTY.  You can redistribute and/or modify such
+GPL code under the terms of GPL Version 2.0.  For more details, see the
+documentation or "License Notice" file accompanying the IOS-XE software,
+or the applicable URL provided on the flyer accompanying the IOS-XE
+software.
+
+
+ROM: IOS-XE ROMMON
+BOOTLDR: System Bootstrap, Version 17.14.1r [FC1], RELEASE SOFTWARE (P) 
+
+B1F4--C9200L-24T-01 uptime is 41 weeks, 1 day, 6 hours, 1 minute
+Uptime for this control processor is 41 weeks, 1 day, 6 hours, 3 minutes
+System returned to ROM by Power Failure or Unknown
+System restarted at 10:10:51 UTC Wed Jan 15 2025
+System image file is "flash:packages.conf"
+Last reload reason: Power Failure or Unknown
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+
+Technology Package License Information: 
+
+------------------------------------------------------------------------------
+Technology-package                                     Technology-package
+Current                        Type                       Next reboot  
+------------------------------------------------------------------------------
+network-essentials  	Smart License                 	 network-essentials  
+dna-essentials      	Subscription Smart License    	 dna-essentials                
+
+
+Smart Licensing Status: Smart Licensing Using Policy
+
+cisco C9200L-24T-4G (ARM64) processor with 502805K/3071K bytes of memory.
+Processor board ID FVH28281C9E
+2 Virtual Ethernet interfaces
+28 Gigabit Ethernet interfaces
+2048K bytes of non-volatile configuration memory.
+1973316K bytes of physical memory.
+819200K bytes of Crash Files at crashinfo:.
+1941504K bytes of Flash at flash:.
+
+Base Ethernet MAC Address          : d4:7f:35:f9:6a:00
+Motherboard Assembly Number        : 73-102786-05
+Motherboard Serial Number          : FVH28281C9E
+Model Revision Number              : F0
+Motherboard Revision Number        : A0
+Model Number                       : C9200L-24T-4G
+System Serial Number               : FVH28281C9E
+CLEI Code Number                   : INM6G00ARD
+
+
+Switch Ports Model              SW Version        SW Image              Mode   
+------ ----- -----              ----------        ----------            ----   
+*    1 28    C9200L-24T-4G      17.12.03          CAT9K_LITE_IOSXE      INSTALL
+
+
+Configuration register is 0x102
+
+
+Command: show cdp nei
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone, 
+                  D - Remote, C - CVTA, M - Two-port Mac Relay 
+
+Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+SLGL-Core-01.SLGL.Shangri-la.com
+                 Gig 1/1/1         170             R S I  WS-C4506- Gig 2/1
+
+Total cdp entries displayed : 1
+
+Command: show lldp nei
+% LLDP is not enabled
+
+Command: show int statu
+
+Port         Name               Status       Vlan       Duplex  Speed Type
+Gi1/0/1                         notconnect   3            auto   auto 10/100/1000BaseTX
+Gi1/0/2                         connected    200        a-full a-1000 10/100/1000BaseTX
+Gi1/0/3                         connected    200        a-full  a-100 10/100/1000BaseTX
+Gi1/0/4                         notconnect   65           auto   auto 10/100/1000BaseTX
+Gi1/0/5                         notconnect   6            auto   auto 10/100/1000BaseTX
+Gi1/0/6                         connected    65         a-full a-1000 10/100/1000BaseTX
+Gi1/0/7                         connected    65         a-full a-1000 10/100/1000BaseTX
+Gi1/0/8                         connected    65         a-full a-1000 10/100/1000BaseTX
+Gi1/0/9                         connected    65         a-full a-1000 10/100/1000BaseTX
+Gi1/0/10                        connected    65         a-full a-1000 10/100/1000BaseTX
+Gi1/0/11                        notconnect   65           auto   auto 10/100/1000BaseTX
+Gi1/0/12                        notconnect   1            auto   auto 10/100/1000BaseTX
+Gi1/0/13                        notconnect   1            auto   auto 10/100/1000BaseTX
+Gi1/0/14                        notconnect   1            auto   auto 10/100/1000BaseTX
+Gi1/0/15                        notconnect   1            auto   auto 10/100/1000BaseTX
+Gi1/0/16                        notconnect   1            auto   auto 10/100/1000BaseTX
+Gi1/0/17                        notconnect   1            auto   auto 10/100/1000BaseTX
+Gi1/0/18                        notconnect   1            auto   auto 10/100/1000BaseTX
+Gi1/0/19                        notconnect   1            auto   auto 10/100/1000BaseTX
+Gi1/0/20                        notconnect   1            auto   auto 10/100/1000BaseTX
+Gi1/0/21                        notconnect   1            auto   auto 10/100/1000BaseTX
+Gi1/0/22                        notconnect   1            auto   auto 10/100/1000BaseTX
+Gi1/0/23                        notconnect   1            auto   auto 10/100/1000BaseTX
+Gi1/0/24                        notconnect   1            auto   auto 10/100/1000BaseTX
+Gi1/1/1                         connected    trunk        full   1000 1000BaseSX SFP
+Gi1/1/2                         notconnect   1            auto   auto unknown
+Gi1/1/3                         notconnect   1            auto   auto unknown
+Gi1/1/4                         notconnect   1            auto   auto unknown
+
+Command: show proc cpu | inc CPU utilization
+CPU utilization for five seconds: 16%/0%; one minute: 3%; five minutes: 1%
+
+Command: show proc mem | inc Processor Pool
+Processor Pool Total:  513804104 Used:  105012496 Free:  408791608
+
+Command: show loggi
+Syslog logging: enabled (0 messages dropped, 2 messages rate-limited, 0 flushes, 0 overruns, xml disabled, filtering disabled)
+
+No Active Message Discriminator.
+
+
+
+No Inactive Message Discriminator.
+
+
+    Console logging: level debugging, 11755 messages logged, xml disabled,
+                     filtering disabled
+    Monitor logging: level debugging, 0 messages logged, xml disabled,
+                     filtering disabled
+    Buffer logging:  level debugging, 11755 messages logged, xml disabled,
+                    filtering disabled
+    Exception Logging: size (4096 bytes)
+    Count and timestamp logging messages: disabled
+    File logging: disabled
+    Persistent logging: disabled
+
+No active filter modules.
+
+    Trap logging: level informational, 11761 message lines logged
+        Logging Source-Interface:       VRF Name:
+    TLS Profiles: 
+
+Log Buffer (4096 bytes):
+ssh.com,hmac-sha2-512-etm@openssh.com
+Oct 30 06:40:00.348: %SSH-5-SSH2_SESSION: SSH2 Session request from 10.182.9.105 (tty = 0) using crypto cipher '', hmac '' Failed
+Oct 30 06:40:00.348: %SSH-5-SSH2_CLOSE: SSH2 Session from 10.182.9.105 (tty = 0) for user '' using crypto cipher '', hmac '' closed
+Oct 30 07:14:36.376: %SSH-5-SSH2_SESSION: SSH2 Session request from 10.182.9.181 (tty = 0) using crypto cipher 'aes256-ctr', hmac 'hmac-sha2-256-etm@openssh.com' Succeeded
+Oct 30 07:14:46.526: %SEC_LOGIN-5-LOGIN_SUCCESS: Login Success [user: slglsw] [Source: 10.182.9.181] [localport: 22] at 15:14:46 UTC Thu Oct 30 2025
+Oct 30 07:14:46.527: %SSH-5-SSH2_USERAUTH: User 'slglsw' authentication for SSH2 Session from 10.182.9.181 (tty = 0) using crypto cipher 'aes256-ctr', hmac 'hmac-sha2-256-etm@openssh.com' Succeeded
+Oct 30 07:30:02.559: %SYS-6-TTY_EXPIRE_TIMER: (exec timer expired, tty 1 (10.182.9.181)), user slglsw
+Oct 30 07:30:02.560: %SYS-6-LOGOUT: User slglsw has exited tty session 1(10.182.9.181)
+Oct 30 07:30:02.560: %SSH-5-SSH2_CLOSE: SSH2 Session from 10.182.9.181 (tty = 0) for user 'slglsw' using crypto cipher 'aes256-ctr', hmac 'hmac-sha2-256-etm@openssh.com' closed
+Oct 30 07:41:34.757: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/9, changed state to down
+Oct 30 07:41:35.763: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/9, changed state to down
+Oct 30 07:41:38.321: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/9, changed state to up
+Oct 30 07:41:39.322: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/9, changed state to up
+Oct 30 07:41:47.834: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/9, changed state to down
+Oct 30 07:41:48.838: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/9, changed state to down
+Oct 30 07:41:52.587: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/9, changed state to up
+Oct 30 07:41:53.587: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/9, changed state to up
+Oct 30 07:42:25.043: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/9, changed state to down
+Oct 30 07:42:26.046: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/9, changed state to down
+Oct 30 07:42:28.622: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/9, changed state to up
+Oct 30 07:42:29.622: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/9, changed state to up
+Oct 30 07:42:36.198: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/9, changed state to down
+Oct 30 07:42:37.203: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/9, changed state to down
+Oct 30 07:42:41.146: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/9, changed state to up
+Oct 30 07:42:42.146: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/9, changed state to up
+Oct 30 08:05:41.402: %SSH-5-SSH2_SESSION: SSH2 Session request from 10.182.9.181 (tty = 0) using crypto cipher 'aes128-ctr', hmac 'hmac-sha2-256-etm@openssh.com' Succeeded
+Oct 30 08:05:42.358: %SEC_LOGIN-5-LOGIN_SUCCESS: Login Success [user: slglsw] [Source: 10.182.9.181] [localport: 22] at 16:05:42 UTC Thu Oct 30 2025
+Oct 30 08:05:42.358: %SSH-5-SSH2_USERAUTH: User 'slglsw' authentication for SSH2 Session from 10.182.9.181 (tty = 0) using crypto cipher 'aes128-ctr', hmac 'hmac-sha2-256-etm@openssh.com' Succeeded
+Oct 30 08:05:50.316: %SYS-6-LOGOUT: User slglsw has exited tty session 1(10.182.9.181)
+Oct 30 08:05:50.317: %SSH-5-SSH2_CLOSE: SSH2 Session from 10.182.9.181 (tty = 0) for user '' using crypto cipher 'aes128-ctr', hmac 'hmac-sha2-256-etm@openssh.com' closed
+Oct 30 08:12:41.039: %SSH-5-SSH2_SESSION: SSH2 Session request from 10.182.9.181 (tty = 0) using crypto cipher 'aes128-ctr', hmac 'hmac-sha2-256-etm@openssh.com' Succeeded
+Oct 30 08:12:41.838: %SEC_LOGIN-5-LOGIN_SUCCESS: Login Success [user: slglsw] [Source: 10.182.9.181] [localport: 22] at 16:12:41 UTC Thu Oct 30 2025
+Oct 30 08:12:41.838: %SSH-5-SSH2_USERAUTH: User 'slglsw' authentication for SSH2 Session from 10.182.9.181 (tty = 0) using crypto cipher 'aes128-ctr', hmac 'hmac-sha2-256-etm@openssh.com' Succeeded

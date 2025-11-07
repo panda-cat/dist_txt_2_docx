@@ -1,0 +1,577 @@
+=== 设备信息 ===
+
+IP地址: 10.182.3.3
+主机名: B1F4--C9200L-24T-04
+设备类型: cisco_ios
+原始类型: cisco_ios
+厂商: cisco
+执行时间: 2025-10-30 16:12:48
+
+=== 执行结果 ===
+Command: show run
+Building configuration...
+
+Current configuration : 10797 bytes
+!
+! Last configuration change at 16:11:06 UTC Tue Jul 22 2025 by slglsw
+! NVRAM config last updated at 16:11:09 UTC Tue Jul 22 2025 by slglsw
+!
+version 17.9
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+service call-home
+service unsupported-transceiver
+platform punt-keepalive disable-kernel-core
+!
+hostname B1F4--C9200L-24T-04
+!
+!
+vrf definition Mgmt-vrf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+no aaa new-model
+!
+!
+!
+clock timezone UTC 8 0
+switch 1 provision c9200l-24t-4g
+!
+!
+!
+!
+!
+!
+!
+!
+login on-success log
+vtp mode transparent
+vtp version 1
+!
+!
+!
+!
+!
+!
+crypto pki trustpoint SLA-TrustPoint
+ enrollment pkcs12
+ revocation-check crl
+!
+crypto pki trustpoint TP-self-signed-3648273060
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-3648273060
+ revocation-check none
+ rsakeypair TP-self-signed-3648273060
+!
+!
+crypto pki certificate chain SLA-TrustPoint
+ certificate ca 01
+  30820321 30820209 A0030201 02020101 300D0609 2A864886 F70D0101 0B050030 
+  32310E30 0C060355 040A1305 43697363 6F312030 1E060355 04031317 43697363 
+  6F204C69 63656E73 696E6720 526F6F74 20434130 1E170D31 33303533 30313934 
+  3834375A 170D3338 30353330 31393438 34375A30 32310E30 0C060355 040A1305 
+  43697363 6F312030 1E060355 04031317 43697363 6F204C69 63656E73 696E6720 
+  526F6F74 20434130 82012230 0D06092A 864886F7 0D010101 05000382 010F0030 
+  82010A02 82010100 A6BCBD96 131E05F7 145EA72C 2CD686E6 17222EA1 F1EFF64D 
+  CBB4C798 212AA147 C655D8D7 9471380D 8711441E 1AAF071A 9CAE6388 8A38E520 
+  1C394D78 462EF239 C659F715 B98C0A59 5BBB5CBD 0CFEBEA3 700A8BF7 D8F256EE 
+  4AA4E80D DB6FD1C9 60B1FD18 FFC69C96 6FA68957 A2617DE7 104FDC5F EA2956AC 
+  7390A3EB 2B5436AD C847A2C5 DAB553EB 69A9A535 58E9F3E3 C0BD23CF 58BD7188 
+  68E69491 20F320E7 948E71D7 AE3BCC84 F10684C7 4BC8E00F 539BA42B 42C68BB7 
+  C7479096 B4CB2D62 EA2F505D C7B062A4 6811D95B E8250FC4 5D5D5FB8 8F27D191 
+  C55F0D76 61F9A4CD 3D992327 A8BB03BD 4E6D7069 7CBADF8B DF5F4368 95135E44 
+  DFC7C6CF 04DD7FD1 02030100 01A34230 40300E06 03551D0F 0101FF04 04030201 
+  06300F06 03551D13 0101FF04 05300301 01FF301D 0603551D 0E041604 1449DC85 
+  4B3D31E5 1B3E6A17 606AF333 3D3B4C73 E8300D06 092A8648 86F70D01 010B0500 
+  03820101 00507F24 D3932A66 86025D9F E838AE5C 6D4DF6B0 49631C78 240DA905 
+  604EDCDE FF4FED2B 77FC460E CD636FDB DD44681E 3A5673AB 9093D3B1 6C9E3D8B 
+  D98987BF E40CBD9E 1AECA0C2 2189BB5C 8FA85686 CD98B646 5575B146 8DFC66A8 
+  467A3DF4 4D565700 6ADF0F0D CF835015 3C04FF7C 21E878AC 11BA9CD2 55A9232C 
+  7CA7B7E6 C1AF74F6 152E99B7 B1FCF9BB E973DE7F 5BDDEB86 C71E3B49 1765308B 
+  5FB0DA06 B92AFE7F 494E8A9E 07B85737 F3A58BE1 1A48A229 C37C1E69 39F08678 
+  80DDCD16 D6BACECA EEBC7CF9 8428787B 35202CDC 60E4616A B623CDBD 230E3AFB 
+  418616A9 4093E049 4D10AB75 27E86F73 932E35B5 8862FDAE 0275156F 719BB2F0 
+  D697DF7F 28
+  	quit
+crypto pki certificate chain TP-self-signed-3648273060
+ certificate self-signed 01
+  30820330 30820218 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 33363438 32373330 3630301E 170D3234 30383233 30353331 
+  31325A17 0D333430 38323330 35333131 325A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D33 36343832 
+  37333036 30308201 22300D06 092A8648 86F70D01 01010500 0382010F 00308201 
+  0A028201 0100B9AE 800EF0B8 93EE9BC1 7026CB28 80384C05 1F672F21 CCF4BD9E 
+  386E930F F92933B7 7FD5AEE3 7F6E23BF EB5D33A7 DB4C2A6E EE0BD571 EF6BFA3C 
+  1688D4CD 8E941C4A 501E2A65 BCC1AB5F 3FF72643 1404CB8D C7EC2FB6 4EEBF992 
+  3641CD82 83D22EDC E04F8E7A 620514CC E08B4701 D7DD8912 0859DD75 067938C2 
+  A5516BC6 819DABB6 09FA40DF 691F1EE9 7939E6C8 2EAE0055 09118BAC B571ABB8 
+  327EDBA3 1ACB5620 2DA3F28B 476AA9C8 9FB3B5A6 CE7E8E98 753F99B5 ACDAE9B7 
+  11F78DCE 2114F09A 56ABB16B EBA50B3B 9B028C2A 88E9AA16 C36ED9B1 02A3AC12 
+  E8C96CE3 B5574680 30BFFB6D 6A6D46CD 8DA0840B 4FCD532E 0BC954CA CB473DB8 
+  802A0A55 27E30203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 
+  301F0603 551D2304 18301680 14BDCA54 A70EE5DC 1274AFC2 E87575A2 35F08C79 
+  04301D06 03551D0E 04160414 BDCA54A7 0EE5DC12 74AFC2E8 7575A235 F08C7904 
+  300D0609 2A864886 F70D0101 05050003 82010100 7794C464 97AAEBCE A0765542 
+  7A15608E C3BEC7AC 2BC2D101 339AA1A8 762EE4D6 DC17AC50 DCDCECCF 6DA2FCCC 
+  8EF5979B 0138032C 20B0C7AA B974DDF4 BE605167 B1D7E170 4F6E28A4 4DF94FA5 
+  62D8EE22 532F3E26 6836AD5C 0E76BF0A 910BF65D 60A7D27E D6509E43 2E0C25A0 
+  C0F10FD8 DC9019A0 69AF1F14 DF7DC521 0637250D F5AAAE6F BA014007 A7095EF6 
+  127FE42B C9A0B650 7C2BD53D B03EC54C 22C4F0C4 24EC4A9E 5286B72A BD3A9584 
+  80FE604A 6DAEBDE3 2F6B3691 4E66D528 1E9DC2CC 8F7D1AD6 32DBE68A 37DB56B3 
+  486D87BB 68A8D309 047250B8 A3DC1D08 14B7946B 14FCCCE7 FC6416F0 189BEA11 
+  7552C941 CD31D663 12A6E52E FC31C0E7 C965B119
+  	quit
+!
+license boot level network-essentials addon dna-essentials
+memory free low-watermark processor 9891
+!
+diagnostic bootup level minimal
+!
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+!
+!
+no errdisable detect cause gbic-invalid
+enable secret 9 $9$JOsqNV2bhfNZJk$9tYMYwqD9eTitUZpfJBAqAGIIuhm04O.5jM3TQFzrt6
+!
+username itsupport secret 9 $9$pd4dUaJe3CPb.k$ZTCozD7B8E.C52sp5ElBg0cnbsNMzj4omlFGJU/Qwwg
+username slglsw secret 9 $9$ZWr3xtkmR22jvk$HdgnjWnEGinNJYW8VfnS9iuYW6X6xl9wrgRIZbz4XrA
+!
+redundancy
+ mode sso
+crypto engine compliance shield disable
+!
+!
+!
+!
+!
+transceiver type all
+ monitoring
+!
+vlan 3,6,60,63,65,200 
+!
+!
+class-map match-any system-cpp-police-ewlc-control
+  description EWLC Control 
+class-map match-any system-cpp-police-topology-control
+  description Topology control
+class-map match-any system-cpp-police-sw-forward
+  description Sw forwarding, L2 LVX data packets, LOGGING, Transit Traffic
+class-map match-any system-cpp-default
+  description EWLC data, Inter FED Traffic 
+class-map match-any system-cpp-police-sys-data
+  description Openflow, Exception, EGR Exception, NFL Sampled Data, RPF Failed
+class-map match-any system-cpp-police-punt-webauth
+  description Punt Webauth
+class-map match-any system-cpp-police-l2lvx-control
+  description L2 LVX control packets
+class-map match-any system-cpp-police-forus
+  description Forus Address resolution and Forus traffic
+class-map match-any system-cpp-police-multicast-end-station
+  description MCAST END STATION
+class-map match-any system-cpp-police-high-rate-app
+  description High Rate Applications 
+class-map match-any system-cpp-police-multicast
+  description MCAST Data
+class-map match-any system-cpp-police-l2-control
+  description L2 control
+class-map match-any system-cpp-police-dot1x-auth
+  description DOT1X Auth
+class-map match-any system-cpp-police-data
+  description ICMP redirect, ICMP_GEN and BROADCAST
+class-map match-any system-cpp-police-stackwise-virt-control
+  description Stackwise Virtual OOB
+class-map match-any non-client-nrt-class
+class-map match-any system-cpp-police-routing-control
+  description Routing control and Low Latency
+class-map match-any system-cpp-police-protocol-snooping
+  description Protocol snooping
+class-map match-any system-cpp-police-dhcp-snooping
+  description DHCP snooping
+class-map match-any system-cpp-police-ios-routing
+  description L2 control, Topology control, Routing control, Low Latency
+class-map match-any system-cpp-police-system-critical
+  description System Critical and Gold Pkt
+class-map match-any system-cpp-police-ios-feature
+  description ICMPGEN,BROADCAST,ICMP,L2LVXCntrl,ProtoSnoop,PuntWebauth,MCASTData,Transit,DOT1XAuth,Swfwd,LOGGING,L2LVXData,ForusTraffic,ForusARP,McastEndStn,Openflow,Exception,EGRExcption,NflSampled,RpfFailed
+!
+policy-map system-cpp-policy
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ vrf forwarding Mgmt-vrf
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/0/1
+ switchport access vlan 63
+ switchport mode access
+!
+interface GigabitEthernet1/0/2
+ switchport access vlan 63
+ switchport mode access
+!
+interface GigabitEthernet1/0/3
+ switchport access vlan 63
+ switchport mode access
+!
+interface GigabitEthernet1/0/4
+ switchport access vlan 63
+ switchport mode access
+!
+interface GigabitEthernet1/0/5
+ switchport access vlan 63
+ switchport mode access
+!
+interface GigabitEthernet1/0/6
+ switchport access vlan 63
+ switchport mode access
+!
+interface GigabitEthernet1/0/7
+ switchport access vlan 6
+ switchport mode access
+!
+interface GigabitEthernet1/0/8
+ switchport access vlan 6
+ switchport mode access
+!
+interface GigabitEthernet1/0/9
+ switchport access vlan 200
+ switchport mode access
+!
+interface GigabitEthernet1/0/10
+ switchport access vlan 200
+ switchport mode access
+!
+interface GigabitEthernet1/0/11
+ switchport access vlan 200
+ switchport mode access
+!
+interface GigabitEthernet1/0/12
+ switchport access vlan 200
+ switchport mode access
+!
+interface GigabitEthernet1/0/13
+ switchport access vlan 200
+ switchport mode access
+!
+interface GigabitEthernet1/0/14
+ switchport access vlan 200
+ switchport mode access
+!
+interface GigabitEthernet1/0/15
+ switchport access vlan 60
+ switchport mode access
+!
+interface GigabitEthernet1/0/16
+ switchport access vlan 60
+ switchport mode access
+!
+interface GigabitEthernet1/0/17
+ switchport access vlan 200
+ switchport mode access
+!
+interface GigabitEthernet1/0/18
+ switchport access vlan 200
+ switchport mode access
+!
+interface GigabitEthernet1/0/19
+!
+interface GigabitEthernet1/0/20
+!
+interface GigabitEthernet1/0/21
+!
+interface GigabitEthernet1/0/22
+!
+interface GigabitEthernet1/0/23
+!
+interface GigabitEthernet1/0/24
+!
+interface GigabitEthernet1/1/1
+ switchport mode trunk
+!
+interface GigabitEthernet1/1/2
+ switchport mode trunk
+!
+interface GigabitEthernet1/1/3
+ switchport mode trunk
+ shutdown
+!
+interface GigabitEthernet1/1/4
+!
+interface Vlan1
+ no ip address
+!
+interface Vlan3
+ ip address 10.182.3.3 255.255.255.0
+!
+ip default-gateway 10.182.3.254
+no ip http server
+ip http authentication local
+ip http secure-server
+ip forward-protocol nd
+ip ssh version 2
+ip ssh server algorithm authentication password
+!
+ip access-list standard snmp-service
+ 10 permit 10.182.3.200
+!
+!
+!
+snmp-server group MySNMPGroup v3 priv read MyView access snmp-service
+snmp-server view MyView iso included
+!
+control-plane
+ service-policy input system-cpp-policy
+!
+!
+line con 0
+ stopbits 1
+line vty 0 4
+ login local
+ transport input ssh
+line vty 5 15
+ login local
+ transport input ssh
+!
+call-home
+ ! If contact email address in call-home is configured as sch-smart-licensing@cisco.com
+ ! the email address configured in Cisco Smart License Portal will be used as contact email address to send SCH notifications.
+ contact-email-addr sch-smart-licensing@cisco.com
+ profile "CiscoTAC-1"
+  active
+  destination transport-method http
+ntp server 10.182.18.1 prefer
+!
+!
+!
+!
+!
+!
+end
+
+
+Command: show clock
+16:12:45.026 UTC Thu Oct 30 2025
+
+Command: show version
+Cisco IOS XE Software, Version 17.09.05
+Cisco IOS Software [Cupertino], Catalyst L3 Switch Software (CAT9K_LITE_IOSXE), Version 17.9.5, RELEASE SOFTWARE (fc1)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2024 by Cisco Systems, Inc.
+Compiled Tue 30-Jan-24 15:36 by mcpre
+
+
+Cisco IOS-XE software, Copyright (c) 2005-2024 by cisco Systems, Inc.
+All rights reserved.  Certain components of Cisco IOS-XE software are
+licensed under the GNU General Public License ("GPL") Version 2.0.  The
+software code licensed under GPL Version 2.0 is free software that comes
+with ABSOLUTELY NO WARRANTY.  You can redistribute and/or modify such
+GPL code under the terms of GPL Version 2.0.  For more details, see the
+documentation or "License Notice" file accompanying the IOS-XE software,
+or the applicable URL provided on the flyer accompanying the IOS-XE
+software.
+
+
+ROM: IOS-XE ROMMON
+BOOTLDR: System Bootstrap, Version 17.14.1r [FC1], RELEASE SOFTWARE (P) 
+
+B1F4--C9200L-24T-04 uptime is 41 weeks, 1 hour, 14 minutes
+Uptime for this control processor is 41 weeks, 1 hour, 16 minutes
+System returned to ROM by Reload Command
+System restarted at 14:58:42 UTC Thu Jan 16 2025
+System image file is "flash:packages.conf"
+Last reload reason: Reload Command
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+
+Technology Package License Information: 
+
+------------------------------------------------------------------------------
+Technology-package                                     Technology-package
+Current                        Type                       Next reboot  
+------------------------------------------------------------------------------
+network-essentials  	Smart License                 	 network-essentials  
+dna-essentials      	Subscription Smart License    	 dna-essentials                
+
+
+Smart Licensing Status: Smart Licensing Using Policy
+
+cisco C9200L-24T-4G (ARM64) processor with 519408K/3071K bytes of memory.
+Processor board ID FVH28162K5Q
+2 Virtual Ethernet interfaces
+28 Gigabit Ethernet interfaces
+2048K bytes of non-volatile configuration memory.
+1973316K bytes of physical memory.
+819200K bytes of Crash Files at crashinfo:.
+1941504K bytes of Flash at flash:.
+
+Base Ethernet MAC Address          : b4:4c:90:ea:fd:80
+Motherboard Assembly Number        : 73-102786-05
+Motherboard Serial Number          : FVH28162K5Q
+Model Revision Number              : F0
+Motherboard Revision Number        : A0
+Model Number                       : C9200L-24T-4G
+System Serial Number               : FVH28162K5Q
+CLEI Code Number                   : INM6G00ARD
+
+
+Switch Ports Model              SW Version        SW Image              Mode   
+------ ----- -----              ----------        ----------            ----   
+*    1 28    C9200L-24T-4G      17.09.05          CAT9K_LITE_IOSXE      INSTALL
+
+
+Configuration register is 0x102
+
+
+Command: show cdp nei
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone, 
+                  D - Remote, C - CVTA, M - Two-port Mac Relay 
+
+Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+SLGL-Core-01.SLGL.Shangri-la.com
+                 Gig 1/1/4         120             R S I  WS-C4506- Gig 2/4
+
+Total cdp entries displayed : 1
+
+Command: show lldp nei
+% LLDP is not enabled
+
+Command: show int statu
+
+Port         Name               Status       Vlan       Duplex  Speed Type
+Gi1/0/1                         notconnect   63           auto   auto 10/100/1000BaseTX
+Gi1/0/2                         notconnect   63           auto   auto 10/100/1000BaseTX
+Gi1/0/3                         connected    63         a-full a-1000 10/100/1000BaseTX
+Gi1/0/4                         notconnect   63           auto   auto 10/100/1000BaseTX
+Gi1/0/5                         connected    63         a-full a-1000 10/100/1000BaseTX
+Gi1/0/6                         connected    63         a-full a-1000 10/100/1000BaseTX
+Gi1/0/7                         connected    6          a-full  a-100 10/100/1000BaseTX
+Gi1/0/8                         notconnect   6            auto   auto 10/100/1000BaseTX
+Gi1/0/9                         notconnect   200          auto   auto 10/100/1000BaseTX
+Gi1/0/10                        connected    200        a-full a-1000 10/100/1000BaseTX
+Gi1/0/11                        connected    200        a-full  a-100 10/100/1000BaseTX
+Gi1/0/12                        connected    200        a-full a-1000 10/100/1000BaseTX
+Gi1/0/13                        notconnect   200          auto   auto 10/100/1000BaseTX
+Gi1/0/14                        notconnect   200          auto   auto 10/100/1000BaseTX
+Gi1/0/15                        notconnect   60           auto   auto 10/100/1000BaseTX
+Gi1/0/16                        notconnect   60           auto   auto 10/100/1000BaseTX
+Gi1/0/17                        notconnect   200          auto   auto 10/100/1000BaseTX
+Gi1/0/18                        notconnect   200          auto   auto 10/100/1000BaseTX
+Gi1/0/19                        notconnect   1            auto   auto 10/100/1000BaseTX
+Gi1/0/20                        notconnect   1            auto   auto 10/100/1000BaseTX
+Gi1/0/21                        notconnect   1            auto   auto 10/100/1000BaseTX
+Gi1/0/22                        notconnect   1            auto   auto 10/100/1000BaseTX
+Gi1/0/23                        notconnect   1            auto   auto 10/100/1000BaseTX
+Gi1/0/24                        notconnect   1            auto   auto 10/100/1000BaseTX
+Gi1/1/1                         notconnect   1            full   auto unknown
+Gi1/1/2                         notconnect   1            full   auto unknown
+Gi1/1/3                         disabled     1            auto   auto unknown
+Gi1/1/4                         connected    trunk        full   1000 1000BaseSX SFP
+
+Command: show proc cpu | inc CPU utilization
+CPU utilization for five seconds: 10%/0%; one minute: 2%; five minutes: 1%
+
+Command: show proc mem | inc Processor Pool
+Processor Pool Total:  530788856 Used:  104983156 Free:  425805700
+
+Command: show loggi
+Syslog logging: enabled (0 messages dropped, 2 messages rate-limited, 0 flushes, 0 overruns, xml disabled, filtering disabled)
+
+No Active Message Discriminator.
+
+
+
+No Inactive Message Discriminator.
+
+
+    Console logging: level debugging, 20978 messages logged, xml disabled,
+                     filtering disabled
+    Monitor logging: level debugging, 0 messages logged, xml disabled,
+                     filtering disabled
+    Buffer logging:  level debugging, 20978 messages logged, xml disabled,
+                    filtering disabled
+    Exception Logging: size (4096 bytes)
+    Count and timestamp logging messages: disabled
+    File logging: disabled
+    Persistent logging: disabled
+
+No active filter modules.
+
+    Trap logging: level informational, 20983 message lines logged
+        Logging Source-Interface:       VRF Name:
+    TLS Profiles: 
+
+Log Buffer (4096 bytes):
+: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/1, changed state to down
+Oct 28 07:47:41.748: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/11, changed state to down
+Oct 28 07:47:42.748: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/11, changed state to down
+Oct 28 07:47:45.473: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/11, changed state to up
+Oct 28 07:47:46.471: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/11, changed state to up
+Oct 29 06:18:15.712: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/1, changed state to up
+Oct 29 06:18:16.712: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/1, changed state to up
+Oct 29 06:18:22.661: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/1, changed state to down
+Oct 29 06:18:23.663: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/1, changed state to down
+Oct 29 06:18:27.704: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/1, changed state to up
+Oct 29 06:18:28.704: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/1, changed state to up
+Oct 29 06:18:32.155: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/3, changed state to down
+Oct 29 06:18:33.156: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/3, changed state to down
+Oct 29 06:18:37.143: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/3, changed state to up
+Oct 29 06:18:38.145: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/3, changed state to up
+Oct 29 07:34:59.657: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/1, changed state to down
+Oct 29 07:35:00.660: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/1, changed state to down
+Oct 29 07:46:06.840: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/1, changed state to up
+Oct 29 07:46:07.839: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/1, changed state to up
+Oct 29 07:46:15.791: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/1, changed state to down
+Oct 29 07:46:16.793: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/1, changed state to down
+Oct 29 07:46:20.713: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/1, changed state to up
+Oct 29 07:46:21.712: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/1, changed state to up
+Oct 29 07:55:17.756: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/1, changed state to down
+Oct 29 07:55:18.760: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/1, changed state to down
+Oct 29 09:34:02.284: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/7, changed state to down
+Oct 29 09:34:03.285: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/7, changed state to down
+Oct 29 09:34:08.417: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/7, changed state to up
+Oct 29 09:34:09.415: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/7, changed state to up
+Oct 29 09:34:10.664: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/7, changed state to down
+Oct 29 09:34:11.668: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/7, changed state to down
+Oct 29 09:34:14.248: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/7, changed state to up
+Oct 29 09:34:15.249: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/7, changed state to up
+Oct 29 09:35:28.253: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/7, changed state to down
+Oct 29 09:35:29.253: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/7, changed state to down
+Oct 29 09:35:31.912: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/7, changed state to up
+Oct 29 09:35:32.913: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/7, changed state to up
+Oct 30 08:05:41.843: %SEC_LOGIN-5-LOGIN_SUCCESS: Login Success [user: slglsw] [Source: 10.182.9.181] [localport: 22] at 16:05:41 UTC Thu Oct 30 2025
+Oct 30 08:05:49.149: %SYS-6-LOGOUT: User slglsw has exited tty session 1(10.182.9.181)
+Oct 30 08:12:41.724: %SEC_LOGIN-5-LOGIN_SUCCESS: Login Success [user: slglsw] [Source: 10.182.9.181] [localport: 22] at 16:12:41 UTC Thu Oct 30 2025

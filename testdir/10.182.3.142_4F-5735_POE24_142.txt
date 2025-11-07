@@ -1,0 +1,1539 @@
+=== 设备信息 ===
+
+IP地址: 10.182.3.142
+主机名: 4F-5735_POE24_142
+设备类型: huawei
+原始类型: huawei
+厂商: huawei
+执行时间: 2025-10-30 16:13:25
+
+=== 执行结果 ===
+Command: disp cur
+!Software Version V200R019C10SPC500
+#
+sysname 4F-5735_POE24_142
+#
+vlan batch 2 to 15 100 120 127 to 128 132 135 199 to 212 220 to 240 260 to 280 301 to 799
+#
+stp mode rstp
+#
+authentication-profile name default_authen_profile
+authentication-profile name dot1x_authen_profile
+authentication-profile name dot1xmac_authen_profile
+authentication-profile name mac_authen_profile
+authentication-profile name multi_authen_profile
+authentication-profile name portal_authen_profile
+#
+stp vlan 311 to 489 500 to 547 551 to 573 600 to 799 disable
+#
+undo http server enable
+undo http secure-server enable
+#
+diffserv domain default
+#
+radius-server template default
+#
+pki realm default
+ certificate-check none
+#
+acl number 2001
+ rule 5 permit source 10.182.3.200 0
+ rule 10 deny
+#
+free-rule-template name default_free_rule
+#
+portal-access-profile name portal_access_profile
+#
+aaa
+ authentication-scheme default
+  authentication-mode local
+ authentication-scheme radius
+  authentication-mode radius
+ authorization-scheme default
+  authorization-mode local
+ accounting-scheme default
+  accounting-mode none
+ local-aaa-user password policy administrator 
+  password history record number 0
+  password expire 0
+ domain default
+  authentication-scheme radius
+  accounting-scheme default
+  radius-server default
+ domain default_admin
+  authentication-scheme default
+  accounting-scheme default
+ undo local-user admin
+ local-user slglsw password irreversible-cipher $1c$JScBMzVn>-$)]]A+OegTTifGx3R*mE=%6I=AwE~n(E=36So0Q7,$
+ local-user slglsw privilege level 15
+ local-user slglsw service-type telnet ssh
+ local-user itsupport password irreversible-cipher $1c$}<-;>k32LS$T@l3@qKjm1pS@KBG2-iLO-E,P}K4C2+d83!nv$WU$
+ local-user itsupport privilege level 15
+ local-user itsupport service-type terminal ssh
+#
+ntp-service server disable
+ntp-service ipv6 server disable
+ntp-service unicast-server 10.182.18.1
+#
+interface Vlanif1
+#
+interface Vlanif3
+ ip address 10.182.3.142 255.255.255.0
+#
+interface MEth0/0/1
+ ip address 192.168.1.253 255.255.255.0
+#
+interface GigabitEthernet0/0/1
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/2
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/3
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/4
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/5
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/6
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/7
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/8
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/9
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/10
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/11
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/12
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/13
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/14
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/15
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/16
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/17
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/18
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/19
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/20
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/21
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/22
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/23
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/24
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+#
+interface XGigabitEthernet0/0/1
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+#
+interface XGigabitEthernet0/0/2
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+#
+interface XGigabitEthernet0/0/3
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+#
+interface XGigabitEthernet0/0/4
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+#
+interface NULL0
+#
+undo icmp name timestamp-request receive
+#
+ip route-static 0.0.0.0 0.0.0.0 10.182.3.254
+#
+snmp-agent
+snmp-agent local-engineid 800007DB03B46E0852F1F0
+snmp-agent sys-info version v3
+snmp-agent group v3 MySNMPGroup privacy read-view isoview acl 2001
+snmp-agent mib-view included isoview iso
+snmp-agent usm-user v3 snmpadmin
+snmp-agent usm-user v3 snmpadmin group MySNMPGroup
+snmp-agent usm-user v3 snmpadmin authentication-mode sha cipher %^%#1`ag(YF#eS~$.^9$Cw/I4ExmWHzx!Xzg=B,CyIZ6%^%#
+snmp-agent usm-user v3 snmpadmin privacy-mode aes128 cipher %^%#caCc!q^\zKq]^/UsV&V<^a^$9\/0N:"k#g(^.I}!%^%#
+snmp-agent protocol source-interface Vlanif3
+#
+stelnet server enable
+ssh user slglsw
+ssh user slglsw authentication-type password
+ssh user slglsw service-type stelnet
+ssh server cipher aes256_ctr aes128_ctr
+ssh server hmac sha2_256
+ssh client cipher aes256_ctr aes128_ctr
+ssh client hmac sha2_256
+ssh server dh-exchange min-len 2048
+#
+lldp management-address 10.182.3.142 
+#
+user-interface con 0
+ authentication-mode aaa
+user-interface vty 0 4
+ authentication-mode aaa
+user-interface vty 16 20
+#
+dot1x-access-profile name dot1x_access_profile
+#
+mac-access-profile name mac_access_profile
+#
+ops
+#
+return
+
+Command: dis clock
+2025-10-30 16:13:09+08:00
+Thursday
+Time Zone(DefaultZoneName) : UTC+08:00
+
+Command: disp ntp sessions
+ clock source: 10.182.18.1 
+ clock stratum: 4 
+ clock status: configured, master, sane, valid
+ reference clock ID: 10.201.102.22
+ reach: 7 
+ current poll: 64 
+ now: 6 
+ offset: -61.7061 ms 
+ delay: -84.81 ms 
+ disper: 0.00 ms
+
+Command: disp ntp status
+ clock status: synchronized 
+ clock stratum: 5 
+ reference clock ID: 10.182.18.1
+ nominal frequency: 100.0000 Hz 
+ actual frequency: 100.0000 Hz 
+ clock precision: 2^18
+ clock offset: 0.0000 ms 
+ root delay: 132.84 ms 
+ root dispersion: 103.08 ms 
+ peer dispersion: 286.04 ms 
+ reference time: 08:13:03.383 UTC Oct 30 2025(ECAD9C8F.62272862)
+ synchronization state: clock not set 
+
+Command: disp version
+Huawei Versatile Routing Platform Software
+VRP (R) software, Version 5.170 (S5735 V200R019C10SPC500)
+Copyright (C) 2000-2020 HUAWEI TECH Co., Ltd.
+HUAWEI S5735-S24P4X Routing Switch uptime is 5 weeks, 0 day, 5 hours, 35 minutes
+
+ES5D2V28S021 0(Master)  : uptime is 5 weeks, 0 day, 5 hours, 34 minutes
+DDR             Memory Size : 1024  M bytes
+FLASH Total     Memory Size : 512   M bytes
+FLASH Available Memory Size : 306   M bytes
+Pcb           Version   : VER.C
+BootROM(1st)       Version   : 0000.0121
+BootROM(2nd)       Version   : 0000.0200
+BootLoad      Version   : 0213.0000
+CPLD          Version   : 0104 
+MCU           Version   : 1.9.10.4
+Software      Version   : VRP (R) Software, Version 5.170 (V200R019C10SPC500)
+FLASH         Version   : 0000.0000
+PWR1 information
+Pcb           Version   : PWR VER.A
+
+Command: disp lldp nei br
+Local Intf       Neighbor Dev             Neighbor Intf             Exptime(s)
+GE0/0/1          374                      58b6-332b-c513            94     
+GE0/0/2          375                      58b6-332b-bbb3            102    
+GE0/0/3          376                      58b6-332b-9833            107    
+GE0/0/4          381                      58b6-332b-b163            115    
+GE0/0/5          378                      58b6-332b-9a53            120    
+GE0/0/6          383                      58b6-332b-ac83            97     
+GE0/0/7          380                      58b6-332b-96b3            108    
+GE0/0/8          379                      58b6-332b-dd43            100    
+GE0/0/9          382                      58b6-332b-b303            117    
+GE0/0/10         385                      58b6-332b-d613            111    
+GE0/0/11         384                      58b6-332c-c233            103    
+GE0/0/12         377                      58b6-332b-95f3            115    
+GE0/0/13         396                      58b6-332b-f073            91     
+GE0/0/14         397                      58b6-332b-d2e3            100    
+GE0/0/15         5F Guest Public6         38ff-3609-1d73            110    
+GE0/0/16         5F Guest Public4         38ff-3609-0ff3            117    
+GE0/0/17         588                      58b6-332b-f453            93     
+GE0/0/18         492                      58b6-332b-f7b3            118    
+GE0/0/21         4F3-2960XR_24POE-07.slgl Gi1/0/24                  112    
+GE0/0/22         4F3-2918_48P-04.slgl     Up-link                   109    
+GE0/0/23         4F3-2960XR_24POE-08.slgl Gi1/0/24                  104    
+XGE0/0/2         SLGL-Core-02.SLGL.Sha... Gi2/14                    110    
+
+Command: disp lldp nei
+GigabitEthernet0/0/1 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-332b-c510 
+Port ID type   :MAC address 
+Port ID        :58b6-332b-c513
+Port description    :eth0
+System name         :374
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.132.38
+OID  :  
+Expired time   :93s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/2 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-332b-bbb0 
+Port ID type   :MAC address 
+Port ID        :58b6-332b-bbb3
+Port description    :eth0
+System name         :375
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.132.39
+OID  :  
+Expired time   :101s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/3 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-332b-9830 
+Port ID type   :MAC address 
+Port ID        :58b6-332b-9833
+Port description    :eth0
+System name         :376
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.132.40
+OID  :  
+Expired time   :106s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/4 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-332b-b160 
+Port ID type   :MAC address 
+Port ID        :58b6-332b-b163
+Port description    :eth0
+System name         :381
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.132.150
+OID  :  
+Expired time   :114s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/5 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-332b-9a50 
+Port ID type   :MAC address 
+Port ID        :58b6-332b-9a53
+Port description    :eth0
+System name         :378
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.132.83
+OID  :  
+Expired time   :119s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/6 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-332b-ac80 
+Port ID type   :MAC address 
+Port ID        :58b6-332b-ac83
+Port description    :eth0
+System name         :383
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.132.142
+OID  :  
+Expired time   :96s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/7 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-332b-96b0 
+Port ID type   :MAC address 
+Port ID        :58b6-332b-96b3
+Port description    :eth0
+System name         :380
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.132.124
+OID  :  
+Expired time   :107s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/8 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-332b-dd40 
+Port ID type   :MAC address 
+Port ID        :58b6-332b-dd43
+Port description    :eth0
+System name         :379
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.132.78
+OID  :  
+Expired time   :99s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/9 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-332b-b300 
+Port ID type   :MAC address 
+Port ID        :58b6-332b-b303
+Port description    :eth0
+System name         :382
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.134.209
+OID  :  
+Expired time   :116s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/10 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-332b-d610 
+Port ID type   :MAC address 
+Port ID        :58b6-332b-d613
+Port description    :eth0
+System name         :385
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.134.222
+OID  :  
+Expired time   :110s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/11 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-332c-c230 
+Port ID type   :MAC address 
+Port ID        :58b6-332c-c233
+Port description    :eth0
+System name         :384
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.132.87
+OID  :  
+Expired time   :102s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/12 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-332b-95f0 
+Port ID type   :MAC address 
+Port ID        :58b6-332b-95f3
+Port description    :eth0
+System name         :377
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.132.41
+OID  :  
+Expired time   :114s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/13 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-332b-f070 
+Port ID type   :MAC address 
+Port ID        :58b6-332b-f073
+Port description    :eth0
+System name         :396
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.134.218
+OID  :  
+Expired time   :120s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/14 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-332b-d2e0 
+Port ID type   :MAC address 
+Port ID        :58b6-332b-d2e3
+Port description    :eth0
+System name         :397
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.135.22
+OID  :  
+Expired time   :99s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/15 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :38ff-3609-1d70 
+Port ID type   :MAC address 
+Port ID        :38ff-3609-1d73
+Port description    :eth0
+System name         :5F Guest Public6
+System description  :Ruckus R500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.134.219
+OID  :  
+Expired time   :109s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/16 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :38ff-3609-0ff0 
+Port ID type   :MAC address 
+Port ID        :38ff-3609-0ff3
+Port description    :eth0
+System name         :5F Guest Public4
+System description  :Ruckus R500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.134.221
+OID  :  
+Expired time   :115s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/17 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-332b-f450 
+Port ID type   :MAC address 
+Port ID        :58b6-332b-f453
+Port description    :eth0
+System name         :588
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.132.27
+OID  :  
+Expired time   :91s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/18 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-332b-f7b0 
+Port ID type   :MAC address 
+Port ID        :58b6-332b-f7b3
+Port description    :eth0
+System name         :492
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.134.184
+OID  :  
+Expired time   :116s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/21 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :0072-784c-4480 
+Port ID type   :Interface name 
+Port ID        :Gi1/0/24
+Port description    :GigabitEthernet1/0/24
+System name         :4F3-2960XR_24POE-07.slgl
+System description  :Cisco IOS Software, C2960X Software (C2960X-UNIVERSALK9-M), Version 15.2(7)E6, RELEASE SOFTWARE (fc2)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2022 by Cisco Systems, Inc.
+Compiled Tue 22-Mar-22 10:47 by mcpre
+System capabilities supported   :bridge router 
+System capabilities enabled     :bridge 
+Management address type  :ipv4
+Management address value :10.182.3.47
+OID  :  
+Expired time   :110s
+
+Port VLAN ID(PVID)  :1
+
+Auto-negotiation supported    :Yes 
+Auto-negotiation enabled      :Yes
+OperMau   :speed(1000)/duplex(Full)
+
+GigabitEthernet0/0/22 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :0064-409b-fd32 
+Port ID type   :Interface alias 
+Port ID        :Up-link
+Port description    :GigabitEthernet0/2
+System name         :4F3-2918_48P-04.slgl
+System description  :Cisco IOS Software, C2918 Software (C2918-LANLITEK9-M), Version 12.2(44)SE6, RELEASE SOFTWARE (fc1)
+Copyright (c) 1986-2009 by Cisco Systems, Inc.
+Compiled Mon 09-Mar-09 20:16 by gereddy
+System capabilities supported   :bridge router 
+System capabilities enabled     :bridge 
+Management address type  :ipv4
+Management address value :10.182.3.44
+OID  :  
+Expired time   :107s
+
+
+GigabitEthernet0/0/23 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :0072-784c-2c00 
+Port ID type   :Interface name 
+Port ID        :Gi1/0/24
+Port description    :GigabitEthernet1/0/24
+System name         :4F3-2960XR_24POE-08.slgl
+System description  :Cisco IOS Software, C2960X Software (C2960X-UNIVERSALK9-M), Version 15.2(7)E6, RELEASE SOFTWARE (fc2)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2022 by Cisco Systems, Inc.
+Compiled Tue 22-Mar-22 10:47 by mcpre
+System capabilities supported   :bridge router 
+System capabilities enabled     :bridge 
+Management address type  :ipv4
+Management address value :10.182.3.48
+OID  :  
+Expired time   :102s
+
+Port VLAN ID(PVID)  :1
+
+Auto-negotiation supported    :Yes 
+Auto-negotiation enabled      :Yes
+OperMau   :speed(1000)/duplex(Full)
+
+XGigabitEthernet0/0/2 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :0018-19cf-433b 
+Port ID type   :Interface name 
+Port ID        :Gi2/14
+Port description    :4F3-ODF-03/04
+System name         :SLGL-Core-02.SLGL.Shangri-la.com
+System description  :Cisco IOS Software, Catalyst 4500 L3 Switch Software (cat4500-ENTSERVICESK9-M), Version 12.2(53)SG1, RELEASE SOFTWARE (fc1)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2009 by Cisco Systems, Inc.
+Compiled Fri 30-Oct-09 13:31 by 
+System capabilities supported   :bridge router 
+System capabilities enabled     :bridge router 
+Management address type  :ipv4
+Management address value :10.182.3.253
+OID  :  
+Expired time   :108s
+
+Port VLAN ID(PVID)  :1
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :Yes
+OperMau   :speed(1000)/duplex(Full)
+
+
+Command: disp int br
+PHY: Physical
+*down: administratively down
+#down: LBDT down
+(l): loopback
+(s): spoofing
+(E): E-Trunk down
+(b): BFD down
+(e): ETHOAM down
+(dl): DLDP down
+(lb): LBDT block
+(o): Observe-port forwarding down
+InUti/OutUti: input utility/output utility
+Interface                   PHY   Protocol  InUti OutUti   inErrors  outErrors
+GigabitEthernet0/0/1        up    up           0%  0.02%          0          0
+GigabitEthernet0/0/2        up    up           0%  0.02%          0          0
+GigabitEthernet0/0/3        up    up           0%  0.02%          0          0
+GigabitEthernet0/0/4        up    up           0%  0.02%          0          0
+GigabitEthernet0/0/5        up    up           0%  0.02%          0          0
+GigabitEthernet0/0/6        up    up           0%  0.02%          0          0
+GigabitEthernet0/0/7        up    up           0%  0.02%          0          0
+GigabitEthernet0/0/8        up    up           0%  0.02%          0          0
+GigabitEthernet0/0/9        up    up           0%  0.02%          0          0
+GigabitEthernet0/0/10       up    up           0%  0.02%          0          0
+GigabitEthernet0/0/11       up    up           0%  0.02%          0          0
+GigabitEthernet0/0/12       up    up           0%  0.02%          0          0
+GigabitEthernet0/0/13       up    up           0%  0.02%          0          0
+GigabitEthernet0/0/14       up    up           0%  0.02%          0          0
+GigabitEthernet0/0/15       up    up           0%  0.02%          0          0
+GigabitEthernet0/0/16       up    up           0%  0.02%          0          0
+GigabitEthernet0/0/17       up    up           0%  0.02%          0          0
+GigabitEthernet0/0/18       up    up           0%  0.02%          0          0
+GigabitEthernet0/0/19       down  down         0%     0%          0          0
+GigabitEthernet0/0/20       down  down         0%     0%          0          0
+GigabitEthernet0/0/21       up    up        0.04%  0.76%          0          0
+GigabitEthernet0/0/22       up    up           0%  0.02%          0          0
+GigabitEthernet0/0/23       up    up        0.01%  0.03%          0          0
+GigabitEthernet0/0/24       up    up           0%  0.02%          0          0
+MEth0/0/1                   down  down         0%     0%          0          0
+NULL0                       up    up(s)        0%     0%          0          0
+Vlanif1                     up    down         --     --          0          0
+Vlanif3                     up    up           --     --          0          0
+XGigabitEthernet0/0/1       down  down         0%     0%          0          0
+XGigabitEthernet0/0/2       up    up        0.79%  0.06%          0          0
+XGigabitEthernet0/0/3       down  down         0%     0%          0          0
+XGigabitEthernet0/0/4       down  down         0%     0%          0          0
+
+Command: disp cpu-u | inc CPU utilization
+CPU utilization for five seconds: 13%: one minute: 13%: five minutes: 9%
+
+Command: disp mem
+ Memory utilization statistics at 2025-10-30 16:13:18+08:00
+ System Total Memory Is: 522190848 bytes
+ Total Memory Used Is: 136930364 bytes
+ Memory Using Percentage Is: 26%
+
+Command: disp logbuffer
+Logging buffer configuration and contents : enabled
+Allowed max buffer size : 1024
+Actual buffer size : 512
+Channel number : 4 , Channel name : logbuffer
+Dropped messages : 0
+Overwritten messages : 17049
+Current messages : 512
+
+Oct 30 2025 16:13:03+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[0]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 16:13:03+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[1]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 16:11:56+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[2]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 16:10:07+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[3]:MAC move detected. (VLAN=200, Original-Port=GE0/0/15, Flapping-Port=GE0/0/21 and GE0/0/23)
+Oct 30 2025 16:09:44+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[4]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 16:08:37+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[5]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 16:08:37+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[6]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 16:07:33+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[7]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 16:02:54+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[8]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 16:02:16+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[9]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/24 and XGE0/0/2)
+Oct 30 2025 16:01:02+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[10]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 15:56:28+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[11]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 15:55:47+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[12]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/16 and XGE0/0/2)
+Oct 30 2025 15:55:35+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[13]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 15:55:35+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[14]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 15:54:29+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[15]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 15:50:13+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[16]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 15:40:07+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[17]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 15:38:48+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[18]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/23)
+Oct 30 2025 15:33:43+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[19]:Last message repeated 2 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 15:31:15+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[20]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 15:30:09+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[21]:MAC move detected. (VLAN=200, Original-Port=GE0/0/9, Flapping-Port=GE0/0/4 and GE0/0/7)
+Oct 30 2025 15:29:06+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[22]:MAC move detected. (VLAN=200, Original-Port=GE0/0/9, Flapping-Port=GE0/0/4 and GE0/0/7)
+Oct 30 2025 15:25:05+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[23]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 15:25:05+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[24]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 15:23:59+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[25]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 15:20:39+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[26]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 15:13:53+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[27]:MAC move detected. (VLAN=200, Original-Port=GE0/0/15, Flapping-Port=XGE0/0/2 and GE0/0/21)
+Oct 30 2025 15:09:04+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[28]:MAC move detected. (VLAN=200, Original-Port=GE0/0/24, Flapping-Port=XGE0/0/2)
+Oct 30 2025 15:09:04+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[29]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 14:59:49+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[30]:Last message repeated 3 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 14:55:47+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[31]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 14:54:54+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[32]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/24 and GE0/0/3)
+Oct 30 2025 14:50:33+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[33]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 14:49:02+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[34]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/21 and GE0/0/15)
+Oct 30 2025 14:45:44+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[35]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 14:45:44+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[36]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 14:44:38+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[37]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 14:42:52+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[38]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/16)
+Oct 30 2025 14:41:20+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[39]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 14:40:33+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[40]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/16)
+Oct 30 2025 14:36:08+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[41]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/23)
+Oct 30 2025 14:28:32+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[42]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 14:25:54+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[43]:MAC move detected. (VLAN=200, Original-Port=GE0/0/24, Flapping-Port=GE0/0/23 and XGE0/0/2)
+Oct 30 2025 14:23:40+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[44]:Last message repeated 2 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 14:20:13+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[45]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 14:19:28+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[46]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/3)
+Oct 30 2025 14:16:17+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[47]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 14:16:17+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[48]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 14:16:10+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[49]:MAC move detected. (VLAN=200, Original-Port=GE0/0/24, Flapping-Port=XGE0/0/2)
+Oct 30 2025 14:15:12+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[50]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 14:14:09+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[51]:MAC move detected. (VLAN=200, Original-Port=GE0/0/24, Flapping-Port=XGE0/0/2)
+Oct 30 2025 14:12:27+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[52]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 14:11:19+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[53]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=XGE0/0/2)
+Oct 30 2025 14:10:55+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[54]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 14:08:41+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[55]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 14:05:16+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[56]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 14:03:32+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[57]:MAC move detected. (VLAN=200, Original-Port=GE0/0/21, Flapping-Port=GE0/0/16 and XGE0/0/2)
+Oct 30 2025 14:03:32+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[58]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 13:58:22+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[59]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 13:56:29+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[60]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/24 and XGE0/0/2)
+Oct 30 2025 13:56:29+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[61]:Last message repeated 2 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 13:51:27+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[62]:Last message repeated 2 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 13:49:12+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[63]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 13:48:36+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[64]:MAC move detected. (VLAN=200, Original-Port=GE0/0/24, Flapping-Port=XGE0/0/2)
+Oct 30 2025 13:47:47+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[65]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 13:46:29+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[66]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 13:45:36+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[67]:MAC move detected. (VLAN=200, Original-Port=GE0/0/24, Flapping-Port=XGE0/0/2)
+Oct 30 2025 13:44:49+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[68]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 13:44:49+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[69]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 13:44:38+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[70]:MAC move detected. (VLAN=200, Original-Port=GE0/0/24, Flapping-Port=XGE0/0/2)
+Oct 30 2025 13:43:42+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[71]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 13:42:08+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[72]:MAC move detected. (VLAN=200, Original-Port=GE0/0/21, Flapping-Port=GE0/0/15 and GE0/0/16)
+Oct 30 2025 13:40:28+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[73]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 13:40:24+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[74]:MAC move detected. (VLAN=200, Original-Port=GE0/0/21, Flapping-Port=GE0/0/15 and GE0/0/16)
+Oct 30 2025 13:34:31+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[75]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 13:30:33+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[76]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/16 and GE0/0/6)
+Oct 30 2025 13:30:33+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[77]:Last message repeated 3 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 13:16:07+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[78]:Last message repeated 2 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 13:13:31+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[79]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 13:12:50+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[80]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/16)
+Oct 30 2025 13:09:59+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[81]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/21)
+Oct 30 2025 13:09:54+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[82]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 13:09:54+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[83]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 13:08:48+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[84]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 13:01:07+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[85]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 12:56:18+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[86]:MAC move detected. (VLAN=200, Original-Port=GE0/0/21, Flapping-Port=GE0/0/24)
+Oct 30 2025 12:50:14+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[87]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 12:49:35+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[88]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/16 and GE0/0/23)
+Oct 30 2025 12:46:43+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[89]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/16 and GE0/0/23)
+Oct 30 2025 12:36:38+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[90]:MAC move detected. (VLAN=200, Original-Port=GE0/0/10, Flapping-Port=GE0/0/6)
+Oct 30 2025 12:36:03+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[91]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 12:36:03+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[92]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 12:35:19+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[93]:MAC move detected. (VLAN=200, Original-Port=GE0/0/10, Flapping-Port=GE0/0/6)
+Oct 30 2025 12:33:54+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[94]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 12:30:40+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[95]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 12:29:53+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[96]:Last message repeated 2 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 12:27:46+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[97]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 12:26:44+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[98]:MAC move detected. (VLAN=200, Original-Port=GE0/0/24, Flapping-Port=XGE0/0/2 and GE0/0/10)
+Oct 30 2025 12:25:41+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[99]:Last message repeated 2 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 12:21:51+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[100]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 12:20:58+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[101]:MAC move detected. (VLAN=200, Original-Port=GE0/0/24, Flapping-Port=XGE0/0/2)
+Oct 30 2025 12:17:20+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[102]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 12:16:00+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[103]:MAC move detected. (VLAN=200, Original-Port=GE0/0/16, Flapping-Port=GE0/0/15 and GE0/0/21)
+Oct 30 2025 12:11:26+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[104]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=XGE0/0/2)
+Oct 30 2025 11:57:04+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[105]:MAC move detected. (VLAN=200, Original-Port=GE0/0/7, Flapping-Port=GE0/0/24 and XGE0/0/2)
+Oct 30 2025 11:55:50+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[106]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 11:55:50+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[107]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 11:55:45+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[108]:MAC move detected. (VLAN=200, Original-Port=GE0/0/7, Flapping-Port=GE0/0/24 and XGE0/0/2)
+Oct 30 2025 11:54:43+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[109]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 11:52:44+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[110]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 11:51:06+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[111]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/24)
+Oct 30 2025 11:50:20+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[112]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 11:49:36+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[113]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/24)
+Oct 30 2025 11:37:11+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[114]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 11:37:11+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[115]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 11:35:03+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[116]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 11:33:56+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[117]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 11:32:49+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[118]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 11:24:07+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[119]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 11:23:01+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[120]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 11:14:15+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[121]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 11:13:10+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[122]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 11:10:09+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[123]:Last message repeated 2 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 11:07:13+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[124]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 11:05:35+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[125]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/21 and GE0/0/15)
+Oct 30 2025 11:04:24+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[126]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 10:59:30+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[127]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 10:57:11+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[128]:MAC move detected. (VLAN=200, Original-Port=GE0/0/16, Flapping-Port=XGE0/0/2)
+Oct 30 2025 10:44:48+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[129]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 10:44:48+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[130]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 10:43:42+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[131]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 10:40:55+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[132]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/24)
+Oct 30 2025 10:40:26+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[133]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 10:21:54+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[134]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 10:20:47+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[135]:MAC move detected. (VLAN=200, Original-Port=GE0/0/21, Flapping-Port=XGE0/0/2 and GE0/0/15)
+Oct 30 2025 10:20:11+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[136]:MAC move detected. (VLAN=200, Original-Port=GE0/0/21, Flapping-Port=XGE0/0/2)
+Oct 30 2025 10:14:21+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[137]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/24)
+Oct 30 2025 10:14:20+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[138]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 10:14:20+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[139]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 10:13:13+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[140]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 10:10:00+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[141]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 10:08:56+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[142]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 10:02:57+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[143]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 10:01:12+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[144]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/16 and GE0/0/15)
+Oct 30 2025 10:00:15+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[145]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 09:59:38+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[146]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 09:56:35+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[147]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 09:55:46+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[148]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/16 and GE0/0/15)
+Oct 30 2025 09:51:02+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[149]:MAC move detected. (VLAN=200, Original-Port=GE0/0/24, Flapping-Port=GE0/0/8 and XGE0/0/2)
+Oct 30 2025 09:39:43+08:00 4F-5735_POE24_142 %%01SECE/4/UCSUPPRESSRESUME(l)[150]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/23)
+Oct 30 2025 09:39:43+08:00 4F-5735_POE24_142 %%01SECE/4/UCSUPPRESSRESUME(l)[151]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/15)
+Oct 30 2025 09:39:43+08:00 4F-5735_POE24_142 %%01SECE/4/UCSUPPRESSRESUME(l)[152]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/16)
+Oct 30 2025 09:37:41+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[153]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/23 and GE0/0/24)
+Oct 30 2025 09:31:08+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[154]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 09:29:41+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[155]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/24 and GE0/0/18)
+Oct 30 2025 09:25:36+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[156]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 09:25:36+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[157]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 09:24:30+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[158]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 09:22:30+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[159]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 09:21:42+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[160]:MAC move detected. (VLAN=200, Original-Port=GE0/0/16, Flapping-Port=GE0/0/15 and GE0/0/23)
+Oct 30 2025 09:20:08+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[161]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 09:20:08+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[162]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 09:19:19+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[163]:Last message repeated 2 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 09:15:32+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[164]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 09:13:46+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[165]:MAC move detected. (VLAN=200, Original-Port=GE0/0/16, Flapping-Port=GE0/0/15 and GE0/0/23)
+Oct 30 2025 09:13:36+08:00 4F-5735_POE24_142 %%01SECE/4/UCSUPPRESS(l)[166]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/23)
+Oct 30 2025 09:13:36+08:00 4F-5735_POE24_142 %%01SECE/4/UCSUPPRESS(l)[167]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/15)
+Oct 30 2025 09:13:36+08:00 4F-5735_POE24_142 %%01SECE/4/UCSUPPRESS(l)[168]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/16)
+Oct 30 2025 09:12:21+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[169]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 09:10:02+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[170]:MAC move detected. (VLAN=200, Original-Port=GE0/0/16, Flapping-Port=GE0/0/15 and GE0/0/23)
+Oct 30 2025 09:09:11+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[171]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 09:09:11+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[172]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 09:08:27+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[173]:MAC move detected. (VLAN=200, Original-Port=GE0/0/16, Flapping-Port=GE0/0/15 and GE0/0/23)
+Oct 30 2025 09:08:06+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[174]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 09:06:53+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[175]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 09:06:08+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[176]:MAC move detected. (VLAN=200, Original-Port=GE0/0/16, Flapping-Port=GE0/0/15 and GE0/0/23)
+Oct 30 2025 09:02:33+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[177]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/16 and GE0/0/23)
+Oct 30 2025 09:00:27+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[178]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 09:00:18+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[179]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 08:59:35+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[180]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/16 and GE0/0/23)
+Oct 30 2025 08:58:20+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[181]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 08:57:32+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[182]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/16)
+Oct 30 2025 08:52:25+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[183]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 08:51:14+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[184]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/24)
+Oct 30 2025 08:45:16+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[185]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 08:42:37+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[186]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 08:41:00+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[187]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/16 and XGE0/0/2)
+Oct 30 2025 08:37:19+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[188]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 08:35:32+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[189]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/24)
+Oct 30 2025 08:35:24+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[190]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 08:35:24+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[191]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 08:34:19+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[192]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 08:31:01+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[193]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 08:30:14+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[194]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/16)
+Oct 30 2025 08:29:43+08:00 4F-5735_POE24_142 %%01SECE/4/UCSUPPRESSRESUME(l)[195]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/23)
+Oct 30 2025 08:29:43+08:00 4F-5735_POE24_142 %%01SECE/4/UCSUPPRESSRESUME(l)[196]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/15)
+Oct 30 2025 08:29:43+08:00 4F-5735_POE24_142 %%01SECE/4/UCSUPPRESSRESUME(l)[197]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/21)
+Oct 30 2025 08:29:43+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[198]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 08:27:52+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[199]:Last message repeated 2 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 08:24:16+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[200]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 08:23:28+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[201]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/16)
+Oct 30 2025 08:19:37+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[202]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 08:15:59+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[203]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 08:14:36+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[204]:MAC move detected. (VLAN=200, Original-Port=GE0/0/21, Flapping-Port=GE0/0/23 and GE0/0/16)
+Oct 30 2025 08:14:36+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[205]:Last message repeated 4 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 08:08:54+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[206]:Last message repeated 2 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 08:06:52+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[207]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 08:04:31+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[208]:MAC move detected. (VLAN=200, Original-Port=GE0/0/21, Flapping-Port=GE0/0/15 and GE0/0/23)
+Oct 30 2025 08:03:51+08:00 4F-5735_POE24_142 %%01SECE/4/UCSUPPRESS(l)[209]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/23)
+Oct 30 2025 08:03:51+08:00 4F-5735_POE24_142 %%01SECE/4/UCSUPPRESS(l)[210]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/15)
+Oct 30 2025 08:03:51+08:00 4F-5735_POE24_142 %%01SECE/4/UCSUPPRESS(l)[211]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/21)
+Oct 30 2025 08:03:51+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[212]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 08:02:41+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[213]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 08:01:52+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[214]:MAC move detected. (VLAN=200, Original-Port=GE0/0/21, Flapping-Port=GE0/0/15 and GE0/0/23)
+Oct 30 2025 08:01:52+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[215]:Last message repeated 2 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 07:57:51+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[216]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 07:56:23+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[217]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/23)
+Oct 30 2025 07:55:01+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[218]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 07:55:01+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[219]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 07:53:55+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[220]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 07:53:55+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[221]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 07:51:59+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[222]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 07:50:46+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[223]:MAC move detected. (VLAN=200, Original-Port=GE0/0/24, Flapping-Port=XGE0/0/2)
+Oct 30 2025 07:50:41+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[224]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 07:47:59+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[225]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 07:46:54+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[226]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/24)
+Oct 30 2025 07:42:11+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[227]:Last message repeated 3 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 07:37:58+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[228]:MAC move detected. (VLAN=200, Original-Port=GE0/0/24, Flapping-Port=GE0/0/3 and XGE0/0/2)
+Oct 30 2025 07:36:51+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[229]:MAC move detected. (VLAN=200, Original-Port=GE0/0/24, Flapping-Port=GE0/0/3)
+Oct 30 2025 07:36:51+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[230]:Last message repeated 2 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 07:32:06+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[231]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 07:31:14+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[232]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=XGE0/0/2)
+Oct 30 2025 07:31:14+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[233]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 07:26:57+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[234]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 07:26:13+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[235]:MAC move detected. (VLAN=200, Original-Port=GE0/0/16, Flapping-Port=XGE0/0/2)
+Oct 30 2025 07:22:04+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[236]:MAC move detected. (VLAN=200, Original-Port=GE0/0/24, Flapping-Port=GE0/0/12)
+Oct 30 2025 07:12:56+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[237]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/24 and XGE0/0/2)
+Oct 30 2025 07:07:31+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[238]:MAC move detected. (VLAN=200, Original-Port=GE0/0/24, Flapping-Port=XGE0/0/2)
+Oct 30 2025 07:06:57+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[239]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 07:06:57+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[240]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 07:05:49+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[241]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 07:02:20+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[242]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/23)
+Oct 30 2025 07:00:23+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[243]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 06:48:43+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[244]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/16 and GE0/0/15)
+Oct 30 2025 06:45:21+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[245]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/16 and GE0/0/15)
+Oct 30 2025 06:29:53+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[246]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/23)
+Oct 30 2025 06:25:29+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[247]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 06:25:29+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[248]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 06:24:22+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[249]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 06:20:03+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[250]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Peer clock unsynchronized/unselectable)
+Oct 30 2025 05:54:55+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[251]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 05:54:55+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[252]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 05:53:51+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[253]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 05:51:39+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[254]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 05:15:36+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[255]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 05:15:36+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[256]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 05:14:31+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[257]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 05:10:08+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[258]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 04:44:59+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[259]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 04:44:59+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[260]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 04:43:52+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[261]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 04:40:33+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[262]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 04:15:20+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[263]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 04:15:20+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[264]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 04:14:16+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[265]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 04:10:57+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[266]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 03:44:55+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[267]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 03:44:55+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[268]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 03:43:50+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[269]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 03:40:34+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[270]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 03:12:21+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[271]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 03:12:21+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[272]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 03:11:18+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[273]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 03:06:55+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[274]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 03:04:44+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[275]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 03:04:44+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[276]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 03:03:40+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[277]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 03:00:20+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[278]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 02:25:25+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[279]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 02:25:25+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[280]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 02:24:20+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[281]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 02:21:06+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[282]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 01:55:59+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[283]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 01:55:59+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[284]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 01:54:53+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[285]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 01:50:28+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[286]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 01:44:25+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[287]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/16 and GE0/0/24)
+Oct 30 2025 01:25:27+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[288]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 01:25:27+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[289]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 01:24:20+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[290]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 01:20:02+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[291]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Peer clock unsynchronized/unselectable)
+Oct 30 2025 00:45:19+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[292]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 00:45:19+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[293]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 00:44:12+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[294]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 00:40:54+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[295]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 00:14:51+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[296]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 00:14:51+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[297]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 00:13:45+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[298]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 00:10:32+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[299]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 23:45:37+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[300]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 23:45:37+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[301]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 23:44:31+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[302]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 23:40:11+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[303]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 23:29:40+08:00 4F-5735_POE24_142 %%01SECE/4/UCSUPPRESSRESUME(l)[304]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=XGigabitEthernet0/0/2)
+Oct 29 2025 23:29:40+08:00 4F-5735_POE24_142 %%01SECE/4/UCSUPPRESSRESUME(l)[305]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/24)
+Oct 29 2025 23:29:40+08:00 4F-5735_POE24_142 %%01SECE/4/UCSUPPRESSRESUME(l)[306]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/23)
+Oct 29 2025 23:08:37+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[307]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 23:08:37+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[308]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 23:07:51+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[309]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/24 and XGE0/0/2)
+Oct 29 2025 23:07:30+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[310]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 23:06:41+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[311]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/24 and XGE0/0/2)
+Oct 29 2025 23:06:34+08:00 4F-5735_POE24_142 %%01SECE/4/UCSUPPRESS(l)[312]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=XGigabitEthernet0/0/2)
+Oct 29 2025 23:06:34+08:00 4F-5735_POE24_142 %%01SECE/4/UCSUPPRESS(l)[313]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/24)
+Oct 29 2025 23:06:34+08:00 4F-5735_POE24_142 %%01SECE/4/UCSUPPRESS(l)[314]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/23)
+Oct 29 2025 23:05:54+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[315]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 23:02:46+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[316]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 23:01:25+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[317]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/24 and XGE0/0/2)
+Oct 29 2025 23:01:03+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[318]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 22:56:47+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[319]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 22:55:54+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[320]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/21)
+Oct 29 2025 22:31:14+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[321]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/16)
+Oct 29 2025 22:27:55+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[322]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 22:26:50+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[323]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/16 and GE0/0/21)
+Oct 29 2025 22:25:07+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[324]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 22:25:07+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[325]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 22:24:04+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[326]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/16 and GE0/0/21)
+Oct 29 2025 22:24:02+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[327]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 22:21:54+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[328]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/16 and GE0/0/21)
+Oct 29 2025 22:20:47+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[329]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 22:05:45+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[330]:MAC move detected. (VLAN=200, Original-Port=GE0/0/21, Flapping-Port=GE0/0/23)
+Oct 29 2025 21:55:45+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[331]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 21:55:45+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[332]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 21:54:41+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[333]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 21:51:26+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[334]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 21:49:24+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[335]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 21:47:46+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[336]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/18)
+Oct 29 2025 21:14:10+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[337]:MAC move detected. (VLAN=200, Original-Port=GE0/0/21, Flapping-Port=GE0/0/15 and GE0/0/23)
+Oct 29 2025 21:10:05+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[338]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 21:10:05+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[339]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 21:09:40+08:00 4F-5735_POE24_142 %%01SECE/4/UCSUPPRESSRESUME(l)[340]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/2)
+Oct 29 2025 21:09:40+08:00 4F-5735_POE24_142 %%01SECE/4/UCSUPPRESSRESUME(l)[341]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/24)
+Oct 29 2025 21:09:40+08:00 4F-5735_POE24_142 %%01SECE/4/UCSUPPRESSRESUME(l)[342]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=XGigabitEthernet0/0/2)
+Oct 29 2025 21:08:58+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[343]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 21:00:09+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[344]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 20:52:19+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[345]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 20:51:18+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[346]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/24 and GE0/0/2)
+Oct 29 2025 20:47:07+08:00 4F-5735_POE24_142 %%01SECE/4/UCSUPPRESS(l)[347]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/2)
+Oct 29 2025 20:47:07+08:00 4F-5735_POE24_142 %%01SECE/4/UCSUPPRESS(l)[348]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/24)
+Oct 29 2025 20:47:07+08:00 4F-5735_POE24_142 %%01SECE/4/UCSUPPRESS(l)[349]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=XGigabitEthernet0/0/2)
+Oct 29 2025 20:47:05+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[350]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/24 and GE0/0/2)
+Oct 29 2025 20:35:15+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[351]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 20:35:15+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[352]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 20:34:09+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[353]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 20:30:55+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[354]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 20:20:57+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[355]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/16)
+Oct 29 2025 20:10:22+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[356]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 20:10:22+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[357]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 20:09:17+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[358]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 20:03:19+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[359]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 20:00:48+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[360]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/24 and GE0/0/16)
+Oct 29 2025 20:00:34+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[361]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 20:00:34+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[362]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 19:53:00+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[363]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 19:51:08+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[364]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/23 and GE0/0/24)
+Oct 29 2025 19:41:17+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[365]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 19:39:29+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[366]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/23)
+Oct 29 2025 19:36:29+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[367]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 19:36:29+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[368]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 19:35:25+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[369]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 19:30:03+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[370]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Peer clock unsynchronized/unselectable)
+Oct 29 2025 19:27:48+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[371]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/24 and GE0/0/4)
+Oct 29 2025 19:21:59+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[372]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 19:19:33+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[373]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 19:18:25+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[374]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/24)
+Oct 29 2025 19:18:05+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[375]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 19:18:05+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[376]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 19:15:55+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[377]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 19:14:48+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[378]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 18:58:21+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[379]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/24 and GE0/0/23)
+Oct 29 2025 18:56:11+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[380]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 18:56:11+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[381]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 18:55:09+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[382]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/24 and GE0/0/23)
+Oct 29 2025 18:55:06+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[383]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 18:52:12+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[384]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/24 and GE0/0/23)
+Oct 29 2025 18:50:44+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[385]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 18:49:39+08:00 4F-5735_POE24_142 %%01SECE/4/UCSUPPRESSRESUME(l)[386]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/24)
+Oct 29 2025 18:49:39+08:00 4F-5735_POE24_142 %%01SECE/4/UCSUPPRESSRESUME(l)[387]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=XGigabitEthernet0/0/2)
+Oct 29 2025 18:44:50+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[388]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 18:32:37+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[389]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 18:30:31+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[390]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 18:29:14+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[391]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/24)
+Oct 29 2025 18:28:48+08:00 4F-5735_POE24_142 %%01SECE/4/UCSUPPRESS(l)[392]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/24)
+Oct 29 2025 18:28:48+08:00 4F-5735_POE24_142 %%01SECE/4/UCSUPPRESS(l)[393]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=XGigabitEthernet0/0/2)
+Oct 29 2025 18:28:48+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[394]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 18:27:41+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[395]:Last message repeated 2 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 18:25:29+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[396]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 18:24:44+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[397]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/24)
+Oct 29 2025 18:23:07+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[398]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/16)
+Oct 29 2025 18:16:59+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[399]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 18:16:59+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[400]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 18:15:53+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[401]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 18:07:12+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[402]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 18:06:38+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[403]:Last message repeated 3 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 18:04:05+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[404]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 18:03:14+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[405]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/23 and GE0/0/16)
+Oct 29 2025 18:03:14+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[406]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 18:00:12+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[407]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 17:59:01+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[408]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/16 and XGE0/0/2)
+Oct 29 2025 17:54:35+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[409]:MAC move detected. (VLAN=200, Original-Port=GE0/0/24, Flapping-Port=XGE0/0/2)
+Oct 29 2025 17:49:49+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[410]:Last message repeated 2 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 17:46:06+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[411]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 17:45:22+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[412]:MAC move detected. (VLAN=200, Original-Port=GE0/0/18, Flapping-Port=GE0/0/23 and GE0/0/24)
+Oct 29 2025 17:44:10+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[413]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 17:41:54+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[414]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 17:40:08+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[415]:MAC move detected. (VLAN=200, Original-Port=GE0/0/18, Flapping-Port=GE0/0/23 and GE0/0/24)
+Oct 29 2025 17:25:51+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[416]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 17:25:51+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[417]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 17:23:41+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[418]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 17:20:21+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[419]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 17:16:33+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[420]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 17:15:14+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[421]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/23)
+Oct 29 2025 17:14:57+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[422]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 17:14:57+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[423]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 17:13:52+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[424]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 17:09:32+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[425]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 16:56:29+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[426]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 16:56:29+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[427]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 16:55:24+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[428]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 16:51:05+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[429]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 16:45:36+08:00 4F-5735_POE24_142 %%01SECE/4/SPECIFY_SIP_ATTACK(l)[430]:The specified source IP address attack occurred. (Slot=MPU, SourceAttackIP=10.182.3.254, AttackProtocol=ARP, AttackPackets=70 packets per second)
+Oct 29 2025 16:45:36+08:00 4F-5735_POE24_142 %%01SECE/4/USER_ATTACK(l)[431]:User attack occurred. (Slot=MPU, SourceAttackInterface=XGigabitEthernet0/0/2, OuterVlan/InnerVlan=3/0, UserMacAddress=0009-0f09-0020, AttackProtocol=ARP, AttackPackets=70 packets per second)
+Oct 29 2025 16:45:35+08:00 4F-5735_POE24_142 %%01SECE/4/PORT_ATTACK_OCCUR(l)[432]:Auto port-defend started. (SourceAttackInterface=XGigabitEthernet0/0/2, AttackProtocol=ARP-REQUEST)
+Oct 29 2025 16:35:49+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[433]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 16:33:32+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[434]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/3 and GE0/0/1)
+Oct 29 2025 16:29:48+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[435]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 16:26:33+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[436]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/24 and XGE0/0/2)
+Oct 29 2025 16:24:53+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[437]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 16:24:53+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[438]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 16:23:46+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[439]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 16:20:28+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[440]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 16:10:30+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[441]:MAC move detected. (VLAN=200, Original-Port=GE0/0/15, Flapping-Port=GE0/0/21)
+Oct 29 2025 16:09:39+08:00 4F-5735_POE24_142 %%01SECE/4/UCSUPPRESSRESUME(l)[442]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/24)
+Oct 29 2025 16:09:39+08:00 4F-5735_POE24_142 %%01SECE/4/UCSUPPRESSRESUME(l)[443]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/23)
+Oct 29 2025 16:09:39+08:00 4F-5735_POE24_142 %%01SECE/4/UCSUPPRESSRESUME(l)[444]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=XGigabitEthernet0/0/2)
+Oct 29 2025 16:04:05+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[445]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/16)
+Oct 29 2025 16:04:05+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[446]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 15:57:06+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[447]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 15:55:02+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[448]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 15:52:57+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[449]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/23 and GE0/0/24)
+Oct 29 2025 15:51:26+08:00 4F-5735_POE24_142 %%01SECE/4/UCSUPPRESS(l)[450]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/24)
+Oct 29 2025 15:51:26+08:00 4F-5735_POE24_142 %%01SECE/4/UCSUPPRESS(l)[451]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/23)
+Oct 29 2025 15:51:26+08:00 4F-5735_POE24_142 %%01SECE/4/UCSUPPRESS(l)[452]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=XGigabitEthernet0/0/2)
+Oct 29 2025 15:49:49+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[453]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/23 and GE0/0/24)
+Oct 29 2025 15:46:32+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[454]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 15:46:32+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[455]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 15:45:25+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[456]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 15:41:02+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[457]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 15:34:26+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[458]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 15:34:26+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[459]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 15:33:21+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[460]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 15:30:05+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[461]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 15:20:22+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[462]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 15:20:22+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[463]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 15:19:18+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[464]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 15:16:02+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[465]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 15:14:57+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[466]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 15:13:10+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[467]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 15:12:06+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[468]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/24)
+Oct 29 2025 15:06:24+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[469]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/23 and GE0/0/24)
+Oct 29 2025 15:06:16+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[470]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 14:55:25+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[471]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 14:55:25+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[472]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 14:54:22+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[473]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 14:51:03+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[474]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 14:45:36+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[475]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 14:45:36+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[476]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 14:43:23+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[477]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 14:40:05+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[478]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 14:29:12+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[479]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 14:27:37+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[480]:MAC move detected. (VLAN=200, Original-Port=GE0/0/16, Flapping-Port=XGE0/0/2)
+Oct 29 2025 14:14:58+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[481]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 14:14:58+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[482]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 14:13:54+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[483]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 14:10:37+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[484]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 13:42:47+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[485]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 13:39:46+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[486]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/23 and GE0/0/24)
+Oct 29 2025 13:35:37+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[487]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 13:35:37+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[488]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 13:34:34+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[489]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 13:30:12+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[490]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 13:25:00+08:00 4F-5735_POE24_142 %%01INFO/4/SUPPRESS_LOG(l)[491]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 13:24:23+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[492]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/24)
+Oct 29 2025 13:18:09+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[493]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 13:18:09+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[494]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 13:17:04+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[495]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 13:08:17+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[496]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 12:56:21+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[497]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 12:56:21+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[498]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 12:54:14+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[499]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 12:53:10+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[500]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 12:46:49+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[501]:MAC move detected. (VLAN=200, Original-Port=GE0/0/24, Flapping-Port=GE0/0/15 and GE0/0/21)
+Oct 29 2025 12:40:39+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[502]:MAC move detected. (VLAN=200, Original-Port=GE0/0/24, Flapping-Port=GE0/0/15 and GE0/0/21)
+Oct 29 2025 12:16:50+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[503]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/23)
+Oct 29 2025 12:16:05+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[504]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 12:16:05+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[505]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 12:15:21+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[506]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/23)
+Oct 29 2025 12:14:59+08:00 4F-5735_POE24_142 %%01NTP/4/PEER_SELE(l)[507]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 12:13:48+08:00 4F-5735_POE24_142 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[508]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/23)
+Oct 29 2025 12:10:38+08:00 4F-5735_POE24_142 %%01NTP/4/SOURCE_LOST(l)[509]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 11:57:29+08:00 4F-5735_POE24_142 %%01NTP/4/STRATUM_CHANGE(l)[510]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 11:57:29+08:00 4F-5735_POE24_142 %%01NTP/4/LEAP_CHANGE(l)[511]:System leap changes from 3 to 0 after clock update.

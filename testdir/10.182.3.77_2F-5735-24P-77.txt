@@ -1,0 +1,1134 @@
+=== 设备信息 ===
+
+IP地址: 10.182.3.77
+主机名: 2F-5735-24P-77
+设备类型: huawei
+原始类型: huawei
+厂商: huawei
+执行时间: 2025-10-30 16:13:15
+
+=== 执行结果 ===
+Command: disp cur
+!Software Version V200R019C10SPC500
+#
+sysname 2F-5735-24P-77
+#
+vlan batch 2 to 15 22 24 to 29 58 to 66 100 120 132 199 to 212 220 to 240
+#
+stp mode rstp
+#
+authentication-profile name default_authen_profile
+authentication-profile name dot1x_authen_profile
+authentication-profile name dot1xmac_authen_profile
+authentication-profile name mac_authen_profile
+authentication-profile name multi_authen_profile
+authentication-profile name portal_authen_profile
+#
+undo http server enable
+undo http secure-server enable
+#
+diffserv domain default
+#
+radius-server template default
+#
+pki realm default
+ certificate-check none
+#
+acl number 2001
+ rule 10 permit source 10.182.3.200 0
+ rule 15 deny
+#
+free-rule-template name default_free_rule
+#
+portal-access-profile name portal_access_profile
+#
+aaa
+ authentication-scheme default
+  authentication-mode local
+ authentication-scheme radius
+  authentication-mode radius
+ authorization-scheme default
+  authorization-mode local
+ accounting-scheme default
+  accounting-mode none
+ local-aaa-user password policy administrator 
+  password history record number 0
+  password expire 0
+ domain default
+  authentication-scheme radius
+  accounting-scheme default
+  radius-server default
+ domain default_admin
+  authentication-scheme default
+  accounting-scheme default
+ undo local-user admin
+ local-user slglsw password irreversible-cipher $1c$5yNYED9F[0$cK29,kjwGXXS'#;U:HqYO3*&Z.(NE8Tlpq+fI2<7$
+ local-user slglsw privilege level 15
+ local-user slglsw service-type terminal ssh http
+ local-user itsupport password irreversible-cipher $1c$f!`6Wv>:eO$9$SX%Xzz_PrmW.'>fId$B5cd/hWQK-V8VG5/B!v($
+ local-user itsupport privilege level 15
+ local-user itsupport service-type terminal ssh
+#
+ntp-service server disable
+ntp-service ipv6 server disable
+ntp-service unicast-server 10.182.18.1
+#
+interface Vlanif1
+#
+interface Vlanif3
+ ip address 10.182.3.77 255.255.255.0
+#
+interface MEth0/0/1
+ ip address 192.168.1.253 255.255.255.0
+#
+interface GigabitEthernet0/0/1
+ port link-type access
+ port default vlan 6
+#
+interface GigabitEthernet0/0/2
+ port link-type access
+ port default vlan 8
+#
+interface GigabitEthernet0/0/3
+ port link-type access
+ port default vlan 8
+#
+interface GigabitEthernet0/0/4
+ port link-type access
+ port default vlan 63
+#
+interface GigabitEthernet0/0/5
+ port link-type access
+ port default vlan 8
+#
+interface GigabitEthernet0/0/6
+ port link-type access
+ port default vlan 63
+#
+interface GigabitEthernet0/0/7
+ port link-type access
+ port default vlan 61
+#
+interface GigabitEthernet0/0/8
+ port link-type access
+ port default vlan 8
+#
+interface GigabitEthernet0/0/9
+ port link-type access
+ port default vlan 62
+#
+interface GigabitEthernet0/0/10
+ port link-type access
+ port default vlan 63
+#
+interface GigabitEthernet0/0/11
+ port link-type access
+ port default vlan 63
+#
+interface GigabitEthernet0/0/12
+ port link-type access
+ port default vlan 63
+#
+interface GigabitEthernet0/0/13
+ port link-type access
+ port default vlan 11
+#
+interface GigabitEthernet0/0/14
+ port link-type access
+ port default vlan 61
+#
+interface GigabitEthernet0/0/15
+ port link-type access
+ port default vlan 28
+#
+interface GigabitEthernet0/0/16
+ port link-type access
+ port default vlan 120
+#
+interface GigabitEthernet0/0/17
+ port link-type access
+ port default vlan 28
+#
+interface GigabitEthernet0/0/18
+ port link-type access
+ port default vlan 65
+#
+interface GigabitEthernet0/0/19
+ port link-type access
+ port default vlan 9
+#
+interface GigabitEthernet0/0/20
+ port link-type access
+ port default vlan 8
+#
+interface GigabitEthernet0/0/21
+ port link-type access
+ port default vlan 28
+#
+interface GigabitEthernet0/0/22
+ port link-type access
+ port default vlan 28
+#
+interface GigabitEthernet0/0/23
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/24
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+#
+interface XGigabitEthernet0/0/1
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+#
+interface XGigabitEthernet0/0/2
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+#
+interface XGigabitEthernet0/0/3
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+#
+interface XGigabitEthernet0/0/4
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+#
+interface NULL0
+#
+undo icmp name timestamp-request receive
+#
+ip route-static 0.0.0.0 0.0.0.0 10.182.3.254
+#
+snmp-agent
+snmp-agent local-engineid 800007DB03E48326F47090
+snmp-agent sys-info version v3
+snmp-agent group v3 MySNMPGroup privacy read-view isoview acl 2001
+snmp-agent mib-view included isoview iso
+snmp-agent usm-user v3 snmpadmin
+snmp-agent usm-user v3 snmpadmin group MySNMPGroup
+snmp-agent usm-user v3 snmpadmin authentication-mode sha cipher %^%#H!UQTF6+|,7U!x(T+J*Pudv>>~%G!*uxb@8T@-rY%^%#
+snmp-agent usm-user v3 snmpadmin privacy-mode aes128 cipher %^%#QTZc@V9LV;-PpYPP%qOI>KLc1[Z,@/hyrDQL%$'N%^%#
+snmp-agent protocol source-interface Vlanif3
+#
+stelnet server enable
+ssh server cipher aes256_ctr aes128_ctr
+ssh client cipher aes256_ctr aes128_ctr
+ssh client hmac sha2_256
+ssh server dh-exchange min-len 2048
+#
+user-interface con 0
+ authentication-mode aaa
+user-interface vty 0 4
+ authentication-mode aaa
+user-interface vty 16 20
+#
+dot1x-access-profile name dot1x_access_profile
+#
+mac-access-profile name mac_access_profile
+#
+ops
+#
+return
+
+Command: dis clock
+2025-10-30 16:13:00+08:00
+Thursday
+Time Zone(DefaultZoneName) : UTC+08:00
+
+Command: disp ntp sessions
+ clock source: 10.182.18.1 
+ clock stratum: 4 
+ clock status: configured, master, sane, valid
+ reference clock ID: 10.201.102.22
+ reach: 3 
+ current poll: 64 
+ now: 36 
+ offset: 0.0000 ms 
+ delay: 0.00 ms 
+ disper: 0.00 ms
+
+Command: disp ntp status
+ clock status: unsynchronized 
+ clock stratum: 16 
+ reference clock ID: none
+ nominal frequency: 100.0000 Hz 
+ actual frequency: 100.0001 Hz 
+ clock precision: 2^18
+ clock offset: 0.0000 ms 
+ root delay: 101.86 ms 
+ root dispersion: 99.22 ms 
+ peer dispersion: 0.00 ms 
+ reference time: 08:08:04.038 UTC Oct 30 2025(ECAD9B64.09C9A34C)
+ synchronization state: clock set 
+
+Command: disp version
+Huawei Versatile Routing Platform Software
+VRP (R) software, Version 5.170 (S5735 V200R019C10SPC500)
+Copyright (C) 2000-2020 HUAWEI TECH Co., Ltd.
+HUAWEI S5735-S24P4X Routing Switch uptime is 41 weeks, 5 days, 0 hour, 3 minutes
+
+ES5D2V28S021 0(Master)  : uptime is 41 weeks, 5 days, 0 hour, 2 minutes
+DDR             Memory Size : 1024  M bytes
+FLASH Total     Memory Size : 512   M bytes
+FLASH Available Memory Size : 306   M bytes
+Pcb           Version   : VER.C
+BootROM(1st)       Version   : 0000.0121
+BootROM(2nd)       Version   : 0000.0200
+BootLoad      Version   : 0213.0000
+CPLD          Version   : 0104 
+MCU           Version   : 1.9.10.4
+Software      Version   : VRP (R) Software, Version 5.170 (V200R019C10SPC500)
+FLASH         Version   : 0000.0000
+PWR1 information
+Pcb           Version   : PWR VER.A
+
+Command: disp lldp nei br
+Local Intf       Neighbor Dev             Neighbor Intf             Exptime(s)
+GE0/0/4          -                        2c58-b993-84eb            2681   
+GE0/0/6          -                        f439-0911-a31c            2792   
+GE0/0/7          -                        80e8-2cff-b460            2684   
+GE0/0/10         -                        047c-16f4-5644            2741   
+GE0/0/12         -                        047c-1694-db24            3161   
+GE0/0/14         -                        2c58-b993-826c            3582   
+GE0/0/23         2F-5735-24P-22           GE0/0/23                  102    
+GE0/0/24         2F1-2960XR_24POE-01.slgl Gi1/0/24                  116    
+
+Command: disp lldp nei
+GigabitEthernet0/0/4 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :Locally assigned 
+Chassis ID     :SLGL-FB17 
+Port ID type   :MAC address 
+Port ID        :2c58-b993-84eb
+Expired time   :2680s
+
+
+Auto-negotiation supported    :Yes 
+Auto-negotiation enabled      :Yes
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+MED Device information             
+Device class   :EndPoint Class I
+
+GigabitEthernet0/0/6 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :Locally assigned 
+Chassis ID     :SLGL-FB18 
+Port ID type   :MAC address 
+Port ID        :f439-0911-a31c
+Expired time   :2791s
+
+
+Auto-negotiation supported    :Yes 
+Auto-negotiation enabled      :Yes
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+MED Device information             
+Device class   :EndPoint Class I
+
+GigabitEthernet0/0/7 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :Locally assigned 
+Chassis ID     :SLGL-FD106 
+Port ID type   :MAC address 
+Port ID        :80e8-2cff-b460
+Expired time   :2683s
+
+
+Auto-negotiation supported    :Yes 
+Auto-negotiation enabled      :Yes
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+MED Device information             
+Device class   :EndPoint Class I
+
+GigabitEthernet0/0/10 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :Locally assigned 
+Chassis ID     :SLGL-FB01 
+Port ID type   :MAC address 
+Port ID        :047c-16f4-5644
+Expired time   :2740s
+
+
+Auto-negotiation supported    :Yes 
+Auto-negotiation enabled      :Yes
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+MED Device information             
+Device class   :EndPoint Class I
+
+GigabitEthernet0/0/12 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :Locally assigned 
+Chassis ID     :SLGL-FB14 
+Port ID type   :MAC address 
+Port ID        :047c-1694-db24
+Expired time   :3160s
+
+
+Auto-negotiation supported    :Yes 
+Auto-negotiation enabled      :Yes
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+MED Device information             
+Device class   :EndPoint Class I
+
+GigabitEthernet0/0/14 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :Locally assigned 
+Chassis ID     :SLGL-FO09 
+Port ID type   :MAC address 
+Port ID        :2c58-b993-826c
+Expired time   :3581s
+
+
+Auto-negotiation supported    :Yes 
+Auto-negotiation enabled      :Yes
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+MED Device information             
+Device class   :EndPoint Class I
+
+GigabitEthernet0/0/23 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :e483-26f4-7480 
+Port ID type   :Interface name 
+Port ID        :GigabitEthernet0/0/23
+Port description    :GigabitEthernet0/0/23
+System name         :2F-5735-24P-22
+System description  :Huawei Switch S5735-S24P4X
+Huawei Versatile Routing Platform Software
+VRP (R) software, Version 5.170 (S5735 V200R019C10SPC500)
+Copyright (C) 2000-2020 HUAWEI TECH Co., Ltd.
+System capabilities supported   :bridge router 
+System capabilities enabled     :bridge router 
+Management address type  :ipv4
+Management address value :192.168.1.253
+OID  :0.6.15.43.6.1.4.1.2011.5.25.41.1.2.1.1.1.  
+Expired time   :101s
+
+Port VLAN ID(PVID)  :1
+VLAN name of VLAN  1:VLAN 0001
+
+Auto-negotiation supported    :Yes 
+Auto-negotiation enabled      :Yes
+OperMau   :speed(1000)/duplex(Full)
+
+Power port class            :PSE 
+PSE power supported         :Yes 
+PSE power enabled           :Yes 
+PSE pairs control ability   :Yes 
+Power pairs                 :Signal 
+Port power classification   :Class4
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+Maximum frame Size       :10240
+
+GigabitEthernet0/0/24 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :cc8e-71ac-9600 
+Port ID type   :Interface name 
+Port ID        :Gi1/0/24
+Port description    :GigabitEthernet1/0/24
+System name         :2F1-2960XR_24POE-01.slgl
+System description  :Cisco IOS Software, C2960X Software (C2960X-UNIVERSALK9-M), Version 15.2(7)E6, RELEASE SOFTWARE (fc2)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2022 by Cisco Systems, Inc.
+Compiled Tue 22-Mar-22 10:47 by mcpre
+System capabilities supported   :bridge router 
+System capabilities enabled     :bridge 
+Management address type  :ipv4
+Management address value :10.182.3.21
+OID  :  
+Expired time   :115s
+
+Port VLAN ID(PVID)  :1
+
+Auto-negotiation supported    :Yes 
+Auto-negotiation enabled      :Yes
+OperMau   :speed(1000)/duplex(Full)
+
+
+Command: disp int br
+PHY: Physical
+*down: administratively down
+#down: LBDT down
+(l): loopback
+(s): spoofing
+(E): E-Trunk down
+(b): BFD down
+(e): ETHOAM down
+(dl): DLDP down
+(lb): LBDT block
+(o): Observe-port forwarding down
+InUti/OutUti: input utility/output utility
+Interface                   PHY   Protocol  InUti OutUti   inErrors  outErrors
+GigabitEthernet0/0/1        down  down         0%     0%          0          0
+GigabitEthernet0/0/2        down  down         0%     0%          0          0
+GigabitEthernet0/0/3        down  down         0%     0%          0          0
+GigabitEthernet0/0/4        up    up        0.01%  0.03%          0          0
+GigabitEthernet0/0/5        down  down         0%     0%          0          0
+GigabitEthernet0/0/6        up    up        0.01%  0.03%          0          0
+GigabitEthernet0/0/7        up    up           0%     0%          0          0
+GigabitEthernet0/0/8        down  down         0%     0%          0          0
+GigabitEthernet0/0/9        down  down         0%     0%          1          0
+GigabitEthernet0/0/10       up    up        0.01%  0.02%        127          0
+GigabitEthernet0/0/11       down  down         0%     0%          3          0
+GigabitEthernet0/0/12       up    up           0%  0.02%          0          0
+GigabitEthernet0/0/13       down  down         0%     0%          0          0
+GigabitEthernet0/0/14       up    up           0%  0.01%         69          0
+GigabitEthernet0/0/15       down  down         0%     0%          0          0
+GigabitEthernet0/0/16       down  down         0%     0%          0          0
+GigabitEthernet0/0/17       down  down         0%     0%          0          0
+GigabitEthernet0/0/18       down  down         0%     0%          0          0
+GigabitEthernet0/0/19       down  down         0%     0%          0          0
+GigabitEthernet0/0/20       down  down         0%     0%          0          0
+GigabitEthernet0/0/21       down  down         0%     0%          0          0
+GigabitEthernet0/0/22       down  down         0%     0%          0          0
+GigabitEthernet0/0/23       up    up        0.13%  0.03%          0          0
+GigabitEthernet0/0/24       up    up        0.01%  0.03%          0          0
+MEth0/0/1                   down  down         0%     0%          0          0
+NULL0                       up    up(s)        0%     0%          0          0
+Vlanif1                     up    down         --     --          0          0
+Vlanif3                     up    up           --     --          0          0
+XGigabitEthernet0/0/1       down  down         0%     0%          0          0
+XGigabitEthernet0/0/2       down  down         0%     0%          0          0
+XGigabitEthernet0/0/3       down  down         0%     0%          0          0
+XGigabitEthernet0/0/4       down  down         0%     0%          0          0
+
+Command: disp cpu-u | inc CPU utilization
+CPU utilization for five seconds: 4%: one minute: 4%: five minutes: 4%
+
+Command: disp mem
+ Memory utilization statistics at 2025-10-30 16:13:09+08:00
+ System Total Memory Is: 522190848 bytes
+ Total Memory Used Is: 136772040 bytes
+ Memory Using Percentage Is: 26%
+
+Command: disp logbuffer
+Logging buffer configuration and contents : enabled
+Allowed max buffer size : 1024
+Actual buffer size : 512
+Channel number : 4 , Channel name : logbuffer
+Dropped messages : 0
+Overwritten messages : 36323
+Current messages : 512
+
+Oct 30 2025 16:12:24+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[0]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 16:10:13+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[1]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 16:08:04+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[2]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 16:08:04+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[3]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 16:07:00+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[4]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 16:00:26+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[5]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 15:55:02+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[6]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 15:55:02+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[7]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 15:53:59+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[8]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 15:50:40+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[9]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 15:25:33+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[10]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 15:25:33+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[11]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 15:24:28+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[12]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 15:20:06+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[13]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 14:46:22+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[14]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 14:46:22+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[15]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 14:45:18+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[16]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 14:40:55+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[17]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 14:15:52+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[18]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 14:15:52+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[19]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 14:14:45+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[20]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 14:10:25+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[21]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 13:45:27+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[22]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 13:45:27+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[23]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 13:44:22+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[24]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 13:41:09+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[25]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 13:35:51+08:00 2F-5735-24P-77 %%01MSTP/4/SET_PORT_FORWARDING(l)[26]:In MSTP process 0 instance 0, MSTP set port GigabitEthernet0/0/4 state as forwarding.
+Oct 30 2025 13:35:46+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[27]:Interface GigabitEthernet0/0/4 has turned into UP state.
+Oct 30 2025 13:35:45+08:00 2F-5735-24P-77 %%01IFADP/4/PORTUPINFO(l)[28]:Interface GigabitEthernet0/0/4 has turned into UP state. (Information=Physical state: up, Negotiation: enable, Negotiation complete: yes, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: yes, 1000M: yes), Remote half-duplex(10M: yes, 100M: yes, 1000M: no))
+Oct 30 2025 13:35:41+08:00 2F-5735-24P-77 %%01IFADP/4/PORTDOWNINFO(l)[29]:Interface GigabitEthernet0/0/4 has turned into DOWN state. (Information=Physical state: down, Negotiation: enable, Negotiation complete: no, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: no, 100M: no, 1000M: no), Remote half-duplex(10M: no, 100M: no, 1000M: no))
+Oct 30 2025 13:35:41+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[30]:Interface GigabitEthernet0/0/4 has turned into DOWN state.
+Oct 30 2025 13:35:35+08:00 2F-5735-24P-77 %%01MSTP/4/SET_PORT_FORWARDING(l)[31]:In MSTP process 0 instance 0, MSTP set port GigabitEthernet0/0/4 state as forwarding.
+Oct 30 2025 13:35:31+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[32]:Interface GigabitEthernet0/0/4 has turned into UP state.
+Oct 30 2025 13:35:29+08:00 2F-5735-24P-77 %%01IFADP/4/PORTUPINFO(l)[33]:Interface GigabitEthernet0/0/4 has turned into UP state. (Information=Physical state: up, Negotiation: enable, Negotiation complete: yes, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: no, 1000M: no), Remote half-duplex(10M: yes, 100M: no, 1000M: no))
+Oct 30 2025 13:35:24+08:00 2F-5735-24P-77 %%01IFADP/4/PORTDOWNINFO(l)[34]:Interface GigabitEthernet0/0/4 has turned into DOWN state. (Information=Physical state: down, Negotiation: enable, Negotiation complete: no, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: yes, 1000M: yes), Remote half-duplex(10M: yes, 100M: yes, 1000M: no))
+Oct 30 2025 13:35:24+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[35]:Interface GigabitEthernet0/0/4 has turned into DOWN state.
+Oct 30 2025 13:34:41+08:00 2F-5735-24P-77 %%01MSTP/4/SET_PORT_FORWARDING(l)[36]:In MSTP process 0 instance 0, MSTP set port GigabitEthernet0/0/4 state as forwarding.
+Oct 30 2025 13:34:37+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[37]:Interface GigabitEthernet0/0/4 has turned into UP state.
+Oct 30 2025 13:34:35+08:00 2F-5735-24P-77 %%01IFADP/4/PORTUPINFO(l)[38]:Interface GigabitEthernet0/0/4 has turned into UP state. (Information=Physical state: up, Negotiation: enable, Negotiation complete: yes, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: yes, 1000M: yes), Remote half-duplex(10M: yes, 100M: yes, 1000M: no))
+Oct 30 2025 13:34:32+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[39]:Interface GigabitEthernet0/0/4 has turned into DOWN state.
+Oct 30 2025 13:34:31+08:00 2F-5735-24P-77 %%01IFADP/4/PORTDOWNINFO(l)[40]:Interface GigabitEthernet0/0/4 has turned into DOWN state. (Information=Physical state: down, Negotiation: enable, Negotiation complete: no, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: no, 100M: no, 1000M: no), Remote half-duplex(10M: no, 100M: no, 1000M: no))
+Oct 30 2025 13:34:22+08:00 2F-5735-24P-77 %%01MSTP/4/SET_PORT_FORWARDING(l)[41]:In MSTP process 0 instance 0, MSTP set port GigabitEthernet0/0/4 state as forwarding.
+Oct 30 2025 13:34:17+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[42]:Interface GigabitEthernet0/0/4 has turned into UP state.
+Oct 30 2025 13:34:16+08:00 2F-5735-24P-77 %%01IFADP/4/PORTUPINFO(l)[43]:Interface GigabitEthernet0/0/4 has turned into UP state. (Information=Physical state: up, Negotiation: enable, Negotiation complete: yes, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: no, 1000M: no), Remote half-duplex(10M: yes, 100M: no, 1000M: no))
+Oct 30 2025 13:34:12+08:00 2F-5735-24P-77 %%01IFADP/4/PORTDOWNINFO(l)[44]:Interface GigabitEthernet0/0/4 has turned into DOWN state. (Information=Physical state: down, Negotiation: enable, Negotiation complete: no, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: yes, 1000M: yes), Remote half-duplex(10M: yes, 100M: yes, 1000M: no))
+Oct 30 2025 13:34:12+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[45]:Interface GigabitEthernet0/0/4 has turned into DOWN state.
+Oct 30 2025 13:09:40+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[46]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 13:09:40+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[47]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 13:08:36+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[48]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 13:01:04+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[49]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 12:35:00+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[50]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 12:35:00+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[51]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 12:33:56+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[52]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 12:30:38+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[53]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 11:55:56+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[54]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 11:55:56+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[55]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 11:54:50+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[56]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 11:50:32+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[57]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 11:36:27+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[58]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 11:36:27+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[59]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 11:35:21+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[60]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 11:33:11+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[61]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 11:32:06+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[62]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 11:23:24+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[63]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 11:22:19+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[64]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 11:13:37+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[65]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 11:12:44+08:00 2F-5735-24P-77 %%01IFPDT/4/PKT_OUTQUEDROP_NL(l)[66]:Interface output discard restored to the log threshold. (Interface=GigabitEthernet0/0/14, Statistics=43853, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=347760420, PortQueueDropped=43853, PortQueueNumber=1, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=4121929, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=17787223, PortQueueDropped=0)
+Oct 30 2025 11:12:31+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[67]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 11:07:40+08:00 2F-5735-24P-77 %%01IFPDT/4/PKT_OUTQUEDROP_ABNL(l)[68]:Interface output discard exceeded the log threshold. (Interface=GigabitEthernet0/0/14, Statistics=43853, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=347755806, PortQueueDropped=43853, PortQueueNumber=1, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=4121859, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=17786919, PortQueueDropped=0)
+Oct 30 2025 11:03:50+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[69]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 10:45:31+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[70]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 10:45:31+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[71]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 10:44:26+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[72]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 10:40:06+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[73]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 10:15:10+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[74]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 10:15:10+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[75]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 10:14:06+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[76]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 10:10:50+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[77]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 10:09:44+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[78]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 10:01:04+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[79]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 09:25:17+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[80]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 09:25:17+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[81]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 09:24:12+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[82]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 09:20:56+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[83]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 09:08:59+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[84]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 09:08:59+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[85]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 09:07:54+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[86]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 09:00:23+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[87]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 08:35:26+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[88]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 08:35:26+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[89]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 08:34:19+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[90]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 08:31:04+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[91]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 07:55:17+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[92]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 07:55:17+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[93]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 07:54:10+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[94]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 07:50:53+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[95]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 07:07:19+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[96]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 07:07:19+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[97]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 07:06:13+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[98]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 07:00:49+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[99]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 06:30:40+08:00 2F-5735-24P-77 %%01MSTP/4/SET_PORT_FORWARDING(l)[100]:In MSTP process 0 instance 0, MSTP set port GigabitEthernet0/0/7 state as forwarding.
+Oct 30 2025 06:30:36+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[101]:Interface GigabitEthernet0/0/7 has turned into UP state.
+Oct 30 2025 06:30:34+08:00 2F-5735-24P-77 %%01IFADP/4/PORTUPINFO(l)[102]:Interface GigabitEthernet0/0/7 has turned into UP state. (Information=Physical state: up, Negotiation: enable, Negotiation complete: yes, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: yes, 1000M: yes), Remote half-duplex(10M: yes, 100M: yes, 1000M: no))
+Oct 30 2025 06:30:15+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[103]:Interface GigabitEthernet0/0/7 has turned into DOWN state.
+Oct 30 2025 06:30:15+08:00 2F-5735-24P-77 %%01IFADP/4/PORTDOWNINFO(l)[104]:Interface GigabitEthernet0/0/7 has turned into DOWN state. (Information=Physical state: down, Negotiation: enable, Negotiation complete: no, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: yes, 1000M: yes), Remote half-duplex(10M: yes, 100M: yes, 1000M: no))
+Oct 30 2025 06:30:06+08:00 2F-5735-24P-77 %%01MSTP/4/SET_PORT_FORWARDING(l)[105]:In MSTP process 0 instance 0, MSTP set port GigabitEthernet0/0/14 state as forwarding.
+Oct 30 2025 06:30:01+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[106]:Interface GigabitEthernet0/0/14 has turned into UP state.
+Oct 30 2025 06:29:59+08:00 2F-5735-24P-77 %%01IFADP/4/PORTUPINFO(l)[107]:Interface GigabitEthernet0/0/14 has turned into UP state. (Information=Physical state: up, Negotiation: enable, Negotiation complete: yes, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: yes, 1000M: yes), Remote half-duplex(10M: yes, 100M: yes, 1000M: no))
+Oct 30 2025 06:29:55+08:00 2F-5735-24P-77 %%01IFADP/4/PORTDOWNINFO(l)[108]:Interface GigabitEthernet0/0/14 has turned into DOWN state. (Information=Physical state: down, Negotiation: enable, Negotiation complete: no, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: yes, 1000M: yes), Remote half-duplex(10M: yes, 100M: yes, 1000M: no))
+Oct 30 2025 06:29:55+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[109]:Interface GigabitEthernet0/0/14 has turned into DOWN state.
+Oct 30 2025 06:28:59+08:00 2F-5735-24P-77 %%01MSTP/4/SET_PORT_FORWARDING(l)[110]:In MSTP process 0 instance 0, MSTP set port GigabitEthernet0/0/7 state as forwarding.
+Oct 30 2025 06:28:55+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[111]:Interface GigabitEthernet0/0/7 has turned into UP state.
+Oct 30 2025 06:28:53+08:00 2F-5735-24P-77 %%01IFADP/4/PORTUPINFO(l)[112]:Interface GigabitEthernet0/0/7 has turned into UP state. (Information=Physical state: up, Negotiation: enable, Negotiation complete: yes, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: yes, 1000M: yes), Remote half-duplex(10M: yes, 100M: yes, 1000M: no))
+Oct 30 2025 06:28:49+08:00 2F-5735-24P-77 %%01IFADP/4/PORTDOWNINFO(l)[113]:Interface GigabitEthernet0/0/7 has turned into DOWN state. (Information=Physical state: down, Negotiation: enable, Negotiation complete: no, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: yes, 1000M: yes), Remote half-duplex(10M: yes, 100M: yes, 1000M: no))
+Oct 30 2025 06:28:49+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[114]:Interface GigabitEthernet0/0/7 has turned into DOWN state.
+Oct 30 2025 06:27:22+08:00 2F-5735-24P-77 %%01MSTP/4/SET_PORT_FORWARDING(l)[115]:In MSTP process 0 instance 0, MSTP set port GigabitEthernet0/0/7 state as forwarding.
+Oct 30 2025 06:27:22+08:00 2F-5735-24P-77 %%01MSTP/4/SET_PORT_FORWARDING(l)[116]:In MSTP process 0 instance 0, MSTP set port GigabitEthernet0/0/14 state as forwarding.
+Oct 30 2025 06:27:18+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[117]:Interface GigabitEthernet0/0/14 has turned into UP state.
+Oct 30 2025 06:27:18+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[118]:Interface GigabitEthernet0/0/7 has turned into UP state.
+Oct 30 2025 06:27:16+08:00 2F-5735-24P-77 %%01IFADP/4/PORTUPINFO(l)[119]:Interface GigabitEthernet0/0/14 has turned into UP state. (Information=Physical state: up, Negotiation: enable, Negotiation complete: yes, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: yes, 1000M: yes), Remote half-duplex(10M: yes, 100M: yes, 1000M: no))
+Oct 30 2025 06:27:16+08:00 2F-5735-24P-77 %%01IFADP/4/PORTUPINFO(l)[120]:Interface GigabitEthernet0/0/7 has turned into UP state. (Information=Physical state: up, Negotiation: enable, Negotiation complete: yes, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: yes, 1000M: yes), Remote half-duplex(10M: yes, 100M: yes, 1000M: no))
+Oct 30 2025 06:24:50+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[121]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 06:24:50+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[122]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 06:23:46+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[123]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 06:20:30+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[124]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 05:55:27+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[125]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 05:55:27+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[126]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 05:54:23+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[127]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 05:51:07+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[128]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 05:15:25+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[129]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 05:15:25+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[130]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 05:14:21+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[131]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 05:11:03+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[132]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 04:45:04+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[133]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 04:45:04+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[134]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 04:43:59+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[135]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 04:40:45+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[136]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 04:14:36+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[137]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 04:14:36+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[138]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 04:13:32+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[139]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 04:10:15+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[140]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 03:45:11+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[141]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 03:45:11+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[142]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 03:44:05+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[143]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 03:40:49+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[144]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 03:12:36+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[145]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 03:12:36+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[146]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 03:11:29+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[147]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 03:07:08+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[148]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 03:04:55+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[149]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 03:04:55+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[150]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 03:03:51+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[151]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 03:00:32+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[152]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 02:25:39+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[153]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 02:25:39+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[154]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 02:24:33+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[155]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 02:20:11+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[156]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 01:55:09+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[157]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 01:55:09+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[158]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 01:54:04+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[159]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 01:50:49+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[160]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 01:24:53+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[161]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 01:24:53+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[162]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 01:23:49+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[163]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 01:20:34+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[164]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 00:44:40+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[165]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 00:44:40+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[166]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 00:43:33+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[167]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 00:40:54+08:00 2F-5735-24P-77 %%01IFPDT/4/PKT_OUTQUEDROP_NL(l)[168]:Interface output discard restored to the log threshold. (Interface=GigabitEthernet0/0/6, Statistics=62125, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=209364303, PortQueueDropped=62125, PortQueueNumber=1, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=4735932, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=20472638, PortQueueDropped=0)
+Oct 30 2025 00:40:21+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[169]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 00:35:51+08:00 2F-5735-24P-77 %%01IFPDT/4/PKT_OUTQUEDROP_ABNL(l)[170]:Interface output discard exceeded the log threshold. (Interface=GigabitEthernet0/0/6, Statistics=61983, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=209290089, PortQueueDropped=62071, PortQueueNumber=1, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=4735862, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=20472336, PortQueueDropped=0)
+Oct 30 2025 00:15:27+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[171]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 00:15:27+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[172]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 00:14:20+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[173]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 00:11:03+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[174]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 23:45:07+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[175]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 23:45:07+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[176]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 23:44:01+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[177]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 23:40:47+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[178]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 23:08:18+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[179]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 23:08:18+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[180]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 23:07:14+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[181]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 23:06:43+08:00 2F-5735-24P-77 %%01IFADP/4/PORTUPINFO(l)[182]:Interface GigabitEthernet0/0/14 has turned into UP state. (Information=Physical state: up, Negotiation: enable, Negotiation complete: yes, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: yes, 1000M: yes), Remote half-duplex(10M: yes, 100M: yes, 1000M: no))
+Oct 29 2025 23:06:43+08:00 2F-5735-24P-77 %%01IFADP/4/PORTDOWNINFO(l)[183]:Interface GigabitEthernet0/0/7 has turned into DOWN state. (Information=Physical state: down, Negotiation: enable, Negotiation complete: no, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: yes, 1000M: yes), Remote half-duplex(10M: yes, 100M: yes, 1000M: no))
+Oct 29 2025 23:06:43+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[184]:Interface GigabitEthernet0/0/7 has turned into DOWN state.
+Oct 29 2025 23:06:43+08:00 2F-5735-24P-77 %%01IFADP/4/PORTDOWNINFO(l)[185]:Interface GigabitEthernet0/0/14 has turned into DOWN state. (Information=Physical state: down, Negotiation: enable, Negotiation complete: no, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: yes, 1000M: yes), Remote half-duplex(10M: yes, 100M: yes, 1000M: no))
+Oct 29 2025 23:06:43+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[186]:Interface GigabitEthernet0/0/14 has turned into DOWN state.
+Oct 29 2025 23:05:55+08:00 2F-5735-24P-77 %%01MSTP/4/SET_PORT_FORWARDING(l)[187]:In MSTP process 0 instance 0, MSTP set port GigabitEthernet0/0/14 state as forwarding.
+Oct 29 2025 23:05:51+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[188]:Interface GigabitEthernet0/0/14 has turned into UP state.
+Oct 29 2025 23:05:49+08:00 2F-5735-24P-77 %%01IFADP/4/PORTUPINFO(l)[189]:Interface GigabitEthernet0/0/14 has turned into UP state. (Information=Physical state: up, Negotiation: enable, Negotiation complete: yes, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: yes, 1000M: yes), Remote half-duplex(10M: yes, 100M: yes, 1000M: no))
+Oct 29 2025 23:05:45+08:00 2F-5735-24P-77 %%01IFADP/4/PORTDOWNINFO(l)[190]:Interface GigabitEthernet0/0/14 has turned into DOWN state. (Information=Physical state: down, Negotiation: enable, Negotiation complete: no, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: no, 100M: no, 1000M: no), Remote half-duplex(10M: no, 100M: no, 1000M: no))
+Oct 29 2025 23:05:45+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[191]:Interface GigabitEthernet0/0/14 has turned into DOWN state.
+Oct 29 2025 23:05:39+08:00 2F-5735-24P-77 %%01MSTP/4/SET_PORT_FORWARDING(l)[192]:In MSTP process 0 instance 0, MSTP set port GigabitEthernet0/0/14 state as forwarding.
+Oct 29 2025 23:05:35+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[193]:Interface GigabitEthernet0/0/14 has turned into UP state.
+Oct 29 2025 23:05:33+08:00 2F-5735-24P-77 %%01IFADP/4/PORTUPINFO(l)[194]:Interface GigabitEthernet0/0/14 has turned into UP state. (Information=Physical state: up, Negotiation: enable, Negotiation complete: yes, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: no, 1000M: no), Remote half-duplex(10M: yes, 100M: no, 1000M: no))
+Oct 29 2025 23:05:29+08:00 2F-5735-24P-77 %%01IFADP/4/PORTDOWNINFO(l)[195]:Interface GigabitEthernet0/0/14 has turned into DOWN state. (Information=Physical state: down, Negotiation: enable, Negotiation complete: no, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: yes, 1000M: yes), Remote half-duplex(10M: yes, 100M: yes, 1000M: no))
+Oct 29 2025 23:05:29+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[196]:Interface GigabitEthernet0/0/14 has turned into DOWN state.
+Oct 29 2025 23:04:33+08:00 2F-5735-24P-77 %%01MSTP/4/SET_PORT_FORWARDING(l)[197]:In MSTP process 0 instance 0, MSTP set port GigabitEthernet0/0/14 state as forwarding.
+Oct 29 2025 23:04:29+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[198]:Interface GigabitEthernet0/0/14 has turned into UP state.
+Oct 29 2025 23:04:27+08:00 2F-5735-24P-77 %%01IFADP/4/PORTUPINFO(l)[199]:Interface GigabitEthernet0/0/14 has turned into UP state. (Information=Physical state: up, Negotiation: enable, Negotiation complete: yes, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: yes, 1000M: yes), Remote half-duplex(10M: yes, 100M: yes, 1000M: no))
+Oct 29 2025 23:04:23+08:00 2F-5735-24P-77 %%01IFADP/4/PORTDOWNINFO(l)[200]:Interface GigabitEthernet0/0/14 has turned into DOWN state. (Information=Physical state: down, Negotiation: enable, Negotiation complete: no, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: no, 100M: no, 1000M: no), Remote half-duplex(10M: no, 100M: no, 1000M: no))
+Oct 29 2025 23:04:23+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[201]:Interface GigabitEthernet0/0/14 has turned into DOWN state.
+Oct 29 2025 23:04:17+08:00 2F-5735-24P-77 %%01MSTP/4/SET_PORT_FORWARDING(l)[202]:In MSTP process 0 instance 0, MSTP set port GigabitEthernet0/0/14 state as forwarding.
+Oct 29 2025 23:04:13+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[203]:Interface GigabitEthernet0/0/14 has turned into UP state.
+Oct 29 2025 23:04:11+08:00 2F-5735-24P-77 %%01IFADP/4/PORTUPINFO(l)[204]:Interface GigabitEthernet0/0/14 has turned into UP state. (Information=Physical state: up, Negotiation: enable, Negotiation complete: yes, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: no, 1000M: no), Remote half-duplex(10M: yes, 100M: no, 1000M: no))
+Oct 29 2025 23:04:07+08:00 2F-5735-24P-77 %%01IFADP/4/PORTDOWNINFO(l)[205]:Interface GigabitEthernet0/0/14 has turned into DOWN state. (Information=Physical state: down, Negotiation: enable, Negotiation complete: no, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: yes, 1000M: yes), Remote half-duplex(10M: yes, 100M: yes, 1000M: no))
+Oct 29 2025 23:04:07+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[206]:Interface GigabitEthernet0/0/14 has turned into DOWN state.
+Oct 29 2025 23:00:44+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[207]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 22:25:00+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[208]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 22:25:00+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[209]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 22:23:56+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[210]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 22:20:42+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[211]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 21:55:43+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[212]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 21:55:43+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[213]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 21:54:38+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[214]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 21:50:16+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[215]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 21:10:01+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[216]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 21:10:01+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[217]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 21:08:56+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[218]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 21:00:10+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[219]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 20:35:11+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[220]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 20:35:11+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[221]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 20:34:06+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[222]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 20:30:47+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[223]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 20:10:16+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[224]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 20:10:16+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[225]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 20:09:09+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[226]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 20:00:27+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[227]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 19:36:28+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[228]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 19:36:28+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[229]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 19:35:23+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[230]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 19:31:01+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[231]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 18:56:13+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[232]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 18:56:13+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[233]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 18:55:07+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[234]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 18:50:49+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[235]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 18:17:09+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[236]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 18:17:09+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[237]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 18:16:02+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[238]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 18:07:21+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[239]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 17:24:53+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[240]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 17:24:53+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[241]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 17:23:46+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[242]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 17:20:31+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[243]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 17:15:07+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[244]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 17:15:07+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[245]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 17:14:02+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[246]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 17:09:40+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[247]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 16:55:33+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[248]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 16:55:33+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[249]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 16:54:28+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[250]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 16:50:06+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[251]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 16:45:36+08:00 2F-5735-24P-77 %%01SECE/4/SPECIFY_SIP_ATTACK(l)[252]:The specified source IP address attack occurred. (Slot=MPU, SourceAttackIP=10.182.3.254, AttackProtocol=ARP, AttackPackets=75 packets per second)
+Oct 29 2025 16:45:36+08:00 2F-5735-24P-77 %%01SECE/4/USER_ATTACK(l)[253]:User attack occurred. (Slot=MPU, SourceAttackInterface=GigabitEthernet0/0/23, OuterVlan/InnerVlan=3/0, UserMacAddress=0009-0f09-0020, AttackProtocol=ARP, AttackPackets=75 packets per second)
+Oct 29 2025 16:45:35+08:00 2F-5735-24P-77 %%01SECE/4/PORT_ATTACK_OCCUR(l)[254]:Auto port-defend started. (SourceAttackInterface=GigabitEthernet0/0/23, AttackProtocol=ARP-REQUEST)
+Oct 29 2025 16:25:02+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[255]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 16:25:02+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[256]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 16:23:57+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[257]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 16:20:44+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[258]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 15:46:08+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[259]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 15:46:08+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[260]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 15:45:02+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[261]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 15:40:40+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[262]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 15:35:15+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[263]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 15:35:15+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[264]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 15:34:11+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[265]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 15:32:01+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[266]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 15:21:10+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[267]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 15:21:10+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[268]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 15:20:05+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[269]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 15:15:43+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[270]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 15:14:38+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[271]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 15:05:56+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[272]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 14:55:06+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[273]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 14:55:06+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[274]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 14:53:59+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[275]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 14:50:46+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[276]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 14:45:23+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[277]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 14:45:23+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[278]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 14:44:19+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[279]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 14:41:00+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[280]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 14:14:56+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[281]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 14:14:56+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[282]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 14:13:51+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[283]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 14:10:35+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[284]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 13:34:37+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[285]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 13:34:37+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[286]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 13:33:33+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[287]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 13:30:16+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[288]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 13:19:23+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[289]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 13:19:23+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[290]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 13:18:19+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[291]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 13:17:14+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[292]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 13:16:09+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[293]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 13:07:28+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[294]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 12:55:32+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[295]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 12:55:32+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[296]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 12:54:28+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[297]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 12:50:05+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[298]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 12:16:27+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[299]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 12:16:27+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[300]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 12:15:23+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[301]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 12:11:03+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[302]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 11:56:49+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[303]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 11:56:49+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[304]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 11:55:45+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[305]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 11:50:19+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[306]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Peer clock unsynchronized/unselectable)
+Oct 29 2025 11:15:32+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[307]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 11:15:32+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[308]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 11:14:29+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[309]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 11:10:04+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[310]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Peer clock unsynchronized/unselectable)
+Oct 29 2025 10:45:06+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[311]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 10:45:06+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[312]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 10:44:00+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[313]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 10:40:44+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[314]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 10:15:43+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[315]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 10:15:43+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[316]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 10:14:38+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[317]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 10:10:18+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[318]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Peer clock unsynchronized/unselectable)
+Oct 29 2025 09:36:37+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[319]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 09:36:37+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[320]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 09:35:31+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[321]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 09:30:09+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[322]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Peer clock unsynchronized/unselectable)
+Oct 29 2025 09:07:14+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[323]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 09:07:14+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[324]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 09:06:07+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[325]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 09:00:46+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[326]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 08:24:53+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[327]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 08:24:53+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[328]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 08:23:46+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[329]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 08:20:29+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[330]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 08:20:12+08:00 2F-5735-24P-77 %%01MSTP/4/SET_PORT_FORWARDING(l)[331]:In MSTP process 0 instance 0, MSTP set port GigabitEthernet0/0/12 state as forwarding.
+Oct 29 2025 08:20:07+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[332]:Interface GigabitEthernet0/0/12 has turned into UP state.
+Oct 29 2025 08:20:05+08:00 2F-5735-24P-77 %%01IFADP/4/PORTUPINFO(l)[333]:Interface GigabitEthernet0/0/12 has turned into UP state. (Information=Physical state: up, Negotiation: enable, Negotiation complete: yes, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: yes, 1000M: yes), Remote half-duplex(10M: yes, 100M: yes, 1000M: no))
+Oct 29 2025 08:20:01+08:00 2F-5735-24P-77 %%01IFADP/4/PORTDOWNINFO(l)[334]:Interface GigabitEthernet0/0/12 has turned into DOWN state. (Information=Physical state: down, Negotiation: enable, Negotiation complete: no, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: yes, 1000M: yes), Remote half-duplex(10M: yes, 100M: yes, 1000M: no))
+Oct 29 2025 08:20:01+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[335]:Interface GigabitEthernet0/0/12 has turned into DOWN state.
+Oct 29 2025 08:19:59+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[336]:Interface GigabitEthernet0/0/12 has turned into UP state.
+Oct 29 2025 08:19:58+08:00 2F-5735-24P-77 %%01IFADP/4/PORTUPINFO(l)[337]:Interface GigabitEthernet0/0/12 has turned into UP state. (Information=Physical state: up, Negotiation: enable, Negotiation complete: yes, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: yes, 1000M: yes), Remote half-duplex(10M: yes, 100M: yes, 1000M: no))
+Oct 29 2025 08:19:54+08:00 2F-5735-24P-77 %%01IFADP/4/PORTDOWNINFO(l)[338]:Interface GigabitEthernet0/0/12 has turned into DOWN state. (Information=Physical state: down, Negotiation: enable, Negotiation complete: no, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: no, 100M: no, 1000M: no), Remote half-duplex(10M: no, 100M: no, 1000M: no))
+Oct 29 2025 08:19:54+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[339]:Interface GigabitEthernet0/0/12 has turned into DOWN state.
+Oct 29 2025 08:19:52+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[340]:Interface GigabitEthernet0/0/12 has turned into UP state.
+Oct 29 2025 08:19:50+08:00 2F-5735-24P-77 %%01IFADP/4/PORTUPINFO(l)[341]:Interface GigabitEthernet0/0/12 has turned into UP state. (Information=Physical state: up, Negotiation: enable, Negotiation complete: yes, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: no, 1000M: no), Remote half-duplex(10M: yes, 100M: no, 1000M: no))
+Oct 29 2025 07:44:49+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[342]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 07:44:49+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[343]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 07:43:45+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[344]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 07:40:27+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[345]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 07:06:59+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[346]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 07:06:59+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[347]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 07:05:53+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[348]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 07:00:27+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[349]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 06:30:26+08:00 2F-5735-24P-77 %%01MSTP/4/SET_PORT_FORWARDING(l)[350]:In MSTP process 0 instance 0, MSTP set port GigabitEthernet0/0/7 state as forwarding.
+Oct 29 2025 06:30:22+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[351]:Interface GigabitEthernet0/0/7 has turned into UP state.
+Oct 29 2025 06:30:20+08:00 2F-5735-24P-77 %%01IFADP/4/PORTUPINFO(l)[352]:Interface GigabitEthernet0/0/7 has turned into UP state. (Information=Physical state: up, Negotiation: enable, Negotiation complete: yes, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: yes, 1000M: yes), Remote half-duplex(10M: yes, 100M: yes, 1000M: no))
+Oct 29 2025 06:30:09+08:00 2F-5735-24P-77 %%01MSTP/4/SET_PORT_FORWARDING(l)[353]:In MSTP process 0 instance 0, MSTP set port GigabitEthernet0/0/14 state as forwarding.
+Oct 29 2025 06:30:05+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[354]:Interface GigabitEthernet0/0/14 has turned into UP state.
+Oct 29 2025 06:30:03+08:00 2F-5735-24P-77 %%01IFADP/4/PORTUPINFO(l)[355]:Interface GigabitEthernet0/0/14 has turned into UP state. (Information=Physical state: up, Negotiation: enable, Negotiation complete: yes, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: yes, 1000M: yes), Remote half-duplex(10M: yes, 100M: yes, 1000M: no))
+Oct 29 2025 06:30:01+08:00 2F-5735-24P-77 %%01IFADP/4/PORTDOWNINFO(l)[356]:Interface GigabitEthernet0/0/7 has turned into DOWN state. (Information=Physical state: down, Negotiation: enable, Negotiation complete: no, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: yes, 1000M: yes), Remote half-duplex(10M: yes, 100M: yes, 1000M: no))
+Oct 29 2025 06:30:01+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[357]:Interface GigabitEthernet0/0/7 has turned into DOWN state.
+Oct 29 2025 06:29:58+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[358]:Interface GigabitEthernet0/0/14 has turned into DOWN state.
+Oct 29 2025 06:29:58+08:00 2F-5735-24P-77 %%01IFADP/4/PORTDOWNINFO(l)[359]:Interface GigabitEthernet0/0/14 has turned into DOWN state. (Information=Physical state: down, Negotiation: enable, Negotiation complete: no, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: yes, 1000M: yes), Remote half-duplex(10M: yes, 100M: yes, 1000M: no))
+Oct 29 2025 06:29:56+08:00 2F-5735-24P-77 %%01MSTP/4/SET_PORT_FORWARDING(l)[360]:In MSTP process 0 instance 0, MSTP set port GigabitEthernet0/0/14 state as forwarding.
+Oct 29 2025 06:29:52+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[361]:Interface GigabitEthernet0/0/14 has turned into UP state.
+Oct 29 2025 06:29:50+08:00 2F-5735-24P-77 %%01IFADP/4/PORTUPINFO(l)[362]:Interface GigabitEthernet0/0/14 has turned into UP state. (Information=Physical state: up, Negotiation: enable, Negotiation complete: yes, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: yes, 1000M: yes), Remote half-duplex(10M: yes, 100M: yes, 1000M: no))
+Oct 29 2025 06:29:26+08:00 2F-5735-24P-77 %%01MSTP/4/SET_PORT_FORWARDING(l)[363]:In MSTP process 0 instance 0, MSTP set port GigabitEthernet0/0/7 state as forwarding.
+Oct 29 2025 06:29:22+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[364]:Interface GigabitEthernet0/0/7 has turned into UP state.
+Oct 29 2025 06:29:20+08:00 2F-5735-24P-77 %%01IFADP/4/PORTUPINFO(l)[365]:Interface GigabitEthernet0/0/7 has turned into UP state. (Information=Physical state: up, Negotiation: enable, Negotiation complete: yes, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: yes, 1000M: yes), Remote half-duplex(10M: yes, 100M: yes, 1000M: no))
+Oct 29 2025 06:29:16+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[366]:Interface GigabitEthernet0/0/7 has turned into DOWN state.
+Oct 29 2025 06:29:16+08:00 2F-5735-24P-77 %%01IFADP/4/PORTDOWNINFO(l)[367]:Interface GigabitEthernet0/0/7 has turned into DOWN state. (Information=Physical state: down, Negotiation: enable, Negotiation complete: no, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: yes, 1000M: yes), Remote half-duplex(10M: yes, 100M: yes, 1000M: no))
+Oct 29 2025 06:27:50+08:00 2F-5735-24P-77 %%01MSTP/4/SET_PORT_FORWARDING(l)[368]:In MSTP process 0 instance 0, MSTP set port GigabitEthernet0/0/7 state as forwarding.
+Oct 29 2025 06:27:46+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[369]:Interface GigabitEthernet0/0/7 has turned into UP state.
+Oct 29 2025 06:27:44+08:00 2F-5735-24P-77 %%01IFADP/4/PORTUPINFO(l)[370]:Interface GigabitEthernet0/0/7 has turned into UP state. (Information=Physical state: up, Negotiation: enable, Negotiation complete: yes, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: yes, 1000M: yes), Remote half-duplex(10M: yes, 100M: yes, 1000M: no))
+Oct 29 2025 06:25:38+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[371]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 06:25:38+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[372]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 06:24:33+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[373]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 06:20:15+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[374]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 05:45:33+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[375]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 05:45:33+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[376]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 05:44:29+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[377]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 05:40:09+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[378]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 05:15:20+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[379]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 05:15:20+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[380]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 05:14:16+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[381]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 05:11:00+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[382]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 04:35:10+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[383]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 04:35:10+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[384]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 04:34:07+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[385]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 04:30:50+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[386]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 03:56:03+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[387]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 03:56:03+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[388]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 03:55:00+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[389]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 03:50:40+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[390]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 03:05:12+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[391]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 03:05:12+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[392]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 03:04:07+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[393]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 03:00:55+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[394]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 02:25:13+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[395]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 02:25:13+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[396]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 02:24:05+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[397]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 02:22:58+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[398]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 02:21:52+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[399]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 02:13:09+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[400]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 02:12:05+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[401]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 02:03:18+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[402]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 01:55:43+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[403]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 01:55:43+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[404]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 01:54:37+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[405]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 01:50:13+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[406]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 01:15:35+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[407]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 01:15:35+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[408]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 01:14:29+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[409]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 01:12:19+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[410]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 01:11:16+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[411]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 01:02:35+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[412]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 00:34:24+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[413]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 00:34:24+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[414]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 00:33:20+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[415]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 00:30:04+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[416]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Peer clock unsynchronized/unselectable)
+Oct 29 2025 00:06:16+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[417]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 00:06:16+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[418]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 00:05:11+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[419]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 00:00:54+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[420]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 23:25:07+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[421]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 23:25:07+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[422]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 23:24:01+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[423]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 23:20:45+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[424]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 23:19:40+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[425]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 23:19:40+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[426]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 23:18:35+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[427]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 23:10:53+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[428]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 23:09:49+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[429]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 23:06:19+08:00 2F-5735-24P-77 %%01IFADP/4/PORTDOWNINFO(l)[430]:Interface GigabitEthernet0/0/7 has turned into DOWN state. (Information=Physical state: down, Negotiation: enable, Negotiation complete: no, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: yes, 1000M: yes), Remote half-duplex(10M: yes, 100M: yes, 1000M: no))
+Oct 28 2025 23:06:19+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[431]:Interface GigabitEthernet0/0/7 has turned into DOWN state.
+Oct 28 2025 23:01:13+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[432]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 22:56:26+08:00 2F-5735-24P-77 %%01IFADP/4/PORTDOWNINFO(l)[433]:Interface GigabitEthernet0/0/14 has turned into DOWN state. (Information=Physical state: down, Negotiation: enable, Negotiation complete: no, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: no, 100M: no, 1000M: no), Remote half-duplex(10M: no, 100M: no, 1000M: no))
+Oct 28 2025 22:56:25+08:00 2F-5735-24P-77 %%01IFADP/4/PORTUPINFO(l)[434]:Interface GigabitEthernet0/0/14 has turned into UP state. (Information=Physical state: up, Negotiation: enable, Negotiation complete: yes, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: no, 1000M: no), Remote half-duplex(10M: yes, 100M: no, 1000M: no))
+Oct 28 2025 22:56:21+08:00 2F-5735-24P-77 %%01IFADP/4/PORTDOWNINFO(l)[435]:Interface GigabitEthernet0/0/14 has turned into DOWN state. (Information=Physical state: down, Negotiation: enable, Negotiation complete: no, Local full-duplex(10M: yes, 100M: yes, 1000M: yes), Local half-duplex(10M: yes, 100M: yes, 1000M: no), Remote full-duplex(10M: yes, 100M: yes, 1000M: yes), Remote half-duplex(10M: yes, 100M: yes, 1000M: no))
+Oct 28 2025 22:56:21+08:00 2F-5735-24P-77 %%01IFPDT/4/IF_STATE(l)[436]:Interface GigabitEthernet0/0/14 has turned into DOWN state.
+Oct 28 2025 22:54:43+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[437]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 22:54:43+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[438]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 22:53:38+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[439]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 22:50:23+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[440]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 22:25:25+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[441]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 22:25:25+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[442]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 22:24:20+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[443]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 22:23:14+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[444]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 22:22:07+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[445]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 22:13:27+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[446]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 22:12:20+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[447]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 22:03:36+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[448]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 22:03:17+08:00 2F-5735-24P-77 %%01IFPDT/4/PKT_OUTQUEDROP_NL(l)[449]:Interface output discard restored to the log threshold. (Interface=GigabitEthernet0/0/24, Statistics=187605, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=2470956377, PortQueueDropped=187605, PortQueueNumber=1, PortQueuePassed=1274, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=358, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=334, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=1062, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=124560, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=54694650, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=848391582, PortQueueDropped=0)
+Oct 28 2025 21:58:15+08:00 2F-5735-24P-77 %%01IFPDT/4/PKT_OUTQUEDROP_ABNL(l)[450]:Interface output discard exceeded the log threshold. (Interface=GigabitEthernet0/0/24, Statistics=187504, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=2470836905, PortQueueDropped=187504, PortQueueNumber=1, PortQueuePassed=1274, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=358, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=334, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=1062, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=124560, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=54694568, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=848381378, PortQueueDropped=0)
+Oct 28 2025 21:45:06+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[451]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 21:45:06+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[452]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 21:44:00+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[453]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 21:40:43+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[454]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 21:35:17+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[455]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 21:35:17+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[456]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 21:34:13+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[457]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 21:30:57+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[458]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 21:19:59+08:00 2F-5735-24P-77 %%01IFPDT/4/PKT_OUTQUEDROP_NL(l)[459]:Interface output discard restored to the log threshold. (Interface=GigabitEthernet0/0/24, Statistics=185261, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=2470659937, PortQueueDropped=185261, PortQueueNumber=1, PortQueuePassed=1274, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=358, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=334, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=1061, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=124558, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=54693913, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=848303714, PortQueueDropped=0)
+Oct 28 2025 21:14:57+08:00 2F-5735-24P-77 %%01IFPDT/4/PKT_OUTQUEDROP_ABNL(l)[460]:Interface output discard exceeded the log threshold. (Interface=GigabitEthernet0/0/24, Statistics=185261, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=2470644087, PortQueueDropped=185261, PortQueueNumber=1, PortQueuePassed=1274, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=358, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=334, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=1061, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=124557, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=54693773, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=848293405, PortQueueDropped=0)
+Oct 28 2025 20:45:12+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[461]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 20:45:12+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[462]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 20:44:06+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[463]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 20:40:50+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[464]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 20:34:24+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[465]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 20:34:24+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[466]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 20:33:18+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[467]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 20:30:03+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[468]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Peer clock unsynchronized/unselectable)
+Oct 28 2025 20:10:28+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[469]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 20:10:28+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[470]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 20:09:23+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[471]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 20:06:06+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[472]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 19:55:15+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[473]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 19:55:15+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[474]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 19:54:08+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[475]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 19:50:50+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[476]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 19:25:48+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[477]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 19:25:48+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[478]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 19:24:44+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[479]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 19:20:27+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[480]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 18:55:29+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[481]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 18:55:29+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[482]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 18:54:24+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[483]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 18:50:03+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[484]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Peer clock unsynchronized/unselectable)
+Oct 28 2025 18:15:10+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[485]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 18:15:10+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[486]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 18:14:06+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[487]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 18:10:56+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[488]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 17:57:59+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[489]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 17:57:59+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[490]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 17:56:53+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[491]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 17:50:21+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[492]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 17:23:01+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[493]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 17:23:01+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[494]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 17:21:55+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[495]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 17:20:52+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[496]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 16:57:07+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[497]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 16:57:07+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[498]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 16:56:04+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[499]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 16:50:39+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[500]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 16:45:40+08:00 2F-5735-24P-77 %%01SECE/4/PORT_ATTACK_OCCUR(l)[501]:Auto port-defend started. (SourceAttackInterface=GigabitEthernet0/0/23, AttackProtocol=ARP-REQUEST)
+Oct 28 2025 16:45:40+08:00 2F-5735-24P-77 %%01SECE/4/SPECIFY_SIP_ATTACK(l)[502]:The specified source IP address attack occurred. (Slot=MPU, SourceAttackIP=10.182.3.254, AttackProtocol=ARP, AttackPackets=115 packets per second)
+Oct 28 2025 16:45:40+08:00 2F-5735-24P-77 %%01SECE/4/USER_ATTACK(l)[503]:User attack occurred. (Slot=MPU, SourceAttackInterface=GigabitEthernet0/0/23, OuterVlan/InnerVlan=3/0, UserMacAddress=0009-0f09-0020, AttackProtocol=ARP, AttackPackets=115 packets per second)
+Oct 28 2025 16:14:48+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[504]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 16:14:48+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[505]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 16:13:43+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[506]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 16:10:30+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[507]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 15:36:41+08:00 2F-5735-24P-77 %%01NTP/4/STRATUM_CHANGE(l)[508]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 15:36:41+08:00 2F-5735-24P-77 %%01NTP/4/LEAP_CHANGE(l)[509]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 15:35:38+08:00 2F-5735-24P-77 %%01NTP/4/PEER_SELE(l)[510]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 15:30:12+08:00 2F-5735-24P-77 %%01NTP/4/SOURCE_LOST(l)[511]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)

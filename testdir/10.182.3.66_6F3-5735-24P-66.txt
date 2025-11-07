@@ -1,0 +1,1036 @@
+=== 设备信息 ===
+
+IP地址: 10.182.3.66
+主机名: 6F3-5735-24P-66
+设备类型: huawei
+原始类型: huawei
+厂商: huawei
+执行时间: 2025-10-30 16:13:22
+
+=== 执行结果 ===
+Command: disp cur
+!Software Version V200R019C10SPC500
+#
+sysname 6F3-5735-24P-66
+#
+vlan batch 3 120 199 to 200 648 to 650 674 to 699 748 to 750 774 to 798
+#
+stp mode rstp
+#
+authentication-profile name default_authen_profile
+authentication-profile name dot1x_authen_profile
+authentication-profile name dot1xmac_authen_profile
+authentication-profile name mac_authen_profile
+authentication-profile name multi_authen_profile
+authentication-profile name portal_authen_profile
+#
+undo http server enable
+undo http secure-server enable
+#
+clock timezone BJ add 08:00:00
+#
+diffserv domain default
+#
+radius-server template default
+#
+pki realm default
+ certificate-check none
+#
+acl number 2001
+ rule 5 permit source 10.182.3.200 0
+ rule 10 deny
+#
+free-rule-template name default_free_rule
+#
+portal-access-profile name portal_access_profile
+#
+aaa
+ authentication-scheme default
+  authentication-mode local
+ authentication-scheme radius
+  authentication-mode radius
+ authorization-scheme default
+  authorization-mode local
+ accounting-scheme default
+  accounting-mode none
+ local-aaa-user password policy administrator 
+  password history record number 0
+  password expire 0
+ domain default
+  authentication-scheme radius
+  accounting-scheme default
+  radius-server default
+ domain default_admin
+  authentication-scheme default
+  accounting-scheme default
+ undo local-user admin
+ local-user ssh password irreversible-cipher $1c$_VG-Z=hYd,$T7t{)/}Qs*XS*C'S*3BPSL"0@0af})~pxRV!#5nC$
+ local-user ssh privilege level 15
+ local-user ssh service-type ssh
+ local-user slglsw password irreversible-cipher $1c$>o7O;EEX33$c1r|5>,j}7fSn{O{M:j3:59'CIF]K<c:h<7&"3#S$
+ local-user slglsw privilege level 15
+ local-user slglsw service-type terminal ssh http
+ local-user itsupport password irreversible-cipher $1c$WcnQ'*xmJ!$@^ZlFI%j[IQ&)A*HI3SEc{]QF(]qR:hz_8*E['j:$
+ local-user itsupport privilege level 15
+ local-user itsupport service-type terminal ssh
+#
+ntp-service server disable
+ntp-service ipv6 server disable
+ntp-service unicast-server 10.182.18.1
+#
+interface Vlanif1
+#
+interface Vlanif3
+ ip address 10.182.3.66 255.255.255.0
+#
+interface MEth0/0/1
+ ip address 192.168.1.253 255.255.255.0
+#
+interface GigabitEthernet0/0/1
+ port link-type access
+ port default vlan 648
+#
+interface GigabitEthernet0/0/2
+ port link-type access
+ port default vlan 649
+#
+interface GigabitEthernet0/0/3
+ port link-type access
+ port default vlan 650
+#
+interface GigabitEthernet0/0/4
+ port link-type access
+ port default vlan 674
+#
+interface GigabitEthernet0/0/5
+ port link-type access
+ port default vlan 675
+#
+interface GigabitEthernet0/0/6
+ port link-type access
+ port default vlan 676
+#
+interface GigabitEthernet0/0/7
+ port link-type access
+ port default vlan 677
+#
+interface GigabitEthernet0/0/8
+ port link-type access
+ port default vlan 678
+#
+interface GigabitEthernet0/0/9
+ port link-type access
+ port default vlan 679
+#
+interface GigabitEthernet0/0/10
+ port link-type access
+ port default vlan 680
+#
+interface GigabitEthernet0/0/11
+ port link-type access
+ port default vlan 681
+#
+interface GigabitEthernet0/0/12
+ port link-type access
+ port default vlan 682
+#
+interface GigabitEthernet0/0/13
+ port link-type access
+ port default vlan 683
+#
+interface GigabitEthernet0/0/14
+ port link-type access
+ port default vlan 684
+#
+interface GigabitEthernet0/0/15
+ port link-type access
+ port default vlan 685
+#
+interface GigabitEthernet0/0/16
+ port link-type access
+ port default vlan 686
+#
+interface GigabitEthernet0/0/17
+ port link-type access
+ port default vlan 687
+#
+interface GigabitEthernet0/0/18
+ port link-type access
+ port default vlan 688
+#
+interface GigabitEthernet0/0/19
+ port link-type access
+ port default vlan 689
+#
+interface GigabitEthernet0/0/20
+ port link-type access
+ port default vlan 690
+#
+interface GigabitEthernet0/0/21
+ port link-type access
+ port default vlan 691
+#
+interface GigabitEthernet0/0/22
+ port link-type access
+ port default vlan 692
+#
+interface GigabitEthernet0/0/23
+ port link-type access
+ port default vlan 693
+#
+interface GigabitEthernet0/0/24
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+#
+interface XGigabitEthernet0/0/1
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+#
+interface XGigabitEthernet0/0/2
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+#
+interface XGigabitEthernet0/0/3
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+#
+interface XGigabitEthernet0/0/4
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+#
+interface NULL0
+#
+undo icmp name timestamp-request receive
+#
+ip route-static 0.0.0.0 0.0.0.0 10.182.3.254
+#
+snmp-agent
+snmp-agent local-engineid 800007DB03B46E08527CF0
+snmp-agent sys-info version v3
+snmp-agent group v3 MySNMPGroup privacy read-view isoview acl 2001
+snmp-agent mib-view included isoview iso
+snmp-agent usm-user v3 snmpadmin
+snmp-agent usm-user v3 snmpadmin group MySNMPGroup
+snmp-agent usm-user v3 snmpadmin authentication-mode sha cipher %^%#U\TXFGkTa9fcun!+=$;~_hI8K@YhR9X`qcKc^bf*%^%#
+snmp-agent usm-user v3 snmpadmin privacy-mode aes128 cipher %^%#za_04xO&[F-4iJ08@@G6AuhcOq;0&@Ik.;={~m%L%^%#
+snmp-agent protocol source-interface Vlanif3
+#
+sftp server enable
+stelnet server enable
+ssh user ssh
+ssh user ssh authentication-type password
+ssh user ssh service-type all
+ssh server cipher aes256_ctr
+ssh client cipher aes256_ctr aes128_ctr
+ssh client hmac sha2_256
+ssh server dh-exchange min-len 2048
+#
+user-interface con 0
+ authentication-mode aaa
+user-interface vty 0 4
+ authentication-mode aaa
+user-interface vty 16 20
+#
+dot1x-access-profile name dot1x_access_profile
+#
+mac-access-profile name mac_access_profile
+#
+ops
+#
+return
+
+Command: dis clock
+2025-10-30 16:13:08+08:00
+Thursday
+Time Zone(BJ) : UTC+08:00
+
+Command: disp ntp sessions
+ clock source: 10.182.18.1 
+ clock stratum: 4 
+ clock status: configured, master, sane, valid
+ reference clock ID: 10.201.102.22
+ reach: 1 
+ current poll: 64 
+ now: 44 
+ offset: 0.0000 ms 
+ delay: 0.00 ms 
+ disper: 0.00 ms
+
+Command: disp ntp status
+ clock status: unsynchronized 
+ clock stratum: 16 
+ reference clock ID: none
+ nominal frequency: 100.0000 Hz 
+ actual frequency: 99.9999 Hz 
+ clock precision: 2^18
+ clock offset: 0.0000 ms 
+ root delay: 76.69 ms 
+ root dispersion: 108.74 ms 
+ peer dispersion: 0.00 ms 
+ reference time: 08:08:04.044 UTC Oct 30 2025(ECAD9B64.0B6D2242)
+ synchronization state: clock set 
+
+Command: disp version
+Huawei Versatile Routing Platform Software
+VRP (R) software, Version 5.170 (S5735 V200R019C10SPC500)
+Copyright (C) 2000-2020 HUAWEI TECH Co., Ltd.
+HUAWEI S5735-S24P4X Routing Switch uptime is 10 weeks, 1 day, 1 hour, 26 minutes
+
+ES5D2V28S021 0(Master)  : uptime is 10 weeks, 1 day, 1 hour, 25 minutes
+DDR             Memory Size : 1024  M bytes
+FLASH Total     Memory Size : 512   M bytes
+FLASH Available Memory Size : 306   M bytes
+Pcb           Version   : VER.C
+BootROM(1st)       Version   : 0000.0121
+BootROM(2nd)       Version   : 0000.0200
+BootLoad      Version   : 0213.0000
+CPLD          Version   : 0104 
+MCU           Version   : 1.9.10.4
+Software      Version   : VRP (R) Software, Version 5.170 (V200R019C10SPC500)
+FLASH         Version   : 0000.0000
+PWR1 information
+Pcb           Version   : PWR VER.A
+
+Command: disp lldp nei br
+Local Intf       Neighbor Dev             Neighbor Intf             Exptime(s)
+GE0/0/24         6F3-5735-24P-78          GE0/0/23                  118    
+
+Command: disp lldp nei
+GigabitEthernet0/0/24 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :b46e-0852-7530 
+Port ID type   :Interface name 
+Port ID        :GigabitEthernet0/0/23
+Port description    :GigabitEthernet0/0/23
+System name         :6F3-5735-24P-78
+System description  :Huawei Switch S5735-S24P4X
+Huawei Versatile Routing Platform Software
+VRP (R) software, Version 5.170 (S5735 V200R019C10SPC500)
+Copyright (C) 2000-2020 HUAWEI TECH Co., Ltd.
+System capabilities supported   :bridge router 
+System capabilities enabled     :bridge router 
+Management address type  :ipv4
+Management address value :192.168.1.253
+OID  :0.6.15.43.6.1.4.1.2011.5.25.41.1.2.1.1.1.  
+Expired time   :117s
+
+Port VLAN ID(PVID)  :1
+VLAN name of VLAN  1:VLAN 0001
+
+Auto-negotiation supported    :Yes 
+Auto-negotiation enabled      :Yes
+OperMau   :speed(1000)/duplex(Full)
+
+Power port class            :PSE 
+PSE power supported         :Yes 
+PSE power enabled           :Yes 
+PSE pairs control ability   :Yes 
+Power pairs                 :Signal 
+Port power classification   :Class4
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+Maximum frame Size       :10240
+
+
+Command: disp int br
+PHY: Physical
+*down: administratively down
+#down: LBDT down
+(l): loopback
+(s): spoofing
+(E): E-Trunk down
+(b): BFD down
+(e): ETHOAM down
+(dl): DLDP down
+(lb): LBDT block
+(o): Observe-port forwarding down
+InUti/OutUti: input utility/output utility
+Interface                   PHY   Protocol  InUti OutUti   inErrors  outErrors
+GigabitEthernet0/0/1        down  down         0%     0%          0          0
+GigabitEthernet0/0/2        down  down         0%     0%          0          0
+GigabitEthernet0/0/3        down  down         0%     0%          0          0
+GigabitEthernet0/0/4        down  down         0%     0%          0          0
+GigabitEthernet0/0/5        down  down         0%     0%          0          0
+GigabitEthernet0/0/6        down  down         0%     0%          0          0
+GigabitEthernet0/0/7        down  down         0%     0%          0          0
+GigabitEthernet0/0/8        down  down         0%     0%          0          0
+GigabitEthernet0/0/9        down  down         0%     0%          0          0
+GigabitEthernet0/0/10       down  down         0%     0%          0          0
+GigabitEthernet0/0/11       down  down         0%     0%          0          0
+GigabitEthernet0/0/12       down  down         0%     0%          0          0
+GigabitEthernet0/0/13       down  down         0%     0%          0          0
+GigabitEthernet0/0/14       down  down         0%     0%          0          0
+GigabitEthernet0/0/15       down  down         0%     0%          0          0
+GigabitEthernet0/0/16       down  down         0%     0%          0          0
+GigabitEthernet0/0/17       down  down         0%     0%          0          0
+GigabitEthernet0/0/18       down  down         0%     0%          0          0
+GigabitEthernet0/0/19       down  down         0%     0%          0          0
+GigabitEthernet0/0/20       down  down         0%     0%          0          0
+GigabitEthernet0/0/21       down  down         0%     0%          0          0
+GigabitEthernet0/0/22       down  down         0%     0%          0          0
+GigabitEthernet0/0/23       down  down         0%     0%          0          0
+GigabitEthernet0/0/24       up    up        0.01%     0%          0          0
+MEth0/0/1                   down  down         0%     0%          0          0
+NULL0                       up    up(s)        0%     0%          0          0
+Vlanif1                     up    down         --     --          0          0
+Vlanif3                     up    up           --     --          0          0
+XGigabitEthernet0/0/1       down  down         0%     0%          0          0
+XGigabitEthernet0/0/2       down  down         0%     0%          0          0
+XGigabitEthernet0/0/3       down  down         0%     0%          0          0
+XGigabitEthernet0/0/4       down  down         0%     0%          0          0
+
+Command: disp cpu-u | inc CPU utilization
+CPU utilization for five seconds: 7%: one minute: 7%: five minutes: 4%
+
+Command: disp mem
+ Memory utilization statistics at 2025-10-30 16:13:17+08:00
+ System Total Memory Is: 522190848 bytes
+ Total Memory Used Is: 136277704 bytes
+ Memory Using Percentage Is: 26%
+
+Command: disp logbuffer
+Logging buffer configuration and contents : enabled
+Allowed max buffer size : 1024
+Actual buffer size : 512
+Channel number : 4 , Channel name : logbuffer
+Dropped messages : 0
+Overwritten messages : 8822
+Current messages : 512
+
+Oct 30 2025 16:12:24+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[0]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 16:11:18+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[1]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 16:08:04+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[2]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 16:08:04+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[3]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 16:06:57+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[4]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 16:00:27+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[5]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 15:54:56+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[6]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 15:54:56+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[7]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 15:53:51+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[8]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 15:50:37+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[9]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 15:24:38+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[10]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 15:24:38+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[11]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 15:23:33+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[12]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 15:20:18+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[13]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 14:46:40+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[14]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 14:46:40+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[15]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 14:45:34+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[16]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 14:40:03+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[17]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Peer clock unsynchronized/unselectable)
+Oct 30 2025 14:16:07+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[18]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 14:16:07+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[19]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 14:15:01+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[20]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 14:10:38+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[21]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 13:44:40+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[22]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 13:44:40+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[23]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 13:43:33+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[24]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 13:40:17+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[25]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 13:09:55+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[26]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 13:09:55+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[27]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 13:08:49+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[28]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 13:00:08+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[29]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 12:35:13+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[30]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 12:35:13+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[31]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 12:34:08+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[32]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 12:30:50+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[33]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 11:56:14+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[34]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 11:56:14+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[35]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 11:55:09+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[36]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 11:50:48+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[37]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 11:35:34+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[38]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 11:35:34+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[39]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 11:34:31+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[40]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 11:33:27+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[41]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 11:32:24+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[42]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 11:23:43+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[43]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 11:22:38+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[44]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 11:13:51+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[45]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 11:12:46+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[46]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 11:04:07+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[47]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 10:45:38+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[48]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 10:45:38+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[49]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 10:44:35+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[50]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 10:40:15+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[51]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 10:15:16+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[52]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 10:15:16+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[53]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 10:14:11+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[54]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 10:09:52+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[55]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 10:08:49+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[56]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 10:00:09+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[57]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 09:25:31+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[58]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 09:25:31+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[59]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 09:24:24+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[60]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 09:20:05+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[61]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 09:09:13+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[62]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 09:09:13+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[63]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 09:08:08+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[64]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 09:00:30+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[65]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 08:35:40+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[66]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 08:35:40+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[67]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 08:34:36+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[68]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 08:30:17+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[69]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 07:54:45+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[70]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 07:54:45+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[71]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 07:53:41+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[72]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 07:50:23+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[73]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 07:06:51+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[74]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 07:06:51+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[75]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 07:05:47+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[76]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 07:00:18+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[77]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 06:25:36+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[78]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 06:25:36+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[79]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 06:24:32+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[80]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 06:20:13+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[81]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 05:55:13+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[82]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 05:55:13+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[83]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 05:54:08+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[84]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 05:50:54+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[85]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 05:15:08+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[86]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 05:15:08+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[87]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 05:14:01+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[88]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 05:10:49+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[89]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 04:44:40+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[90]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 04:44:40+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[91]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 04:43:36+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[92]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 04:40:15+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[93]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 04:15:28+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[94]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 04:15:28+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[95]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 04:14:25+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[96]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 04:11:07+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[97]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 03:45:01+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[98]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 03:45:01+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[99]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 03:43:58+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[100]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 03:40:39+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[101]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 03:12:26+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[102]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 03:12:26+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[103]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 03:11:21+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[104]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 03:07:01+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[105]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 03:04:51+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[106]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 03:04:51+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[107]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 03:03:44+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[108]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 03:00:28+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[109]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 02:24:48+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[110]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 02:24:48+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[111]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 02:23:43+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[112]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 02:20:27+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[113]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 01:55:30+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[114]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 01:55:30+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[115]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 01:54:24+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[116]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 01:50:02+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[117]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Peer clock unsynchronized/unselectable)
+Oct 30 2025 01:25:01+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[118]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 01:25:01+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[119]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 01:23:55+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[120]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 01:20:40+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[121]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 00:44:50+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[122]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 00:44:50+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[123]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 00:43:44+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[124]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 00:40:24+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[125]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 00:15:18+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[126]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 00:15:18+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[127]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 00:14:12+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[128]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 00:10:54+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[129]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 23:44:49+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[130]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 23:44:49+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[131]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 23:43:46+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[132]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 23:40:29+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[133]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 23:07:53+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[134]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 23:07:53+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[135]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 23:06:48+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[136]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 23:00:16+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[137]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 22:25:35+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[138]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 22:25:35+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[139]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 22:24:29+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[140]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 22:20:09+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[141]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 21:56:12+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[142]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 21:56:12+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[143]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 21:55:07+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[144]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 21:51:52+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[145]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 21:10:29+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[146]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 21:10:29+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[147]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 21:09:25+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[148]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 21:00:48+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[149]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 20:34:44+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[150]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 20:34:44+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[151]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 20:33:39+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[152]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 20:30:19+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[153]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 20:10:44+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[154]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 20:10:44+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[155]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 20:09:39+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[156]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 20:00:54+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[157]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 19:36:06+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[158]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 19:36:06+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[159]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 19:35:01+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[160]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 19:30:40+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[161]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 18:55:56+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[162]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 18:55:56+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[163]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 18:54:51+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[164]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 18:50:29+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[165]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 18:16:49+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[166]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 18:16:49+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[167]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 18:15:46+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[168]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 18:07:01+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[169]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 17:24:47+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[170]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 17:24:47+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[171]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 17:23:39+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[172]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 17:20:20+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[173]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 17:14:56+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[174]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 17:14:56+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[175]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 17:13:52+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[176]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 17:09:32+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[177]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 16:55:27+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[178]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 16:55:27+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[179]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 16:54:20+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[180]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 16:50:03+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[181]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Peer clock unsynchronized/unselectable)
+Oct 29 2025 16:45:35+08:00 6F3-5735-24P-66 %%01SECE/4/PORT_ATTACK_OCCUR(l)[182]:Auto port-defend started. (SourceAttackInterface=GigabitEthernet0/0/24, AttackProtocol=ARP-REQUEST)
+Oct 29 2025 16:45:35+08:00 6F3-5735-24P-66 %%01SECE/4/SPECIFY_SIP_ATTACK(l)[183]:The specified source IP address attack occurred. (Slot=MPU, SourceAttackIP=10.182.3.254, AttackProtocol=ARP, AttackPackets=85 packets per second)
+Oct 29 2025 16:45:35+08:00 6F3-5735-24P-66 %%01SECE/4/USER_ATTACK(l)[184]:User attack occurred. (Slot=MPU, SourceAttackInterface=GigabitEthernet0/0/24, OuterVlan/InnerVlan=3/0, UserMacAddress=0009-0f09-0020, AttackProtocol=ARP, AttackPackets=85 packets per second)
+Oct 29 2025 16:25:02+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[185]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 16:25:02+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[186]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 16:23:58+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[187]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 16:20:45+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[188]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 15:46:06+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[189]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 15:46:06+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[190]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 15:44:59+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[191]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 15:40:35+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[192]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 15:35:06+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[193]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 15:35:06+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[194]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 15:34:00+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[195]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 15:31:51+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[196]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 15:21:01+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[197]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 15:21:01+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[198]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 15:19:54+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[199]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 15:15:33+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[200]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 15:14:29+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[201]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 15:05:49+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[202]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 14:54:57+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[203]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 14:54:57+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[204]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 14:53:54+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[205]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 14:50:37+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[206]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 14:45:11+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[207]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 14:45:11+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[208]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 14:44:06+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[209]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 14:40:51+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[210]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 14:14:49+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[211]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 14:14:49+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[212]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 14:13:43+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[213]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 14:10:27+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[214]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 13:34:50+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[215]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 13:34:50+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[216]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 13:33:46+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[217]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 13:30:32+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[218]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 13:19:40+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[219]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 13:19:40+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[220]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 13:18:33+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[221]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 13:17:29+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[222]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 13:16:23+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[223]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 13:07:48+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[224]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 12:54:45+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[225]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 12:54:45+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[226]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 12:53:38+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[227]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 12:50:25+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[228]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 12:16:41+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[229]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 12:16:41+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[230]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 12:15:36+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[231]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 12:10:10+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[232]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 11:56:01+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[233]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 11:56:01+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[234]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 11:54:57+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[235]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 11:50:36+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[236]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Peer clock unsynchronized/unselectable)
+Oct 29 2025 11:14:41+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[237]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 11:14:41+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[238]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 11:13:36+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[239]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 11:10:21+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[240]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 10:45:23+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[241]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 10:45:23+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[242]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 10:44:19+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[243]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 10:41:06+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[244]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 10:16:08+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[245]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 10:16:08+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[246]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 10:15:01+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[247]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 10:10:39+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[248]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Peer clock unsynchronized/unselectable)
+Oct 29 2025 09:36:04+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[249]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 09:36:04+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[250]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 09:34:59+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[251]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 09:30:35+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[252]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Peer clock unsynchronized/unselectable)
+Oct 29 2025 09:06:47+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[253]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 09:06:47+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[254]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 09:05:43+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[255]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 09:00:18+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[256]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 08:24:32+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[257]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 08:24:32+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[258]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 08:23:27+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[259]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 08:20:10+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[260]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 07:44:37+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[261]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 07:44:37+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[262]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 07:43:32+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[263]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 07:40:16+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[264]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 07:06:34+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[265]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 07:06:34+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[266]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 07:05:29+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[267]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 07:00:04+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[268]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 06:25:16+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[269]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 06:25:16+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[270]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 06:24:12+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[271]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 06:20:56+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[272]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 05:45:08+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[273]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 05:45:08+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[274]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 05:44:04+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[275]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 05:40:48+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[276]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 05:14:45+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[277]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 05:14:45+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[278]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 05:13:39+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[279]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 05:10:25+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[280]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 04:35:49+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[281]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 04:35:49+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[282]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 04:34:45+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[283]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 04:30:21+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[284]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 03:55:38+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[285]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 03:55:38+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[286]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 03:54:32+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[287]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 03:50:11+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[288]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 03:04:41+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[289]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 03:04:41+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[290]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 03:03:35+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[291]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 03:00:18+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[292]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 02:25:25+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[293]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 02:25:25+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[294]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 02:24:20+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[295]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 02:23:13+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[296]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 02:22:09+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[297]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 02:13:25+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[298]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 02:12:20+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[299]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 02:03:40+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[300]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 01:55:02+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[301]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 01:55:02+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[302]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 01:53:58+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[303]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 01:50:44+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[304]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 01:14:52+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[305]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 01:14:52+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[306]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 01:13:49+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[307]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 01:12:44+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[308]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 01:11:39+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[309]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 01:03:00+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[310]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 00:34:56+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[311]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 00:34:56+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[312]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 00:33:52+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[313]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 00:30:35+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[314]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 00:06:38+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[315]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 00:06:38+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[316]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 00:05:32+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[317]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 00:00:08+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[318]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 23:24:25+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[319]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 23:24:25+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[320]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 23:23:20+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[321]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 23:20:06+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[322]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 23:19:01+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[323]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 23:19:01+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[324]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 23:17:55+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[325]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 23:11:26+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[326]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 23:10:21+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[327]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 23:01:45+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[328]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 22:55:13+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[329]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 22:55:13+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[330]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 22:54:10+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[331]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 22:52:00+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[332]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 22:23:54+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[333]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 22:23:54+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[334]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 22:22:48+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[335]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 22:14:04+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[336]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 22:13:00+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[337]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 22:04:22+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[338]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 21:44:56+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[339]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 21:44:56+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[340]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 21:43:50+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[341]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 21:40:38+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[342]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 21:35:12+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[343]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 21:35:12+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[344]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 21:34:07+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[345]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 21:30:55+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[346]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 20:45:18+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[347]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 20:45:18+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[348]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 20:44:13+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[349]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 20:40:57+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[350]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 20:34:24+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[351]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 20:34:24+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[352]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 20:33:18+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[353]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 20:31:08+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[354]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 20:10:24+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[355]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 20:10:24+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[356]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 20:09:20+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[357]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 20:06:06+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[358]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 19:55:19+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[359]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 19:55:19+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[360]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 19:54:15+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[361]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 19:50:59+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[362]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 19:26:03+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[363]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 19:26:03+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[364]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 19:24:57+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[365]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 19:20:35+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[366]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 18:55:35+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[367]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 18:55:35+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[368]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 18:54:29+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[369]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 18:50:13+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[370]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 18:16:22+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[371]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 18:16:22+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[372]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 18:15:16+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[373]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 18:11:00+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[374]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 17:58:04+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[375]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 17:58:04+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[376]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 17:56:58+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[377]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 17:50:26+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[378]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 17:23:12+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[379]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 17:23:12+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[380]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 17:22:05+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[381]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 17:20:59+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[382]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 16:57:06+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[383]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 16:57:06+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[384]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 16:55:59+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[385]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 16:50:30+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[386]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 16:45:39+08:00 6F3-5735-24P-66 %%01SECE/4/PORT_ATTACK_OCCUR(l)[387]:Auto port-defend started. (SourceAttackInterface=GigabitEthernet0/0/24, AttackProtocol=ARP-REQUEST)
+Oct 28 2025 16:45:39+08:00 6F3-5735-24P-66 %%01SECE/4/SPECIFY_SIP_ATTACK(l)[388]:The specified source IP address attack occurred. (Slot=MPU, SourceAttackIP=10.182.3.254, AttackProtocol=ARP, AttackPackets=95 packets per second)
+Oct 28 2025 16:45:39+08:00 6F3-5735-24P-66 %%01SECE/4/USER_ATTACK(l)[389]:User attack occurred. (Slot=MPU, SourceAttackInterface=GigabitEthernet0/0/24, OuterVlan/InnerVlan=3/0, UserMacAddress=0009-0f09-0020, AttackProtocol=ARP, AttackPackets=95 packets per second)
+Oct 28 2025 16:14:46+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[390]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 16:14:46+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[391]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 16:13:40+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[392]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 16:10:25+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[393]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 15:35:43+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[394]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 15:35:43+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[395]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 15:34:39+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[396]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 15:30:19+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[397]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 15:14:05+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[398]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 15:14:05+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[399]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 15:13:01+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[400]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 15:11:55+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[401]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 15:10:50+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[402]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 15:02:13+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[403]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 14:35:16+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[404]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 14:35:16+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[405]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 14:34:10+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[406]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 14:30:54+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[407]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 14:10:13+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[408]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 14:10:13+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[409]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 14:09:09+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[410]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 14:01:32+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[411]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 13:24:38+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[412]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 13:24:38+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[413]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 13:23:32+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[414]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 13:20:13+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[415]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 12:45:29+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[416]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 12:45:29+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[417]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 12:44:25+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[418]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 12:41:05+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[419]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 12:12:52+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[420]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 12:12:52+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[421]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 12:11:45+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[422]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 12:03:06+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[423]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 11:55:33+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[424]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 11:55:33+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[425]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 11:54:27+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[426]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 11:50:05+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[427]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 11:15:21+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[428]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 11:15:21+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[429]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 11:14:16+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[430]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 11:10:59+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[431]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 10:44:59+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[432]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 10:44:59+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[433]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 10:43:53+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[434]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 10:40:36+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[435]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 10:06:01+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[436]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 10:06:01+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[437]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 10:04:55+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[438]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 10:00:31+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[439]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Peer clock unsynchronized/unselectable)
+Oct 28 2025 09:24:36+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[440]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 09:24:36+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[441]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 09:23:32+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[442]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 09:20:18+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[443]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 08:45:35+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[444]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 08:45:35+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[445]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 08:44:29+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[446]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 08:40:10+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[447]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 08:16:15+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[448]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 08:16:15+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[449]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 08:14:04+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[450]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 08:10:50+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[451]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 07:35:11+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[452]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 07:35:11+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[453]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 07:34:06+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[454]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 07:30:54+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[455]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 06:55:03+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[456]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 06:55:03+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[457]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 06:53:58+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[458]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 06:50:41+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[459]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 06:24:41+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[460]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 06:24:41+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[461]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 06:23:35+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[462]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 06:20:21+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[463]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 05:45:35+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[464]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 05:45:35+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[465]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 05:44:30+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[466]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 05:40:06+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[467]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 05:14:59+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[468]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 05:14:59+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[469]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 05:13:54+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[470]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 05:10:38+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[471]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 04:34:47+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[472]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 04:34:47+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[473]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 04:33:42+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[474]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 04:30:29+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[475]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 04:25:04+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[476]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 04:25:04+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[477]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 04:23:57+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[478]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 04:20:43+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[479]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 03:54:39+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[480]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 03:54:39+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[481]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 03:53:34+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[482]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 03:50:18+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[483]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 03:25:13+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[484]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 03:25:13+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[485]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 03:24:08+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[486]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 03:20:51+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[487]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 02:54:49+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[488]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 02:54:49+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[489]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 02:53:43+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[490]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 02:50:29+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[491]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 02:25:21+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[492]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 02:25:21+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[493]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 02:24:17+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[494]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 02:21:04+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[495]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 01:45:24+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[496]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 01:45:24+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[497]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 01:44:20+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[498]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 01:41:05+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[499]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 01:05:17+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[500]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 01:05:17+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[501]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 01:04:13+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[502]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 01:00:58+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[503]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 00:26:16+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[504]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 00:26:16+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[505]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 00:25:13+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[506]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 00:21:55+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[507]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 00:11:01+08:00 6F3-5735-24P-66 %%01NTP/4/STRATUM_CHANGE(l)[508]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 00:11:01+08:00 6F3-5735-24P-66 %%01NTP/4/LEAP_CHANGE(l)[509]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 00:09:57+08:00 6F3-5735-24P-66 %%01NTP/4/PEER_SELE(l)[510]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 00:03:28+08:00 6F3-5735-24P-66 %%01NTP/4/SOURCE_LOST(l)[511]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)

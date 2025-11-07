@@ -1,0 +1,1279 @@
+login as: slglsw
+Keyboard-interactive authentication prompts from server:
+| User Authentication
+| Password: 
+End of keyboard-interactive prompts from server
+
+Info: The max number of VTY users is 10, and the number
+      of current VTY users on line is 1.
+      The current login time is 2025-10-30 16:45:37+08:00.
+Info: Lastest accessed IP: 10.182.9.181  Time: 2025-10-30 16:12:58+08:00  Failed: 0
+
+Info: Smart-upgrade is currently disabled. Enable Smart-upgrade to get recommended version information.
+<6F3-5735-24P_69>
+<6F3-5735-24P_69>
+<6F3-5735-24P_69>
+<6F3-5735-24P_69>
+<6F3-5735-24P_69>
+<6F3-5735-24P_69>dis cur
+<6F3-5735-24P_69>dis current-configuration 
+!Software Version V200R019C10SPC500
+#
+sysname 6F3-5735-24P_69
+#
+vlan batch 2 to 15 22 24 to 29 60 to 63 100 103 120 132 199 to 212 220 to 240
+vlan batch 695 789 to 790
+#
+authentication-profile name default_authen_profile
+authentication-profile name dot1x_authen_profile
+authentication-profile name dot1xmac_authen_profile
+authentication-profile name mac_authen_profile
+authentication-profile name multi_authen_profile
+authentication-profile name portal_authen_profile
+#
+undo http server enable
+undo http secure-server enable
+#
+clock timezone BJ add 08:00:00
+#
+diffserv domain default
+#
+radius-server template default
+#
+pki realm default
+ certificate-check none
+#
+acl number 2001
+ rule 5 permit source 10.182.3.200 0
+ rule 10 deny
+#
+free-rule-template name default_free_rule
+#
+portal-access-profile name portal_access_profile
+#
+aaa
+ authentication-scheme default
+  authentication-mode local
+ authentication-scheme radius
+  authentication-mode radius
+ authorization-scheme default
+  authorization-mode local
+ accounting-scheme default
+  accounting-mode none
+ local-aaa-user password policy administrator
+  password history record number 0
+  password expire 0
+ domain default
+  authentication-scheme radius
+  accounting-scheme default
+  radius-server default
+ domain default_admin
+  authentication-scheme default
+  accounting-scheme default
+ undo local-user admin
+ local-user slglsw password irreversible-cipher $1c$5Aq{7q65/!$a<lw66`#P8:`'[6V<3v(N19l#xEjS2b78SN50[h&$
+ local-user slglsw privilege level 15
+ local-user slglsw service-type terminal ssh http
+ local-user itsupport password irreversible-cipher $1c$gmx/.I(yWF$<\C[T2/vh(bvvY)w;Dd$J$Mu~8Gh|M}"qe-E/%$C$
+ local-user itsupport privilege level 15
+ local-user itsupport service-type terminal ssh
+#
+ntp-service server disable
+ntp-service ipv6 server disable
+ntp-service unicast-server 10.182.18.1
+#
+interface Vlanif1
+#
+interface Vlanif3
+ ip address 10.182.3.69 255.255.255.0
+#
+interface MEth0/0/1
+ ip address 192.168.1.253 255.255.255.0
+#
+interface GigabitEthernet0/0/1
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/2
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/3
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/4
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/5
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/6
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/7
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/8
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/9
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/10
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/11
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/12
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/13
+ port link-type access
+ port default vlan 695
+#
+interface GigabitEthernet0/0/14
+ port link-type access
+ port default vlan 789
+#
+interface GigabitEthernet0/0/15
+ port link-type access
+ port default vlan 790
+#
+interface GigabitEthernet0/0/16
+#
+interface GigabitEthernet0/0/17
+#
+interface GigabitEthernet0/0/18
+#
+interface GigabitEthernet0/0/19
+#
+interface GigabitEthernet0/0/20
+#
+interface GigabitEthernet0/0/21
+#
+interface GigabitEthernet0/0/22
+#
+interface GigabitEthernet0/0/23
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/24
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+#
+interface XGigabitEthernet0/0/1
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+#
+interface XGigabitEthernet0/0/2
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+#
+interface XGigabitEthernet0/0/3
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+#
+interface XGigabitEthernet0/0/4
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+#
+interface NULL0
+#
+undo icmp name timestamp-request receive
+#
+ip route-static 0.0.0.0 0.0.0.0 10.182.3.254
+#
+snmp-agent
+snmp-agent local-engineid 800007DB03B46E08534830
+snmp-agent sys-info version v3
+snmp-agent group v3 MySNMPGroup privacy read-view isoview acl 2001
+snmp-agent mib-view included isoview iso
+snmp-agent usm-user v3 snmpadmin
+snmp-agent usm-user v3 snmpadmin group MySNMPGroup
+snmp-agent usm-user v3 snmpadmin authentication-mode sha cipher %^%#$wXtMvB+IReMqd>4.p(G\-q.4"4d;~r74'Rii<T"%^%#
+snmp-agent usm-user v3 snmpadmin privacy-mode aes128 cipher %^%#"OHa~+Dq*<[WLy,$!8,%Q(av,9a3,FpabC@Tmi06%^%#
+snmp-agent protocol source-interface Vlanif3
+#
+stelnet server enable
+ssh server cipher aes256_ctr aes128_ctr
+ssh client cipher aes256_ctr aes128_ctr
+ssh client hmac sha2_256
+ssh server dh-exchange min-len 2048
+#
+user-interface con 0
+ authentication-mode aaa
+user-interface vty 0 4
+ authentication-mode aaa
+user-interface vty 16 20
+#
+dot1x-access-profile name dot1x_access_profile
+#
+mac-access-profile name mac_access_profile
+#
+ops
+#
+return
+<6F3-5735-24P_69>  
+<6F3-5735-24P_69>
+<6F3-5735-24P_69>
+<6F3-5735-24P_69>dis clo
+<6F3-5735-24P_69>dis clock 
+2025-10-30 16:47:50+08:00
+Thursday
+Time Zone(BJ) : UTC+08:00
+<6F3-5735-24P_69>
+<6F3-5735-24P_69>
+<6F3-5735-24P_69>dis versio
+<6F3-5735-24P_69>dis version 
+Huawei Versatile Routing Platform Software
+VRP (R) software, Version 5.170 (S5735 V200R019C10SPC500)
+Copyright (C) 2000-2020 HUAWEI TECH Co., Ltd.
+HUAWEI S5735-S24P4X Routing Switch uptime is 10 weeks, 1 day, 2 hours, 0 minute
+
+ES5D2V28S021 0(Master)  : uptime is 10 weeks, 1 day, 2 hours, 0 minute
+DDR             Memory Size : 1024  M bytes
+FLASH Total     Memory Size : 512   M bytes
+FLASH Available Memory Size : 306   M bytes
+Pcb           Version   : VER.C
+BootROM(1st)       Version   : 0000.0121
+BootROM(2nd)       Version   : 0000.0200
+BootLoad      Version   : 0213.0000
+CPLD          Version   : 0104 
+MCU           Version   : 1.9.10.4
+Software      Version   : VRP (R) Software, Version 5.170 (V200R019C10SPC500)
+FLASH         Version   : 0000.0000
+PWR1 information
+Pcb           Version   : PWR VER.A
+<6F3-5735-24P_69>
+<6F3-5735-24P_69>
+<6F3-5735-24P_69>
+<6F3-5735-24P_69>dis l dev
+<6F3-5735-24P_69>dis device m
+<6F3-5735-24P_69>dis device man
+<6F3-5735-24P_69>dis device manufacture-info 
+Slot  Sub  Serial-number          Manu-date
+- - - - - - - - - - - - - - - - - - - - - -
+0     -    21980109402SLA500812   2020-10-24
+<6F3-5735-24P_69>
+<6F3-5735-24P_69>
+<6F3-5735-24P_69>dis cpu-s u
+CPU Usage Stat. Cycle: 60 (Second)
+CPU Usage            : 5% Max: 72%
+CPU Usage Stat. Time : 2025-10-30  16:48:11 
+CPU utilization for five seconds: 5%: one minute: 5%: five minutes: 5%
+Max CPU Usage Stat. Time : 2025-08-20 14:47:06.
+
+TaskName             CPU  Runtime(CPU Tick High/Tick Low)  Task Explanation
+VIDL                 95%         0/54efc640       DOPRA IDLE                    
+OS                    4%         0/ 3938700       Operation System              
+LinkMonPollThread     1%         0/ 4b1a130                                     
+AAA                   0%         0/       0       AAA  Authen Account Authorize 
+ACL                   0%         0/   3d090       ACL Access Control List       
+ADPT                  0%         0/       0       ADPT Adapter                  
+AGNT                  0%         0/  4c4b40       AGNT SNMP agent task          
+AGT6                  0%         0/       0       AGT6 SNMP AGT6 task           
+ALM                   0%         0/       0       ALM  Alarm Management         
+ALS                   0%         0/       0       ALS  Loss of Signal           
+AM                    0%         0/   b71b0       AM   Address Management       
+APP                   0%         0/       0       APP                           
+ARP                   0%         0/   3d090       ARP                           
+ASFI                  0%         0/       0       ASFI                          
+ASFM                  0%         0/       0       ASFM                          
+ASMN                  0%         0/   3d090       ASMNG Access Switch
+                                                  Management                   
+
+<6F3-5735-24P_69>dis mem
+ Memory utilization statistics at 2025-10-30 16:48:13+08:00
+ System Total Memory Is: 522190848 bytes
+ Total Memory Used Is: 136497672 bytes
+ Memory Using Percentage Is: 26%
+<6F3-5735-24P_69>
+<6F3-5735-24P_69>
+<6F3-5735-24P_69>
+<6F3-5735-24P_69>dis lldp nei
+GigabitEthernet0/0/1 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-3302-dd40 
+Port ID type   :MAC address 
+Port ID        :58b6-3302-dd43
+Port description    :eth0
+System name         :698
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.134.83
+OID  :  
+Expired time   :99s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/2 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-3302-ed90 
+Port ID type   :MAC address 
+Port ID        :58b6-3302-ed93
+Port description    :eth0
+System name         :699
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.134.85
+OID  :  
+Expired time   :90s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/3 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :38ff-3609-0fa0 
+Port ID type   :MAC address 
+Port ID        :38ff-3609-0fa3
+Port description    :eth0
+System name         :7F Guest Public6
+System description  :Ruckus R500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.133.95
+OID  :  
+Expired time   :118s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/4 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :38ff-3609-17f0 
+Port ID type   :MAC address 
+Port ID        :38ff-3609-17f3
+Port description    :eth0
+System name         :6F Guest Public6
+System description  :Ruckus R500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.134.87
+OID  :  
+Expired time   :90s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/5 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-332b-ca50 
+Port ID type   :MAC address 
+Port ID        :58b6-332b-ca53
+Port description    :eth0
+System name         :796
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.133.139
+OID  :  
+Expired time   :120s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/6 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-332b-f760 
+Port ID type   :MAC address 
+Port ID        :58b6-332b-f763
+Port description    :eth0
+System name         :797
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.133.140
+OID  :  
+Expired time   :114s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/8 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :38ff-3609-1160 
+Port ID type   :MAC address 
+Port ID        :38ff-3609-1163
+Port description    :eth0
+System name         :6F Guest Public4
+System description  :Ruckus R500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.134.86
+OID  :  
+Expired time   :109s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/9 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-332b-b4e0 
+Port ID type   :MAC address 
+Port ID        :58b6-332b-b4e3
+Port description    :eth0
+System name         :798
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.133.228
+OID  :  
+Expired time   :108s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/10 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-332b-9070 
+Port ID type   :MAC address 
+Port ID        :58b6-332b-9073
+Port description    :eth0
+System name         :799
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.133.142
+OID  :  
+Expired time   :103s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/11 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :38ff-3609-14e0 
+Port ID type   :MAC address 
+Port ID        :38ff-3609-14e3
+Port description    :eth0
+System name         :7F Guest Public4
+System description  :Ruckus R500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.133.96
+OID  :  
+Expired time   :119s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/23 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :9c57-ad7b-a800 
+Port ID type   :Interface name 
+Port ID        :Gi1/0/23
+Port description    :Up-link
+System name         :6F3-2960_24POE-10.slgl
+System description  :Cisco IOS Software, C2960X Software (C2960X-UNIVERSALK9-M), Version 15.2(7)E6, RELEASE SOFTWARE (fc2)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2022 by Cisco Systems, Inc.
+Compiled Tue 22-Mar-22 10:47 by mcpre
+System capabilities supported   :bridge router 
+System capabilities enabled     :bridge 
+Management address type  :ipv4
+Management address value :10.182.3.160
+OID  :  
+Expired time   :115s
+
+Port VLAN ID(PVID)  :1
+
+Auto-negotiation supported    :Yes 
+Auto-negotiation enabled      :Yes
+OperMau   :speed(1000)/duplex(Full)
+
+<6F3-5735-24P_69>      
+<6F3-5735-24P_69>
+<6F3-5735-24P_69>
+<6F3-5735-24P_69>dis lldp nei br
+<6F3-5735-24P_69>dis lldp nei brief 
+Local Intf       Neighbor Dev             Neighbor Intf             Exptime(s)
+GE0/0/1          698                      58b6-3302-dd43            92     
+GE0/0/2          699                      58b6-3302-ed93            114    
+GE0/0/3          7F Guest Public6         38ff-3609-0fa3            112    
+GE0/0/4          6F Guest Public6         38ff-3609-17f3            114    
+GE0/0/5          796                      58b6-332b-ca53            114    
+GE0/0/6          797                      58b6-332b-f763            108    
+GE0/0/8          6F Guest Public4         38ff-3609-1163            103    
+GE0/0/9          798                      58b6-332b-b4e3            103    
+GE0/0/10         799                      58b6-332b-9073            98     
+GE0/0/11         7F Guest Public4         38ff-3609-14e3            114    
+GE0/0/23         6F3-2960_24POE-10.slgl   Gi1/0/23                  110    
+<6F3-5735-24P_69>
+<6F3-5735-24P_69>
+<6F3-5735-24P_69>
+<6F3-5735-24P_69>
+<6F3-5735-24P_69>dis int br
+<6F3-5735-24P_69>dis int brief 
+PHY: Physical
+*down: administratively down
+#down: LBDT down
+(l): loopback
+(s): spoofing
+(E): E-Trunk down
+(b): BFD down
+(e): ETHOAM down
+(dl): DLDP down
+(lb): LBDT block
+(o): Observe-port forwarding down
+InUti/OutUti: input utility/output utility
+Interface                   PHY   Protocol  InUti OutUti   inErrors  outErrors
+GigabitEthernet0/0/1        up    up           0%  0.01%          0          0
+GigabitEthernet0/0/2        up    up           0%  0.13%          0          0
+GigabitEthernet0/0/3        up    up           0%  0.01%          0          0
+GigabitEthernet0/0/4        up    up           0%  0.13%          0          0
+GigabitEthernet0/0/5        up    up        0.01%  0.14%          0          0
+GigabitEthernet0/0/6        up    up           0%  0.13%          0          0
+GigabitEthernet0/0/7        down  down         0%     0%          0          0
+GigabitEthernet0/0/8        up    up           0%  0.13%          0          0
+GigabitEthernet0/0/9        up    up           0%  0.13%          0          0
+GigabitEthernet0/0/10       up    up           0%  0.13%          0          0
+GigabitEthernet0/0/11       up    up           0%  0.01%          0          0
+GigabitEthernet0/0/12       down  down         0%     0%          0          0
+GigabitEthernet0/0/13       down  down         0%     0%          0          0
+GigabitEthernet0/0/14       down  down         0%     0%          0          0
+GigabitEthernet0/0/15       down  down         0%     0%          0          0
+GigabitEthernet0/0/16       down  down         0%     0%          0          0
+GigabitEthernet0/0/17       down  down         0%     0%          0          0
+GigabitEthernet0/0/18       down  down         0%     0%          0          0
+GigabitEthernet0/0/19       down  down         0%     0%          0          0
+GigabitEthernet0/0/20       down  down         0%     0%          0          0
+GigabitEthernet0/0/21       down  down         0%     0%          0          0
+GigabitEthernet0/0/22       down  down         0%     0%          0          0
+GigabitEthernet0/0/23       up    up        0.02%     0%          0          0
+GigabitEthernet0/0/24       down  down         0%     0%          0          0
+MEth0/0/1                   down  down         0%     0%          0          0
+NULL0                       up    up(s)        0%     0%          0          0
+Vlanif1                     up    down         --     --          0          0
+Vlanif3                     up    up           --     --          0          0
+XGigabitEthernet0/0/1       down  down         0%     0%          0          0
+XGigabitEthernet0/0/2       down  down         0%     0%          0          0
+XGigabitEthernet0/0/3       down  down         0%     0%          0          0
+XGigabitEthernet0/0/4       down  down         0%     0%          0          0
+<6F3-5735-24P_69>  
+<6F3-5735-24P_69>
+<6F3-5735-24P_69>
+<6F3-5735-24P_69>
+<6F3-5735-24P_69>dis vlan
+<6F3-5735-24P_69>dis vlan br
+<6F3-5735-24P_69>dis vlan br  s
+<6F3-5735-24P_69>dis vlan summary 
+Static VLAN:
+Total 68 static VLAN.
+  1 to 15 22 24 to 29 60 to 63 100 103 
+  120 132 199 to 212 220 to 240 695 789 
+  to 790 
+
+Dynamic VLAN:
+Total 0 dynamic VLAN.
+
+Reserved VLAN:
+Total 0 reserved VLAN.
+<6F3-5735-24P_69>
+<6F3-5735-24P_69>
+<6F3-5735-24P_69>
+<6F3-5735-24P_69>dis looooo    gb
+<6F3-5735-24P_69>dis logbuffer 
+Logging buffer configuration and contents : enabled
+Allowed max buffer size : 1024
+Actual buffer size : 512
+Channel number : 4 , Channel name : logbuffer
+Dropped messages : 0
+Overwritten messages : 19315
+Current messages : 512
+
+Oct 30 2025 16:46:01+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[0]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 16:46:01+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[1]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 16:45:36+08:00 6F3-5735-24P_69 %%01SECE/4/PORT_ATTACK_OCCUR(l)[2]:Auto port-defend started. (SourceAttackInterface=GigabitEthernet0/0/23, AttackProtocol=ARP-REQUEST)
+Oct 30 2025 16:45:36+08:00 6F3-5735-24P_69 %%01SECE/4/SPECIFY_SIP_ATTACK(l)[3]:The specified source IP address attack occurred. (Slot=MPU, SourceAttackIP=10.182.3.254, AttackProtocol=ARP, AttackPackets=110 packets per second)
+Oct 30 2025 16:45:36+08:00 6F3-5735-24P_69 %%01SECE/4/USER_ATTACK(l)[4]:User attack occurred. (Slot=MPU, SourceAttackInterface=GigabitEthernet0/0/23, OuterVlan/InnerVlan=3/0, UserMacAddress=0009-0f09-0020, AttackProtocol=ARP, AttackPackets=110 packets per second)
+Oct 30 2025 16:44:58+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[5]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 16:40:33+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[6]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 16:30:13+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[7]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 16:28:20+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[8]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/11 and GE0/0/3)
+Oct 30 2025 16:21:01+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[9]:Last message repeated 2 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 16:17:21+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[10]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/8 and GE0/0/4)
+Oct 30 2025 16:13:23+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[11]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 16:13:23+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[12]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 16:12:18+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[13]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 16:10:06+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[14]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 16:07:54+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[15]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 16:07:54+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[16]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 16:06:48+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[17]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 16:05:06+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[18]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 16:03:12+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[19]:MAC move detected. (VLAN=200, Original-Port=GE0/0/11, Flapping-Port=GE0/0/23 and GE0/0/3)
+Oct 30 2025 16:01:34+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[20]:MAC move detected. (VLAN=200, Original-Port=GE0/0/11, Flapping-Port=GE0/0/23 and GE0/0/3)
+Oct 30 2025 16:00:20+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[21]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 15:56:37+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[22]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/8 and GE0/0/11)
+Oct 30 2025 15:54:52+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[23]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 15:54:52+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[24]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 15:53:48+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[25]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 15:53:19+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[26]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/8 and GE0/0/11)
+Oct 30 2025 15:50:31+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[27]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 15:50:31+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[28]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 15:46:07+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[29]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 15:44:32+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[30]:MAC move detected. (VLAN=200, Original-Port=GE0/0/11, Flapping-Port=GE0/0/23 and GE0/0/3)
+Oct 30 2025 15:25:23+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[31]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 15:25:23+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[32]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 15:24:16+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[33]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 15:20:59+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[34]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 15:09:47+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[35]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/3 and GE0/0/11)
+Oct 30 2025 14:55:29+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[36]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 14:52:52+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[37]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/4 and GE0/0/11)
+Oct 30 2025 14:46:34+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[38]:MAC move detected. (VLAN=200, Original-Port=GE0/0/3, Flapping-Port=GE0/0/23)
+Oct 30 2025 14:46:04+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[39]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 14:46:04+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[40]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 14:45:00+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[41]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 14:44:48+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[42]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 14:42:33+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[43]:MAC move detected. (VLAN=200, Original-Port=GE0/0/3, Flapping-Port=GE0/0/23)
+Oct 30 2025 14:40:37+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[44]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 14:40:37+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[45]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 14:37:05+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[46]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 14:33:27+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[47]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 14:25:41+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[48]:MAC move detected. (VLAN=200, Original-Port=GE0/0/3, Flapping-Port=GE0/0/23)
+Oct 30 2025 14:18:10+08:00 6F3-5735-24P_69 %%01IFPDT/4/PKT_OUTQUEDROP_NL(l)[49]:Interface output discard restored to the log threshold. (Interface=GigabitEthernet0/0/6, Statistics=124768, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=291506044, PortQueueDropped=124768, PortQueueNumber=1, PortQueuePassed=504, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=28, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=29, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=546, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=328359, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=7215899, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=66955126, PortQueueDropped=0)
+Oct 30 2025 14:17:32+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[50]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/11)
+Oct 30 2025 14:15:43+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[51]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 14:15:43+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[52]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 14:14:36+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[53]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 14:13:45+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[54]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/11)
+Oct 30 2025 14:13:06+08:00 6F3-5735-24P_69 %%01IFPDT/4/PKT_OUTQUEDROP_ABNL(l)[55]:Interface output discard exceeded the log threshold. (Interface=GigabitEthernet0/0/6, Statistics=124613, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=291396902, PortQueueDropped=124613, PortQueueNumber=1, PortQueuePassed=504, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=28, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=29, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=546, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=328348, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=7215816, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=66951824, PortQueueDropped=0)
+Oct 30 2025 14:10:13+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[56]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 14:10:13+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[57]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 13:56:57+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[58]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 13:54:21+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[59]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 13:53:20+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[60]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/3 and GE0/0/11)
+Oct 30 2025 13:48:58+08:00 6F3-5735-24P_69 %%01IFPDT/4/PKT_OUTQUEDROP_NL(l)[61]:Interface output discard restored to the log threshold. (Interface=GigabitEthernet0/0/5, Statistics=190326, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=291437569, PortQueueDropped=190326, PortQueueNumber=1, PortQueuePassed=504, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=28, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=29, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=546, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=328282, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=7216672, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=66936037, PortQueueDropped=0)
+Oct 30 2025 13:47:47+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[62]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 13:45:53+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[63]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/3)
+Oct 30 2025 13:45:19+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[64]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 13:45:19+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[65]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 13:44:13+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[66]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 13:43:55+08:00 6F3-5735-24P_69 %%01IFPDT/4/PKT_OUTQUEDROP_ABNL(l)[67]:Interface output discard exceeded the log threshold. (Interface=GigabitEthernet0/0/5, Statistics=190312, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=291341919, PortQueueDropped=190312, PortQueueNumber=1, PortQueuePassed=504, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=28, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=29, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=546, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=328272, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=7216585, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=66932736, PortQueueDropped=0)
+Oct 30 2025 13:43:49+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[68]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 13:42:07+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[69]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/3)
+Oct 30 2025 13:41:59+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[70]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 13:36:06+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[71]:MAC move detected. (VLAN=200, Original-Port=GE0/0/6, Flapping-Port=GE0/0/23)
+Oct 30 2025 13:32:00+08:00 6F3-5735-24P_69 %%01IFPDT/4/PKT_OUTQUEDROP_NL(l)[72]:Interface output discard restored to the log threshold. (Interface=GigabitEthernet0/0/5, Statistics=190011, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=291248609, PortQueueDropped=190011, PortQueueNumber=1, PortQueuePassed=504, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=28, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=29, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=546, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=328246, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=7216387, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=66924938, PortQueueDropped=0)
+Oct 30 2025 13:21:57+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[73]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/4 and GE0/0/8)
+Oct 30 2025 13:20:22+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[74]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 13:18:11+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[75]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 13:16:48+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[76]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/4)
+Oct 30 2025 13:11:04+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[77]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/3)
+Oct 30 2025 13:10:56+08:00 6F3-5735-24P_69 %%01IFPDT/4/PKT_OUTQUEDROP_ABNL(l)[78]:Interface output discard exceeded the log threshold. (Interface=GigabitEthernet0/0/5, Statistics=163679, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=290959699, PortQueueDropped=163679, PortQueueNumber=1, PortQueuePassed=504, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=28, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=29, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=546, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=328185, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=7216036, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=66911122, PortQueueDropped=0)
+Oct 30 2025 13:10:36+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[79]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 13:10:36+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[80]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 13:09:30+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[81]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 13:01:52+08:00 6F3-5735-24P_69 %%01IFPDT/4/PKT_OUTQUEDROP_NL(l)[82]:Interface output discard restored to the log threshold. (Interface=GigabitEthernet0/0/5, Statistics=162903, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=290901301, PortQueueDropped=162903, PortQueueNumber=1, PortQueuePassed=504, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=28, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=29, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=545, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=328161, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=7215875, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=66905177, PortQueueDropped=0)
+Oct 30 2025 13:00:50+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[83]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 12:59:44+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESSRESUME(l)[84]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/4)
+Oct 30 2025 12:59:44+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESSRESUME(l)[85]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/8)
+Oct 30 2025 12:59:44+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESSRESUME(l)[86]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/23)
+Oct 30 2025 12:59:44+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[87]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 12:56:12+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[88]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 12:55:19+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[89]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/11 and GE0/0/3)
+Oct 30 2025 12:49:46+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[90]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/8 and GE0/0/4)
+Oct 30 2025 12:44:47+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESS(l)[91]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/4)
+Oct 30 2025 12:44:47+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESS(l)[92]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/8)
+Oct 30 2025 12:44:47+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESS(l)[93]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/23)
+Oct 30 2025 12:44:20+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[94]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/8 and GE0/0/4)
+Oct 30 2025 12:36:03+08:00 6F3-5735-24P_69 %%01IFPDT/4/PKT_OUTQUEDROP_ABNL(l)[95]:Interface output discard exceeded the log threshold. (Interface=GigabitEthernet0/0/5, Statistics=121073, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=290447752, PortQueueDropped=121073, PortQueueNumber=1, PortQueuePassed=504, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=28, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=29, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=545, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=328090, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=7215446, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=66888240, PortQueueDropped=0)
+Oct 30 2025 12:34:54+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[96]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 12:34:54+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[97]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 12:33:47+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[98]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 12:30:34+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[99]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 12:30:34+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[100]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 12:17:47+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[101]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 12:15:09+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[102]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/11 and GE0/0/3)
+Oct 30 2025 11:55:59+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[103]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 11:55:59+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[104]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 11:54:51+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[105]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 11:50:33+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[106]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 11:36:25+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[107]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 11:36:25+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[108]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 11:35:20+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[109]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 11:33:13+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[110]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 11:32:40+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[111]:MAC move detected. (VLAN=200, Original-Port=GE0/0/6, Flapping-Port=GE0/0/5 and GE0/0/23)
+Oct 30 2025 11:32:07+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[112]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 11:23:25+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[113]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 11:22:22+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[114]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 11:13:39+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[115]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 11:12:35+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[116]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 11:08:41+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[117]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/8)
+Oct 30 2025 11:03:47+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[118]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 10:58:35+08:00 6F3-5735-24P_69 %%01IFPDT/4/PKT_OUTQUEDROP_NL(l)[119]:Interface output discard restored to the log threshold. (Interface=GigabitEthernet0/0/5, Statistics=120692, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=290108930, PortQueueDropped=120692, PortQueueNumber=1, PortQueuePassed=504, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=28, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=29, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=545, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=327767, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=7213817, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=66824420, PortQueueDropped=0)
+Oct 30 2025 10:52:29+08:00 6F3-5735-24P_69 %%01IFPDT/4/PKT_OUTQUEDROP_ABNL(l)[120]:Interface output discard exceeded the log threshold. (Interface=GigabitEthernet0/0/5, Statistics=119434, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=290031452, PortQueueDropped=119434, PortQueueNumber=1, PortQueuePassed=504, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=28, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=29, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=545, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=327753, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=7213718, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=66820429, PortQueueDropped=0)
+Oct 30 2025 10:45:23+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[121]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 10:45:23+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[122]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 10:44:38+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[123]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/8)
+Oct 30 2025 10:44:19+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[124]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 10:41:03+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[125]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 10:31:46+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[126]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/8)
+Oct 30 2025 10:15:01+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[127]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 10:15:01+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[128]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 10:13:56+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[129]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 10:10:40+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[130]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 10:09:36+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[131]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 10:00:52+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[132]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 09:59:47+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[133]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 09:58:43+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[134]:MAC move detected. (VLAN=200, Original-Port=GE0/0/11, Flapping-Port=GE0/0/23 and GE0/0/4)
+Oct 30 2025 09:36:21+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[135]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 09:34:25+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[136]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/3 and GE0/0/4)
+Oct 30 2025 09:29:44+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESSRESUME(l)[137]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/11)
+Oct 30 2025 09:29:44+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESSRESUME(l)[138]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/3)
+Oct 30 2025 09:29:44+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESSRESUME(l)[139]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/23)
+Oct 30 2025 09:29:22+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[140]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 09:27:02+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[141]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 09:25:59+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[142]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/3 and GE0/0/4)
+Oct 30 2025 09:24:48+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[143]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 09:24:48+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[144]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 09:23:41+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[145]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 09:20:30+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[146]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 09:20:30+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[147]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 09:19:41+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[148]:Last message repeated 3 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 09:16:42+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[149]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 09:15:25+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[150]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/3 and GE0/0/11)
+Oct 30 2025 09:15:16+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESS(l)[151]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/11)
+Oct 30 2025 09:15:16+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESS(l)[152]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/3)
+Oct 30 2025 09:15:16+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESS(l)[153]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/23)
+Oct 30 2025 09:13:55+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[154]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/3 and GE0/0/11)
+Oct 30 2025 09:13:07+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[155]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/3)
+Oct 30 2025 09:11:10+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[156]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/3)
+Oct 30 2025 09:09:41+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[157]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 09:09:41+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[158]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 09:09:28+08:00 6F3-5735-24P_69 %%01IFPDT/4/PKT_OUTQUEDROP_NL(l)[159]:Interface output discard restored to the log threshold. (Interface=GigabitEthernet0/0/6, Statistics=123984, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=290238954, PortQueueDropped=123984, PortQueueNumber=1, PortQueuePassed=504, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=28, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=29, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=543, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=327392, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=7210738, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=66752981, PortQueueDropped=0)
+Oct 30 2025 09:09:09+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[160]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/3)
+Oct 30 2025 09:08:34+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[161]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 09:07:10+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[162]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 09:04:42+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[163]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/3)
+Oct 30 2025 09:04:25+08:00 6F3-5735-24P_69 %%01IFPDT/4/PKT_OUTQUEDROP_ABNL(l)[164]:Interface output discard exceeded the log threshold. (Interface=GigabitEthernet0/0/6, Statistics=123984, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=290193309, PortQueueDropped=123984, PortQueueNumber=1, PortQueuePassed=504, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=28, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=29, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=543, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=327369, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=7210653, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=66749673, PortQueueDropped=0)
+Oct 30 2025 09:03:53+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[165]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/3)
+Oct 30 2025 09:00:59+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[166]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 08:34:54+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[167]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 08:34:54+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[168]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 08:33:48+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[169]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 08:30:33+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[170]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 08:21:06+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[171]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/8)
+Oct 30 2025 08:09:47+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[172]:MAC move detected. (VLAN=200, Original-Port=GE0/0/11, Flapping-Port=GE0/0/23)
+Oct 30 2025 08:05:14+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[173]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 08:04:19+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[174]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/8)
+Oct 30 2025 07:55:01+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[175]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 07:55:01+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[176]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 07:53:57+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[177]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 07:50:38+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[178]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 07:50:38+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[179]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 07:42:25+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[180]:Last message repeated 2 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 07:36:49+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[181]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 07:34:30+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[182]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/8 and GE0/0/11)
+Oct 30 2025 07:26:22+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[183]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/8)
+Oct 30 2025 07:21:34+08:00 6F3-5735-24P_69 %%01IFPDT/4/PKT_OUTQUEDROP_NL(l)[184]:Interface output discard restored to the log threshold. (Interface=GigabitEthernet0/0/2, Statistics=68704, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=274193614, PortQueueDropped=68704, PortQueueNumber=1, PortQueuePassed=504, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=28, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=29, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=543, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=327050, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=7208507, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=66682451, PortQueueDropped=0)
+Oct 30 2025 07:16:31+08:00 6F3-5735-24P_69 %%01IFPDT/4/PKT_OUTQUEDROP_ABNL(l)[185]:Interface output discard exceeded the log threshold. (Interface=GigabitEthernet0/0/2, Statistics=68704, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=274163990, PortQueueDropped=68704, PortQueueNumber=1, PortQueuePassed=504, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=28, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=29, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=543, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=327032, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=7208418, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=66679143, PortQueueDropped=0)
+Oct 30 2025 07:07:08+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[186]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 07:07:08+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[187]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 07:06:03+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[188]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 07:00:39+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[189]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 06:24:45+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[190]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 06:24:45+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[191]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 06:23:41+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[192]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 06:20:24+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[193]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 05:55:20+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[194]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 05:55:20+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[195]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 05:54:14+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[196]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 05:51:00+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[197]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 05:15:21+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[198]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 05:15:21+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[199]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 05:14:14+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[200]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 05:10:56+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[201]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 04:56:35+08:00 6F3-5735-24P_69 %%01IFPDT/4/PKT_OUTQUEDROP_NL(l)[202]:Interface output discard restored to the log threshold. (Interface=GigabitEthernet0/0/6, Statistics=122946, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=289237490, PortQueueDropped=122946, PortQueueNumber=1, PortQueuePassed=503, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=28, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=29, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=540, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=326702, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=7206520, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=66587479, PortQueueDropped=0)
+Oct 30 2025 04:51:22+08:00 6F3-5735-24P_69 %%01IFPDT/4/PKT_OUTQUEDROP_ABNL(l)[203]:Interface output discard exceeded the log threshold. (Interface=GigabitEthernet0/0/6, Statistics=120256, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=289167777, PortQueueDropped=120256, PortQueueNumber=1, PortQueuePassed=503, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=28, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=29, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=540, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=326692, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=7206433, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=66584085, PortQueueDropped=0)
+Oct 30 2025 04:44:46+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[204]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 04:44:46+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[205]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 04:43:40+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[206]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 04:40:23+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[207]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 04:15:29+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[208]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 04:15:29+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[209]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 04:14:22+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[210]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 04:10:02+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[211]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Peer clock unsynchronized/unselectable)
+Oct 30 2025 03:45:00+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[212]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 03:45:00+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[213]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 03:43:54+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[214]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 03:40:37+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[215]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 03:20:45+08:00 6F3-5735-24P_69 %%01IFPDT/4/PKT_OUTQUEDROP_NL(l)[216]:Interface output discard restored to the log threshold. (Interface=GigabitEthernet0/0/2, Statistics=68152, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=273626583, PortQueueDropped=68152, PortQueueNumber=1, PortQueuePassed=502, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=28, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=29, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=539, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=326454, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=7204477, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=66524893, PortQueueDropped=0)
+Oct 30 2025 03:15:42+08:00 6F3-5735-24P_69 %%01IFPDT/4/PKT_OUTQUEDROP_ABNL(l)[217]:Interface output discard exceeded the log threshold. (Interface=GigabitEthernet0/0/2, Statistics=68152, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=273577435, PortQueueDropped=68152, PortQueueNumber=1, PortQueuePassed=502, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=28, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=29, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=539, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=326444, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=7204397, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=66521591, PortQueueDropped=0)
+Oct 30 2025 03:12:19+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[218]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 03:12:19+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[219]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 03:11:15+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[220]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 03:06:54+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[221]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 03:04:46+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[222]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 03:04:46+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[223]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 03:03:40+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[224]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 03:00:25+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[225]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 02:25:38+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[226]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 02:25:38+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[227]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 02:24:32+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[228]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 02:20:13+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[229]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 01:55:14+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[230]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 01:55:14+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[231]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 01:54:07+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[232]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 01:50:51+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[233]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 01:24:51+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[234]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 01:24:51+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[235]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 01:23:44+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[236]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 01:20:30+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[237]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 00:55:39+08:00 6F3-5735-24P_69 %%01IFPDT/4/PKT_OUTQUEDROP_NL(l)[238]:Interface output discard restored to the log threshold. (Interface=GigabitEthernet0/0/6, Statistics=118732, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=287639674, PortQueueDropped=118732, PortQueueNumber=1, PortQueuePassed=499, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=28, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=29, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=539, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=326151, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=7202512, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=66429885, PortQueueDropped=0)
+Oct 30 2025 00:50:21+08:00 6F3-5735-24P_69 %%01IFPDT/4/PKT_OUTQUEDROP_ABNL(l)[239]:Interface output discard exceeded the log threshold. (Interface=GigabitEthernet0/0/6, Statistics=117496, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=287495371, PortQueueDropped=117496, PortQueueNumber=1, PortQueuePassed=499, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=28, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=29, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=539, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=326139, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=7202427, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=66426408, PortQueueDropped=0)
+Oct 30 2025 00:44:59+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[240]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 00:44:59+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[241]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 00:43:54+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[242]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 00:40:36+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[243]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 00:14:45+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[244]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 00:14:45+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[245]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 00:13:38+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[246]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 00:10:25+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[247]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 00:02:37+08:00 6F3-5735-24P_69 %%01IFPDT/4/PKT_OUTQUEDROP_NL(l)[248]:Interface output discard restored to the log threshold. (Interface=GigabitEthernet0/0/6, Statistics=116491, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=286506071, PortQueueDropped=116491, PortQueueNumber=1, PortQueuePassed=499, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=28, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=29, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=539, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=326013, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=7201641, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=66395189, PortQueueDropped=0)
+Oct 29 2025 23:57:33+08:00 6F3-5735-24P_69 %%01IFPDT/4/PKT_OUTQUEDROP_ABNL(l)[249]:Interface output discard exceeded the log threshold. (Interface=GigabitEthernet0/0/6, Statistics=116491, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=286445078, PortQueueDropped=116491, PortQueueNumber=1, PortQueuePassed=499, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=28, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=29, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=539, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=326002, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=7201551, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=66391869, PortQueueDropped=0)
+Oct 29 2025 23:45:14+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[250]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 23:45:14+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[251]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 23:44:09+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[252]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 23:40:51+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[253]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 23:17:46+08:00 6F3-5735-24P_69 %%01IFPDT/4/PKT_OUTQUEDROP_NL(l)[254]:Interface output discard restored to the log threshold. (Interface=GigabitEthernet0/0/6, Statistics=115975, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=285937800, PortQueueDropped=115975, PortQueueNumber=1, PortQueuePassed=499, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=28, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=29, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=539, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=325917, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=7200890, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=66365847, PortQueueDropped=0)
+Oct 29 2025 23:12:43+08:00 6F3-5735-24P_69 %%01IFPDT/4/PKT_OUTQUEDROP_ABNL(l)[255]:Interface output discard exceeded the log threshold. (Interface=GigabitEthernet0/0/6, Statistics=115975, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=285568049, PortQueueDropped=115975, PortQueueNumber=1, PortQueuePassed=499, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=28, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=29, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=539, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=325903, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=7200806, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=66362540, PortQueueDropped=0)
+Oct 29 2025 23:08:26+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[256]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 23:08:26+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[257]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 23:07:42+08:00 6F3-5735-24P_69 %%01IFPDT/4/PKT_OUTQUEDROP_NL(l)[258]:Interface output discard restored to the log threshold. (Interface=GigabitEthernet0/0/6, Statistics=115493, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=285436905, PortQueueDropped=115493, PortQueueNumber=1, PortQueuePassed=499, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=28, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=29, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=539, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=325888, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=7200678, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=66359248, PortQueueDropped=0)
+Oct 29 2025 23:07:22+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[259]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 23:04:05+08:00 6F3-5735-24P_69 %%01IFPDT/4/PKT_OUTQUEDROP_NL(l)[260]:Interface output discard restored to the log threshold. (Interface=GigabitEthernet0/0/9, Statistics=44791, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=280297259, PortQueueDropped=44791, PortQueueNumber=1, PortQueuePassed=499, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=28, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=29, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=539, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=325878, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=7199904, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=66356819, PortQueueDropped=0)
+Oct 29 2025 23:01:01+08:00 6F3-5735-24P_69 %%01IFPDT/4/PKT_OUTQUEDROP_ABNL(l)[261]:Interface output discard exceeded the log threshold. (Interface=GigabitEthernet0/0/6, Statistics=114870, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=285237825, PortQueueDropped=114870, PortQueueNumber=1, PortQueuePassed=499, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=28, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=29, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=539, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=325873, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=7200550, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=66354869, PortQueueDropped=0)
+Oct 29 2025 23:00:53+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[262]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 22:59:01+08:00 6F3-5735-24P_69 %%01IFPDT/4/PKT_OUTQUEDROP_ABNL(l)[263]:Interface output discard exceeded the log threshold. (Interface=GigabitEthernet0/0/9, Statistics=44791, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=280261463, PortQueueDropped=44791, PortQueueNumber=1, PortQueuePassed=499, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=28, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=29, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=539, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=325867, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=7199817, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=66353517, PortQueueDropped=0)
+Oct 29 2025 22:45:11+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[264]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 22:41:12+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[265]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 22:36:44+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[266]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/3)
+Oct 29 2025 22:31:24+08:00 6F3-5735-24P_69 %%01IFPDT/4/PKT_OUTQUEDROP_NL(l)[267]:Interface output discard restored to the log threshold. (Interface=GigabitEthernet0/0/6, Statistics=114517, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=284738714, PortQueueDropped=114517, PortQueueNumber=1, PortQueuePassed=499, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=28, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=29, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=539, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=325801, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=7200058, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=66335501, PortQueueDropped=0)
+Oct 29 2025 22:31:15+08:00 6F3-5735-24P_69 %%01IFPDT/4/PKT_OUTQUEDROP_NL(l)[268]:Interface output discard restored to the log threshold. (Interface=GigabitEthernet0/0/2, Statistics=67139, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=272462964, PortQueueDropped=67139, PortQueueNumber=1, PortQueuePassed=499, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=28, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=29, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=539, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=325778, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=7199623, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=66335494, PortQueueDropped=0)
+Oct 29 2025 22:26:12+08:00 6F3-5735-24P_69 %%01IFPDT/4/PKT_OUTQUEDROP_ABNL(l)[269]:Interface output discard exceeded the log threshold. (Interface=GigabitEthernet0/0/2, Statistics=67139, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=272417987, PortQueueDropped=67139, PortQueueNumber=1, PortQueuePassed=499, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=28, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=29, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=539, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=325767, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=7199542, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=66332190, PortQueueDropped=0)
+Oct 29 2025 22:25:05+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[270]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 22:25:05+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[271]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 22:24:59+08:00 6F3-5735-24P_69 %%01IFPDT/4/PKT_OUTQUEDROP_ABNL(l)[272]:Interface output discard exceeded the log threshold. (Interface=GigabitEthernet0/0/6, Statistics=112125, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=284528130, PortQueueDropped=112125, PortQueueNumber=1, PortQueuePassed=499, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=28, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=29, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=539, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=325787, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=7199955, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=66331279, PortQueueDropped=0)
+Oct 29 2025 22:23:59+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[273]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 22:21:13+08:00 6F3-5735-24P_69 %%01IFPDT/4/PKT_OUTQUEDROP_NL(l)[274]:Interface output discard restored to the log threshold. (Interface=GigabitEthernet0/0/6, Statistics=111317, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=284484255, PortQueueDropped=111317, PortQueueNumber=1, PortQueuePassed=499, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=28, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=29, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=539, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=325780, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=7199888, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=66328833, PortQueueDropped=0)
+Oct 29 2025 22:20:45+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[275]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 22:19:42+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESSRESUME(l)[276]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/23)
+Oct 29 2025 22:19:42+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESSRESUME(l)[277]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/3)
+Oct 29 2025 22:16:09+08:00 6F3-5735-24P_69 %%01IFPDT/4/PKT_OUTQUEDROP_ABNL(l)[278]:Interface output discard exceeded the log threshold. (Interface=GigabitEthernet0/0/6, Statistics=111317, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=284431798, PortQueueDropped=111317, PortQueueNumber=1, PortQueuePassed=499, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=28, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=29, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=539, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=325770, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=7199804, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=66325531, PortQueueDropped=0)
+Oct 29 2025 22:12:21+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[279]:MAC move detected. (VLAN=200, Original-Port=GE0/0/3, Flapping-Port=GE0/0/23)
+Oct 29 2025 22:10:26+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[280]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 22:03:21+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[281]:MAC move detected. (VLAN=200, Original-Port=GE0/0/3, Flapping-Port=GE0/0/23)
+Oct 29 2025 22:03:12+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESS(l)[282]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/23)
+Oct 29 2025 22:03:12+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESS(l)[283]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/3)
+Oct 29 2025 22:00:19+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[284]:MAC move detected. (VLAN=200, Original-Port=GE0/0/3, Flapping-Port=GE0/0/23)
+Oct 29 2025 21:55:53+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[285]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 21:55:53+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[286]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 21:54:46+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[287]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 21:50:24+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[288]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 21:49:45+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[289]:MAC move detected. (VLAN=200, Original-Port=GE0/0/3, Flapping-Port=GE0/0/23)
+Oct 29 2025 21:39:42+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESSRESUME(l)[290]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/4)
+Oct 29 2025 21:39:42+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESSRESUME(l)[291]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/8)
+Oct 29 2025 21:39:42+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESSRESUME(l)[292]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/23)
+Oct 29 2025 21:24:51+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[293]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/8 and GE0/0/4)
+Oct 29 2025 21:24:42+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESS(l)[294]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/4)
+Oct 29 2025 21:24:42+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESS(l)[295]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/8)
+Oct 29 2025 21:24:41+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESS(l)[296]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/23)
+Oct 29 2025 21:24:41+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[297]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 21:23:01+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[298]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 21:21:48+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[299]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/8 and GE0/0/4)
+Oct 29 2025 21:10:03+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[300]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 21:10:03+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[301]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 21:08:57+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[302]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 21:00:08+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[303]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 20:53:19+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[304]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 20:50:47+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[305]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/11 and GE0/0/8)
+Oct 29 2025 20:39:42+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESSRESUME(l)[306]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/3)
+Oct 29 2025 20:39:42+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESSRESUME(l)[307]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/11)
+Oct 29 2025 20:39:42+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESSRESUME(l)[308]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/23)
+Oct 29 2025 20:35:10+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[309]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 20:35:10+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[310]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 20:34:05+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[311]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 20:33:49+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[312]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 20:32:42+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[313]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/11)
+Oct 29 2025 20:30:48+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[314]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 20:20:38+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESS(l)[315]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/3)
+Oct 29 2025 20:20:38+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESS(l)[316]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/11)
+Oct 29 2025 20:20:38+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESS(l)[317]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/23)
+Oct 29 2025 20:10:09+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[318]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 20:10:09+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[319]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 20:09:02+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[320]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 20:00:22+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[321]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 19:39:42+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESSRESUME(l)[322]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/8)
+Oct 29 2025 19:39:42+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESSRESUME(l)[323]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/11)
+Oct 29 2025 19:39:42+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESSRESUME(l)[324]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/23)
+Oct 29 2025 19:36:30+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[325]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 19:36:30+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[326]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 19:35:24+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[327]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 19:32:48+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[328]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/11 and GE0/0/8)
+Oct 29 2025 19:31:02+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[329]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 19:28:54+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[330]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 19:27:04+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[331]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/11 and GE0/0/8)
+Oct 29 2025 19:26:59+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESS(l)[332]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/8)
+Oct 29 2025 19:26:59+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESS(l)[333]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/11)
+Oct 29 2025 19:26:59+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESS(l)[334]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/23)
+Oct 29 2025 19:26:59+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[335]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 19:24:23+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[336]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 19:22:26+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[337]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/11 and GE0/0/8)
+Oct 29 2025 19:19:42+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESSRESUME(l)[338]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/4)
+Oct 29 2025 19:19:42+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESSRESUME(l)[339]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/8)
+Oct 29 2025 19:19:42+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESSRESUME(l)[340]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/23)
+Oct 29 2025 19:18:11+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[341]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 19:16:07+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[342]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 19:14:19+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[343]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/11)
+Oct 29 2025 19:10:42+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[344]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/8 and GE0/0/4)
+Oct 29 2025 19:07:40+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[345]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 19:05:46+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[346]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/8 and GE0/0/4)
+Oct 29 2025 19:05:06+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESS(l)[347]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/4)
+Oct 29 2025 19:05:06+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESS(l)[348]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/8)
+Oct 29 2025 19:05:06+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESS(l)[349]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/23)
+Oct 29 2025 19:05:06+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[350]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 19:02:23+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[351]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 19:01:14+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[352]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/8 and GE0/0/4)
+Oct 29 2025 18:56:34+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[353]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/8)
+Oct 29 2025 18:56:18+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[354]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 18:56:18+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[355]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 18:55:13+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[356]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 18:50:54+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[357]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 18:22:30+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[358]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/8)
+Oct 29 2025 18:17:16+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[359]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 18:17:16+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[360]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 18:16:12+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[361]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 18:07:28+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[362]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 17:57:42+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[363]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 17:56:30+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[364]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/8)
+Oct 29 2025 17:56:30+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[365]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 17:48:21+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[366]:Last message repeated 2 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 17:39:40+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[367]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 17:38:34+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[368]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/11)
+Oct 29 2025 17:28:27+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[369]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 17:27:29+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[370]:MAC move detected. (VLAN=200, Original-Port=GE0/0/3, Flapping-Port=GE0/0/11 and GE0/0/23)
+Oct 29 2025 17:25:10+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[371]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 17:25:10+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[372]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 17:24:51+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[373]:MAC move detected. (VLAN=200, Original-Port=GE0/0/3, Flapping-Port=GE0/0/11 and GE0/0/23)
+Oct 29 2025 17:24:03+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[374]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 17:22:13+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[375]:MAC move detected. (VLAN=200, Original-Port=GE0/0/3, Flapping-Port=GE0/0/11 and GE0/0/23)
+Oct 29 2025 17:20:47+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[376]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 17:17:54+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[377]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 17:16:35+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[378]:MAC move detected. (VLAN=200, Original-Port=GE0/0/5, Flapping-Port=GE0/0/4 and GE0/0/23)
+Oct 29 2025 17:15:18+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[379]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 17:15:18+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[380]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 17:14:14+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[381]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 17:09:52+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[382]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 17:09:34+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[383]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 17:04:49+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[384]:MAC move detected. (VLAN=200, Original-Port=GE0/0/8, Flapping-Port=GE0/0/23 and GE0/0/4)
+Oct 29 2025 17:01:47+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[385]:MAC move detected. (VLAN=200, Original-Port=GE0/0/8, Flapping-Port=GE0/0/23)
+Oct 29 2025 16:54:40+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[386]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 16:54:40+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[387]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 16:53:36+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[388]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 16:50:22+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[389]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 16:45:38+08:00 6F3-5735-24P_69 %%01SECE/4/PORT_ATTACK_OCCUR(l)[390]:Auto port-defend started. (SourceAttackInterface=GigabitEthernet0/0/23, AttackProtocol=ARP-REQUEST)
+Oct 29 2025 16:45:36+08:00 6F3-5735-24P_69 %%01SECE/4/SPECIFY_SIP_ATTACK(l)[391]:The specified source IP address attack occurred. (Slot=MPU, SourceAttackIP=10.182.3.254, AttackProtocol=ARP, AttackPackets=75 packets per second)
+Oct 29 2025 16:45:36+08:00 6F3-5735-24P_69 %%01SECE/4/USER_ATTACK(l)[392]:User attack occurred. (Slot=MPU, SourceAttackInterface=GigabitEthernet0/0/23, OuterVlan/InnerVlan=3/0, UserMacAddress=0009-0f09-0020, AttackProtocol=ARP, AttackPackets=75 packets per second)
+Oct 29 2025 16:34:52+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[393]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/3 and GE0/0/11)
+Oct 29 2025 16:27:10+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[394]:MAC move detected. (VLAN=200, Original-Port=GE0/0/11, Flapping-Port=GE0/0/23)
+Oct 29 2025 16:25:16+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[395]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 16:25:16+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[396]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 16:24:08+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[397]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 16:20:50+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[398]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 16:20:26+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[399]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/3 and GE0/0/11)
+Oct 29 2025 16:10:23+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[400]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/3)
+Oct 29 2025 16:08:44+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[401]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 16:00:06+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[402]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 15:54:03+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[403]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/3)
+Oct 29 2025 15:45:50+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[404]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 15:45:50+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[405]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 15:44:45+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[406]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 15:40:21+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[407]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 15:34:54+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[408]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 15:34:54+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[409]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 15:33:50+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[410]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 15:31:41+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[411]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 15:20:47+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[412]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 15:20:47+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[413]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 15:19:45+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[414]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/4 and GE0/0/2)
+Oct 29 2025 15:19:44+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[415]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 15:19:42+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESSRESUME(l)[416]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/3)
+Oct 29 2025 15:19:42+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESSRESUME(l)[417]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/23)
+Oct 29 2025 15:16:54+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[418]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/4 and GE0/0/2)
+Oct 29 2025 15:15:20+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[419]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 15:14:18+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[420]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/4 and GE0/0/2)
+Oct 29 2025 15:14:16+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[421]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 15:13:39+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[422]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/4 and GE0/0/2)
+Oct 29 2025 15:06:24+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[423]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/3)
+Oct 29 2025 15:05:32+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[424]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 15:03:51+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[425]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 15:01:59+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[426]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/3)
+Oct 29 2025 15:01:49+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESS(l)[427]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/3)
+Oct 29 2025 15:01:49+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESS(l)[428]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/23)
+Oct 29 2025 14:59:44+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[429]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 14:55:41+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[430]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/3)
+Oct 29 2025 14:54:37+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[431]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 14:54:37+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[432]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 14:53:33+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[433]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 14:50:16+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[434]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 14:44:50+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[435]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 14:44:50+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[436]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 14:43:43+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[437]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 14:40:30+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[438]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 14:33:19+08:00 6F3-5735-24P_69 %%01IFPDT/4/PKT_OUTQUEDROP_NL(l)[439]:Interface output discard restored to the log threshold. (Interface=GigabitEthernet0/0/8, Statistics=43766, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=258732155, PortQueueDropped=43766, PortQueueNumber=1, PortQueuePassed=498, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=28, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=29, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=538, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=324502, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=7198932, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=66023199, PortQueueDropped=0)
+Oct 29 2025 14:33:16+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[440]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 14:32:40+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[441]:MAC move detected. (VLAN=200, Original-Port=GE0/0/3, Flapping-Port=GE0/0/23)
+Oct 29 2025 14:28:16+08:00 6F3-5735-24P_69 %%01IFPDT/4/PKT_OUTQUEDROP_ABNL(l)[442]:Interface output discard exceeded the log threshold. (Interface=GigabitEthernet0/0/8, Statistics=43766, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=258716017, PortQueueDropped=43766, PortQueueNumber=1, PortQueuePassed=498, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=28, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=29, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=538, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=324488, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=7198849, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=66019897, PortQueueDropped=0)
+Oct 29 2025 14:19:41+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESSRESUME(l)[443]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/11)
+Oct 29 2025 14:19:41+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESSRESUME(l)[444]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/8)
+Oct 29 2025 14:19:41+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESSRESUME(l)[445]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/23)
+Oct 29 2025 14:15:34+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[446]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 14:15:34+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[447]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 14:14:28+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[448]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 14:10:06+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[449]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 14:07:12+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[450]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 14:04:12+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[451]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 14:02:10+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[452]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/8 and GE0/0/11)
+Oct 29 2025 14:02:02+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESS(l)[453]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/11)
+Oct 29 2025 14:02:02+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESS(l)[454]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/8)
+Oct 29 2025 14:02:02+08:00 6F3-5735-24P_69 %%01SECE/4/UCSUPPRESS(l)[455]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/23)
+Oct 29 2025 13:35:17+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[456]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 13:35:17+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[457]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 13:34:10+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[458]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 13:30:53+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[459]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 13:20:00+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[460]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 13:20:00+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[461]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 13:18:54+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[462]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 13:17:49+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[463]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 13:16:45+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[464]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 13:08:01+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[465]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 12:58:44+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[466]:MAC move detected. (VLAN=200, Original-Port=GE0/0/9, Flapping-Port=GE0/0/3 and GE0/0/5)
+Oct 29 2025 12:55:03+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[467]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 12:55:03+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[468]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 12:54:00+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[469]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 12:53:26+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[470]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 12:51:44+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[471]:MAC move detected. (VLAN=200, Original-Port=GE0/0/9, Flapping-Port=GE0/0/3 and GE0/0/5)
+Oct 29 2025 12:50:41+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[472]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 12:48:34+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[473]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/8)
+Oct 29 2025 12:42:04+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[474]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 12:40:35+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[475]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/11)
+Oct 29 2025 12:40:35+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[476]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 12:34:18+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[477]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 12:31:32+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[478]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/11 and GE0/0/4)
+Oct 29 2025 12:15:53+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[479]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/11 and GE0/0/8)
+Oct 29 2025 12:15:50+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[480]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 12:15:50+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[481]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 12:14:44+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[482]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 12:10:39+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[483]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/3)
+Oct 29 2025 12:10:27+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[484]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 12:06:35+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[485]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 12:05:48+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[486]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/3)
+Oct 29 2025 11:56:16+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[487]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 11:56:16+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[488]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 11:55:13+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[489]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 11:50:51+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[490]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Peer clock unsynchronized/unselectable)
+Oct 29 2025 11:34:35+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[491]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 11:30:52+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[492]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/11 and GE0/0/3)
+Oct 29 2025 11:14:55+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[493]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 11:14:55+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[494]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 11:13:51+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[495]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 11:10:39+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[496]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 11:09:26+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[497]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 10:45:42+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[498]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/8 and GE0/0/4)
+Oct 29 2025 10:45:28+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[499]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 10:45:28+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[500]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 10:44:25+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[501]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 10:44:25+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[502]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 10:42:25+08:00 6F3-5735-24P_69 %%01INFO/4/SUPPRESS_LOG(l)[503]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 10:40:41+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[504]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/8)
+Oct 29 2025 10:40:05+08:00 6F3-5735-24P_69 %%01NTP/4/SOURCE_LOST(l)[505]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 10:38:33+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[506]:MAC move detected. (VLAN=200, Original-Port=GE0/0/23, Flapping-Port=GE0/0/11 and GE0/0/8)
+Oct 29 2025 10:16:24+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[507]:MAC move detected. (VLAN=200, Original-Port=GE0/0/4, Flapping-Port=GE0/0/2 and GE0/0/1)
+Oct 29 2025 10:16:08+08:00 6F3-5735-24P_69 %%01NTP/4/STRATUM_CHANGE(l)[508]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 10:16:08+08:00 6F3-5735-24P_69 %%01NTP/4/LEAP_CHANGE(l)[509]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 10:15:40+08:00 6F3-5735-24P_69 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[510]:MAC move detected. (VLAN=200, Original-Port=GE0/0/4, Flapping-Port=GE0/0/2 and GE0/0/1)
+Oct 29 2025 10:15:04+08:00 6F3-5735-24P_69 %%01NTP/4/PEER_SELE(l)[511]:The peer selected by the system is 10.182.18.1.
+<6F3-5735-24P_69>                
+<6F3-5735-24P_69>
+<6F3-5735-24P_69>
+<6F3-5735-24P_69>
+<6F3-5735-24P_69>

@@ -1,0 +1,1673 @@
+=== 设备信息 ===
+
+IP地址: 10.182.3.65
+主机名: 6F3_5735_POE24_65
+设备类型: huawei
+原始类型: huawei
+厂商: huawei
+执行时间: 2025-10-30 16:13:22
+
+=== 执行结果 ===
+Command: disp cur
+!Software Version V200R019C10SPC500
+#
+sysname 6F3_5735_POE24_65
+#
+vlan batch 2 to 15 22 to 29 100 120 132 199 to 280 648 to 650 674 to 699 738 to 740 742
+vlan batch 744 to 750 774 to 793 795 to 799
+#
+stp mode rstp
+#
+authentication-profile name default_authen_profile
+authentication-profile name dot1x_authen_profile
+authentication-profile name dot1xmac_authen_profile
+authentication-profile name mac_authen_profile
+authentication-profile name multi_authen_profile
+authentication-profile name portal_authen_profile
+#
+undo http server enable
+undo http secure-server enable
+#
+diffserv domain default
+#
+radius-server template default
+#
+pki realm default
+ certificate-check none
+#
+acl number 2001
+ rule 5 permit source 10.182.3.200 0
+ rule 10 deny
+#
+free-rule-template name default_free_rule
+#
+portal-access-profile name portal_access_profile
+#
+aaa
+ authentication-scheme default
+  authentication-mode local
+ authentication-scheme radius
+  authentication-mode radius
+ authorization-scheme default
+  authorization-mode local
+ accounting-scheme default
+  accounting-mode none
+ local-aaa-user password policy administrator 
+  password history record number 0
+  password expire 0
+ domain default
+  authentication-scheme radius
+  accounting-scheme default
+  radius-server default
+ domain default_admin
+  authentication-scheme default
+  accounting-scheme default
+ undo local-user admin
+ local-user slglsw password irreversible-cipher $1c$NC7mM'k~3Q$:[Q00g`iC7ZUI`J]A!'/Jc4kUM#_V(C7GnVJ4/wK$
+ local-user slglsw privilege level 15
+ local-user slglsw service-type telnet ssh
+ local-user itsupport password irreversible-cipher $1c$|#AMI^8\#($6{.E)}o<O+3V!k0kneXHNXF*1iv`/X1@eRC]!Q0<$
+ local-user itsupport privilege level 15
+ local-user itsupport service-type terminal ssh
+#
+ntp-service server disable
+ntp-service ipv6 server disable
+ntp-service unicast-server 10.182.18.1
+#
+interface Vlanif1
+#
+interface Vlanif3
+ ip address 10.182.3.65 255.255.255.0
+#
+interface MEth0/0/1
+ ip address 192.168.1.253 255.255.255.0
+#
+interface GigabitEthernet0/0/1
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/2
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/3
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/4
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/5
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/6
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/7
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/8
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/9
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/10
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/11
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/12
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/13
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/14
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/15
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/16
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/17
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/18
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/19
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/20
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/21
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/22
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/23
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface GigabitEthernet0/0/24
+ port link-type trunk
+ port trunk pvid vlan 132
+ port trunk allow-pass vlan 2 to 4094
+#
+interface XGigabitEthernet0/0/1
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+#
+interface XGigabitEthernet0/0/2
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+#
+interface XGigabitEthernet0/0/3
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+#
+interface XGigabitEthernet0/0/4
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+#
+interface NULL0
+#
+undo icmp name timestamp-request receive
+#
+ip route-static 0.0.0.0 0.0.0.0 10.182.3.254
+#
+snmp-agent
+snmp-agent local-engineid 800007DB03E48326F46C50
+snmp-agent sys-info version v3
+snmp-agent group v3 MySNMPGroup privacy read-view isoview acl 2001
+snmp-agent mib-view included isoview iso
+snmp-agent usm-user v3 snmpadmin
+snmp-agent usm-user v3 snmpadmin group MySNMPGroup
+snmp-agent usm-user v3 snmpadmin authentication-mode sha cipher %^%#Ux2QFDK@)80J4(,]fsbJh2#WDuhWtY+tAuB>zLyX%^%#
+snmp-agent usm-user v3 snmpadmin privacy-mode aes128 cipher %^%#-9QY8cnR/TI\ez@+x3J@\X8~*kNw*MDfK8K/+V>=%^%#
+snmp-agent protocol source-interface Vlanif3
+#
+stelnet server enable
+ssh user slglsw
+ssh user slglsw authentication-type password
+ssh user slglsw service-type stelnet
+ssh server cipher aes256_ctr
+ssh client cipher aes256_ctr aes128_ctr
+ssh client hmac sha2_256
+ssh server dh-exchange min-len 2048
+ssh server publickey dsa rsa
+#
+user-interface con 0
+ authentication-mode aaa
+user-interface vty 0 4
+ authentication-mode aaa
+user-interface vty 16 20
+#
+dot1x-access-profile name dot1x_access_profile
+#
+mac-access-profile name mac_access_profile
+#
+ops
+#
+return
+
+Command: dis clock
+2025-10-30 16:13:07+08:00
+Thursday
+Time Zone(DefaultZoneName) : UTC+08:00
+
+Command: disp ntp sessions
+ clock source: 10.182.18.1 
+ clock stratum: 4 
+ clock status: configured, master, sane, valid
+ reference clock ID: 10.201.102.22
+ reach: 3 
+ current poll: 64 
+ now: 29 
+ offset: 0.0000 ms 
+ delay: 0.00 ms 
+ disper: 0.00 ms
+
+Command: disp ntp status
+ clock status: unsynchronized 
+ clock stratum: 16 
+ reference clock ID: none
+ nominal frequency: 100.0000 Hz 
+ actual frequency: 99.9999 Hz 
+ clock precision: 2^18
+ clock offset: 0.0000 ms 
+ root delay: 125.79 ms 
+ root dispersion: 92.54 ms 
+ peer dispersion: 0.00 ms 
+ reference time: 08:08:15.463 UTC Oct 30 2025(ECAD9B6F.7694CCAB)
+ synchronization state: clock set 
+
+Command: disp version
+Huawei Versatile Routing Platform Software
+VRP (R) software, Version 5.170 (S5735 V200R019C10SPC500)
+Copyright (C) 2000-2020 HUAWEI TECH Co., Ltd.
+HUAWEI S5735-S24P4X Routing Switch uptime is 10 weeks, 1 day, 1 hour, 26 minutes
+
+ES5D2V28S021 0(Master)  : uptime is 10 weeks, 1 day, 1 hour, 25 minutes
+DDR             Memory Size : 1024  M bytes
+FLASH Total     Memory Size : 512   M bytes
+FLASH Available Memory Size : 306   M bytes
+Pcb           Version   : VER.C
+BootROM(1st)       Version   : 0000.0121
+BootROM(2nd)       Version   : 0000.0200
+BootLoad      Version   : 0213.0000
+CPLD          Version   : 0104 
+MCU           Version   : 1.9.10.4
+Software      Version   : VRP (R) Software, Version 5.170 (V200R019C10SPC500)
+FLASH         Version   : 0000.0000
+PWR1 information
+Pcb           Version   : PWR VER.A
+
+Command: disp lldp nei br
+Local Intf       Neighbor Dev             Neighbor Intf             Exptime(s)
+GE0/0/1          675                      f03e-902a-4cd3            113    
+GE0/0/2          674                      58b6-3302-f383            104    
+GE0/0/3          677                      f03e-902a-ec73            102    
+GE0/0/4          676                      58b6-3303-0353            119    
+GE0/0/5          678                      58b6-3302-f863            108    
+GE0/0/6          679                      58b6-3302-f833            98     
+GE0/0/7          680                      58b6-3302-f433            99     
+GE0/0/8          681                      58b6-3303-0e73            93     
+GE0/0/9          682                      58b6-3303-00e3            112    
+GE0/0/10         685                      58b6-3303-04d3            93     
+GE0/0/11         684                      58b6-3303-1103            100    
+GE0/0/12         683                      38ff-3621-ce03            103    
+GE0/0/13         686                      58b6-3303-17c3            117    
+GE0/0/14         687                      58b6-3303-0f13            113    
+GE0/0/15         688                      58b6-3303-17f3            106    
+GE0/0/16         689                      58b6-3303-1043            102    
+GE0/0/17         690                      58b6-3302-fef3            95     
+GE0/0/18         691                      f03e-902a-e523            104    
+GE0/0/19         692-1                    f03e-902b-1233            99     
+GE0/0/20         692-2                    58b6-3302-f653            106    
+GE0/0/21         693                      58b6-3302-9a33            99     
+GE0/0/22         695                      348f-2739-bab3            110    
+GE0/0/23         696                      58b6-3302-e163            92     
+GE0/0/24         697                      58b6-3302-9a23            111    
+XGE0/0/2         SLGL-Core-01.SLGL.Sha... Gi3/1                     106    
+
+Command: disp lldp nei
+GigabitEthernet0/0/1 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :f03e-902a-4cd0 
+Port ID type   :MAC address 
+Port ID        :f03e-902a-4cd3
+Port description    :eth0
+System name         :675
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.132.43
+OID  :  
+Expired time   :112s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/2 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-3302-f380 
+Port ID type   :MAC address 
+Port ID        :58b6-3302-f383
+Port description    :eth0
+System name         :674
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.134.53
+OID  :  
+Expired time   :103s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/3 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :f03e-902a-ec70 
+Port ID type   :MAC address 
+Port ID        :f03e-902a-ec73
+Port description    :eth0
+System name         :677
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.132.42
+OID  :  
+Expired time   :101s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/4 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-3303-0350 
+Port ID type   :MAC address 
+Port ID        :58b6-3303-0353
+Port description    :eth0
+System name         :676
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.134.55
+OID  :  
+Expired time   :118s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/5 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-3302-f860 
+Port ID type   :MAC address 
+Port ID        :58b6-3302-f863
+Port description    :eth0
+System name         :678
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.134.57
+OID  :  
+Expired time   :107s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/6 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-3302-f830 
+Port ID type   :MAC address 
+Port ID        :58b6-3302-f833
+Port description    :eth0
+System name         :679
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.134.58
+OID  :  
+Expired time   :97s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/7 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-3302-f430 
+Port ID type   :MAC address 
+Port ID        :58b6-3302-f433
+Port description    :eth0
+System name         :680
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.134.59
+OID  :  
+Expired time   :98s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/8 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-3303-0e70 
+Port ID type   :MAC address 
+Port ID        :58b6-3303-0e73
+Port description    :eth0
+System name         :681
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.134.60
+OID  :  
+Expired time   :92s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/9 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-3303-00e0 
+Port ID type   :MAC address 
+Port ID        :58b6-3303-00e3
+Port description    :eth0
+System name         :682
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.134.68
+OID  :  
+Expired time   :111s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/10 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-3303-04d0 
+Port ID type   :MAC address 
+Port ID        :58b6-3303-04d3
+Port description    :eth0
+System name         :685
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.134.63
+OID  :  
+Expired time   :92s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/11 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-3303-1100 
+Port ID type   :MAC address 
+Port ID        :58b6-3303-1103
+Port description    :eth0
+System name         :684
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.134.62
+OID  :  
+Expired time   :99s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/12 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :38ff-3621-ce00 
+Port ID type   :MAC address 
+Port ID        :38ff-3621-ce03
+Port description    :eth0
+System name         :683
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.132.106
+OID  :  
+Expired time   :102s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/13 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-3303-17c0 
+Port ID type   :MAC address 
+Port ID        :58b6-3303-17c3
+Port description    :eth0
+System name         :686
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.134.64
+OID  :  
+Expired time   :116s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/14 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-3303-0f10 
+Port ID type   :MAC address 
+Port ID        :58b6-3303-0f13
+Port description    :eth0
+System name         :687
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.134.65
+OID  :  
+Expired time   :112s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/15 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-3303-17f0 
+Port ID type   :MAC address 
+Port ID        :58b6-3303-17f3
+Port description    :eth0
+System name         :688
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.134.66
+OID  :  
+Expired time   :105s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/16 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-3303-1040 
+Port ID type   :MAC address 
+Port ID        :58b6-3303-1043
+Port description    :eth0
+System name         :689
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.134.67
+OID  :  
+Expired time   :101s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/17 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-3302-fef0 
+Port ID type   :MAC address 
+Port ID        :58b6-3302-fef3
+Port description    :eth0
+System name         :690
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.134.69
+OID  :  
+Expired time   :94s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/18 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :f03e-902a-e520 
+Port ID type   :MAC address 
+Port ID        :f03e-902a-e523
+Port description    :eth0
+System name         :691
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.132.45
+OID  :  
+Expired time   :103s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/19 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :f03e-902b-1230 
+Port ID type   :MAC address 
+Port ID        :f03e-902b-1233
+Port description    :eth0
+System name         :692-1
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.132.44
+OID  :  
+Expired time   :98s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/20 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-3302-f650 
+Port ID type   :MAC address 
+Port ID        :58b6-3302-f653
+Port description    :eth0
+System name         :692-2
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.134.72
+OID  :  
+Expired time   :105s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/21 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-3302-9a30 
+Port ID type   :MAC address 
+Port ID        :58b6-3302-9a33
+Port description    :eth0
+System name         :693
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.134.73
+OID  :  
+Expired time   :98s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/22 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :348f-2739-bab0 
+Port ID type   :MAC address 
+Port ID        :348f-2739-bab3
+Port description    :eth0
+System name         :695
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.132.46
+OID  :  
+Expired time   :109s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/23 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-3302-e160 
+Port ID type   :MAC address 
+Port ID        :58b6-3302-e163
+Port description    :eth0
+System name         :696
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.134.75
+OID  :  
+Expired time   :120s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+GigabitEthernet0/0/24 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :58b6-3302-9a20 
+Port ID type   :MAC address 
+Port ID        :58b6-3302-9a23
+Port description    :eth0
+System name         :697
+System description  :Ruckus H500 Multimedia Hotzone Wireless AP/SW Version: 3.2.0.0.593
+System capabilities supported   :bridge wlanAccessPoint router 
+System capabilities enabled     :bridge wlanAccessPoint 
+Management address type  :ipv4
+Management address value :10.182.134.76
+OID  :  
+Expired time   :110s
+
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :No
+OperMau   :speed(Unknown)/duplex(Unknown)
+
+Link aggregation supported:Yes 
+Link aggregation enabled :No 
+Aggregation port ID      :0
+
+XGigabitEthernet0/0/2 has 1 neighbor(s):
+
+Neighbor index :1
+Chassis type   :MAC address 
+Chassis ID     :0021-5510-355a 
+Port ID type   :Interface name 
+Port ID        :Gi3/1
+Port description    :6F3-ODF-01/02
+System name         :SLGL-Core-01.SLGL.Shangri-la.com
+System description  :Cisco IOS Software, Catalyst 4500 L3 Switch Software (cat4500-ENTSERVICESK9-M), Version 12.2(53)SG1, RELEASE SOFTWARE (fc1)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2009 by Cisco Systems, Inc.
+Compiled Fri 30-Oct-09 13:31 by 
+System capabilities supported   :bridge router 
+System capabilities enabled     :bridge router 
+Management address type  :ipv4
+Management address value :10.182.3.252
+OID  :  
+Expired time   :105s
+
+Port VLAN ID(PVID)  :1
+
+Auto-negotiation supported    :No 
+Auto-negotiation enabled      :Yes
+OperMau   :speed(1000)/duplex(Full)
+
+
+Command: disp int br
+PHY: Physical
+*down: administratively down
+#down: LBDT down
+(l): loopback
+(s): spoofing
+(E): E-Trunk down
+(b): BFD down
+(e): ETHOAM down
+(dl): DLDP down
+(lb): LBDT block
+(o): Observe-port forwarding down
+InUti/OutUti: input utility/output utility
+Interface                   PHY   Protocol  InUti OutUti   inErrors  outErrors
+GigabitEthernet0/0/1        up    up           0%  0.01%          0          0
+GigabitEthernet0/0/2        up    up           0%  0.01%          0          0
+GigabitEthernet0/0/3        up    up           0%  0.02%          0          0
+GigabitEthernet0/0/4        up    up           0%  0.01%          0          0
+GigabitEthernet0/0/5        up    up           0%  0.01%          0          0
+GigabitEthernet0/0/6        up    up           0%  0.01%          0          0
+GigabitEthernet0/0/7        up    up           0%  0.01%          0          0
+GigabitEthernet0/0/8        up    up           0%  0.01%          0          0
+GigabitEthernet0/0/9        up    up           0%  0.01%          0          0
+GigabitEthernet0/0/10       up    up           0%  0.01%          0          0
+GigabitEthernet0/0/11       up    up           0%  0.14%          0          0
+GigabitEthernet0/0/12       up    up           0%  0.01%          0          0
+GigabitEthernet0/0/13       up    up           0%  0.01%          0          0
+GigabitEthernet0/0/14       up    up           0%  0.01%          0          0
+GigabitEthernet0/0/15       up    up           0%  0.01%          0          0
+GigabitEthernet0/0/16       up    up           0%  0.01%          0          0
+GigabitEthernet0/0/17       up    up           0%  0.01%          0          0
+GigabitEthernet0/0/18       up    up           0%  0.01%          0          0
+GigabitEthernet0/0/19       up    up           0%  0.01%          0          0
+GigabitEthernet0/0/20       up    up           0%  0.01%          0          0
+GigabitEthernet0/0/21       up    up           0%  0.01%          0          0
+GigabitEthernet0/0/22       up    up           0%  0.14%          0          0
+GigabitEthernet0/0/23       up    up           0%  0.01%          0          0
+GigabitEthernet0/0/24       up    up           0%  0.01%          0          0
+MEth0/0/1                   down  down         0%     0%          0          0
+NULL0                       up    up(s)        0%     0%          0          0
+Vlanif1                     up    down         --     --          0          0
+Vlanif3                     up    up           --     --          0          0
+XGigabitEthernet0/0/1       down  down         0%     0%          0          0
+XGigabitEthernet0/0/2       up    up        0.02%     0%          0          0
+XGigabitEthernet0/0/3       down  down         0%     0%          0          0
+XGigabitEthernet0/0/4       down  down         0%     0%          0          0
+
+Command: disp cpu-u | inc CPU utilization
+CPU utilization for five seconds: 8%: one minute: 8%: five minutes: 8%
+
+Command: disp mem
+ Memory utilization statistics at 2025-10-30 16:13:16+08:00
+ System Total Memory Is: 522190848 bytes
+ Total Memory Used Is: 136737696 bytes
+ Memory Using Percentage Is: 26%
+
+Command: disp logbuffer
+Logging buffer configuration and contents : enabled
+Allowed max buffer size : 1024
+Actual buffer size : 512
+Channel number : 4 , Channel name : logbuffer
+Dropped messages : 0
+Overwritten messages : 13610
+Current messages : 512
+
+Oct 30 2025 16:12:38+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[0]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 16:10:28+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[1]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 16:08:15+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[2]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 16:08:15+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[3]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 16:07:11+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[4]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 16:00:41+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[5]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 15:55:14+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[6]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 15:55:14+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[7]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 15:54:08+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[8]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 15:50:52+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[9]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 15:24:44+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[10]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 15:24:44+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[11]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 15:23:39+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[12]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 15:20:23+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[13]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 14:46:33+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[14]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 14:46:33+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[15]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 14:45:27+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[16]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 14:40:03+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[17]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Peer clock unsynchronized/unselectable)
+Oct 30 2025 14:16:03+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[18]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 14:16:03+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[19]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 14:14:58+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[20]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 14:10:35+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[21]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 13:45:34+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[22]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 13:45:34+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[23]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 13:44:27+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[24]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 13:41:14+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[25]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 13:30:54+08:00 6F3_5735_POE24_65 %%01SECE/4/UCSUPPRESSRESUME(l)[26]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=XGigabitEthernet0/0/2)
+Oct 30 2025 13:30:54+08:00 6F3_5735_POE24_65 %%01SECE/4/UCSUPPRESSRESUME(l)[27]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/4)
+Oct 30 2025 13:30:54+08:00 6F3_5735_POE24_65 %%01SECE/4/UCSUPPRESSRESUME(l)[28]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/2)
+Oct 30 2025 13:30:54+08:00 6F3_5735_POE24_65 %%01INFO/4/SUPPRESS_LOG(l)[29]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 30 2025 13:17:46+08:00 6F3_5735_POE24_65 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[30]:MAC move detected. (VLAN=200, Original-Port=GE0/0/2, Flapping-Port=GE0/0/4 and XGE0/0/2)
+Oct 30 2025 13:17:37+08:00 6F3_5735_POE24_65 %%01SECE/4/UCSUPPRESS(l)[31]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=XGigabitEthernet0/0/2)
+Oct 30 2025 13:17:37+08:00 6F3_5735_POE24_65 %%01SECE/4/UCSUPPRESS(l)[32]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/4)
+Oct 30 2025 13:17:37+08:00 6F3_5735_POE24_65 %%01SECE/4/UCSUPPRESS(l)[33]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/2)
+Oct 30 2025 13:09:43+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[34]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 13:09:43+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[35]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 13:08:38+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[36]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 13:00:59+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[37]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 12:34:47+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[38]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 12:34:47+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[39]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 12:33:40+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[40]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 12:30:24+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[41]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 11:56:30+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[42]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 11:56:30+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[43]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 11:55:24+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[44]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 11:51:02+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[45]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 11:35:46+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[46]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 11:35:46+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[47]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 11:34:39+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[48]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 11:33:36+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[49]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 11:32:31+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[50]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 11:23:49+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[51]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 11:22:44+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[52]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 11:13:55+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[53]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 11:12:48+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[54]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 11:04:07+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[55]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 10:45:31+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[56]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 10:45:31+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[57]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 10:44:27+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[58]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 10:40:07+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[59]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 10:15:08+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[60]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 10:15:08+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[61]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 10:14:01+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[62]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 10:10:41+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[63]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 10:09:35+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[64]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 10:00:53+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[65]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 09:40:53+08:00 6F3_5735_POE24_65 %%01SECE/4/UCSUPPRESSRESUME(l)[66]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/3)
+Oct 30 2025 09:40:53+08:00 6F3_5735_POE24_65 %%01SECE/4/UCSUPPRESSRESUME(l)[67]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/2)
+Oct 30 2025 09:40:53+08:00 6F3_5735_POE24_65 %%01SECE/4/UCSUPPRESSRESUME(l)[68]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=XGigabitEthernet0/0/2)
+Oct 30 2025 09:30:56+08:00 6F3_5735_POE24_65 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[69]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/2 and GE0/0/3)
+Oct 30 2025 09:26:34+08:00 6F3_5735_POE24_65 %%01SECE/4/UCSUPPRESS(l)[70]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/3)
+Oct 30 2025 09:26:34+08:00 6F3_5735_POE24_65 %%01SECE/4/UCSUPPRESS(l)[71]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/2)
+Oct 30 2025 09:26:34+08:00 6F3_5735_POE24_65 %%01SECE/4/UCSUPPRESS(l)[72]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=XGigabitEthernet0/0/2)
+Oct 30 2025 09:24:58+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[73]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 09:24:58+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[74]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 09:23:54+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[75]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 09:20:41+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[76]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 09:08:41+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[77]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 09:08:41+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[78]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 09:07:35+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[79]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 09:01:01+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[80]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 08:34:59+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[81]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 08:34:59+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[82]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 08:33:53+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[83]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 08:30:39+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[84]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 07:54:41+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[85]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 07:54:41+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[86]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 07:53:37+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[87]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 07:50:19+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[88]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 07:13:15+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[89]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 07:13:15+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[90]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 07:12:08+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[91]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 07:11:05+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[92]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 07:07:49+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[93]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 07:07:49+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[94]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 07:06:43+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[95]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 07:00:11+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[96]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 06:25:32+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[97]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 06:25:32+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[98]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 06:24:24+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[99]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 06:20:03+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[100]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Peer clock unsynchronized/unselectable)
+Oct 30 2025 05:55:02+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[101]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 05:55:02+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[102]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 05:53:57+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[103]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 05:50:41+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[104]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 05:14:51+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[105]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 05:14:51+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[106]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 05:13:46+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[107]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 05:10:32+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[108]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 04:44:33+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[109]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 04:44:33+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[110]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 04:43:29+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[111]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 04:40:12+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[112]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 04:14:55+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[113]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 04:14:55+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[114]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 04:13:49+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[115]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 04:10:29+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[116]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 03:45:27+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[117]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 03:45:27+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[118]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 03:44:21+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[119]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 03:41:04+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[120]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 03:12:43+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[121]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 03:12:43+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[122]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 03:11:38+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[123]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 03:07:14+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[124]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 03:05:03+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[125]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 03:05:03+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[126]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 03:03:56+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[127]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 03:00:38+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[128]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 02:24:38+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[129]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 02:24:38+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[130]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 02:23:33+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[131]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 02:20:15+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[132]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 01:55:11+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[133]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 01:55:11+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[134]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 01:54:05+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[135]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 01:50:47+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[136]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 01:25:35+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[137]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 01:25:35+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[138]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 01:24:30+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[139]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 01:20:07+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[140]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 00:45:07+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[141]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 00:45:07+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[142]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 00:44:03+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[143]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 00:40:47+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[144]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 30 2025 00:14:42+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[145]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 30 2025 00:14:42+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[146]:System leap changes from 3 to 0 after clock update.
+Oct 30 2025 00:13:35+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[147]:The peer selected by the system is 10.182.18.1.
+Oct 30 2025 00:10:20+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[148]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 23:45:15+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[149]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 23:45:15+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[150]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 23:44:09+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[151]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 23:40:53+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[152]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 23:33:28+08:00 6F3_5735_POE24_65 %%01IFPDT/4/PKT_OUTQUEDROP_NL(l)[153]:Interface output discard restored to the log threshold. (Interface=GigabitEthernet0/0/22, Statistics=1828230, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=421381518, PortQueueDropped=1828230, PortQueueNumber=1, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=785, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=4411226, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=190809937, PortQueueDropped=0)
+Oct 29 2025 23:24:12+08:00 6F3_5735_POE24_65 %%01IFPDT/4/PKT_OUTQUEDROP_ABNL(l)[154]:Interface output discard exceeded the log threshold. (Interface=GigabitEthernet0/0/22, Statistics=1827342, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=421316447, PortQueueDropped=1827342, PortQueueNumber=1, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=785, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=4411077, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=190792431, PortQueueDropped=0)
+Oct 29 2025 23:19:12+08:00 6F3_5735_POE24_65 %%01IFPDT/4/PKT_OUTQUEDROP_NL(l)[155]:Interface output discard restored to the log threshold. (Interface=GigabitEthernet0/0/22, Statistics=1827008, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=421286635, PortQueueDropped=1827008, PortQueueNumber=1, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=785, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=4410997, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=190783040, PortQueueDropped=0)
+Oct 29 2025 23:10:55+08:00 6F3_5735_POE24_65 %%01IFPDT/4/PKT_OUTQUEDROP_ABNL(l)[156]:Interface output discard exceeded the log threshold. (Interface=GigabitEthernet0/0/22, Statistics=1823597, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=421228757, PortQueueDropped=1823597, PortQueueNumber=1, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=785, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=4410867, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=190767460, PortQueueDropped=0)
+Oct 29 2025 23:08:13+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[157]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 23:08:13+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[158]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 23:07:08+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[159]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 23:00:37+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[160]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 22:39:05+08:00 6F3_5735_POE24_65 %%01IFPDT/4/PKT_OUTQUEDROP_NL(l)[161]:Interface output discard restored to the log threshold. (Interface=GigabitEthernet0/0/22, Statistics=1822727, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=421111391, PortQueueDropped=1822727, PortQueueNumber=1, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=785, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=4410358, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=190707519, PortQueueDropped=0)
+Oct 29 2025 22:25:46+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[162]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 22:25:46+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[163]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 22:24:40+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[164]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 22:20:13+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[165]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 22:18:42+08:00 6F3_5735_POE24_65 %%01IFPDT/4/PKT_OUTQUEDROP_ABNL(l)[166]:Interface output discard exceeded the log threshold. (Interface=GigabitEthernet0/0/22, Statistics=1817999, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=420996956, PortQueueDropped=1817999, PortQueueNumber=1, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=785, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=4410033, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=190669150, PortQueueDropped=0)
+Oct 29 2025 21:56:16+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[167]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 21:56:16+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[168]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 21:55:12+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[169]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 21:50:53+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[170]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 21:35:08+08:00 6F3_5735_POE24_65 %%01IFPDT/4/PKT_OUTQUEDROP_NL(l)[171]:Interface output discard restored to the log threshold. (Interface=GigabitEthernet0/0/22, Statistics=1817353, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=420371434, PortQueueDropped=1817353, PortQueueNumber=1, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=784, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=4409330, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=190587082, PortQueueDropped=0)
+Oct 29 2025 21:30:04+08:00 6F3_5735_POE24_65 %%01IFPDT/4/PKT_OUTQUEDROP_ABNL(l)[172]:Interface output discard exceeded the log threshold. (Interface=GigabitEthernet0/0/22, Statistics=1817128, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=420278077, PortQueueDropped=1817128, PortQueueNumber=1, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=784, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=4409250, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=190577568, PortQueueDropped=0)
+Oct 29 2025 21:16:40+08:00 6F3_5735_POE24_65 %%01IFPDT/4/PKT_OUTQUEDROP_NL(l)[173]:Interface output discard restored to the log threshold. (Interface=GigabitEthernet0/0/22, Statistics=1816658, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=420136068, PortQueueDropped=1816658, PortQueueNumber=1, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=784, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=4409037, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=190552331, PortQueueDropped=0)
+Oct 29 2025 21:10:59+08:00 6F3_5735_POE24_65 %%01IFPDT/4/PKT_OUTQUEDROP_ABNL(l)[174]:Interface output discard exceeded the log threshold. (Interface=GigabitEthernet0/0/22, Statistics=1816106, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=420099212, PortQueueDropped=1816106, PortQueueNumber=1, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=784, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=4408946, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=190541628, PortQueueDropped=0)
+Oct 29 2025 21:10:41+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[175]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 21:10:41+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[176]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 21:09:38+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[177]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 21:00:48+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[178]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 20:34:44+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[179]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 20:34:44+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[180]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 20:33:41+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[181]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 20:30:27+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[182]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 20:10:50+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[183]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 20:10:50+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[184]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 20:09:43+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[185]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 20:00:57+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[186]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 19:36:59+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[187]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 19:36:59+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[188]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 19:35:52+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[189]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 19:30:25+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[190]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 18:56:47+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[191]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 18:56:47+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[192]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 18:55:40+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[193]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 18:50:12+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[194]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 18:17:33+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[195]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 18:17:33+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[196]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 18:16:28+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[197]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 18:07:50+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[198]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 17:25:24+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[199]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 17:25:24+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[200]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 17:24:17+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[201]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 17:21:02+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[202]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 17:15:31+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[203]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 17:15:31+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[204]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 17:14:27+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[205]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 17:10:09+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[206]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 16:54:59+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[207]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 16:54:59+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[208]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 16:53:54+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[209]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 16:50:38+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[210]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 16:45:37+08:00 6F3_5735_POE24_65 %%01SECE/4/SPECIFY_SIP_ATTACK(l)[211]:The specified source IP address attack occurred. (Slot=MPU, SourceAttackIP=10.182.3.254, AttackProtocol=ARP, AttackPackets=75 packets per second)
+Oct 29 2025 16:45:37+08:00 6F3_5735_POE24_65 %%01SECE/4/USER_ATTACK(l)[212]:User attack occurred. (Slot=MPU, SourceAttackInterface=XGigabitEthernet0/0/2, OuterVlan/InnerVlan=3/0, UserMacAddress=0009-0f09-0020, AttackProtocol=ARP, AttackPackets=75 packets per second)
+Oct 29 2025 16:25:42+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[213]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 16:25:42+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[214]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 16:24:37+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[215]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 16:20:15+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[216]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 15:46:41+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[217]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 15:46:41+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[218]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 15:45:35+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[219]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 15:40:14+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[220]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 15:34:50+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[221]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 15:34:50+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[222]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 15:33:43+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[223]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 15:31:35+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[224]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 15:20:39+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[225]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 15:20:39+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[226]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 15:19:33+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[227]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 15:17:16+08:00 6F3_5735_POE24_65 %%01IFPDT/4/PKT_OUTQUEDROP_NL(l)[228]:Interface output discard restored to the log threshold. (Interface=GigabitEthernet0/0/22, Statistics=1814063, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=415464113, PortQueueDropped=1814063, PortQueueNumber=1, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=782, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=4403291, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=189875712, PortQueueDropped=0)
+Oct 29 2025 15:14:03+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[229]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 15:12:59+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[230]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 15:12:12+08:00 6F3_5735_POE24_65 %%01IFPDT/4/PKT_OUTQUEDROP_ABNL(l)[231]:Interface output discard exceeded the log threshold. (Interface=GigabitEthernet0/0/22, Statistics=1813946, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=415433214, PortQueueDropped=1813946, PortQueueNumber=1, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=782, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=4403211, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=189866193, PortQueueDropped=0)
+Oct 29 2025 15:04:19+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[232]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 14:55:33+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[233]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 14:55:33+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[234]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 14:54:29+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[235]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 14:50:06+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[236]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 14:45:22+08:00 6F3_5735_POE24_65 %%01IFPDT/4/PKT_OUTQUEDROP_NL(l)[237]:Interface output discard restored to the log threshold. (Interface=GigabitEthernet0/0/22, Statistics=1813217, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=415082061, PortQueueDropped=1813217, PortQueueNumber=1, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=782, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=4402783, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=189815681, PortQueueDropped=0)
+Oct 29 2025 14:44:40+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[238]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 14:44:40+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[239]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 14:43:35+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[240]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 14:40:18+08:00 6F3_5735_POE24_65 %%01IFPDT/4/PKT_OUTQUEDROP_ABNL(l)[241]:Interface output discard exceeded the log threshold. (Interface=GigabitEthernet0/0/22, Statistics=1813217, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=415050390, PortQueueDropped=1813217, PortQueueNumber=1, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=782, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=4402702, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=189806143, PortQueueDropped=0)
+Oct 29 2025 14:40:17+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[242]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 14:26:43+08:00 6F3_5735_POE24_65 %%01IFPDT/4/PKT_OUTQUEDROP_NL(l)[243]:Interface output discard restored to the log threshold. (Interface=GigabitEthernet0/0/22, Statistics=1812916, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=414940313, PortQueueDropped=1812916, PortQueueNumber=1, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=782, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=4402485, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=189780558, PortQueueDropped=0)
+Oct 29 2025 14:21:38+08:00 6F3_5735_POE24_65 %%01IFPDT/4/PKT_OUTQUEDROP_ABNL(l)[244]:Interface output discard exceeded the log threshold. (Interface=GigabitEthernet0/0/22, Statistics=1812916, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=414920839, PortQueueDropped=1812916, PortQueueNumber=1, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=782, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=4402404, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=189771010, PortQueueDropped=0)
+Oct 29 2025 14:15:15+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[245]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 14:15:15+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[246]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 14:14:08+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[247]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 14:10:48+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[248]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 14:09:18+08:00 6F3_5735_POE24_65 %%01IFPDT/4/PKT_OUTQUEDROP_NL(l)[249]:Interface output discard restored to the log threshold. (Interface=GigabitEthernet0/0/22, Statistics=1812505, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=414797131, PortQueueDropped=1812505, PortQueueNumber=1, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=782, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=4402209, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=189747796, PortQueueDropped=0)
+Oct 29 2025 14:04:14+08:00 6F3_5735_POE24_65 %%01IFPDT/4/PKT_OUTQUEDROP_ABNL(l)[250]:Interface output discard exceeded the log threshold. (Interface=GigabitEthernet0/0/22, Statistics=1812469, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=414743539, PortQueueDropped=1812469, PortQueueNumber=1, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=782, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=4402128, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=189738277, PortQueueDropped=0)
+Oct 29 2025 13:44:53+08:00 6F3_5735_POE24_65 %%01IFPDT/4/PKT_OUTQUEDROP_NL(l)[251]:Interface output discard restored to the log threshold. (Interface=GigabitEthernet0/0/22, Statistics=1811727, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=414651367, PortQueueDropped=1811727, PortQueueNumber=1, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=782, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=4401818, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=189701802, PortQueueDropped=0)
+Oct 29 2025 13:34:55+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[252]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 13:34:55+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[253]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 13:34:44+08:00 6F3_5735_POE24_65 %%01IFPDT/4/PKT_OUTQUEDROP_ABNL(l)[254]:Interface output discard exceeded the log threshold. (Interface=GigabitEthernet0/0/22, Statistics=1809594, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=414568688, PortQueueDropped=1809594, PortQueueNumber=1, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=782, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=4401656, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=189682683, PortQueueDropped=0)
+Oct 29 2025 13:33:48+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[255]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 13:30:34+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[256]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 13:26:27+08:00 6F3_5735_POE24_65 %%01IFPDT/4/PKT_OUTQUEDROP_NL(l)[257]:Interface output discard restored to the log threshold. (Interface=GigabitEthernet0/0/22, Statistics=1809060, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=414535411, PortQueueDropped=1809060, PortQueueNumber=1, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=782, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=4401525, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=189667121, PortQueueDropped=0)
+Oct 29 2025 13:21:24+08:00 6F3_5735_POE24_65 %%01IFPDT/4/PKT_OUTQUEDROP_ABNL(l)[258]:Interface output discard exceeded the log threshold. (Interface=GigabitEthernet0/0/22, Statistics=1809060, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=414516485, PortQueueDropped=1809060, PortQueueNumber=1, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=782, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=4401444, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=189657607, PortQueueDropped=0)
+Oct 29 2025 13:20:17+08:00 6F3_5735_POE24_65 %%01IFPDT/4/PKT_OUTQUEDROP_NL(l)[259]:Interface output discard restored to the log threshold. (Interface=GigabitEthernet0/0/22, Statistics=1808495, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=414507588, PortQueueDropped=1808495, PortQueueNumber=1, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=782, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=4401426, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=189655521, PortQueueDropped=0)
+Oct 29 2025 13:19:42+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[260]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 13:19:42+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[261]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 13:18:37+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[262]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 13:17:33+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[263]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 13:16:29+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[264]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 13:15:13+08:00 6F3_5735_POE24_65 %%01IFPDT/4/PKT_OUTQUEDROP_ABNL(l)[265]:Interface output discard exceeded the log threshold. (Interface=GigabitEthernet0/0/22, Statistics=1808404, LogThreshold=300, LogInterval=300(s), PortQueueNumber=0, PortQueuePassed=414482482, PortQueueDropped=1808404, PortQueueNumber=1, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=2, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=3, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=4, PortQueuePassed=0, PortQueueDropped=0, PortQueueNumber=5, PortQueuePassed=782, PortQueueDropped=0, PortQueueNumber=6, PortQueuePassed=4401345, PortQueueDropped=0, PortQueueNumber=7, PortQueuePassed=189645951, PortQueueDropped=0)
+Oct 29 2025 13:07:50+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[266]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 12:54:42+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[267]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 12:54:42+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[268]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 12:53:39+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[269]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 12:50:24+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[270]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 12:16:43+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[271]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 12:16:43+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[272]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 12:15:37+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[273]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 12:10:06+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[274]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 11:57:02+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[275]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 11:57:02+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[276]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 11:55:58+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[277]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 11:50:33+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[278]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Peer clock unsynchronized/unselectable)
+Oct 29 2025 11:15:29+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[279]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 11:15:29+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[280]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 11:14:22+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[281]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 11:10:06+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[282]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 10:47:09+08:00 6F3_5735_POE24_65 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[283]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/2 and GE0/0/16)
+Oct 29 2025 10:45:06+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[284]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 10:45:06+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[285]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 10:44:02+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[286]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 10:40:45+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[287]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 10:16:36+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[288]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 10:16:36+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[289]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 10:15:32+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[290]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 10:10:10+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[291]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Peer clock unsynchronized/unselectable)
+Oct 29 2025 09:36:27+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[292]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 09:36:27+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[293]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 09:35:21+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[294]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 09:30:57+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[295]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Peer clock unsynchronized/unselectable)
+Oct 29 2025 09:30:48+08:00 6F3_5735_POE24_65 %%01SECE/4/UCSUPPRESSRESUME(l)[296]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/1)
+Oct 29 2025 09:30:48+08:00 6F3_5735_POE24_65 %%01SECE/4/UCSUPPRESSRESUME(l)[297]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/2)
+Oct 29 2025 09:30:48+08:00 6F3_5735_POE24_65 %%01SECE/4/UCSUPPRESSRESUME(l)[298]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=XGigabitEthernet0/0/2)
+Oct 29 2025 09:16:53+08:00 6F3_5735_POE24_65 %%01INFO/4/SUPPRESS_LOG(l)[299]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 09:13:33+08:00 6F3_5735_POE24_65 %%01INFO/4/SUPPRESS_LOG(l)[300]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 09:09:11+08:00 6F3_5735_POE24_65 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[301]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/2 and GE0/0/1)
+Oct 29 2025 09:06:59+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[302]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 09:06:59+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[303]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 09:05:55+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[304]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 09:00:51+08:00 6F3_5735_POE24_65 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[305]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/2 and GE0/0/1)
+Oct 29 2025 09:00:23+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[306]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 08:58:55+08:00 6F3_5735_POE24_65 %%01INFO/4/SUPPRESS_LOG(l)[307]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 08:54:44+08:00 6F3_5735_POE24_65 %%01INFO/4/SUPPRESS_LOG(l)[308]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 08:53:28+08:00 6F3_5735_POE24_65 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[309]:MAC move detected. (VLAN=200, Original-Port=XGE0/0/2, Flapping-Port=GE0/0/2 and GE0/0/1)
+Oct 29 2025 08:51:59+08:00 6F3_5735_POE24_65 %%01SECE/4/UCSUPPRESS(l)[310]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/1)
+Oct 29 2025 08:51:59+08:00 6F3_5735_POE24_65 %%01SECE/4/UCSUPPRESS(l)[311]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/2)
+Oct 29 2025 08:51:59+08:00 6F3_5735_POE24_65 %%01SECE/4/UCSUPPRESS(l)[312]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=XGigabitEthernet0/0/2)
+Oct 29 2025 08:25:26+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[313]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 08:25:26+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[314]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 08:24:19+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[315]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 08:21:07+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[316]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 07:45:11+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[317]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 07:45:11+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[318]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 07:44:06+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[319]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 07:40:50+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[320]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 07:06:54+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[321]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 07:06:54+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[322]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 07:05:49+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[323]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 07:00:24+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[324]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 06:25:40+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[325]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 06:25:40+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[326]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 06:24:35+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[327]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 06:20:15+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[328]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 05:45:31+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[329]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 05:45:31+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[330]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 05:44:24+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[331]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 05:40:06+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[332]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 05:14:56+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[333]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 05:14:56+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[334]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 05:13:51+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[335]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 05:10:34+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[336]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 04:34:42+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[337]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 04:34:42+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[338]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 04:33:36+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[339]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 04:30:20+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[340]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 03:55:28+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[341]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 03:55:28+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[342]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 03:54:21+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[343]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 03:51:04+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[344]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 03:05:32+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[345]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 03:05:32+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[346]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 03:04:26+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[347]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 03:01:08+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[348]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 02:25:09+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[349]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 02:25:09+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[350]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 02:24:04+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[351]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 02:22:56+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[352]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 02:21:50+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[353]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 02:13:10+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[354]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 02:12:06+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[355]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 02:03:20+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[356]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 01:54:38+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[357]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 01:54:38+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[358]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 01:53:33+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[359]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 01:50:15+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[360]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 01:15:22+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[361]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 01:15:22+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[362]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 01:14:18+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[363]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 01:13:12+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[364]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 01:12:06+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[365]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 01:03:26+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[366]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 00:35:04+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[367]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 00:35:04+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[368]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 00:34:01+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[369]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 00:30:47+08:00 6F3_5735_POE24_65 %%01SECE/4/UCSUPPRESSRESUME(l)[370]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=XGigabitEthernet0/0/2)
+Oct 29 2025 00:30:47+08:00 6F3_5735_POE24_65 %%01SECE/4/UCSUPPRESSRESUME(l)[371]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/7)
+Oct 29 2025 00:30:47+08:00 6F3_5735_POE24_65 %%01SECE/4/UCSUPPRESSRESUME(l)[372]:MAC address flapping finished on port. Unknown unicast packets were normally forwarded. (Interface=GigabitEthernet0/0/8)
+Oct 29 2025 00:30:45+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[373]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 00:16:09+08:00 6F3_5735_POE24_65 %%01INFO/4/SUPPRESS_LOG(l)[374]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 00:10:50+08:00 6F3_5735_POE24_65 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[375]:MAC move detected. (VLAN=200, Original-Port=GE0/0/8, Flapping-Port=GE0/0/7 and XGE0/0/2)
+Oct 29 2025 00:06:40+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[376]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 29 2025 00:06:40+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[377]:System leap changes from 3 to 0 after clock update.
+Oct 29 2025 00:05:35+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[378]:The peer selected by the system is 10.182.18.1.
+Oct 29 2025 00:05:11+08:00 6F3_5735_POE24_65 %%01INFO/4/SUPPRESS_LOG(l)[379]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 29 2025 00:00:50+08:00 6F3_5735_POE24_65 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[380]:MAC move detected. (VLAN=200, Original-Port=GE0/0/8, Flapping-Port=GE0/0/7 and XGE0/0/2)
+Oct 29 2025 00:00:08+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[381]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 29 2025 00:00:08+08:00 6F3_5735_POE24_65 %%01INFO/4/SUPPRESS_LOG(l)[382]:Last message repeated 2 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 28 2025 23:55:29+08:00 6F3_5735_POE24_65 %%01INFO/4/SUPPRESS_LOG(l)[383]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 28 2025 23:52:29+08:00 6F3_5735_POE24_65 %%01INFO/4/SUPPRESS_LOG(l)[384]:Last message repeated 1 times.(InfoID=4278915102, ModuleName=L2IFPPI, InfoAlias=MAC_MOVE_WARN)
+Oct 28 2025 23:49:07+08:00 6F3_5735_POE24_65 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[385]:MAC move detected. (VLAN=200, Original-Port=GE0/0/8, Flapping-Port=GE0/0/7 and XGE0/0/2)
+Oct 28 2025 23:48:58+08:00 6F3_5735_POE24_65 %%01SECE/4/UCSUPPRESS(l)[386]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=XGigabitEthernet0/0/2)
+Oct 28 2025 23:48:58+08:00 6F3_5735_POE24_65 %%01SECE/4/UCSUPPRESS(l)[387]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/7)
+Oct 28 2025 23:48:58+08:00 6F3_5735_POE24_65 %%01SECE/4/UCSUPPRESS(l)[388]:MAC address flapping started on port. The rate of unknown unicast packets was limited to 50% of the port bandwidth. (Interface=GigabitEthernet0/0/8)
+Oct 28 2025 23:47:06+08:00 6F3_5735_POE24_65 %%01L2IFPPI/4/MAC_MOVE_WARN(l)[389]:MAC move detected. (VLAN=200, Original-Port=GE0/0/8, Flapping-Port=GE0/0/7 and XGE0/0/2)
+Oct 28 2025 23:25:16+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[390]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 23:25:16+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[391]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 23:24:13+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[392]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 23:20:56+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[393]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 23:19:50+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[394]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 23:19:50+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[395]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 23:18:43+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[396]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 23:11:02+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[397]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 23:09:57+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[398]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 23:01:15+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[399]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 22:54:48+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[400]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 22:54:48+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[401]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 22:53:44+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[402]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 22:50:30+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[403]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 22:24:26+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[404]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 22:24:26+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[405]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 22:23:20+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[406]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 22:14:36+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[407]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 22:13:29+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[408]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 22:04:44+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[409]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 21:45:11+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[410]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 21:45:11+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[411]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 21:44:05+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[412]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 21:40:47+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[413]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 21:35:19+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[414]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 21:35:19+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[415]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 21:34:12+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[416]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 21:30:56+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[417]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 20:45:16+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[418]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 20:45:16+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[419]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 20:44:12+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[420]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 20:40:53+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[421]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 20:35:28+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[422]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 20:35:28+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[423]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 20:34:22+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[424]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 20:31:05+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[425]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 20:10:20+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[426]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 20:10:20+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[427]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 20:09:13+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[428]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 20:07:03+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[429]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 19:55:03+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[430]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 19:55:03+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[431]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 19:53:59+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[432]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 19:50:40+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[433]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 19:25:55+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[434]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 19:25:55+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[435]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 19:24:51+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[436]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 19:20:25+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[437]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 18:55:12+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[438]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 18:55:12+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[439]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 18:54:08+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[440]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 18:50:54+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[441]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 18:15:50+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[442]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 18:15:50+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[443]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 18:14:44+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[444]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 18:10:22+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[445]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 17:58:25+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[446]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 17:58:25+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[447]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 17:57:18+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[448]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 17:56:15+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[449]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 17:55:10+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[450]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 17:50:52+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[451]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 17:23:42+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[452]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 17:23:42+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[453]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 17:22:36+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[454]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 17:20:24+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[455]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 16:57:36+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[456]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 16:57:36+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[457]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 16:56:32+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[458]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 16:51:01+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[459]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 16:45:37+08:00 6F3_5735_POE24_65 %%01SECE/4/PORT_ATTACK_OCCUR(l)[460]:Auto port-defend started. (SourceAttackInterface=XGigabitEthernet0/0/2, AttackProtocol=ARP-REQUEST)
+Oct 28 2025 16:45:37+08:00 6F3_5735_POE24_65 %%01SECE/4/SPECIFY_SIP_ATTACK(l)[461]:The specified source IP address attack occurred. (Slot=MPU, SourceAttackIP=10.182.3.254, AttackProtocol=ARP, AttackPackets=75 packets per second)
+Oct 28 2025 16:45:37+08:00 6F3_5735_POE24_65 %%01SECE/4/USER_ATTACK(l)[462]:User attack occurred. (Slot=MPU, SourceAttackInterface=XGigabitEthernet0/0/2, OuterVlan/InnerVlan=3/0, UserMacAddress=0009-0f09-0020, AttackProtocol=ARP, AttackPackets=75 packets per second)
+Oct 28 2025 16:15:18+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[463]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 16:15:18+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[464]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 16:14:11+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[465]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 16:10:55+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[466]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 15:36:11+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[467]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 15:36:11+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[468]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 15:35:05+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[469]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 15:30:46+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[470]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 15:14:23+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[471]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 15:14:23+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[472]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 15:13:16+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[473]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 15:12:12+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[474]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 15:11:06+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[475]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 15:02:29+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[476]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 14:35:19+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[477]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 14:35:19+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[478]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 14:34:13+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[479]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 14:30:57+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[480]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 14:10:04+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[481]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 14:10:04+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[482]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 14:08:58+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[483]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 14:02:23+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[484]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 13:25:07+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[485]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 13:25:07+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[486]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 13:24:01+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[487]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 13:20:40+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[488]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 12:44:45+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[489]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 12:44:45+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[490]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 12:43:39+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[491]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 12:40:23+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[492]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 12:13:07+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[493]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 12:13:07+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[494]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 12:12:01+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[495]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 12:03:14+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[496]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 11:55:38+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[497]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 11:55:38+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[498]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 11:54:33+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[499]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 11:50:12+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[500]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 11:15:13+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[501]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 11:15:13+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[502]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 11:14:07+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[503]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 11:10:49+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[504]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 10:44:44+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[505]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 10:44:44+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[506]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 10:43:37+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[507]:The peer selected by the system is 10.182.18.1.
+Oct 28 2025 10:40:23+08:00 6F3_5735_POE24_65 %%01NTP/4/SOURCE_LOST(l)[508]:System synchronization source lost. (SourceAddress=10.182.18.1, Reason=Synchronization distance greater than distance threshold)
+Oct 28 2025 10:06:35+08:00 6F3_5735_POE24_65 %%01NTP/4/STRATUM_CHANGE(l)[509]:System stratum changes from 16 to 5. (SourceAddress=10.182.18.1)
+
+Oct 28 2025 10:06:35+08:00 6F3_5735_POE24_65 %%01NTP/4/LEAP_CHANGE(l)[510]:System leap changes from 3 to 0 after clock update.
+Oct 28 2025 10:05:31+08:00 6F3_5735_POE24_65 %%01NTP/4/PEER_SELE(l)[511]:The peer selected by the system is 10.182.18.1.

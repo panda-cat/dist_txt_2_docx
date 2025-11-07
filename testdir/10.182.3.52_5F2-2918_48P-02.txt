@@ -1,0 +1,843 @@
+=== 设备信息 ===
+
+IP地址: 10.182.3.52
+主机名: 5F2-2918_48P-02
+设备类型: cisco_ios
+原始类型: cisco_ios
+厂商: cisco
+执行时间: 2025-10-30 16:12:58
+
+=== 执行结果 ===
+Command: show run
+Building configuration...
+
+Current configuration : 16510 bytes
+!
+! Last configuration change at 12:18:35 UTC Wed Jul 23 2025 by slglsw
+! NVRAM config last updated at 12:18:35 UTC Wed Jul 23 2025 by slglsw
+!
+version 12.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime localtime
+service password-encryption
+service sequence-numbers
+!
+hostname 5F2-2918_48P-02
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret 5 $1$yjm.$29.GDR27YM1vY5Nr5znvY1
+!
+username itsupport secret 5 $1$k2wE$cwK2Sc/At2Rj5SPDMn7Y8.
+username slglsw secret 5 $1$RPLO$qd/nuHlLDBokt8OTNDJ271
+no aaa new-model
+clock timezone UTC 8
+system mtu routing 1500
+vtp mode transparent
+ip subnet-zero
+no ip domain-lookup
+ip domain-name slgl
+!
+!
+crypto pki trustpoint TP-self-signed-2141017856
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-2141017856
+ revocation-check none
+ rsakeypair TP-self-signed-2141017856
+!
+!
+crypto pki certificate chain TP-self-signed-2141017856
+ certificate self-signed 01
+  3082024C 308201B5 A0030201 02020101 300D0609 2A864886 F70D0101 04050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 32313431 30313738 3536301E 170D3131 31323330 30373039 
+  34345A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D32 31343130 
+  31373835 3630819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281 
+  8100E527 35F39C05 DB9FC305 AF0CED17 BB958953 3CABF8C2 094DD0FF 24D90500 
+  7ADBDFEB 34CB0D58 2B699008 27E4C879 804EAAE6 B6180D17 3C68BDE3 1AA11058 
+  BC76BB38 38584A76 704D9700 E8F4666C F56AFBF7 905878A5 D8357AA4 E63D4778 
+  C347E633 9AE6C891 AF69A9F3 474E97D7 338C8F24 8D18390F 5D910A62 49240291 
+  EF3D0203 010001A3 74307230 0F060355 1D130101 FF040530 030101FF 301F0603 
+  551D1104 18301682 14354632 2D323931 385F3438 502D3032 2E736C67 6C301F06 
+  03551D23 04183016 8014B52E 1DC9526B D5268525 359EDBB8 A2DDEEF3 3F7E301D 
+  0603551D 0E041604 14B52E1D C9526BD5 26852535 9EDBB8A2 DDEEF33F 7E300D06 
+  092A8648 86F70D01 01040500 03818100 00BF3F96 07ED6FD0 6E3E12B2 4802A2B1 
+  5910C541 39399E4E 4A3165F4 DAB04764 4C95535D 1E4377CC 5D6AA67A 040C8A63 
+  F150062C 93E032C9 166BBA4B D7297A10 9D8E89A6 E85EF92E BF03A48E 4C5E49FD 
+  EAFBAE8B FEC2313A 6A836669 33B8EECE 36C823E1 39F29AEB 5DB59FBA 08A0179D 
+  0598F348 26D642E0 9E81EFA0 C1A7E75E
+  quit
+!
+!
+!
+!
+!
+errdisable recovery cause bpduguard
+errdisable recovery cause link-flap
+errdisable recovery cause psecure-violation
+errdisable recovery cause storm-control
+errdisable recovery interval 120
+!
+spanning-tree mode rapid-pvst
+spanning-tree portfast bpduguard default
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+vlan 2 
+!
+vlan 3
+ name NET-Manage
+!
+vlan 4-8 
+!
+vlan 120
+ name Wifi-AP-Manage
+!
+vlan 132
+ name AP-Management-New
+!
+vlan 199
+ name SLGL-Guestroom
+!
+vlan 200
+ name Public-Wifi
+!
+vlan 501-519,521,523-524,526-547,550-553 
+!
+ip ssh version 2
+!
+interface FastEthernet0/1
+ description 5F2-A01-501C
+ switchport access vlan 501
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/2
+ description 5F2-A03-502C
+ switchport access vlan 502
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/3
+ description 5F2-A05-503C
+ switchport access vlan 503
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/4
+ description 5F2-A07-504C
+ switchport access vlan 504
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/5
+ description 5F2-A09-505C
+ switchport access vlan 505
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/6
+ description 5F2-A11-506C
+ switchport access vlan 506
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/7
+ description 5F2-A13-507C
+ switchport access vlan 507
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/8
+ description 5F2-A15-508C
+ switchport access vlan 508
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/9
+ description 5F2-A17-509C
+ switchport access vlan 509
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/10
+ description 5F2-A19-510C
+ switchport access vlan 510
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/11
+ description 5F2-A21-511C
+ switchport access vlan 511
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/12
+ description 5F2-A23-512C
+ switchport access vlan 512
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/13
+ description 5F2-B01-513C
+ switchport access vlan 513
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/14
+ description 5F2-B03-514C
+ switchport access vlan 514
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/15
+ description 5F2-B05-515C
+ switchport access vlan 515
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/16
+ description 5F2-B07-516C
+ switchport access vlan 516
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/17
+ description 5F2-B09-517C
+ switchport access vlan 517
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/18
+ description 5F2-B11-518C
+ switchport access vlan 518
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/19
+ description 5F2-B13-519C
+ switchport access vlan 519
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/20
+ description 5F2-B15-521C
+ switchport access vlan 521
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/21
+ description 5F2-B17-523C
+ switchport access vlan 523
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/22
+ description 5F2-B20-524C
+ switchport access vlan 524
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/23
+ description 5F2-B22-526C
+ switchport access vlan 526
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/24
+ description 5F2-B24-527C
+ switchport access vlan 527
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/25
+ description 5F2-C02-528C
+ switchport access vlan 528
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/26
+ description 5F2-C04-529C
+ switchport access vlan 529
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/27
+ description 5F2-C06-530C
+ switchport access vlan 530
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/28
+ description 5F2-C08-531C
+ switchport access vlan 531
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/29
+ description 5F2-C10-532C
+ switchport access vlan 532
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/30
+ description 5F2-C12-533C
+ switchport access vlan 533
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/31
+ description 5F2-C14-534C
+ switchport access vlan 534
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/32
+ description 5F2-C16-535C
+ switchport access vlan 535
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/33
+ description 5F2-C18-536C
+ switchport access vlan 536
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/34
+ description 5F2-C20-537C
+ switchport access vlan 537
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/35
+ description 5F2-C22-538C
+ switchport access vlan 538
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/36
+ description 5F2-C24-539C
+ switchport access vlan 539
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/37
+ description 5F2-D02-540C
+ switchport access vlan 540
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/38
+ description 5F2-D04-541C
+ switchport access vlan 541
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/39
+ description 5F2-D06-542C
+ switchport access vlan 542
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/40
+ description 5F2-D08-543C
+ switchport access vlan 543
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/41
+ description 5F2-D10-544C
+ switchport access vlan 544
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/42
+ description 5F2-D12-545C
+ switchport access vlan 545
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/43
+ description 5F2-D14-546C
+ switchport access vlan 546
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/44
+ description 5F2-D16-547C
+ switchport access vlan 547
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/45
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/46
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/47
+ switchport mode trunk
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/48
+ switchport mode trunk
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface GigabitEthernet0/1
+ description Up-link
+ switchport mode trunk
+!
+interface GigabitEthernet0/2
+ description Up-link
+ switchport mode trunk
+!
+interface Vlan1
+ no ip address
+ no ip route-cache
+ shutdown
+!
+interface Vlan3
+ description Manger
+ ip address 10.182.3.52 255.255.255.0
+ no ip route-cache
+!
+ip default-gateway 10.182.3.254
+no ip http server
+ip http access-class 90
+ip http secure-server
+!
+ip access-list standard ACL_MGMT
+ permit 10.201.0.0 0.0.255.255
+ permit 10.202.0.0 0.0.255.255
+ip access-list standard Network-Management
+ permit 10.182.0.0 0.0.127.255
+ip access-list standard snmp-service
+ permit 10.182.3.200
+logging trap critical
+logging source-interface Vlan3
+logging 10.182.3.249
+access-list 90 remark Hosts allowed to SSH WEB in
+access-list 90 permit 10.182.0.0 0.0.127.255
+snmp-server group MySNMPGroup v3 priv read MyView access snmp-service
+snmp-server view MyView iso included
+!
+control-plane
+!
+!
+line con 0
+line vty 0 4
+ access-class 90 in
+ login local
+ transport input ssh
+line vty 5 15
+ access-class 90 in
+ login local
+ transport input ssh
+!
+ntp clock-period 36029068
+ntp source Vlan3
+ntp server 10.182.18.1 prefer
+ntp server 10.182.3.249
+end
+
+
+Command: show clock
+16:12:54.847 UTC Thu Oct 30 2025
+
+Command: show version
+Cisco IOS Software, C2918 Software (C2918-LANLITEK9-M), Version 12.2(44)SE6, RELEASE SOFTWARE (fc1)
+Copyright (c) 1986-2009 by Cisco Systems, Inc.
+Compiled Mon 09-Mar-09 20:16 by gereddy
+Image text-base: 0x00003000, data-base: 0x01000000
+
+ROM: Bootstrap program is C2918 boot loader
+BOOTLDR: C2918 Boot Loader (C2918-HBOOT-M) Version 12.2(44r)SE, RELEASE SOFTWARE (fc1)
+
+5F2-2918_48P-02 uptime is 41 weeks, 5 days, 58 minutes
+System returned to ROM by power-on
+System restarted at 15:17:16 UTC Sat Jan 11 2025
+System image file is "flash:c2918-lanlitek9-mz.122-44.SE6/c2918-lanlitek9-mz.122-44.SE6.bin"
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+cisco WS-C2918-48TC-C (PowerPC405) processor (revision A0) with 61440K/4088K bytes of memory.
+Processor board ID FOC1402W0SG
+Last reset from power-on
+2 Virtual Ethernet interfaces
+48 FastEthernet interfaces
+2 Gigabit Ethernet interfaces
+The password-recovery mechanism is enabled.
+
+64K bytes of flash-simulated non-volatile configuration memory.
+Base ethernet MAC Address       : 04:FE:7F:9D:57:00
+Motherboard assembly number     : 73-11646-01
+Power supply part number        : 341-0097-02
+Motherboard serial number       : FOC14022JVN
+Power supply serial number      : AZS1350026L
+Model revision number           : A0
+Motherboard revision number     : C0
+Model number                    : WS-C2918-48TC-C
+System serial number            : FOC1402W0SG
+Top Assembly Part Number        : 800-30414-01
+Top Assembly Revision Number    : D0
+Version ID                      : V01
+CLEI Code Number                : COMUR00ARA
+Hardware Board Revision Number  : 0x02
+
+
+Switch Ports Model              SW Version            SW Image                 
+------ ----- -----              ----------            ----------               
+*    1 50    WS-C2918-48TC-C    12.2(44)SE6           C2918-LANLITEK9-M        
+
+
+Configuration register is 0xF
+
+
+Command: show cdp nei
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone
+
+Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+SLGL-Core-01.SLGL.Shangri-la.com
+                 Gig 0/1           141          R S I     WS-C4506- Gig 2/16
+5F2-2960_24POE-06.slgl
+                 Gig 0/2           171           S I      WS-C2960X Gig 1/0/24
+
+Command: show lldp nei
+% LLDP is not enabled
+
+Command: show int statu
+
+Port      Name               Status       Vlan       Duplex  Speed Type
+Fa0/1     5F2-A01-501C       notconnect   501          auto   auto 10/100BaseTX
+Fa0/2     5F2-A03-502C       notconnect   502          auto   auto 10/100BaseTX
+Fa0/3     5F2-A05-503C       notconnect   503          auto   auto 10/100BaseTX
+Fa0/4     5F2-A07-504C       notconnect   504          auto   auto 10/100BaseTX
+Fa0/5     5F2-A09-505C       notconnect   505          auto   auto 10/100BaseTX
+Fa0/6     5F2-A11-506C       notconnect   506          auto   auto 10/100BaseTX
+Fa0/7     5F2-A13-507C       notconnect   507          auto   auto 10/100BaseTX
+Fa0/8     5F2-A15-508C       notconnect   508          auto   auto 10/100BaseTX
+Fa0/9     5F2-A17-509C       notconnect   509          auto   auto 10/100BaseTX
+Fa0/10    5F2-A19-510C       notconnect   510          auto   auto 10/100BaseTX
+Fa0/11    5F2-A21-511C       notconnect   511          auto   auto 10/100BaseTX
+Fa0/12    5F2-A23-512C       notconnect   512          auto   auto 10/100BaseTX
+Fa0/13    5F2-B01-513C       notconnect   513          auto   auto 10/100BaseTX
+Fa0/14    5F2-B03-514C       notconnect   514          auto   auto 10/100BaseTX
+Fa0/15    5F2-B05-515C       notconnect   515          auto   auto 10/100BaseTX
+Fa0/16    5F2-B07-516C       notconnect   516          auto   auto 10/100BaseTX
+Fa0/17    5F2-B09-517C       notconnect   517          auto   auto 10/100BaseTX
+Fa0/18    5F2-B11-518C       notconnect   518          auto   auto 10/100BaseTX
+Fa0/19    5F2-B13-519C       notconnect   519          auto   auto 10/100BaseTX
+Fa0/20    5F2-B15-521C       notconnect   521          auto   auto 10/100BaseTX
+Fa0/21    5F2-B17-523C       notconnect   523          auto   auto 10/100BaseTX
+Fa0/22    5F2-B20-524C       notconnect   524          auto   auto 10/100BaseTX
+Fa0/23    5F2-B22-526C       notconnect   526          auto   auto 10/100BaseTX
+Fa0/24    5F2-B24-527C       notconnect   527          auto   auto 10/100BaseTX
+Fa0/25    5F2-C02-528C       notconnect   528          auto   auto 10/100BaseTX
+Fa0/26    5F2-C04-529C       notconnect   529          auto   auto 10/100BaseTX
+Fa0/27    5F2-C06-530C       notconnect   530          auto   auto 10/100BaseTX
+Fa0/28    5F2-C08-531C       notconnect   531          auto   auto 10/100BaseTX
+Fa0/29    5F2-C10-532C       notconnect   532          auto   auto 10/100BaseTX
+Fa0/30    5F2-C12-533C       notconnect   533          auto   auto 10/100BaseTX
+Fa0/31    5F2-C14-534C       notconnect   534          auto   auto 10/100BaseTX
+Fa0/32    5F2-C16-535C       notconnect   535          auto   auto 10/100BaseTX
+Fa0/33    5F2-C18-536C       notconnect   536          auto   auto 10/100BaseTX
+Fa0/34    5F2-C20-537C       notconnect   537          auto   auto 10/100BaseTX
+Fa0/35    5F2-C22-538C       notconnect   538          auto   auto 10/100BaseTX
+Fa0/36    5F2-C24-539C       notconnect   539          auto   auto 10/100BaseTX
+Fa0/37    5F2-D02-540C       notconnect   540          auto   auto 10/100BaseTX
+Fa0/38    5F2-D04-541C       notconnect   541          auto   auto 10/100BaseTX
+Fa0/39    5F2-D06-542C       notconnect   542          auto   auto 10/100BaseTX
+Fa0/40    5F2-D08-543C       notconnect   543          auto   auto 10/100BaseTX
+Fa0/41    5F2-D10-544C       notconnect   544          auto   auto 10/100BaseTX
+Fa0/42    5F2-D12-545C       notconnect   545          auto   auto 10/100BaseTX
+Fa0/43    5F2-D14-546C       notconnect   546          auto   auto 10/100BaseTX
+Fa0/44    5F2-D16-547C       notconnect   547          auto   auto 10/100BaseTX
+Fa0/45                       notconnect   1            auto   auto 10/100BaseTX
+Fa0/46                       notconnect   1            auto   auto 10/100BaseTX
+Fa0/47                       notconnect   1            auto   auto 10/100BaseTX
+Fa0/48                       notconnect   1            auto   auto 10/100BaseTX
+Gi0/1     Up-link            connected    trunk      a-full a-1000 1000BaseSX SFP
+Gi0/2     Up-link            connected    trunk      a-full a-1000 10/100/1000BaseTX
+
+Command: show proc cpu | inc CPU utilization
+CPU utilization for five seconds: 16%/0%; one minute: 8%; five minutes: 8%
+
+Command: show proc mem | inc Processor Pool
+Processor Pool Total:   37455336 Used:    8978164 Free:   28477172
+
+Command: show loggi
+Syslog logging: enabled (0 messages dropped, 0 messages rate-limited, 0 flushes, 0 overruns, xml disabled, filtering disabled)
+
+No Active Message Discriminator.
+
+
+
+No Inactive Message Discriminator.
+
+
+    Console logging: level debugging, 1745 messages logged, xml disabled,
+                     filtering disabled
+    Monitor logging: level debugging, 0 messages logged, xml disabled,
+                     filtering disabled
+    Buffer logging:  level debugging, 1745 messages logged, xml disabled,
+                    filtering disabled
+    Exception Logging: size (4096 bytes)
+    Count and timestamp logging messages: disabled
+    File logging: disabled
+    Persistent logging: disabled
+    Trap logging: level critical, 0 message lines logged
+        Logging to 10.182.3.249  (udp port 514,  audit disabled,
+              authentication disabled, encryption disabled, link down),
+              0 message lines logged, 
+              0 message lines rate-limited, 
+              0 message lines dropped-by-MD, 
+              xml disabled, sequence number disabled
+              filtering disabled
+
+Log Buffer (4096 bytes):
+TM-4-MACFLAP_NOTIF: Host 5292.0ae3.d029 in vlan 200 is flapping between port Gi0/2 and port Gi0/1
+001715: Oct 29 03:22:00: %SW_MATM-4-MACFLAP_NOTIF: Host 5292.0ae3.d029 in vlan 200 is flapping between port Gi0/2 and port Gi0/1
+001716: Oct 29 03:22:09: %SW_MATM-4-MACFLAP_NOTIF: Host 5292.0ae3.d029 in vlan 200 is flapping between port Gi0/1 and port Gi0/2
+001717: Oct 29 03:22:40: %SW_MATM-4-MACFLAP_NOTIF: Host 5292.0ae3.d029 in vlan 200 is flapping between port Gi0/2 and port Gi0/1
+001718: Oct 29 03:23:33: %SW_MATM-4-MACFLAP_NOTIF: Host 5292.0ae3.d029 in vlan 200 is flapping between port Gi0/2 and port Gi0/1
+001719: Oct 29 03:23:41: %SW_MATM-4-MACFLAP_NOTIF: Host 5292.0ae3.d029 in vlan 200 is flapping between port Gi0/2 and port Gi0/1
+001720: Oct 29 03:25:01: %SW_MATM-4-MACFLAP_NOTIF: Host 5292.0ae3.d029 in vlan 200 is flapping between port Gi0/2 and port Gi0/1
+001721: Oct 29 03:32:29: %SW_MATM-4-MACFLAP_NOTIF: Host 5292.0ae3.d029 in vlan 200 is flapping between port Gi0/2 and port Gi0/1
+001722: Oct 29 03:32:45: %SW_MATM-4-MACFLAP_NOTIF: Host 5292.0ae3.d029 in vlan 200 is flapping between port Gi0/2 and port Gi0/1
+001723: Oct 29 03:33:07: %SW_MATM-4-MACFLAP_NOTIF: Host 5292.0ae3.d029 in vlan 200 is flapping between port Gi0/1 and port Gi0/2
+001724: Oct 29 03:36:01: %SW_MATM-4-MACFLAP_NOTIF: Host 5292.0ae3.d029 in vlan 200 is flapping between port Gi0/1 and port Gi0/2
+001725: Oct 29 04:11:48: %SW_MATM-4-MACFLAP_NOTIF: Host 5292.0ae3.d029 in vlan 200 is flapping between port Gi0/2 and port Gi0/1
+001726: Oct 29 04:13:16: %SW_MATM-4-MACFLAP_NOTIF: Host 5292.0ae3.d029 in vlan 200 is flapping between port Gi0/1 and port Gi0/2
+001727: Oct 29 04:14:06: %SW_MATM-4-MACFLAP_NOTIF: Host 5292.0ae3.d029 in vlan 200 is flapping between port Gi0/2 and port Gi0/1
+001728: Oct 29 04:14:36: %SW_MATM-4-MACFLAP_NOTIF: Host 5292.0ae3.d029 in vlan 200 is flapping between port Gi0/2 and port Gi0/1
+001729: Oct 29 04:14:51: %SW_MATM-4-MACFLAP_NOTIF: Host 5292.0ae3.d029 in vlan 200 is flapping between port Gi0/1 and port Gi0/2
+001730: Oct 29 04:15:05: %SW_MATM-4-MACFLAP_NOTIF: Host 5292.0ae3.d029 in vlan 200 is flapping between port Gi0/2 and port Gi0/1
+001731: Oct 29 04:15:21: %SW_MATM-4-MACFLAP_NOTIF: Host 5292.0ae3.d029 in vlan 200 is flapping between port Gi0/2 and port Gi0/1
+001732: Oct 29 04:16:03: %SW_MATM-4-MACFLAP_NOTIF: Host 5292.0ae3.d029 in vlan 200 is flapping between port Gi0/1 and port Gi0/2
+001733: Oct 29 04:17:08: %SW_MATM-4-MACFLAP_NOTIF: Host 5292.0ae3.d029 in vlan 200 is flapping between port Gi0/2 and port Gi0/1
+001734: Oct 29 04:21:37: %SW_MATM-4-MACFLAP_NOTIF: Host 5292.0ae3.d029 in vlan 200 is flapping between port Gi0/2 and port Gi0/1
+001735: Oct 29 04:22:06: %SW_MATM-4-MACFLAP_NOTIF: Host 5292.0ae3.d029 in vlan 200 is flapping between port Gi0/1 and port Gi0/2
+001736: Oct 29 04:23:21: %SW_MATM-4-MACFLAP_NOTIF: Host 5292.0ae3.d029 in vlan 200 is flapping between port Gi0/1 and port Gi0/2
+001737: Oct 29 04:25:27: %SW_MATM-4-MACFLAP_NOTIF: Host 5292.0ae3.d029 in vlan 200 is flapping between port Gi0/1 and port Gi0/2
+001738: Oct 29 04:28:52: %SW_MATM-4-MACFLAP_NOTIF: Host 5292.0ae3.d029 in vlan 200 is flapping between port Gi0/2 and port Gi0/1
+001739: Oct 29 04:30:08: %SW_MATM-4-MACFLAP_NOTIF: Host 5292.0ae3.d029 in vlan 200 is flapping between port Gi0/1 and port Gi0/2
+001740: Oct 29 06:12:53: %SW_MATM-4-MACFLAP_NOTIF: Host 5292.0ae3.d029 in vlan 200 is flapping between port Gi0/1 and port Gi0/2
+001741: Oct 29 06:13:40: %SW_MATM-4-MACFLAP_NOTIF: Host 5292.0ae3.d029 in vlan 200 is flapping between port Gi0/1 and port Gi0/2
+001742: Oct 29 06:14:43: %SW_MATM-4-MACFLAP_NOTIF: Host 5292.0ae3.d029 in vlan 200 is flapping between port Gi0/1 and port Gi0/2
+001743: Oct 29 06:31:35: %SW_MATM-4-MACFLAP_NOTIF: Host 5292.0ae3.d029 in vlan 200 is flapping between port Gi0/2 and port Gi0/1
+001744: Oct 29 06:32:48: %SW_MATM-4-MACFLAP_NOTIF: Host 5292.0ae3.d029 in vlan 200 is flapping between port Gi0/2 and port Gi0/1
+001745: Oct 29 06:56:07: %SW_MATM-4-MACFLAP_NOTIF: Host 5292.0ae3.d029 in vlan 200 is flapping between port Gi0/1 and port Gi0/2

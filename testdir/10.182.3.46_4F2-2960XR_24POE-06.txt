@@ -1,0 +1,537 @@
+=== 设备信息 ===
+
+IP地址: 10.182.3.46
+主机名: 4F2-2960XR_24POE-06
+设备类型: cisco_ios
+原始类型: cisco_ios
+厂商: cisco
+执行时间: 2025-10-30 16:12:58
+
+=== 执行结果 ===
+Command: show run
+Building configuration...
+
+Current configuration : 7193 bytes
+!
+! Last configuration change at 11:57:49 UTC Wed Jul 23 2025 by slglsw
+! NVRAM config last updated at 11:57:50 UTC Wed Jul 23 2025 by slglsw
+!
+version 15.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname 4F2-2960XR_24POE-06
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret 5 $1$c04K$Z.N6G0cNiJF2Zn47hivU/0
+!
+username itsupport secret 9 $9$8zgV45wwYBMRG5$duRxSHE41i.kg2C6QjNDRyi0VIvPKnqNSgyXdwywT7A
+username slglsw secret 9 $9$yR0IfTOzH.peY5$z6qyWi8Tu4mL7TV6huG2L.i71Fox3sPHJVGdUToSHTE
+no aaa new-model
+clock timezone UTC 8 0
+switch 1 provision ws-c2960xr-24ps-i
+system mtu routing 1500
+!
+!
+!
+!
+!
+!
+ip domain-name slgl
+!
+!
+!
+!
+!
+!
+!
+crypto pki trustpoint TP-self-signed-2063819520
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-2063819520
+ revocation-check none
+ rsakeypair TP-self-signed-2063819520
+!
+!
+crypto pki certificate chain TP-self-signed-2063819520
+ certificate self-signed 01
+  3082022B 30820194 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 32303633 38313935 3230301E 170D3138 30353138 31303439 
+  34315A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D32 30363338 
+  31393532 3030819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281 
+  8100C8F5 44478420 B338FD21 EC9606B2 1706FB48 DDA368E5 2A308126 96FEA90E 
+  AA8E1E27 71669F7E 88E0D2F7 15881C52 B48BC424 025C9913 95276E6C BF2D096A 
+  8713B6B2 9B8FAE38 64ED03A8 4EDDD3FF 41ADA4B0 AA883AB7 CDEDD93B 0837D561 
+  58D7DB29 60112AD3 F1D0FFE8 0B532A8F FD68019E D92D4642 7367EECE 12789C0F 
+  D21B0203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 301F0603 
+  551D2304 18301680 14440FA9 1DAF3B00 96D1E9BA 82729289 C973943B 55301D06 
+  03551D0E 04160414 440FA91D AF3B0096 D1E9BA82 729289C9 73943B55 300D0609 
+  2A864886 F70D0101 05050003 818100B0 491613CD FC401184 A39163AE 3474A387 
+  A734CECB 00F17AF4 D2CC64AD 8FFB989F 4E76F42A 67BEB936 34226655 9B6FFDB8 
+  59F89BC3 C378CBA3 53AE979D DCE70020 C83B47D5 2D805225 11D83EE9 3C451F66 
+  9EEB68B6 FFE78E37 2896F600 F4EA5D63 CC6FE839 FE6C8D79 9DF5FD7E ED5A2E81 
+  ABF14222 80E6F0C8 C1EE5145 04649C
+  	quit
+!
+spanning-tree mode rapid-pvst
+spanning-tree portfast edge bpduguard default
+spanning-tree extend system-id
+spanning-tree vlan 1-1000 priority 61440
+!
+!
+!
+!
+vlan internal allocation policy ascending
+!
+lldp run
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+interface FastEthernet0
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/0/1
+ description Link-to-AP
+ switchport trunk native vlan 132
+ switchport mode trunk
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/2
+ description Link-to-AP
+ switchport trunk native vlan 132
+ switchport mode trunk
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/3
+ description Link-to-AP
+ switchport trunk native vlan 132
+ switchport mode trunk
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/4
+ description Link-to-AP
+ switchport trunk native vlan 132
+ switchport mode trunk
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/5
+ description Link-to-AP
+ switchport trunk native vlan 132
+ switchport mode trunk
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/6
+ description Link-to-AP
+ switchport trunk native vlan 132
+ switchport mode trunk
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/7
+ description Link-to-AP
+ switchport trunk native vlan 132
+ switchport mode trunk
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/8
+ description Link-to-AP
+ switchport trunk native vlan 132
+ switchport mode trunk
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/9
+ description Link-to-AP
+ switchport trunk native vlan 132
+ switchport mode trunk
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/10
+ description Link-to-AP
+ switchport trunk native vlan 132
+ switchport mode trunk
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/11
+ description Link-to-AP
+ switchport trunk native vlan 132
+ switchport mode trunk
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/12
+ description Link-to-AP
+ switchport trunk native vlan 132
+ switchport mode trunk
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/13
+ description Link-to-AP
+ switchport trunk native vlan 132
+ switchport mode trunk
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/14
+ description Link-to-AP
+ switchport trunk native vlan 132
+ switchport mode trunk
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/15
+ description Link-to-AP
+ switchport trunk native vlan 132
+ switchport mode trunk
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/16
+ description Link-to-AP
+ switchport trunk native vlan 132
+ switchport mode trunk
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/17
+ description Link-to-AP
+ switchport trunk native vlan 132
+ switchport mode trunk
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/18
+ description Link-to-AP
+ switchport trunk native vlan 132
+ switchport mode trunk
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/19
+ description Link-to-AP
+ switchport trunk native vlan 132
+ switchport mode trunk
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/20
+ description Link-to-AP
+ switchport trunk native vlan 132
+ switchport mode trunk
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/21
+ description Link-to-AP
+ switchport trunk native vlan 132
+ switchport mode trunk
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/22
+ description Link-to-AP
+ switchport trunk native vlan 132
+ switchport mode trunk
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/23
+ description Link-to-AP
+ switchport trunk native vlan 132
+ switchport mode trunk
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/24
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/25
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/26
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/27
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/28
+ switchport mode trunk
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan3
+ description Manger
+ ip address 10.182.3.46 255.255.255.0
+ no ip route-cache
+!
+ip default-gateway 10.182.3.254
+ip forward-protocol nd
+!
+no ip http server
+ip http access-class 90
+ip http secure-server
+ip ssh version 2
+!
+ip access-list standard ACL_MGMT
+ permit 10.201.0.0 0.0.255.255
+ permit 10.202.0.0 0.0.255.255
+ip access-list standard Network-Management
+ permit 10.182.0.0 0.0.127.255
+ip access-list standard snmp-service
+ permit 10.182.3.200
+!
+!
+logging source-interface Vlan3
+logging host 10.182.3.249
+logging host 10.182.1.27
+access-list 90 remark Hosts allowed to SSH WEB in
+access-list 90 permit 10.182.0.0 0.0.127.255
+!
+!
+snmp-server group MySNMPGroup v3 priv read MyView access snmp-service
+snmp-server view MyView iso included
+!
+line con 0
+line vty 0 4
+ access-class 90 in
+ password slgl_it_2010
+ login local
+ transport input ssh
+line vty 5 15
+ access-class 90 in
+ login local
+ transport input ssh
+!
+ntp server 10.182.18.1 prefer
+!
+end
+
+
+Command: show clock
+16:12:54.385 UTC Thu Oct 30 2025
+
+Command: show version
+Cisco IOS Software, C2960X Software (C2960X-UNIVERSALK9-M), Version 15.2(7)E6, RELEASE SOFTWARE (fc2)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2022 by Cisco Systems, Inc.
+Compiled Tue 22-Mar-22 10:47 by mcpre
+
+ROM: Bootstrap program is C2960X boot loader
+BOOTLDR: C2960X Boot Loader (C2960X-HBOOT-M) Version 15.2(6r)E, RELEASE SOFTWARE (fc1)
+
+4F2-2960XR_24POE-06 uptime is 41 weeks, 5 days, 49 minutes
+System returned to ROM by power-on
+System restarted at 15:21:04 UTC Sat Jan 11 2025
+System image file is "flash:/c2960x-universalk9-mz.152-7.E6.bin"
+Last reload reason: power-on
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+cisco WS-C2960XR-24PS-I (APM86XXX) processor (revision T0) with 524288K bytes of memory.
+Processor board ID FDO2206B0PY
+Last reset from power-on
+2 Virtual Ethernet interfaces
+1 FastEthernet interface
+28 Gigabit Ethernet interfaces
+2 Ten Gigabit Ethernet interfaces
+The password-recovery mechanism is enabled.
+
+512K bytes of flash-simulated non-volatile configuration memory.
+Base ethernet MAC Address       : 68:2C:7B:03:63:00
+Motherboard assembly number     : 73-100640-04
+Power supply part number        : 341-0531-03
+Motherboard serial number       : FDO22060BVA
+Power supply serial number      : LIT21522JTU
+Model revision number           : T0
+Motherboard revision number     : B0
+Model number                    : WS-C2960XR-24PS-I
+Daughterboard assembly number   : 73-14200-03
+Daughterboard serial number     : FDO22041B08
+System serial number            : FDO2206B0PY
+Top Assembly Part Number        : 68-100316-03
+Top Assembly Revision Number    : E0
+Version ID                      : V06
+CLEI Code Number                : CMMKN10ARE
+Daughterboard revision number   : B0
+Hardware Board Revision Number  : 0x22
+
+
+Switch Ports Model                     SW Version            SW Image                 
+------ ----- -----                     ----------            ----------               
+*    1 30    WS-C2960XR-24PS-I         15.2(7)E6             C2960X-UNIVERSALK9-M     
+
+
+Configuration register is 0xF
+
+
+Command: show cdp nei
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone, 
+                  D - Remote, C - CVTA, M - Two-port Mac Relay 
+
+Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+SLGL-Core-02.SLGL.Shangri-la.com
+                 Gig 1/0/25        120             R S I  WS-C4506- Gig 2/13
+4F2-2960_24POE-10.slgl
+                 Gig 1/0/24        146              S I   WS-C2960X Gig 1/0/23
+
+Total cdp entries displayed : 2
+
+Command: show lldp nei
+Capability codes:
+    (R) Router, (B) Bridge, (T) Telephone, (C) DOCSIS Cable Device
+    (W) WLAN Access Point, (P) Repeater, (S) Station, (O) Other
+
+Device ID           Local Intf     Hold-time  Capability      Port ID
+SLGL-Core-02.SLGL.ShGi1/0/25       120        B,R             Gi2/13
+4F Guest Public1    Gi1/0/11       120        B,W             38ff.3609.17c3
+4F Guest Public2    Gi1/0/2        120        B,W             38ff.3609.1523
+4F Guest Public3    Gi1/0/16       120        B,W             38ff.3609.1793
+424                 Gi1/0/1        120        B,W             58b6.332b.c603
+429                 Gi1/0/5        120        B,W             58b6.332b.d503
+426                 Gi1/0/4        120        B,W             58b6.332b.c4a3
+430                 Gi1/0/8        120        B,W             58b6.332b.b533
+431                 Gi1/0/7        120        B,W             58b6.332b.93c3
+428                 Gi1/0/6        120        B,W             58b6.332b.dc03
+427                 Gi1/0/3        120        B,W             58b6.332b.9ad3
+433                 Gi1/0/9        120        B,W             58b6.332b.c723
+432                 Gi1/0/10       120        B,W             58b6.332b.c3a3
+437                 Gi1/0/13       120        B,W             58b6.332b.e353
+434                 Gi1/0/12       120        B,W             58b6.332b.c243
+436                 Gi1/0/14       120        B,W             58b6.332b.a863
+435                 Gi1/0/15       120        B,W             58b6.332b.b4f3
+
+Total entries displayed: 17
+
+
+Command: show int statu
+
+Port      Name               Status       Vlan       Duplex  Speed Type 
+Gi1/0/1   Link-to-AP         connected    trunk      a-full a-1000 10/100/1000BaseTX
+Gi1/0/2   Link-to-AP         connected    trunk      a-full a-1000 10/100/1000BaseTX
+Gi1/0/3   Link-to-AP         connected    trunk      a-full a-1000 10/100/1000BaseTX
+Gi1/0/4   Link-to-AP         connected    trunk      a-full a-1000 10/100/1000BaseTX
+Gi1/0/5   Link-to-AP         connected    trunk      a-full a-1000 10/100/1000BaseTX
+Gi1/0/6   Link-to-AP         connected    trunk      a-full a-1000 10/100/1000BaseTX
+Gi1/0/7   Link-to-AP         connected    trunk      a-full a-1000 10/100/1000BaseTX
+Gi1/0/8   Link-to-AP         connected    trunk      a-full a-1000 10/100/1000BaseTX
+Gi1/0/9   Link-to-AP         connected    trunk      a-full a-1000 10/100/1000BaseTX
+Gi1/0/10  Link-to-AP         connected    trunk      a-full a-1000 10/100/1000BaseTX
+Gi1/0/11  Link-to-AP         connected    trunk      a-full a-1000 10/100/1000BaseTX
+Gi1/0/12  Link-to-AP         connected    trunk      a-full a-1000 10/100/1000BaseTX
+Gi1/0/13  Link-to-AP         connected    trunk      a-full a-1000 10/100/1000BaseTX
+Gi1/0/14  Link-to-AP         connected    trunk      a-full a-1000 10/100/1000BaseTX
+Gi1/0/15  Link-to-AP         connected    trunk      a-full a-1000 10/100/1000BaseTX
+Gi1/0/16  Link-to-AP         connected    trunk      a-full a-1000 10/100/1000BaseTX
+Gi1/0/17  Link-to-AP         notconnect   1            auto   auto 10/100/1000BaseTX
+Gi1/0/18  Link-to-AP         notconnect   1            auto   auto 10/100/1000BaseTX
+Gi1/0/19  Link-to-AP         notconnect   1            auto   auto 10/100/1000BaseTX
+Gi1/0/20  Link-to-AP         notconnect   1            auto   auto 10/100/1000BaseTX
+Gi1/0/21  Link-to-AP         notconnect   1            auto   auto 10/100/1000BaseTX
+Gi1/0/22  Link-to-AP         notconnect   1            auto   auto 10/100/1000BaseTX
+Gi1/0/23  Link-to-AP         notconnect   1            auto   auto 10/100/1000BaseTX
+Gi1/0/24                     connected    trunk      a-full a-1000 10/100/1000BaseTX
+Gi1/0/25                     connected    trunk      a-full a-1000 1000BaseSX SFP
+Gi1/0/26                     notconnect   1            auto   auto Not Present
+Gi1/0/27                     notconnect   1            auto   auto Not Present
+Gi1/0/28                     notconnect   1            auto   auto Not Present
+Fa0                          disabled     routed       auto   auto 10/100BaseTX
+
+Command: show proc cpu | inc CPU utilization
+CPU utilization for five seconds: 59%/1%; one minute: 40%; five minutes: 38%
+
+Command: show proc mem | inc Processor Pool
+Processor Pool Total:  366110852 Used:   78605772 Free:  287505080
+
+Command: show loggi
+Syslog logging: enabled (0 messages dropped, 1 messages rate-limited, 0 flushes, 0 overruns, xml disabled, filtering disabled)
+
+No Active Message Discriminator.
+
+
+
+No Inactive Message Discriminator.
+
+
+    Console logging: level debugging, 3669 messages logged, xml disabled,
+                     filtering disabled
+    Monitor logging: level debugging, 0 messages logged, xml disabled,
+                     filtering disabled
+    Buffer logging:  level debugging, 3670 messages logged, xml disabled,
+                    filtering disabled
+    Exception Logging: size (4096 bytes)
+    Count and timestamp logging messages: disabled
+    File logging: disabled
+    Persistent logging: disabled
+
+No active filter modules.
+
+    Trap logging: level informational, 3655 message lines logged
+        Logging to 10.182.3.249  (udp port 514, audit disabled,
+              link up),
+              3620 message lines logged, 
+              0 message lines rate-limited, 
+              0 message lines dropped-by-MD, 
+              xml disabled, sequence number disabled
+              filtering disabled
+        Logging to 10.182.1.27  (udp port 514, audit disabled,
+              link up),
+              3621 message lines logged, 
+              0 message lines rate-limited, 
+              0 message lines dropped-by-MD, 
+              xml disabled, sequence number disabled
+              filtering disabled
+        Logging Source-Interface:       VRF Name:
+        Vlan3                           
+
+Log Buffer (4096 bytes):
+ port Gi1/0/11
+Oct 26 00:40:14.214: %SW_MATM-4-MACFLAP_NOTIF: Host ee8d.7721.4e19 in vlan 200 is flapping between port Gi1/0/25 and port Gi1/0/24
+Oct 26 01:29:03.829: %SW_MATM-4-MACFLAP_NOTIF: Host 621f.cf18.3272 in vlan 200 is flapping between port Gi1/0/25 and port Gi1/0/24
+Oct 26 08:41:54.298: %SW_MATM-4-MACFLAP_NOTIF: Host b260.3494.0bb4 in vlan 200 is flapping between port Gi1/0/2 and port Gi1/0/16
+Oct 26 09:39:20.183: %SW_MATM-4-MACFLAP_NOTIF: Host 1e49.1d15.3da2 in vlan 200 is flapping between port Gi1/0/24 and port Gi1/0/11
+Oct 26 09:45:02.724: %SW_MATM-4-MACFLAP_NOTIF: Host 8aa7.1caf.2fe9 in vlan 200 is flapping between port Gi1/0/25 and port Gi1/0/24
+Oct 26 09:45:34.046: %SW_MATM-4-MACFLAP_NOTIF: Host 8aa7.1caf.2fe9 in vlan 200 is flapping between port Gi1/0/24 and port Gi1/0/25
+Oct 26 10:59:59.498: %SW_MATM-4-MACFLAP_NOTIF: Host 8aa7.1caf.2fe9 in vlan 200 is flapping between port Gi1/0/24 and port Gi1/0/11
+Oct 26 11:06:19.289: %SW_MATM-4-MACFLAP_NOTIF: Host 8aa7.1caf.2fe9 in vlan 200 is flapping between port Gi1/0/24 and port Gi1/0/11
+Oct 26 15:44:05.183: %SW_MATM-4-MACFLAP_NOTIF: Host 8aa7.1caf.2fe9 in vlan 200 is flapping between port Gi1/0/25 and port Gi1/0/24
+Oct 26 21:21:53.896: %SW_MATM-4-MACFLAP_NOTIF: Host 2e2b.efec.89fc in vlan 200 is flapping between port Gi1/0/25 and port Gi1/0/24
+Oct 27 12:46:50.824: %SW_MATM-4-MACFLAP_NOTIF: Host 8e78.2422.fb3b in vlan 200 is flapping between port Gi1/0/1 and port Gi1/0/2
+Oct 27 13:43:00.324: %SW_MATM-4-MACFLAP_NOTIF: Host 881e.5a20.5397 in vlan 200 is flapping between port Gi1/0/24 and port Gi1/0/11
+Oct 27 16:24:29.891: %SW_MATM-4-MACFLAP_NOTIF: Host 2e2b.efec.89fc in vlan 200 is flapping between port Gi1/0/25 and port Gi1/0/24
+Oct 27 20:20:07.130: %SW_MATM-4-MACFLAP_NOTIF: Host aec4.eb55.9461 in vlan 200 is flapping between port Gi1/0/25 and port Gi1/0/24
+Oct 27 23:06:14.250: %SW_MATM-4-MACFLAP_NOTIF: Host f24e.c3d4.3892 in vlan 200 is flapping between port Gi1/0/25 and port Gi1/0/24
+Oct 28 13:39:48.476: %SW_MATM-4-MACFLAP_NOTIF: Host f24e.c3d4.3892 in vlan 200 is flapping between port Gi1/0/25 and port Gi1/0/24
+Oct 28 13:40:58.735: %SW_MATM-4-MACFLAP_NOTIF: Host f24e.c3d4.3892 in vlan 200 is flapping between port Gi1/0/25 and port Gi1/0/24
+Oct 28 13:43:03.382: %SW_MATM-4-MACFLAP_NOTIF: Host f24e.c3d4.3892 in vlan 200 is flapping between port Gi1/0/24 and port Gi1/0/25
+Oct 28 13:43:30.474: %SW_MATM-4-MACFLAP_NOTIF: Host f24e.c3d4.3892 in vlan 200 is flapping between port Gi1/0/25 and port Gi1/0/24
+Oct 28 23:19:29.357: %SW_MATM-4-MACFLAP_NOTIF: Host f6b2.ae59.3b07 in vlan 200 is flapping between port Gi1/0/8 and port Gi1/0/9
+Oct 29 14:06:22.509: %SW_MATM-4-MACFLAP_NOTIF: Host 861f.579b.6dcc in vlan 200 is flapping between port Gi1/0/24 and port Gi1/0/25
+Oct 29 14:50:07.104: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/11, changed state to down
+Oct 29 14:50:08.153: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/11, changed state to down
+Oct 29 14:50:10.816: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/11, changed state to up
+Oct 29 14:50:12.910: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/11, changed state to up
+Oct 29 22:40:22.765: %SW_MATM-4-MACFLAP_NOTIF: Host e2f7.734a.31f0 in vlan 200 is flapping between port Gi1/0/2 and port Gi1/0/11
+Oct 29 22:41:39.099: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/11, changed state to down
+Oct 29 22:41:40.147: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/11, changed state to down
+Oct 29 22:41:42.856: %LINK-3-UPDOWN: Interface GigabitEthernet1/0/11, changed state to up
+Oct 29 22:41:44.950: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/0/11, changed state to up
+Oct 30 04:52:29.284: %SW_MATM-4-MACFLAP_NOTIF: Host 02bf.d85f.f75c in vlan 200 is flapping between port Gi1/0/16 and port Gi1/0/25
+Oct 30 05:19:33.968: %SW_MATM-4-MACFLAP_NOTIF: Host 1a08.e233.3bc9 in vlan 200 is flapping between port Gi1/0/6 and port Gi1/0/9
+Oct 30 05:50:39.257: %SW_MATM-4-MACFLAP_NOTIF: Host feec.64a7.ca92 in vlan 200 is flapping between port Gi1/0/4 and port Gi1/0/16

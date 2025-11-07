@@ -1,0 +1,566 @@
+=== 设备信息 ===
+
+IP地址: 10.182.3.62
+主机名: 6F1-2918_24P-02
+设备类型: cisco_ios
+原始类型: cisco_ios
+厂商: cisco
+执行时间: 2025-10-30 16:12:58
+
+=== 执行结果 ===
+Command: show run
+Building configuration...
+
+Current configuration : 10143 bytes
+!
+! Last configuration change at 12:35:10 UTC Wed Jul 23 2025 by slglsw
+! NVRAM config last updated at 12:35:10 UTC Wed Jul 23 2025 by slglsw
+!
+version 12.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime localtime
+service password-encryption
+service sequence-numbers
+!
+hostname 6F1-2918_24P-02
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret 5 $1$X6aT$pSONVYNG9j8UsMJawT7jy.
+!
+username itsupport secret 5 $1$SsW0$fpOJJjWVW7.9A4yI0RUWx.
+username slglsw secret 5 $1$4zPS$XAc8eWzx0fVnXMk2.F3wB.
+no aaa new-model
+clock timezone UTC 8
+system mtu routing 1500
+vtp mode transparent
+ip subnet-zero
+no ip domain-lookup
+ip domain-name slgl
+!
+!
+crypto pki trustpoint TP-self-signed-4226041984
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-4226041984
+ revocation-check none
+ rsakeypair TP-self-signed-4226041984
+!
+!
+crypto pki certificate chain TP-self-signed-4226041984
+ certificate self-signed 01
+  3082024C 308201B5 A0030201 02020101 300D0609 2A864886 F70D0101 04050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 34323236 30343139 3834301E 170D3933 30333031 30303030 
+  34395A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D34 32323630 
+  34313938 3430819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281 
+  8100B701 2930AF87 93920EFC 122ADD26 FBF317BD C2E2FDA5 6442A9B3 A81C04D9 
+  D4DB73A8 A63F88E8 DEDDABC6 8D2481F1 66D3F875 BAE18ABA 7576A05E 1DA45BDE 
+  B8933B56 998B075E 0BCF017F C80089AB 182501DE 8B45ABCE B1F0E183 FFE7178E 
+  BCD5B8ED 2E86C6F6 AF1E76B5 72044FD8 456BDE5A 9234C0CF 78E6D1B2 11304B71 
+  CBD90203 010001A3 74307230 0F060355 1D130101 FF040530 030101FF 301F0603 
+  551D1104 18301682 14364631 2D323931 385F3234 502D3032 2E736C67 6C301F06 
+  03551D23 04183016 80143ABC BEDED35A 2ADD0CFB EAD2D80C 9DACD0CB 23BD301D 
+  0603551D 0E041604 143ABCBE DED35A2A DD0CFBEA D2D80C9D ACD0CB23 BD300D06 
+  092A8648 86F70D01 01040500 03818100 A7E52F43 386FB59F 7411ADE1 5660CD98 
+  C6BC48FD 5C33C73A DF456B05 87DA469E 70281A71 A1CA90E9 784B7211 B01F636C 
+  2267587D 28FC22EF B5D2A635 5B06F3AC 51AECD5C ED87B3EE C949A65D 6A204EB4 
+  AB31D757 3D3729D3 02FB2288 0B1E42F4 FA4C2A31 CC1A6086 7B0D8458 03CFBD5A 
+  779CBC68 D4F419D7 B386A9BC 74215FFD
+  quit
+!
+!
+!
+!
+!
+errdisable recovery cause bpduguard
+errdisable recovery cause link-flap
+errdisable recovery cause psecure-violation
+errdisable recovery cause storm-control
+errdisable recovery interval 120
+!
+spanning-tree mode rapid-pvst
+spanning-tree portfast bpduguard default
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+vlan 2 
+!
+vlan 3
+ name NET-Manage
+!
+vlan 4-15 
+!
+vlan 120
+ name Wifi-AP-Manage
+!
+vlan 132
+ name AP-Management-New
+!
+vlan 199
+ name SLGL-Guestroom
+!
+vlan 200
+ name Public-Wifi
+!
+vlan 651,653,655-660,662-664,666-673 
+!
+ip ssh version 2
+!
+interface FastEthernet0/1
+ description 6F1-A01-651C
+ switchport access vlan 651
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/2
+ description 6F1-A04-653C
+ switchport access vlan 653
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/3
+ description 6F1-A06-655C
+ switchport access vlan 655
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/4
+ description 6F1-A08-656C
+ switchport access vlan 656
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/5
+ description 6F1-A10-657C
+ switchport access vlan 657
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/6
+ description 6F1-A12-658C
+ switchport access vlan 658
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/7
+ description 6F1-A14-659C
+ switchport access vlan 659
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/8
+ description 6F1-A16-660C
+ switchport access vlan 660
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/9
+ description 6F1-A18-662C
+ switchport access vlan 662
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/10
+ description 6F1-A20-663C
+ switchport access vlan 663
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/11
+ description 6F1-A23-664C
+ switchport access vlan 664
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/12
+ description 6F1-B01-666C
+ switchport access vlan 666
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/13
+ description 6F1-B03-667C
+ switchport access vlan 667
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/14
+ description 6F1-B05-668C
+ switchport access vlan 668
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/15
+ description 6F1-B07-669C
+ switchport access vlan 669
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/16
+ description 6F1-B09-670C
+ switchport access vlan 670
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/17
+ description 6F1-B11-671C
+ switchport access vlan 671
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/18
+ description 6F1-B13-672C
+ switchport access vlan 672
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/19
+ description 6F1-B15-673C
+ switchport access vlan 673
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/20
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/21
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/22
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/23
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface FastEthernet0/24
+ switchport mode access
+ storm-control broadcast level 10.00
+ storm-control multicast level 10.00
+ storm-control action shutdown
+ storm-control action trap
+ spanning-tree portfast
+!
+interface GigabitEthernet0/1
+ description Up-link
+ switchport mode trunk
+!
+interface GigabitEthernet0/2
+ description Up-link
+ switchport mode trunk
+!
+interface Vlan1
+ no ip address
+ no ip route-cache
+ shutdown
+!
+interface Vlan3
+ description Manger
+ ip address 10.182.3.62 255.255.255.0
+ no ip route-cache
+!
+ip default-gateway 10.182.3.254
+no ip http server
+ip http access-class 90
+ip http secure-server
+!
+ip access-list standard ACL_MGMT
+ permit 10.201.0.0 0.0.255.255
+ permit 10.202.0.0 0.0.255.255
+ip access-list standard Network-Management
+ permit 10.182.0.0 0.0.127.255
+ip access-list standard snmp-service
+ permit 10.182.3.200
+logging trap critical
+logging source-interface Vlan3
+logging 10.182.3.249
+access-list 90 remark Hosts allowed to SSH WEB in
+access-list 90 permit 10.182.0.0 0.0.127.255
+snmp-server group MySNMPGroup v3 priv read MyView access snmp-service
+snmp-server view MyView iso included
+!
+control-plane
+!
+!
+line con 0
+line vty 0 4
+ access-class 90 in
+ login local
+ transport input ssh
+line vty 5 15
+ access-class 90 in
+ login local
+ transport input ssh
+!
+ntp clock-period 36029557
+ntp source Vlan3
+ntp server 10.182.18.1 prefer
+ntp server 10.182.3.249
+end
+
+
+Command: show clock
+16:12:54.415 UTC Thu Oct 30 2025
+
+Command: show version
+Cisco IOS Software, C2918 Software (C2918-LANLITEK9-M), Version 12.2(44)SE6, RELEASE SOFTWARE (fc1)
+Copyright (c) 1986-2009 by Cisco Systems, Inc.
+Compiled Mon 09-Mar-09 20:16 by gereddy
+Image text-base: 0x00003000, data-base: 0x01000000
+
+ROM: Bootstrap program is C2918 boot loader
+BOOTLDR: C2918 Boot Loader (C2918-HBOOT-M) Version 12.2(44r)SE, RELEASE SOFTWARE (fc1)
+
+6F1-2918_24P-02 uptime is 41 weeks, 5 days, 9 minutes
+System returned to ROM by power-on
+System restarted at 16:00:17 UTC Sat Jan 11 2025
+System image file is "flash:c2918-lanlitek9-mz.122-44.SE6/c2918-lanlitek9-mz.122-44.SE6.bin"
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+cisco WS-C2918-24TC-C (PowerPC405) processor (revision A0) with 61440K/4088K bytes of memory.
+Processor board ID FOC1409W1NG
+Last reset from power-on
+2 Virtual Ethernet interfaces
+24 FastEthernet interfaces
+2 Gigabit Ethernet interfaces
+The password-recovery mechanism is enabled.
+
+64K bytes of flash-simulated non-volatile configuration memory.
+Base ethernet MAC Address       : FC:FB:FB:E4:48:80
+Motherboard assembly number     : 73-11644-01
+Power supply part number        : 341-0097-02
+Motherboard serial number       : FOC140822BE
+Power supply serial number      : DCA14078FUK
+Model revision number           : A0
+Motherboard revision number     : C0
+Model number                    : WS-C2918-24TC-C
+System serial number            : FOC1409W1NG
+Top Assembly Part Number        : 800-30412-01
+Top Assembly Revision Number    : D0
+Version ID                      : V01
+CLEI Code Number                : COMUT00ARA
+Hardware Board Revision Number  : 0x01
+
+
+Switch Ports Model              SW Version            SW Image                 
+------ ----- -----              ----------            ----------               
+*    1 26    WS-C2918-24TC-C    12.2(44)SE6           C2918-LANLITEK9-M        
+
+
+Configuration register is 0xF
+
+
+Command: show cdp nei
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone
+
+Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+SLGL-Core-02.SLGL.Shangri-la.com
+                 Gig 0/1           130          R S I     WS-C4506- Gig 2/17
+6F1-2960_24POE-07.slgl
+                 Gig 0/2           155           S I      WS-C2960X Gig 1/0/24
+
+Command: show lldp nei
+% LLDP is not enabled
+
+Command: show int statu
+
+Port      Name               Status       Vlan       Duplex  Speed Type
+Fa0/1     6F1-A01-651C       notconnect   651          auto   auto 10/100BaseTX
+Fa0/2     6F1-A04-653C       notconnect   653          auto   auto 10/100BaseTX
+Fa0/3     6F1-A06-655C       notconnect   655          auto   auto 10/100BaseTX
+Fa0/4     6F1-A08-656C       notconnect   656          auto   auto 10/100BaseTX
+Fa0/5     6F1-A10-657C       notconnect   657          auto   auto 10/100BaseTX
+Fa0/6     6F1-A12-658C       notconnect   658          auto   auto 10/100BaseTX
+Fa0/7     6F1-A14-659C       notconnect   659          auto   auto 10/100BaseTX
+Fa0/8     6F1-A16-660C       notconnect   660          auto   auto 10/100BaseTX
+Fa0/9     6F1-A18-662C       notconnect   662          auto   auto 10/100BaseTX
+Fa0/10    6F1-A20-663C       notconnect   663          auto   auto 10/100BaseTX
+Fa0/11    6F1-A23-664C       notconnect   664          auto   auto 10/100BaseTX
+Fa0/12    6F1-B01-666C       notconnect   666          auto   auto 10/100BaseTX
+Fa0/13    6F1-B03-667C       notconnect   667          auto   auto 10/100BaseTX
+Fa0/14    6F1-B05-668C       notconnect   668          auto   auto 10/100BaseTX
+Fa0/15    6F1-B07-669C       notconnect   669          auto   auto 10/100BaseTX
+Fa0/16    6F1-B09-670C       notconnect   670          auto   auto 10/100BaseTX
+Fa0/17    6F1-B11-671C       notconnect   671          auto   auto 10/100BaseTX
+Fa0/18    6F1-B13-672C       notconnect   672          auto   auto 10/100BaseTX
+Fa0/19    6F1-B15-673C       notconnect   673          auto   auto 10/100BaseTX
+Fa0/20                       notconnect   1            auto   auto 10/100BaseTX
+Fa0/21                       notconnect   1            auto   auto 10/100BaseTX
+Fa0/22                       notconnect   1            auto   auto 10/100BaseTX
+Fa0/23                       notconnect   1            auto   auto 10/100BaseTX
+Fa0/24                       notconnect   1            auto   auto 10/100BaseTX
+Gi0/1     Up-link            connected    trunk      a-full a-1000 1000BaseSX SFP
+Gi0/2     Up-link            connected    trunk      a-full a-1000 10/100/1000BaseTX
+
+Command: show proc cpu | inc CPU utilization
+CPU utilization for five seconds: 25%/0%; one minute: 7%; five minutes: 6%
+
+Command: show proc mem | inc Processor Pool
+Processor Pool Total:   37455336 Used:    8278124 Free:   29177212
+
+Command: show loggi
+Syslog logging: enabled (0 messages dropped, 0 messages rate-limited, 0 flushes, 0 overruns, xml disabled, filtering disabled)
+
+No Active Message Discriminator.
+
+
+
+No Inactive Message Discriminator.
+
+
+    Console logging: level debugging, 17 messages logged, xml disabled,
+                     filtering disabled
+    Monitor logging: level debugging, 0 messages logged, xml disabled,
+                     filtering disabled
+    Buffer logging:  level debugging, 17 messages logged, xml disabled,
+                    filtering disabled
+    Exception Logging: size (4096 bytes)
+    Count and timestamp logging messages: disabled
+    File logging: disabled
+    Persistent logging: disabled
+    Trap logging: level critical, 0 message lines logged
+        Logging to 10.182.3.249  (udp port 514,  audit disabled,
+              authentication disabled, encryption disabled, link down),
+              0 message lines logged, 
+              0 message lines rate-limited, 
+              0 message lines dropped-by-MD, 
+              xml disabled, sequence number disabled
+              filtering disabled
+
+Log Buffer (4096 bytes):
+
+*Mar  1 00:00:28.621: %LINEPROTO-5-UPDOWN: Line protocol on Interface Vlan1, changed state to down
+*Mar  1 00:00:29.720: %SPANTREE-5-EXTENDED_SYSID: Extended SysId enabled for type vlan
+000003: *Mar  1 08:00:36: %SYS-6-CLOCKUPDATE: System clock has been updated from 00:00:36 UTC Mon Mar 1 1993 to 08:00:36 GMT Mon Mar 1 1993, configured from console by console.
+000004: *Mar  1 08:00:37: %SYS-5-CONFIG_I: Configured from memory by console
+000005: *Mar  1 08:00:37: %SYS-5-RESTART: System restarted --
+Cisco IOS Software, C2918 Software (C2918-LANLITEK9-M), Version 12.2(44)SE6, RELEASE SOFTWARE (fc1)
+Copyright (c) 1986-2009 by Cisco Systems, Inc.
+Compiled Mon 09-Mar-09 20:16 by gereddy
+000006: *Mar  1 08:00:37: %SSH-5-ENABLED: SSH 2.0 has been enabled
+000007: *Mar  1 08:00:39: %LINK-5-CHANGED: Interface Vlan1, changed state to administratively down
+000008: *Mar  1 08:00:39: %LINK-3-UPDOWN: Interface GigabitEthernet0/1, changed state to up
+000009: *Mar  1 08:00:42: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/1, changed state to up
+000010: *Mar  1 08:00:44: %LINEPROTO-5-UPDOWN: Line protocol on Interface Vlan3, changed state to up
+000011: *Mar  1 08:04:29: %LINK-3-UPDOWN: Interface GigabitEthernet0/2, changed state to up
+000012: *Mar  1 08:04:31: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/2, changed state to up
+000013: *Jul 12 04:19:16: %SYS-6-CLOCKUPDATE: System clock has been updated from 04:19:16 GMT Mon Jul 12 1993 to 04:19:16 UTC Mon Jul 12 1993, configured from console by slglsw on vty0 (10.182.9.64).
+000014: *Jul 12 04:19:35: %SYS-5-CONFIG_I: Configured from console by slglsw on vty0 (10.182.9.64)
+000015: Jun  2 15:10:56: %SYS-5-CONFIG_I: Configured from console by slglsw on vty0 (10.182.9.102)
+000016: Jun  2 15:11:10: %SYS-5-CONFIG_I: Configured from console by slglsw on vty0 (10.182.9.102)
+000017: Jul 23 12:35:10: %SYS-5-CONFIG_I: Configured from console by slglsw on vty0 (10.182.9.102)
