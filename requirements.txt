@@ -1,2 +1,3 @@
 pyinstaller
 python-docx
+ntc_templates
