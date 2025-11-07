@@ -14,7 +14,7 @@ jobs:
         os: ['windows-latest', 'ubuntu-latest', 'macos-latest']
 
     env:
-      MAIN_PY_FILE: 'main.py'  # 替换为你的主脚本文件名，例如 'your_script.py'
+      MAIN_PY_FILE: 'txt2docx-v0.0.5.py'  # 替换为你的主脚本文件名，例如 'your_script.py'
 
     steps:
     - name: Checkout code
@@ -32,7 +32,7 @@ jobs:
 
     - name: Build executable with PyInstaller
       run: |
-        pyinstaller --onefile --collect-data ntc_templates ${{ env.txt2docx-v0.0.5.py }}
+        pyinstaller --onefile --collect-data ntc_templates ${{ env.MAIN_PY_FILE }}
       # --onefile: 生成单个可执行文件
       # --collect-data ntc_templates: 自动收集 ntc_templates 的数据文件（包括 templates/ 目录）
 
