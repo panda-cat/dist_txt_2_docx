@@ -57,7 +57,7 @@ jobs:
             --name "Network_Report_Tool" `
             --collect-all ntc_templates `
             --add-data "${{ steps.find_ntc_templates.outputs.templates_path }};ntc_templates/templates" `
-            generate_report.py
+            txt2docx-v0.0.5.py
         shell: pwsh
 
       - name: 📦 Upload Artifact (for checking)
